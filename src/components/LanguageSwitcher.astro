@@ -1,0 +1,69 @@
+---
+/**
+ * LanguageSwitcher.astro — small EN/FR/DE pill.
+ * Detects the current locale and swaps it for each link target,
+ * keeping the user on the same logical page across languages.
+ */
+
+const lang = Astro.currentLocale ?? 'en';
+const path = Astro.url.pathname;
+
+// Strip the current locale prefix to get the "common" path,
+// so we can rebuild it for any other locale.
+const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+
+const locales = [
+  ['en', 'EN'],
+  ['fr', 'FR'],
+  ['de', 'DE'],
+];
+
+const buildLink = (loc) => `/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/');
+---
+
+<div class="lang-switcher" role="group" aria-label="Language">
+  {locales.map(([code, label]) => (
+    <a
+      href={buildLink(code)}
+      class:list={['lang-switcher__link', { 'is-active': lang === code }]}
+      aria-current={lang === code ? 'true' : undefined}
+      hreflang={code}
+    >
+      {label}
+    </a>
+  ))}
+</div>
+
+<style>
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+    flex-shrink: 0;
+  }
+
+  .lang-switcher__link {
+    display: block;
+    padding: 4px 10px;
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    border-radius: 4px;
+    line-height: 1.2;
+    transition: var(--transition-fast);
+  }
+
+  .lang-switcher__link:hover {
+    color: var(--color-fg);
+    background: var(--color-bg-alt);
+  }
+
+  .lang-switcher__link.is-active {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+</style>

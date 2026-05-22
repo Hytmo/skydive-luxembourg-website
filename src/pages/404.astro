@@ -1,0 +1,91 @@
+---
+/**
+ * 404.astro — custom not-found page.
+ * Lives at the root of /pages (not inside a locale folder) so Astro
+ * uses it for any URL that doesn't match a real route.
+ * Detects which locale the user was trying to reach from the URL and
+ * presents the message in that language.
+ */
+
+import Layout from '../layouts/Layout.astro';
+
+const path = Astro.url.pathname;
+const locale = path.match(/^\/(en|fr|de)(?=\/|$)/)?.[1] ?? 'en';
+
+const messages = {
+  en: {
+    title: 'Page not found',
+    description: '404 — that page does not exist (yet).',
+    heading: 'Lost the plane?',
+    body: 'The page you are looking for could not be found. It may have moved, or never existed.',
+    home: 'Back to home',
+  },
+  fr: {
+    title: 'Page introuvable',
+    description: "404 — cette page n'existe pas (encore).",
+    heading: "L'avion s'est envolé ?",
+    body: "La page que vous cherchez est introuvable. Elle a peut-être été déplacée, ou n'a jamais existé.",
+    home: "Retour à l'accueil",
+  },
+  de: {
+    title: 'Seite nicht gefunden',
+    description: '404 — diese Seite existiert (noch) nicht.',
+    heading: 'Das Flugzeug verloren?',
+    body: 'Die gesuchte Seite konnte nicht gefunden werden. Sie wurde möglicherweise verschoben oder hat nie existiert.',
+    home: 'Zur Startseite',
+  },
+};
+
+const t = messages[locale];
+---
+
+<Layout title={t.title} description={t.description}>
+  <section class="not-found">
+    <p class="not-found__code">404</p>
+    <h1 class="not-found__heading">{t.heading}</h1>
+    <p class="not-found__body">{t.body}</p>
+    <a href={`/${locale}/`} class="not-found__cta">{t.home}</a>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    max-width: var(--content-narrow);
+    margin: 0 auto;
+    padding: var(--space-24) var(--space-4);
+    text-align: center;
+  }
+
+  .not-found__code {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-blue);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+  }
+
+  .not-found__heading {
+    margin-bottom: var(--space-4);
+  }
+
+  .not-found__body {
+    font-size: var(--fs-lg);
+    color: var(--color-fg-muted);
+    margin-bottom: var(--space-8);
+  }
+
+  .not-found__cta {
+    display: inline-block;
+    background: var(--color-blue);
+    color: var(--color-bg);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: var(--fw-medium);
+    transition: background var(--transition-fast);
+  }
+  .not-found__cta:hover {
+    background: var(--color-blue-dark);
+    color: var(--color-bg);
+  }
+</style>

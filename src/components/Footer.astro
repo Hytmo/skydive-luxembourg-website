@@ -1,0 +1,194 @@
+---
+/**
+ * Footer.astro — site footer.
+ * Three columns on desktop: brand, legal links, social.
+ * Self-contained translations and styles.
+ */
+
+const lang = Astro.currentLocale ?? 'en';
+const year = new Date().getFullYear();
+
+const labels = {
+  en: {
+    tagline: 'The home of skydiving in Luxembourg.',
+    follow: 'Follow us',
+    legal: 'Legal',
+    imprint: 'Imprint',
+    privacy: 'Privacy',
+    cookies: 'Cookies',
+    rights: 'All rights reserved.',
+    asbl: 'Skydive Luxembourg a.s.b.l.',
+  },
+  fr: {
+    tagline: 'La référence du parachutisme au Luxembourg.',
+    follow: 'Suivez-nous',
+    legal: 'Mentions légales',
+    imprint: 'Mentions légales',
+    privacy: 'Confidentialité',
+    cookies: 'Cookies',
+    rights: 'Tous droits réservés.',
+    asbl: 'Skydive Luxembourg a.s.b.l.',
+  },
+  de: {
+    tagline: 'Die Heimat des Fallschirmsprungs in Luxemburg.',
+    follow: 'Folgen Sie uns',
+    legal: 'Rechtliches',
+    imprint: 'Impressum',
+    privacy: 'Datenschutz',
+    cookies: 'Cookies',
+    rights: 'Alle Rechte vorbehalten.',
+    asbl: 'Skydive Luxembourg a.s.b.l.',
+  },
+};
+
+const t = labels[lang] ?? labels.en;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__brand">
+      <p class="site-footer__name">
+        <strong>Skydive</strong> <span>Luxembourg</span>
+      </p>
+      <p class="site-footer__tagline">{t.tagline}</p>
+    </div>
+
+    <nav aria-label={t.legal} class="site-footer__column">
+      <h3>{t.legal}</h3>
+      <ul>
+        <li><a href={`/${lang}/imprint`}>{t.imprint}</a></li>
+        <li><a href={`/${lang}/privacy`}>{t.privacy}</a></li>
+        <li><a href={`/${lang}/cookies`}>{t.cookies}</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__column">
+      <h3>{t.follow}</h3>
+      <ul class="site-footer__social">
+        <li>
+          <a href="#" aria-label="Facebook" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="Instagram" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="YouTube" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>© {year} {t.asbl}. {t.rights}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-fg);
+    color: var(--color-bg);
+    margin-top: var(--space-24);
+  }
+
+  .site-footer__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-4);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .site-footer__name {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-2);
+  }
+  .site-footer__name strong { color: var(--color-red); }
+  .site-footer__name span   { color: var(--color-blue); font-weight: var(--fw-medium); }
+
+  .site-footer__tagline {
+    color: var(--color-border);
+    max-width: 40ch;
+  }
+
+  .site-footer h3 {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--fw-medium);
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer a {
+    color: var(--color-bg);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity var(--transition-fast);
+  }
+  .site-footer a:hover {
+    opacity: 1;
+    color: var(--color-bg);
+  }
+
+  .site-footer__social {
+    flex-direction: row !important;
+    gap: var(--space-3) !important;
+  }
+
+  .site-footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 1;
+  }
+  .site-footer__social a:hover {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+  }
+
+  .site-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-4);
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: var(--color-border);
+  }
+
+  @media (max-width: 700px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      padding: var(--space-8) var(--space-4);
+    }
+    .site-footer { margin-top: var(--space-16); }
+  }
+</style>

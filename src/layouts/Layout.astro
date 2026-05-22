@@ -1,0 +1,164 @@
+---
+/**
+ * Layout.astro — the base page shell.
+ * Every page imports and wraps itself in this component.
+ *
+ * Usage from a page:
+ *   ---
+ *   import Layout from '../../layouts/Layout.astro';
+ *   ---
+ *   <Layout title="Tandem jumps" description="Book your first jump in Luxembourg">
+ *     <p>page content here</p>
+ *   </Layout>
+ */
+
+import '../styles/tokens.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = 'Skydive Luxembourg',
+  description = 'Official website of Skydive Luxembourg a.s.b.l. — tandem jumps, AFF courses, and the home of skydiving in Luxembourg.',
+} = Astro.props;
+
+const lang = Astro.currentLocale ?? 'en';
+const locales = ['en', 'fr', 'de'];
+const path = Astro.url.pathname;
+
+// Strip the current locale prefix to compute hreflang URLs for the other languages
+const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+
+    {locales.map((loc) => (
+      <link
+        rel="alternate"
+        hreflang={loc}
+        href={new URL(`/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/'), Astro.site)}
+      />
+    ))}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(`/en${pathWithoutLocale}`.replace(/\/+/g, '/'), Astro.site)}
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(path, Astro.site)} />
+    <meta property="og:image" content={new URL('/img/og-image.jpg', Astro.site)} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <!-- TODO step 29: replace with <Nav /> component -->
+      <Nav />
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <!-- TODO step 30: replace with <Footer /> component -->
+      <Footer />
+    </footer>
+
+    <style is:global>
+      /* ---------- minimal modern reset ---------- */
+
+      *, *::before, *::after { box-sizing: border-box; }
+      * { margin: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        line-height: var(--lh-base);
+        color: var(--color-fg);
+        background: var(--color-bg);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      img, picture, video, svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        transition: color var(--transition-fast);
+      }
+      a:hover { color: var(--color-link-hover); }
+
+      h1, h2, h3, h4, h5, h6 {
+        line-height: var(--lh-tight);
+        font-weight: var(--fw-bold);
+      }
+      h1 { font-size: var(--fs-3xl); }
+      h2 { font-size: var(--fs-2xl); }
+      h3 { font-size: var(--fs-xl); }
+
+      main { min-height: 60vh; }
+
+      /* container helper — use on a wrapping <div class="container"> */
+      .container {
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 0 var(--space-4);
+      }
+      .container--narrow { max-width: var(--content-narrow); }
+
+      /* ---------- skip link (keyboard a11y) ---------- */
+
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: var(--space-2);
+        background: var(--color-fg);
+        color: var(--color-bg);
+        padding: var(--space-2) var(--space-4);
+        text-decoration: none;
+        z-index: 1000;
+        border-radius: var(--radius-sm);
+      }
+      .skip-link:focus { top: var(--space-2); }
+
+      /* ---------- temporary header/footer styling ---------- */
+      /* These get replaced when Nav/Footer components arrive in 29/30 */
+
+      .site-header,
+      .site-footer {
+        padding: var(--space-4);
+        background: var(--color-bg-alt);
+      }
+      .site-header { border-bottom: 1px solid var(--color-border); }
+      .site-footer {
+        border-top: 1px solid var(--color-border);
+        margin-top: var(--space-16);
+      }
+    </style>
+  </body>
+</html>

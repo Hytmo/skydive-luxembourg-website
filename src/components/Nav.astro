@@ -1,0 +1,202 @@
+---
+/**
+ * Nav.astro — main site navigation.
+ * Self-contained: translations, styles, mobile toggle, language switcher.
+ * Used inside Layout.astro.
+ */
+
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = Astro.currentLocale ?? 'en';
+const path = Astro.url.pathname;
+
+const labels = {
+  en: {
+    about: 'About', tandem: 'Tandem', aff: 'AFF',
+    funJumpers: 'Fun jumpers', pricing: 'Pricing', findUs: 'Find us',
+    gallery: 'Gallery', faq: 'FAQ', contact: 'Contact',
+    menu: 'Menu',
+  },
+  fr: {
+    about: 'À propos', tandem: 'Tandem', aff: 'AFF',
+    funJumpers: 'Parachutistes', pricing: 'Tarifs', findUs: 'Nous trouver',
+    gallery: 'Galerie', faq: 'FAQ', contact: 'Contact',
+    menu: 'Menu',
+  },
+  de: {
+    about: 'Über uns', tandem: 'Tandem', aff: 'AFF',
+    funJumpers: 'Sportspringer', pricing: 'Preise', findUs: 'Anfahrt',
+    gallery: 'Galerie', faq: 'FAQ', contact: 'Kontakt',
+    menu: 'Menü',
+  },
+};
+
+const t = labels[lang] ?? labels.en;
+
+const items = [
+  ['about',       t.about],
+  ['tandem',      t.tandem],
+  ['aff',         t.aff],
+  ['fun-jumpers', t.funJumpers],
+  ['pricing',     t.pricing],
+  ['find-us',     t.findUs],
+  ['gallery',     t.gallery],
+  ['faq',         t.faq],
+  ['contact',     t.contact],
+];
+
+const isActive = (slug) => {
+  const target = `/${lang}/${slug}`;
+  return path === target || path.startsWith(target + '/');
+};
+---
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="site-nav__inner">
+
+    <a href={`/${lang}/`} class="site-nav__logo">
+      <strong>Skydive</strong> <span>Luxembourg</span>
+    </a>
+
+    <button
+      class="site-nav__toggle"
+      aria-label={t.menu}
+      aria-expanded="false"
+      data-nav-toggle
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="site-nav__menu" data-nav-list>
+      <ul class="site-nav__list">
+        {items.map(([slug, label]) => (
+          <li>
+            <a
+              href={`/${lang}/${slug}`}
+              class:list={['site-nav__link', { 'is-active': isActive(slug) }]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <LanguageSwitcher />
+    </div>
+
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle — vanilla JS, runs on every page load
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const list = document.querySelector('[data-nav-list]');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = list?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+<style>
+  .site-nav {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-nav__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    position: relative;
+  }
+
+  .site-nav__logo {
+    color: var(--color-fg);
+    text-decoration: none;
+    font-size: var(--fs-lg);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .site-nav__logo strong { color: var(--color-red); }
+  .site-nav__logo span   { color: var(--color-blue); font-weight: var(--fw-medium); }
+
+  .site-nav__toggle {
+    display: none;
+    background: none;
+    border: 0;
+    padding: var(--space-2);
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .site-nav__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-fg);
+    transition: var(--transition-fast);
+  }
+
+  .site-nav__menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .site-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  .site-nav__link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-fg);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: var(--fw-medium);
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+  .site-nav__link:hover { background: var(--color-bg-alt); }
+  .site-nav__link.is-active {
+    background: var(--color-blue);
+    color: var(--color-bg);
+  }
+
+  /* Tablet & mobile */
+  @media (max-width: 900px) {
+    .site-nav__toggle { display: flex; }
+    .site-nav__menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-4);
+      gap: var(--space-3);
+    }
+    .site-nav__menu.is-open { display: flex; }
+    .site-nav__list {
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+    .site-nav__link { padding: var(--space-3); }
+  }
+</style>

@@ -1,0 +1,94 @@
+/* =========================================================================
+   Skydive Luxembourg — Design Tokens
+   Single source of truth for colors, typography, spacing, and motion.
+   Change a value here and it propagates everywhere.
+   ========================================================================= */
+
+:root {
+
+  /* ---------- COLORS ---------------------------------------------------- */
+
+  /* Base palette */
+  --color-bg:        #FFFFFF;   /* page background */
+  --color-bg-alt:    #F5F5F5;   /* alternating sections, cards */
+  --color-fg:        #0A0A0A;   /* main text — softer than pure black */
+  --color-fg-muted:  #555555;   /* secondary text */
+  --color-border:    #E0E0E0;   /* dividers, input borders */
+
+  /* Luxembourg flag accents */
+  --color-blue:      #00A1DE;   /* LU flag light blue — primary accent */
+  --color-blue-dark: #0083B5;   /* hover state */
+  --color-red:       #EF3340;   /* LU flag red — secondary accent */
+  --color-red-dark:  #C5232E;   /* hover state */
+
+  /* Semantic colors (use these in components, not the raw values above) */
+  --color-link:        var(--color-blue);
+  --color-link-hover:  var(--color-blue-dark);
+  --color-cta:         var(--color-red);
+  --color-cta-hover:   var(--color-red-dark);
+  --color-success:     #16A34A;
+  --color-error:       #DC2626;
+
+
+  /* ---------- TYPOGRAPHY ------------------------------------------------ */
+
+  /* System font stack — no external font load, instant render, looks good */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Type scale */
+  --fs-xs:   0.75rem;    /* 12px — footnotes, captions */
+  --fs-sm:   0.875rem;   /* 14px — secondary text */
+  --fs-base: 1rem;       /* 16px — body */
+  --fs-lg:   1.125rem;   /* 18px — lead paragraphs */
+  --fs-xl:   1.5rem;     /* 24px — h3 / card titles */
+  --fs-2xl:  2rem;       /* 32px — h2 / section titles */
+  --fs-3xl:  2.5rem;     /* 40px — h1 / page titles */
+  --fs-4xl:  3.5rem;     /* 56px — hero only */
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  --lh-tight: 1.15;   /* headings */
+  --lh-base:  1.6;    /* body */
+
+
+  /* ---------- SPACING --------------------------------------------------- */
+  /* Multiples of 4px. Use these for margin, padding, gap. */
+
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-24: 6rem;      /* 96px */
+
+
+  /* ---------- LAYOUT ---------------------------------------------------- */
+
+  --content-max:    1200px;   /* full-width page sections */
+  --content-narrow: 720px;    /* text-heavy pages (legal, FAQ) */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+
+  /* ---------- ELEVATION (shadows) -------------------------------------- */
+
+  --shadow-sm: 0 1px 2px  rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+
+  /* ---------- MOTION ---------------------------------------------------- */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
