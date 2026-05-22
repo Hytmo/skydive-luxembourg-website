@@ -14,8 +14,7 @@ export default defineConfig({
     // Order doesn't matter functionally, but EN first is a useful convention.
     locales: ['en', 'fr', 'de'],
 
-    // The default locale. If a page is missing in fr or de, Astro can
-    // fall back to its English version (see "fallback" below).
+    // The default locale.
     defaultLocale: 'en',
 
     routing: {
@@ -27,12 +26,12 @@ export default defineConfig({
       redirectToDefaultLocale: true,
     },
 
-    // While we're still building, a missing /fr/tandem will silently
-    // serve /en/tandem instead of 404-ing. Once all pages exist in all
-    // languages, this fallback never triggers — but it's a safe default.
-    fallback: {
-      fr: 'en',
-      de: 'en',
-    },
+    // NOTE: no `fallback` block here on purpose.
+    // In Astro 6, fallback registers redirect routes that compete with
+    // the real per-locale files. Alphabetical priority means EN beats FR
+    // and silently prevents /fr/* pages from being generated at build time
+    // — so every FR page 404s on a static deploy even though the .astro
+    // files exist. Since we have all pages in all 3 languages, we don't
+    // need fallback at all.
   },
 });
