@@ -1,0 +1,12 @@
+---
+// REQ-PG-04 + REQ-BOOK-02 — DE AFF page with inquiry form.
+import Layout from '../../layouts/Layout.astro';
+import AFFForm from '../../components/AFFForm.astro';
+
+const title = 'AFF';
+---
+<Layout title={title}>
+  <h1>AFF</h1>
+  <p>Lust, das Fallschirmspringen zu lernen? Füllen Sie das Formular unten aus und wir melden uns bei Ihnen.</p>
+  <AFFForm lang="de" />
+</Layout>

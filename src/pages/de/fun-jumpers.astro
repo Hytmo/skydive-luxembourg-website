@@ -1,0 +1,12 @@
+---
+// REQ-PG-05 + REQ-BOOK-03 — DE Fun jumpers page with inquiry form.
+import Layout from '../../layouts/Layout.astro';
+import FunJumperForm from '../../components/FunJumperForm.astro';
+
+const title = 'Erfahrene Springer';
+---
+<Layout title={title}>
+  <h1>Erfahrene Springer</h1>
+  <p>Lizenzierter Springer auf Besuch oder Vereinsmitglied? Nutzen Sie das Formular unten, um Kontakt aufzunehmen.</p>
+  <FunJumperForm lang="de" />
+</Layout>

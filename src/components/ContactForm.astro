@@ -1,0 +1,32 @@
+---
+// REQ-PG-10 (form portion) — Contact form (Netlify Forms).
+const { lang = 'en' } = Astro.props;
+
+const labels = {
+  en: {'name': 'Name', 'email': 'Email', 'phone': 'Phone (optional)', 'send': 'Send inquiry', 'send_contact': 'Send message', 'required_note': 'Fields marked * are required.', 'honeypot': "Do not fill this out if you're human", 'age': 'Age', 'weight': 'Weight (kg)', 'languages': 'Languages you speak', 'start_date': 'Preferred start date', 'question': 'Your question or anything else we should know', 'licence': 'Licence (e.g. A USPA, B FAI)', 'ratings': 'Ratings (e.g. AFF-I, Coach, Camera)', 'last_jump': 'Date of last jump', 'purpose': 'What would you like to do?', 'purpose_visit': 'Visit the DZ', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / boogie', 'purpose_other': 'Other', 'subject': 'Subject', 'message': 'Message'},
+  fr: {'name': 'Nom', 'email': 'Courriel', 'phone': 'Téléphone (optionnel)', 'send': 'Envoyer la demande', 'send_contact': 'Envoyer le message', 'required_note': 'Les champs marqués * sont obligatoires.', 'honeypot': 'Ne remplissez pas ce champ si vous êtes humain·e', 'age': 'Âge', 'weight': 'Poids (kg)', 'languages': 'Langues parlées', 'start_date': 'Date de début souhaitée', 'question': 'Votre question ou toute autre information utile', 'licence': 'Licence (ex. A USPA, B FAI)', 'ratings': 'Qualifications (ex. AFF-I, Coach, Vidéo)', 'last_jump': 'Date du dernier saut', 'purpose': 'Que souhaitez-vous faire ?', 'purpose_visit': 'Visiter la DZ', 'purpose_coaching': 'Coaching', 'purpose_event': 'Événement / boogie', 'purpose_other': 'Autre', 'subject': 'Objet', 'message': 'Message'},
+  de: {'name': 'Name', 'email': 'E-Mail', 'phone': 'Telefon (optional)', 'send': 'Anfrage senden', 'send_contact': 'Nachricht senden', 'required_note': 'Mit * gekennzeichnete Felder sind Pflichtfelder.', 'honeypot': 'Bitte nicht ausfüllen, wenn Sie ein Mensch sind', 'age': 'Alter', 'weight': 'Gewicht (kg)', 'languages': 'Gesprochene Sprachen', 'start_date': 'Gewünschtes Startdatum', 'question': 'Ihre Frage oder weitere Hinweise', 'licence': 'Lizenz (z.B. A USPA, B FAI)', 'ratings': 'Berechtigungen (z.B. AFF-I, Coach, Kamera)', 'last_jump': 'Datum des letzten Sprungs', 'purpose': 'Was möchten Sie machen?', 'purpose_visit': 'DZ besuchen', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / Boogie', 'purpose_other': 'Andere', 'subject': 'Betreff', 'message': 'Nachricht'},
+};
+const t = labels[lang] || labels.en;
+---
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action={`/${lang}/thank-you`}
+  class="form form--contact"
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <p hidden>
+    <label>{t.honeypot}: <input name="bot-field" /></label>
+  </p>
+
+  <p><label>{t.name} *<br /><input type="text" name="name" required /></label></p>
+  <p><label>{t.email} *<br /><input type="email" name="email" required /></label></p>
+  <p><label>{t.subject} *<br /><input type="text" name="subject" required /></label></p>
+  <p><label>{t.message} *<br /><textarea name="message" rows="6" required></textarea></label></p>
+
+  <p class="form__note">{t.required_note}</p>
+  <p><button type="submit">{t.send_contact}</button></p>
+</form>

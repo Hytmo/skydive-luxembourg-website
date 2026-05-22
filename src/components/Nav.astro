@@ -3,6 +3,9 @@
  * Nav.astro — main site navigation.
  * Self-contained: translations, styles, mobile toggle, language switcher.
  * Used inside Layout.astro.
+ *
+ * NOTE: "Find us" page was merged into "Contact" — location info and the
+ *       contact form now live on the same page.
  */
 
 import LanguageSwitcher from './LanguageSwitcher.astro';
@@ -13,19 +16,19 @@ const path = Astro.url.pathname;
 const labels = {
   en: {
     about: 'About', tandem: 'Tandem', aff: 'AFF',
-    funJumpers: 'Fun jumpers', pricing: 'Pricing', findUs: 'Find us',
+    funJumpers: 'Fun jumpers', pricing: 'Pricing',
     gallery: 'Gallery', faq: 'FAQ', contact: 'Contact',
     menu: 'Menu',
   },
   fr: {
     about: 'À propos', tandem: 'Tandem', aff: 'AFF',
-    funJumpers: 'Parachutistes', pricing: 'Tarifs', findUs: 'Nous trouver',
+    funJumpers: 'Parachutistes', pricing: 'Tarifs',
     gallery: 'Galerie', faq: 'FAQ', contact: 'Contact',
     menu: 'Menu',
   },
   de: {
     about: 'Über uns', tandem: 'Tandem', aff: 'AFF',
-    funJumpers: 'Sportspringer', pricing: 'Preise', findUs: 'Anfahrt',
+    funJumpers: 'Sportspringer', pricing: 'Preise',
     gallery: 'Galerie', faq: 'FAQ', contact: 'Kontakt',
     menu: 'Menü',
   },
@@ -39,7 +42,6 @@ const items = [
   ['aff',         t.aff],
   ['fun-jumpers', t.funJumpers],
   ['pricing',     t.pricing],
-  ['find-us',     t.findUs],
   ['gallery',     t.gallery],
   ['faq',         t.faq],
   ['contact',     t.contact],

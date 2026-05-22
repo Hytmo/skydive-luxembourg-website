@@ -1,0 +1,16 @@
+---
+// REQ-PG-03 + REQ-BOOK-01 — EN Tandem page with dz-cloud booking button.
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Tandem';
+const bookingUrl = 'https://cpl.dz-cloud.com/en/Booking/s1_Options';
+---
+<Layout title={title}>
+  <h1>Tandem</h1>
+  <p>Tandem bookings are handled through our partner platform. The button below opens the booking system in a new tab.</p>
+  <p>
+    <a class="btn btn--primary" href={bookingUrl} target="_blank" rel="noopener noreferrer">
+      Book your tandem jump
+    </a>
+  </p>
+</Layout>

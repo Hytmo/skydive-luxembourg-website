@@ -1,10 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+// REQ-LANG-04 — Root redirect to default locale (EN).
+// Static-build friendly: meta refresh + JS fallback + canonical hint.
 ---
-
-<Layout title="Skydive Luxembourg" description="Tandem jumps, AFF courses, and the home of skydiving in Luxembourg.">
-  <div class="container">
-    <h1>Skydive Luxembourg</h1>
-    <p>If you can see this rendered with a header and footer placeholder, Layout.astro is working.</p>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Skydive Luxembourg</title>
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href="/en/" />
+    <meta name="robots" content="noindex" />
+    <script>window.location.replace('/en/');</script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/en/">/en/</a>…</p>
+  </body>
+</html>
