@@ -1,11 +1,7 @@
 ---
-// REQ-PG-11 — FR imprint.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Mentions légales';
+import ImprintContent from '../../components/pages/ImprintContent.astro';
 ---
-<Layout title={title}>
-  <h1>Mentions légales</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout title="Mentions légales" description="Mentions légales de Skydive Luxembourg a.s.b.l.">
+  <ImprintContent lang="fr" />
 </Layout>

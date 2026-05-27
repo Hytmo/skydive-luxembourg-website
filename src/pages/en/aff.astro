@@ -1,12 +1,7 @@
 ---
-// REQ-PG-04 + REQ-BOOK-02 — EN AFF page with inquiry form.
 import Layout from '../../layouts/Layout.astro';
-import AFFForm from '../../components/AFFForm.astro';
-
-const title = 'AFF';
+import AFFContent from '../../components/pages/AFFContent.astro';
 ---
-<Layout title={title}>
-  <h1>AFF</h1>
-  <p>Interested in learning to skydive? Fill in the form below and we'll get back to you.</p>
-  <AFFForm lang="en" />
+<Layout title="AFF — Learn to skydive" description="Learn to skydive solo with our AFF course in Luxembourg.">
+  <AFFContent lang="en" />
 </Layout>

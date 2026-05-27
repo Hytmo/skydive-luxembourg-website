@@ -1,12 +1,7 @@
 ---
-// REQ-PG-05 + REQ-BOOK-03 — FR Fun jumpers page with inquiry form.
 import Layout from '../../layouts/Layout.astro';
-import FunJumperForm from '../../components/FunJumperForm.astro';
-
-const title = 'Sauteurs confirmés';
+import FunJumpersContent from '../../components/pages/FunJumpersContent.astro';
 ---
-<Layout title={title}>
-  <h1>Sauteurs confirmés</h1>
-  <p>Sauteur·euse licencié·e de passage ou membre du club ? Utilisez le formulaire ci-dessous pour nous contacter.</p>
-  <FunJumperForm lang="fr" />
+<Layout title="Parachutistes confirmés" description="Informations pour parachutistes brevetés visitant la DZ.">
+  <FunJumpersContent lang="fr" />
 </Layout>

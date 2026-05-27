@@ -1,11 +1,7 @@
 ---
-// REQ-PG-02 — EN about.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'About';
+import AboutContent from '../../components/pages/AboutContent.astro';
 ---
-<Layout title={title}>
-  <h1>About</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout title="About us" description="Skydive Luxembourg a.s.b.l. — the only registered skydive club in Luxembourg.">
+  <AboutContent lang="en" />
 </Layout>

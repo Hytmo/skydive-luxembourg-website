@@ -1,0 +1,238 @@
+---
+/**
+ * FunJumpersContent.astro — sport jumpers page body. Picks copy by `lang` prop.
+ */
+import PageBanner from '../sections/PageBanner.astro';
+import FeatureCards from '../sections/FeatureCards.astro';
+import CTABanner from '../sections/CTABanner.astro';
+import FunJumperForm from '../FunJumperForm.astro';
+
+import bannerImg from '../../assets/img/Fun-2.jpg';
+import planeImg from '../../assets/img/Hero-3.jpg';
+import packingImg from '../../assets/img/Fun-1.jpg';
+import briefingImg from '../../assets/img/Fun-3.jpg';
+import hangarImg from '../../assets/img/Hero-4.jpg';
+
+const { lang = 'en' } = Astro.props;
+
+const t = {
+  en: {
+    bannerEyebrow: 'Sport jumpers',
+    bannerTitle: 'Welcome to the dropzone.',
+    bannerSubtitle: 'A friendly Caravan DZ in the heart of Europe — open every weekend from April to October.',
+
+    introEyebrow: 'About the DZ',
+    introTitle: 'Small dropzone. Big sky.',
+    introText: 'Skydive Luxembourg is a member-run dropzone on a private grass airfield in the south-east of the Grand Duchy. We fly a turbine Cessna 208 Caravan every weekend in season, with capacity for 17 jumpers per load and a typical climb time of around 18 minutes to full altitude. The atmosphere is relaxed, the manifest is digital, and the prices are kept low by the volunteer model — we are not here to make a profit, we are here to fly together.',
+
+    facEyebrow: 'Facilities',
+    facTitle: 'Everything you need on site.',
+    facLead: 'Clean, well-equipped infrastructure so you can focus on jumping.',
+
+    cards: [
+      { title: 'Cessna 208 Caravan', text: 'Turbine aircraft, 17 jumpers per load, full-altitude jump runs at 4 000 m. In-flight oxygen for high-altitude loads when conditions allow. Maintained to EASA Part-CAO standards.', image: planeImg, alt: 'Cessna 208 Caravan jump aircraft' },
+      { title: 'Packing area', text: 'Covered, carpeted packing area with 24 packing tables, free Wi-Fi, and a rigger on duty every operations day. Reserve packers available for an extra fee.', image: packingImg, alt: 'Packing area at the dropzone' },
+      { title: 'Briefing room', text: 'Quiet, projector-equipped briefing room with creep pad and harness for ground rehearsal. Daily DZ briefing at 09 : 30 sharp before the first load.', image: briefingImg, alt: 'Briefing room' },
+      { title: 'Hangar and clubhouse', text: 'Heated hangar for gear storage, a small café serving hot drinks and snacks, showers, and a quiet area for de-briefs. Camping spots available behind the hangar — free for members.', image: hangarImg, alt: 'Hangar and clubhouse' },
+    ],
+
+    opsEyebrow: 'Operations',
+    opsTitle: 'How we run the day.',
+    opsLead: 'A predictable, well-organised dropzone so you spend more time in the air than on the ground.',
+    opsItems: [
+      'Jump altitude 4 000 m AGL on standard loads; lower altitudes available on request.',
+      'Operations Saturdays and Sundays from April to October, plus selected Friday boogies. First load 10 : 00, last call usually 19 : 00.',
+      'Online manifest opens 24 hours ahead. Walk-ins welcome, but reservations have priority.',
+      'Required documents on arrival: USPA/APF/equivalent licence, current logbook, current reserve repack card, current third-party insurance.',
+      'Visiting jumpers under 200 jumps are welcome but please contact the chief instructor in advance for a quick gear check and DZ briefing.',
+      'No-fly checklist: alcohol within 12 hours, recent illness, gear out of date — please talk to the safety officer rather than push it.',
+    ],
+
+    formEyebrow: 'Plan your visit',
+    formTitle: 'Manifest in advance.',
+    formText: 'Fill in the form below to register as a visiting jumper or to book a load. We\'ll confirm by email within 24 hours.',
+
+    ctaTitle: 'Blue skies and big smiles.',
+    ctaSubtitle: 'See you in the manifest queue.',
+    ctaPrimary: 'Manifest now',
+    ctaSecondary: 'Contact the DZ',
+  },
+
+  fr: {
+    bannerEyebrow: 'Parachutistes confirmés',
+    bannerTitle: 'Bienvenue sur la DZ.',
+    bannerSubtitle: 'Une DZ Caravan conviviale au cœur de l\'Europe — ouverte chaque week-end d\'avril à octobre.',
+
+    introEyebrow: 'À propos de la DZ',
+    introTitle: 'Petite DZ. Grand ciel.',
+    introText: 'Skydive Luxembourg est une DZ gérée par ses membres, installée sur un aérodrome privé en herbe au sud-est du Grand-Duché. Nous faisons voler un Cessna 208 Caravan à turbine chaque week-end de la saison, avec 17 places par largage et une montée typique d\'environ 18 minutes à pleine altitude. L\'ambiance est détendue, le manifest est numérique, et les tarifs restent abordables grâce au fonctionnement bénévole — nous ne sommes pas là pour faire du profit, mais pour voler ensemble.',
+
+    facEyebrow: 'Infrastructures',
+    facTitle: 'Tout ce qu\'il vous faut sur place.',
+    facLead: 'Une infrastructure propre et bien équipée pour vous concentrer sur le saut.',
+
+    cards: [
+      { title: 'Cessna 208 Caravan', text: 'Avion à turbine, 17 parachutistes par largage, runs à pleine altitude à 4 000 m. Oxygène à bord pour les largages haute altitude quand les conditions le permettent. Entretien aux normes EASA Part-CAO.', image: planeImg, alt: 'Avion Cessna 208 Caravan' },
+      { title: 'Aire de pliage', text: 'Aire de pliage couverte, moquettée, 24 tables, Wi-Fi gratuit et un plieur de garde chaque jour d\'opérations. Service de pliage par un plieur dédié disponible en supplément.', image: packingImg, alt: 'Aire de pliage de la DZ' },
+      { title: 'Salle de briefing', text: 'Salle de briefing calme, équipée d\'un vidéoprojecteur, avec tapis de creeping et harnais pour répétition au sol. Briefing DZ à 9 h 30 précises avant le premier largage.', image: briefingImg, alt: 'Salle de briefing' },
+      { title: 'Hangar et club-house', text: 'Hangar chauffé pour le matériel, petit café (boissons chaudes, snacks), douches et coin tranquille pour les débriefs. Bivouac autorisé derrière le hangar — gratuit pour les membres.', image: hangarImg, alt: 'Hangar et club-house' },
+    ],
+
+    opsEyebrow: 'Opérations',
+    opsTitle: 'Comment se déroule la journée.',
+    opsLead: 'Une DZ prévisible et bien organisée pour passer plus de temps en l\'air qu\'au sol.',
+    opsItems: [
+      'Altitude de largage 4 000 m sol sur les largages standards ; altitudes plus basses disponibles sur demande.',
+      'Opérations le samedi et le dimanche d\'avril à octobre, plus quelques boogies du vendredi. Premier largage 10 h 00, dernier appel généralement 19 h 00.',
+      'Le manifest en ligne ouvre 24 heures à l\'avance. Les arrivées spontanées sont bienvenues, mais les réservations sont prioritaires.',
+      'Documents requis à l\'arrivée : brevet USPA / FFP / équivalent en cours de validité, carnet de sauts à jour, fiche de pliage du secours valide, assurance responsabilité civile à jour.',
+      'Les parachutistes de moins de 200 sauts sont les bienvenus mais doivent contacter le moniteur chef à l\'avance pour un contrôle matériel et un briefing DZ.',
+      'Check-list anti-saut : alcool dans les 12 heures, maladie récente, matériel hors visite — parlez-en au responsable sécurité plutôt que de forcer.',
+    ],
+
+    formEyebrow: 'Préparez votre venue',
+    formTitle: 'Manifestez à l\'avance.',
+    formText: 'Remplissez le formulaire ci-dessous pour vous enregistrer comme parachutiste visiteur ou réserver un largage. Confirmation par e-mail sous 24 h.',
+
+    ctaTitle: 'Ciels bleus et grands sourires.',
+    ctaSubtitle: 'À tout à l\'heure dans la file du manifest.',
+    ctaPrimary: 'Manifestez maintenant',
+    ctaSecondary: 'Contacter la DZ',
+  },
+
+  de: {
+    bannerEyebrow: 'Sportspringer',
+    bannerTitle: 'Willkommen am Flugplatz.',
+    bannerSubtitle: 'Eine freundliche Caravan-DZ im Herzen Europas — von April bis Oktober jedes Wochenende geöffnet.',
+
+    introEyebrow: 'Über die DZ',
+    introTitle: 'Kleine DZ. Großer Himmel.',
+    introText: 'Skydive Luxembourg ist eine vereinsgeführte DZ auf einem privaten Graspiste-Flugplatz im Südosten des Großherzogtums. Wir fliegen in der Saison an jedem Wochenende mit einer Turbinen-Cessna 208 Caravan — 17 Springer pro Last und rund 18 Minuten Steigzeit auf volle Höhe. Die Atmosphäre ist entspannt, das Manifest ist digital, und dank des ehrenamtlichen Modells bleiben die Preise niedrig — wir sind nicht hier, um Gewinn zu machen, sondern um gemeinsam zu fliegen.',
+
+    facEyebrow: 'Einrichtungen',
+    facTitle: 'Alles, was du brauchst, vor Ort.',
+    facLead: 'Saubere, gut ausgestattete Infrastruktur, damit du dich aufs Springen konzentrieren kannst.',
+
+    cards: [
+      { title: 'Cessna 208 Caravan', text: 'Turbinen-Flugzeug, 17 Springer pro Last, Sprung-Runs auf 4 000 m. Sauerstoff an Bord für Höhensprünge, wenn es die Bedingungen erlauben. Wartung nach EASA Part-CAO.', image: planeImg, alt: 'Cessna 208 Caravan' },
+      { title: 'Packbereich', text: 'Überdachter, ausgelegter Packbereich mit 24 Packtischen, freiem WLAN und einem diensthabenden Packer an jedem Sprungtag. Packservice gegen Aufpreis verfügbar.', image: packingImg, alt: 'Packbereich der DZ' },
+      { title: 'Briefing-Raum', text: 'Ruhiger Briefing-Raum mit Beamer, Creep-Pad und Gurt zum Üben am Boden. Tägliches DZ-Briefing pünktlich um 9 : 30 vor der ersten Last.', image: briefingImg, alt: 'Briefing-Raum' },
+      { title: 'Hangar und Vereinsheim', text: 'Beheizter Hangar für Material, kleines Café mit warmen Getränken und Snacks, Duschen und ruhige Debrief-Ecke. Zelten hinter dem Hangar erlaubt — für Mitglieder kostenlos.', image: hangarImg, alt: 'Hangar und Vereinsheim' },
+    ],
+
+    opsEyebrow: 'Betrieb',
+    opsTitle: 'So läuft der Sprungtag ab.',
+    opsLead: 'Eine planbare, gut organisierte DZ, damit du mehr Zeit in der Luft als am Boden verbringst.',
+    opsItems: [
+      'Absprunghöhe 4 000 m über Grund auf Standard-Lasten; niedrigere Höhen auf Wunsch.',
+      'Sprungbetrieb samstags und sonntags von April bis Oktober, dazu einzelne Freitags-Boogies. Erste Last 10 : 00, Last Call meist 19 : 00.',
+      'Online-Manifest öffnet 24 Stunden im Voraus. Spontanbesuche willkommen, Reservierungen haben Vorrang.',
+      'Benötigte Dokumente bei Ankunft: gültige USPA-/DFV-/gleichwertige Lizenz, aktuelles Sprungbuch, gültige Reserve-Packkarte, aktuelle Haftpflichtversicherung.',
+      'Springer unter 200 Sprüngen sind willkommen, sollten aber vorher den Chef-Lehrer für einen kurzen Material-Check und ein DZ-Briefing kontaktieren.',
+      'Nicht-Springen-Checkliste: Alkohol in den letzten 12 Stunden, kürzliche Krankheit, abgelaufenes Material — sprich lieber mit dem Sicherheitsbeauftragten, statt zu forcieren.',
+    ],
+
+    formEyebrow: 'Plane deinen Besuch',
+    formTitle: 'Vorab anmelden.',
+    formText: 'Fülle das Formular unten aus, um dich als Gastspringer anzumelden oder eine Last zu reservieren. Bestätigung per E-Mail innerhalb von 24 Stunden.',
+
+    ctaTitle: 'Blauer Himmel und breites Grinsen.',
+    ctaSubtitle: 'Wir sehen uns in der Manifest-Schlange.',
+    ctaPrimary: 'Jetzt anmelden',
+    ctaSecondary: 'DZ kontaktieren',
+  },
+}[lang];
+
+const contactHref = `/${lang}/contact`;
+---
+
+<PageBanner
+  image={bannerImg}
+  alt="Sport jumpers at the dropzone"
+  eyebrow={t.bannerEyebrow}
+  title={t.bannerTitle}
+  subtitle={t.bannerSubtitle}
+/>
+
+<section class="section">
+  <div class="section__inner section__inner--narrow">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.introEyebrow}</p>
+      <h2 class="section__title">{t.introTitle}</h2>
+      <p class="section__lead">{t.introText}</p>
+    </header>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.facEyebrow}</p>
+      <h2 class="section__title">{t.facTitle}</h2>
+      <p class="section__lead">{t.facLead}</p>
+    </header>
+    <FeatureCards items={t.cards} cols={2} />
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner section__inner--narrow">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.opsEyebrow}</p>
+      <h2 class="section__title">{t.opsTitle}</h2>
+      <p class="section__lead">{t.opsLead}</p>
+    </header>
+    <div class="ops-box">
+      <ul>
+        {t.opsItems.map((i) => <li>{i}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="section__inner section__inner--narrow">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.formEyebrow}</p>
+      <h2 class="section__title">{t.formTitle}</h2>
+      <p class="section__lead">{t.formText}</p>
+    </header>
+    <FunJumperForm lang={lang} />
+  </div>
+</section>
+
+<CTABanner
+  title={t.ctaTitle}
+  subtitle={t.ctaSubtitle}
+  primaryCta={{ label: t.ctaPrimary, href: '#funjumper-form' }}
+  secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
+/>
+
+<style>
+  .ops-box {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+  }
+  .ops-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .ops-box li {
+    padding-left: var(--space-6);
+    position: relative;
+    color: var(--color-fg-muted);
+  }
+  .ops-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-blue);
+    font-weight: var(--fw-bold);
+  }
+</style>

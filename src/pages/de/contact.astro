@@ -1,12 +1,7 @@
 ---
-// REQ-PG-10 — DE Contact page with contact form.
 import Layout from '../../layouts/Layout.astro';
-import ContactForm from '../../components/ContactForm.astro';
-
-const title = 'Kontakt';
+import ContactContent from '../../components/pages/ContactContent.astro';
 ---
-<Layout title={title}>
-  <h1>Kontakt</h1>
-  <p>Eine Frage? Schreiben Sie uns.</p>
-  <ContactForm lang="de" />
+<Layout title="Kontakt" description="So erreichst du uns — Adresse, E-Mail, Telefon.">
+  <ContactContent lang="de" />
 </Layout>

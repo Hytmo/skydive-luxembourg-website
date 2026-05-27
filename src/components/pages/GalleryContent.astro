@@ -1,0 +1,85 @@
+---
+/**
+ * GalleryContent.astro — gallery page body. Picks copy by `lang` prop.
+ */
+import PageBanner from '../sections/PageBanner.astro';
+import Gallery from '../sections/Gallery.astro';
+
+import bannerImg from '../../assets/img/Gallery-7.jpg';
+
+import g1 from '../../assets/img/Gallery-1.jpg';
+import g2 from '../../assets/img/Gallery-2.jpg';
+import g3 from '../../assets/img/Gallery-3.jpg';
+import g4 from '../../assets/img/Gallery-4.jpg';
+import g5 from '../../assets/img/Gallery-5.jpg';
+import g6 from '../../assets/img/Gallery-6.jpg';
+import g8 from '../../assets/img/Gallery-8.jpg';
+import g13 from '../../assets/img/Gallery-13.jpg';
+import hero1 from '../../assets/img/Hero-1.jpg';
+import hero4 from '../../assets/img/Hero-4.jpg';
+import tandem1 from '../../assets/img/Tandem-1.jpg';
+import tandem4 from '../../assets/img/Tandem-4.jpg';
+import aff1 from '../../assets/img/AFF-1.jpg';
+import aff2 from '../../assets/img/AFF-2.jpg';
+import fun1 from '../../assets/img/Fun-1.jpg';
+import fun3 from '../../assets/img/Fun-3.jpg';
+
+const { lang = 'en' } = Astro.props;
+
+const t = {
+  en: {
+    bannerEyebrow: 'Gallery',
+    bannerTitle: 'A few thousand feet from here.',
+    bannerSubtitle: 'Moments from the dropzone, the aircraft, and the sky above Luxembourg.',
+    introText: 'Photos and stills captured by our jumpers, instructors and camera flyers across the seasons. Want to see your shot here? Send it over — we love sharing the club\'s view of the world.',
+  },
+  fr: {
+    bannerEyebrow: 'Galerie',
+    bannerTitle: 'À quelques milliers de pieds d\'ici.',
+    bannerSubtitle: 'Instants captés sur la DZ, dans l\'avion et dans le ciel du Luxembourg.',
+    introText: 'Photos et captures prises par nos parachutistes, moniteurs et caméramen au fil des saisons. Vous voulez voir votre cliché ici ? Envoyez-le — nous aimons partager le regard du club sur le monde.',
+  },
+  de: {
+    bannerEyebrow: 'Galerie',
+    bannerTitle: 'Ein paar tausend Fuß von hier entfernt.',
+    bannerSubtitle: 'Momente vom Flugplatz, aus dem Flugzeug und vom Himmel über Luxemburg.',
+    introText: 'Fotos und Standbilder unserer Springer, Lehrer und Kameraflieger aus allen Jahreszeiten. Willst du dein Bild hier sehen? Schick es uns — wir teilen den Blick des Vereins gerne.',
+  },
+}[lang];
+
+const gallery = [
+  { image: g1, alt: 'Skydiver in freefall' },
+  { image: hero1, alt: 'Hero shot over Luxembourg' },
+  { image: tandem1, alt: 'Tandem skydive moment' },
+  { image: g2, alt: 'Canopy descent' },
+  { image: aff1, alt: 'AFF student' },
+  { image: g3, alt: 'Group formation' },
+  { image: fun1, alt: 'Sport jumper' },
+  { image: g4, alt: 'Sunset jump' },
+  { image: tandem4, alt: 'Tandem under canopy' },
+  { image: g5, alt: 'Aircraft on the ground' },
+  { image: aff2, alt: 'AFF training' },
+  { image: g6, alt: 'Freefall view' },
+  { image: hero4, alt: 'Above the clouds' },
+  { image: g8, alt: 'On the dropzone' },
+  { image: fun3, alt: 'Sport jumper exit' },
+  { image: g13, alt: 'Sky above Luxembourg' },
+];
+---
+
+<PageBanner
+  image={bannerImg}
+  alt="Skydiving above Luxembourg"
+  eyebrow={t.bannerEyebrow}
+  title={t.bannerTitle}
+  subtitle={t.bannerSubtitle}
+/>
+
+<section class="section">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__lead">{t.introText}</p>
+    </header>
+    <Gallery items={gallery} />
+  </div>
+</section>

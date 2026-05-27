@@ -1,0 +1,196 @@
+---
+/**
+ * HomeContent.astro — homepage body. Picks copy by `lang` prop.
+ */
+import Hero from '../sections/Hero.astro';
+import FeatureCards from '../sections/FeatureCards.astro';
+import Gallery from '../sections/Gallery.astro';
+import CTABanner from '../sections/CTABanner.astro';
+
+import heroImg from '../../assets/img/Hero-1.jpg';
+import tandemImg from '../../assets/img/Tandem-1.jpg';
+import affImg from '../../assets/img/AFF-1.jpg';
+import funImg from '../../assets/img/Fun-1.jpg';
+import g1 from '../../assets/img/Gallery-1.jpg';
+import g2 from '../../assets/img/Gallery-2.jpg';
+import g3 from '../../assets/img/Gallery-3.jpg';
+import g4 from '../../assets/img/Gallery-4.jpg';
+import g5 from '../../assets/img/Gallery-5.jpg';
+import g6 from '../../assets/img/Gallery-6.jpg';
+
+const { lang = 'en' } = Astro.props;
+
+const t = {
+  en: {
+    heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
+    heroTitle: 'Jump into the sky above Luxembourg.',
+    heroSubtitle: 'The country\'s home for tandem skydives, AFF student courses, and licensed sport jumpers — flying from our home airfield since 1965.',
+    heroPrimary: 'Book a tandem',
+    heroSecondary: 'Learn to skydive',
+
+    pickEyebrow: 'Three ways to jump',
+    pickTitle: 'Whatever your level, the door is open.',
+    pickLead: 'From your first jump strapped to an instructor to your thousandth solo, we\'ve got you covered.',
+
+    cards: [
+      { title: 'Tandem jumps', text: 'No experience needed. A 15-minute briefing, then 4,000 m of pure freefall with one of our qualified tandem masters.', cta: 'Book a tandem', href: `/${''}en/tandem` },
+      { title: 'AFF — learn to skydive', text: 'Become a licensed solo skydiver. Our Accelerated Freefall course takes you from zero to A-licence in around two weeks.', cta: 'Discover AFF', href: `/${''}en/aff` },
+      { title: 'Fun jumpers', text: 'Already licensed? Manifest with us, jump our Cessna 208 Caravan, and join one of the friendliest dropzones in Europe.', cta: 'Visit the DZ', href: `/${''}en/fun-jumpers` },
+    ],
+
+    galleryEyebrow: 'In the air',
+    galleryTitle: 'A few moments from above.',
+    galleryCta: 'See full gallery',
+
+    aboutEyebrow: 'About us',
+    aboutTitle: 'A non-profit club, run by jumpers, for jumpers.',
+    aboutText: 'Skydive Luxembourg a.s.b.l. is the country\'s only registered skydiving club. We operate year-round from a private grass airfield in the south-east, with an experienced team of instructors, riggers, and pilots.',
+    aboutCta: 'Read our story',
+
+    ctaTitle: 'Ready when you are.',
+    ctaSubtitle: 'Tandem slots fill up fast in summer. Book ahead to lock in your jump.',
+    ctaPrimary: 'Book a tandem',
+    ctaSecondary: 'Contact us',
+  },
+
+  fr: {
+    heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
+    heroTitle: 'Sautez dans le ciel du Luxembourg.',
+    heroSubtitle: 'Sauts en tandem, formation AFF, accueil des parachutistes brevetés — notre référence depuis 1965.',
+    heroPrimary: 'Réserver un tandem',
+    heroSecondary: 'Apprendre à sauter',
+
+    pickEyebrow: 'Trois façons de sauter',
+    pickTitle: 'Quel que soit votre niveau, la porte est ouverte.',
+    pickLead: 'Du premier saut accroché à un moniteur à votre millième saut en solo, nous vous accompagnons.',
+
+    cards: [
+      { title: 'Sauts en tandem', text: 'Aucune expérience requise. 15 minutes de briefing, puis 4 000 m de chute libre avec l\'un de nos moniteurs brevetés.', cta: 'Réserver un tandem', href: `/${''}fr/tandem` },
+      { title: 'AFF — apprendre à sauter', text: 'Devenez parachutiste autonome. Notre stage AFF vous mène du débutant à la licence A en deux semaines environ.', cta: 'Découvrir l\'AFF', href: `/${''}fr/aff` },
+      { title: 'Parachutistes confirmés', text: 'Déjà breveté ? Manifestez-vous, sautez de notre Cessna 208 Caravan et rejoignez l\'une des DZ les plus accueillantes d\'Europe.', cta: 'Visiter la DZ', href: `/${''}fr/fun-jumpers` },
+    ],
+
+    galleryEyebrow: 'En vol',
+    galleryTitle: 'Quelques instants vus d\'en haut.',
+    galleryCta: 'Voir toute la galerie',
+
+    aboutEyebrow: 'À propos',
+    aboutTitle: 'Une association à but non lucratif, gérée par et pour les parachutistes.',
+    aboutText: 'Skydive Luxembourg a.s.b.l. est le seul club de parachutisme déclaré au Grand-Duché. Nous opérons toute l\'année depuis un aérodrome privé situé au sud-est, avec une équipe expérimentée de moniteurs, plieurs et pilotes.',
+    aboutCta: 'Notre histoire',
+
+    ctaTitle: 'Prêt quand vous l\'êtes.',
+    ctaSubtitle: 'Les créneaux tandem se remplissent vite en été. Réservez à l\'avance.',
+    ctaPrimary: 'Réserver un tandem',
+    ctaSecondary: 'Nous contacter',
+  },
+
+  de: {
+    heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
+    heroTitle: 'Spring in den Himmel über Luxemburg.',
+    heroSubtitle: 'Tandemsprünge, AFF-Ausbildung und Heimat für Sportspringer — seit 1965 von unserem Flugplatz aus.',
+    heroPrimary: 'Tandem buchen',
+    heroSecondary: 'Springen lernen',
+
+    pickEyebrow: 'Drei Arten zu springen',
+    pickTitle: 'Egal welches Niveau — die Tür ist offen.',
+    pickLead: 'Vom ersten Sprung am Tandemlehrer bis zum tausendsten Solosprung — wir begleiten Sie.',
+
+    cards: [
+      { title: 'Tandemsprünge', text: 'Keine Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m freier Fall mit einem unserer geprüften Tandemmaster.', cta: 'Tandem buchen', href: `/${''}de/tandem` },
+      { title: 'AFF — Sprungausbildung', text: 'Werde lizenzierter Solo-Springer. Unser Accelerated-Freefall-Kurs bringt dich in rund zwei Wochen zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
+      { title: 'Sportspringer', text: 'Schon lizenziert? Melde dich an, spring aus unserer Cessna 208 Caravan und genieße eine der freundlichsten DZs Europas.', cta: 'DZ besuchen', href: `/${''}de/fun-jumpers` },
+    ],
+
+    galleryEyebrow: 'In der Luft',
+    galleryTitle: 'Ein paar Momente von oben.',
+    galleryCta: 'Zur Galerie',
+
+    aboutEyebrow: 'Über uns',
+    aboutTitle: 'Ein gemeinnütziger Verein — von Springern, für Springer.',
+    aboutText: 'Skydive Luxembourg a.s.b.l. ist der einzige angemeldete Fallschirmverein des Großherzogtums. Wir operieren ganzjährig von einem privaten Flugplatz im Südosten — mit erfahrenen Lehrern, Packern und Piloten.',
+    aboutCta: 'Unsere Geschichte',
+
+    ctaTitle: 'Bereit, wenn du es bist.',
+    ctaSubtitle: 'Tandem-Slots sind im Sommer schnell ausgebucht. Reserviere im Voraus.',
+    ctaPrimary: 'Tandem buchen',
+    ctaSecondary: 'Kontakt',
+  },
+}[lang];
+
+// Rewrite card hrefs to active locale
+t.cards = t.cards.map((c) => ({
+  ...c,
+  href: c.href.replace(/^\/(en|fr|de)\//, `/${lang}/`),
+}));
+
+const tandemHref = `/${lang}/tandem`;
+const aboutHref = `/${lang}/about`;
+const contactHref = `/${lang}/contact`;
+const galleryHref = `/${lang}/gallery`;
+const affHref = `/${lang}/aff`;
+
+const gallery = [
+  { image: g1 }, { image: g2 }, { image: g3 },
+  { image: g4 }, { image: g5 }, { image: g6 },
+];
+
+// Attach images to cards
+t.cards[0].image = tandemImg;
+t.cards[1].image = affImg;
+t.cards[2].image = funImg;
+---
+
+<Hero
+  image={heroImg}
+  alt="Skydiver in freefall above Luxembourg"
+  eyebrow={t.heroEyebrow}
+  title={t.heroTitle}
+  subtitle={t.heroSubtitle}
+  primaryCta={{ label: t.heroPrimary, href: tandemHref }}
+  secondaryCta={{ label: t.heroSecondary, href: affHref }}
+/>
+
+<section class="section">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.pickEyebrow}</p>
+      <h2 class="section__title">{t.pickTitle}</h2>
+      <p class="section__lead">{t.pickLead}</p>
+    </header>
+    <FeatureCards items={t.cards} />
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.aboutEyebrow}</p>
+      <h2 class="section__title">{t.aboutTitle}</h2>
+      <p class="section__lead">{t.aboutText}</p>
+      <p style="margin-top: var(--space-6)">
+        <a href={aboutHref} class="btn btn--outline">{t.aboutCta}</a>
+      </p>
+    </header>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{t.galleryEyebrow}</p>
+      <h2 class="section__title">{t.galleryTitle}</h2>
+    </header>
+    <Gallery items={gallery} />
+    <p style="text-align: center; margin-top: var(--space-8)">
+      <a href={galleryHref} class="btn btn--outline">{t.galleryCta}</a>
+    </p>
+  </div>
+</section>
+
+<CTABanner
+  title={t.ctaTitle}
+  subtitle={t.ctaSubtitle}
+  primaryCta={{ label: t.ctaPrimary, href: tandemHref }}
+  secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
+/>

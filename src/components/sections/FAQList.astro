@@ -1,0 +1,69 @@
+---
+/**
+ * FAQList.astro — accordion of question/answer items.
+ * Props:
+ *   items: Array<{ q: string, a: string }>
+ */
+const { items = [] } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item) => (
+    <details class="faq-item">
+      <summary class="faq-item__q">
+        <span>{item.q}</span>
+        <span class="faq-item__icon" aria-hidden="true">+</span>
+      </summary>
+      <div class="faq-item__a">
+        <p>{item.a}</p>
+      </div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .faq-item__q {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-lg);
+    color: var(--color-fg);
+    transition: background var(--transition-fast);
+  }
+  .faq-item__q::-webkit-details-marker { display: none; }
+  .faq-item__q:hover { background: var(--color-bg-alt); }
+
+  .faq-item__icon {
+    color: var(--color-blue);
+    font-size: var(--fs-xl);
+    line-height: 1;
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item__a {
+    padding: 0 var(--space-6) var(--space-6);
+    color: var(--color-fg-muted);
+  }
+</style>

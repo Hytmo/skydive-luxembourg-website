@@ -1,12 +1,7 @@
 ---
-// REQ-PG-10 — EN Contact page with contact form.
 import Layout from '../../layouts/Layout.astro';
-import ContactForm from '../../components/ContactForm.astro';
-
-const title = 'Contact';
+import ContactContent from '../../components/pages/ContactContent.astro';
 ---
-<Layout title={title}>
-  <h1>Contact</h1>
-  <p>Got a question? Send us a message.</p>
-  <ContactForm lang="en" />
+<Layout title="Contact" description="How to reach Skydive Luxembourg — location, email, phone.">
+  <ContactContent lang="en" />
 </Layout>

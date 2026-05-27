@@ -1,11 +1,7 @@
 ---
-// REQ-PG-06 — EN pricing.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Pricing';
+import PricingContent from '../../components/pages/PricingContent.astro';
 ---
-<Layout title={title}>
-  <h1>Pricing</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout title="Pricing" description="Tandem, AFF and sport jump prices at Skydive Luxembourg.">
+  <PricingContent lang="en" />
 </Layout>
