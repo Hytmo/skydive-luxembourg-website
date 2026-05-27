@@ -1,0 +1,20 @@
+---
+/**
+ * PageBanner.astro — compact image-backed banner for inner pages.
+ * Props: image (imported asset), alt, eyebrow, title, subtitle.
+ */
+import { Image } from 'astro:assets';
+
+const { image, alt = '', eyebrow, title, subtitle } = Astro.props;
+---
+
+<section class="page-banner">
+  {image && (
+    <Image src={image} alt={alt} class="page-banner__img" widths={[800, 1200, 1800]} sizes="100vw" loading="eager" />
+  )}
+  <div class="page-banner__inner">
+    {eyebrow && <p class="page-banner__eyebrow">{eyebrow}</p>}
+    <h1 class="page-banner__title">{title}</h1>
+    {subtitle && <p class="page-banner__subtitle">{subtitle}</p>}
+  </div>
+</section>

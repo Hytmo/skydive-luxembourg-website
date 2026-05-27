@@ -1,0 +1,88 @@
+---
+/**
+ * FeatureCards.astro — grid of feature/discipline cards.
+ * Props:
+ *   items: Array<{ image?, alt?, title, text, href?, cta? }>
+ *   cols: 2 | 3 | 4 (default 3)
+ */
+import { Image } from 'astro:assets';
+
+const { items = [], cols = 3 } = Astro.props;
+const gridClass = `grid grid--${cols}`;
+---
+
+<div class={gridClass}>
+  {items.map((item) => (
+    <article class="feature-card">
+      {item.image && (
+        <div class="feature-card__media">
+          <Image src={item.image} alt={item.alt ?? ''} widths={[400, 600, 800]} sizes="(max-width: 900px) 100vw, 33vw" />
+        </div>
+      )}
+      <div class="feature-card__body">
+        <h3 class="feature-card__title">{item.title}</h3>
+        <p class="feature-card__text">{item.text}</p>
+        {item.href && item.cta && (
+          <a href={item.href} class="feature-card__link">{item.cta} →</a>
+        )}
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .feature-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature-card__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .feature-card__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+  .feature-card:hover .feature-card__media :global(img) {
+    transform: scale(1.04);
+  }
+
+  .feature-card__body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1;
+  }
+
+  .feature-card__title {
+    font-size: var(--fs-xl);
+  }
+
+  .feature-card__text {
+    color: var(--color-fg-muted);
+    flex: 1;
+  }
+
+  .feature-card__link {
+    display: inline-block;
+    margin-top: var(--space-2);
+    color: var(--color-cta);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+  }
+  .feature-card__link:hover { color: var(--color-cta-hover); }
+</style>

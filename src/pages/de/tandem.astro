@@ -1,16 +1,7 @@
 ---
-// REQ-PG-03 + REQ-BOOK-01 — DE Tandem page with dz-cloud booking button.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Tandem';
-const bookingUrl = 'https://cpl.dz-cloud.com/de/Booking/s1_Options';
+import TandemContent from '../../components/pages/TandemContent.astro';
 ---
-<Layout title={title}>
-  <h1>Tandem</h1>
-  <p>Tandemsprung-Buchungen laufen über unsere Partner-Plattform. Die Schaltfläche unten öffnet das Buchungssystem in einem neuen Tab.</p>
-  <p>
-    <a class="btn btn--primary" href={bookingUrl} target="_blank" rel="noopener noreferrer">
-      Tandemsprung buchen
-    </a>
-  </p>
+<Layout title="Tandemsprünge" description="Buche deinen Tandemsprung in Luxemburg — keine Vorkenntnisse nötig.">
+  <TandemContent lang="de" />
 </Layout>

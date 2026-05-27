@@ -1,11 +1,10 @@
 ---
-// REQ-PG-01 — EN index.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Home';
+import HomeContent from '../../components/pages/HomeContent.astro';
 ---
-<Layout title={title}>
-  <h1>Home</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout
+  title="Skydive Luxembourg — Tandem jumps, AFF courses & sport skydiving"
+  description="The official skydive club of Luxembourg. Tandem jumps, AFF student courses, and a welcoming dropzone for licensed sport jumpers."
+>
+  <HomeContent lang="en" />
 </Layout>

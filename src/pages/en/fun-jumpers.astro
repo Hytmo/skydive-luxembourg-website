@@ -1,12 +1,7 @@
 ---
-// REQ-PG-05 + REQ-BOOK-03 — EN Fun jumpers page with inquiry form.
 import Layout from '../../layouts/Layout.astro';
-import FunJumperForm from '../../components/FunJumperForm.astro';
-
-const title = 'Fun jumpers';
+import FunJumpersContent from '../../components/pages/FunJumpersContent.astro';
 ---
-<Layout title={title}>
-  <h1>Fun jumpers</h1>
-  <p>Visiting licensed jumper or club member? Use the form below to get in touch.</p>
-  <FunJumperForm lang="en" />
+<Layout title="Fun jumpers" description="Information for licensed sport jumpers visiting the dropzone.">
+  <FunJumpersContent lang="en" />
 </Layout>

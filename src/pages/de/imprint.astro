@@ -1,11 +1,7 @@
 ---
-// REQ-PG-11 — DE imprint.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Impressum';
+import ImprintContent from '../../components/pages/ImprintContent.astro';
 ---
-<Layout title={title}>
-  <h1>Impressum</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout title="Impressum" description="Impressum von Skydive Luxembourg a.s.b.l.">
+  <ImprintContent lang="de" />
 </Layout>

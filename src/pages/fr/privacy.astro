@@ -1,11 +1,7 @@
 ---
-// REQ-PG-12 — FR privacy.astro
-// Phase 5 shell. Real content lands in Phase 9.
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Politique de confidentialité';
+import PrivacyContent from '../../components/pages/PrivacyContent.astro';
 ---
-<Layout title={title}>
-  <h1>Politique de confidentialité</h1>
-  {/* Placeholder — Phase 9 content goes here. */}
+<Layout title="Politique de confidentialité" description="Politique de confidentialité — comment nous traitons vos données.">
+  <PrivacyContent lang="fr" />
 </Layout>

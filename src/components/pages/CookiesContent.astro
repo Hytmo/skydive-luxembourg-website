@@ -1,0 +1,160 @@
+---
+/**
+ * CookiesContent.astro — Cookie information page. Picks copy by `lang` prop.
+ */
+import PageBanner from '../sections/PageBanner.astro';
+
+import bannerImg from '../../assets/img/Hero-2.jpg';
+
+const { lang = 'en' } = Astro.props;
+
+const t = {
+  en: {
+    eyebrow: 'Legal',
+    title: 'Cookies',
+    subtitle: 'A short explanation of what we store on your device — and what we don\'t.',
+  },
+
+  fr: {
+    eyebrow: 'Mentions légales',
+    title: 'Cookies',
+    subtitle: 'Brève explication de ce que nous stockons sur votre appareil — et de ce que nous ne stockons pas.',
+  },
+
+  de: {
+    eyebrow: 'Rechtliches',
+    title: 'Cookies',
+    subtitle: 'Eine kurze Erklärung, was wir auf deinem Gerät speichern — und was nicht.',
+  },
+}[lang];
+
+const updated = '2026-05-27';
+---
+
+<PageBanner
+  image={bannerImg}
+  alt="Skydive Luxembourg airfield from above"
+  eyebrow={t.eyebrow}
+  title={t.title}
+  subtitle={t.subtitle}
+/>
+
+<section class="section">
+  <div class="section__inner section__inner--narrow">
+    <div class="prose">
+      {lang === 'en' && (
+        <>
+          <p><em>Last updated: {updated}</em></p>
+
+          <h2>The short version</h2>
+          <p>
+            We do not use any tracking cookies, analytics cookies, advertising cookies, or third-party social media trackers on this website. We do not display a cookie banner because we have nothing for which we would need your consent under Luxembourg or EU rules.
+          </p>
+
+          <h2>What we do use</h2>
+          <p>
+            Our website is a static site served through the Netlify content delivery network. Netlify may set a small number of strictly technical cookies that are needed to route requests to the correct edge server or to detect abuse. These are not used to identify you, to profile you, or to build any kind of usage record across sites.
+          </p>
+          <p>
+            We do not use Google Analytics, Facebook Pixel, Hotjar or comparable tools on this site.
+          </p>
+
+          <h2>Embedded Google Maps</h2>
+          <p>
+            On our <a href={`/${lang}/contact`}>contact page</a> we embed a Google Maps iframe so you can see the location of the dropzone. Once that iframe loads, Google may set its own cookies under <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google's privacy policy</a>. We do not control this and we do not receive any data from it. If you would prefer not to load the map, do not visit the contact page or use a browser extension that blocks third-party iframes.
+          </p>
+
+          <h2>How to clear cookies in your browser</h2>
+          <ul>
+            <li><strong>Chrome:</strong> Settings &rarr; Privacy and security &rarr; Clear browsing data &rarr; tick "Cookies and other site data" &rarr; Clear data.</li>
+            <li><strong>Firefox:</strong> Settings &rarr; Privacy &amp; Security &rarr; Cookies and Site Data &rarr; Clear Data.</li>
+            <li><strong>Safari (macOS):</strong> Safari menu &rarr; Settings &rarr; Privacy &rarr; Manage Website Data &rarr; Remove All.</li>
+            <li><strong>Safari (iOS):</strong> Settings app &rarr; Safari &rarr; Clear History and Website Data.</li>
+            <li><strong>Edge:</strong> Settings &rarr; Privacy, search, and services &rarr; Clear browsing data &rarr; Choose what to clear.</li>
+          </ul>
+
+          <h2>Questions</h2>
+          <p>
+            For anything cookie- or privacy-related, please write to <a href="mailto:info@skydive.lu">info@skydive.lu</a>. See also our full <a href={`/${lang}/privacy`}>privacy policy</a>.
+          </p>
+        </>
+      )}
+
+      {lang === 'fr' && (
+        <>
+          <p><em>Dernière mise à jour : {updated}</em></p>
+
+          <h2>En bref</h2>
+          <p>
+            Nous n'utilisons aucun cookie de suivi, aucun cookie d'analyse d'audience, aucun cookie publicitaire ni aucun traceur de réseaux sociaux tiers sur ce site. Nous n'affichons pas de bandeau cookies parce qu'aucun consentement n'est requis au titre des règles luxembourgeoises et européennes.
+          </p>
+
+          <h2>Ce que nous utilisons</h2>
+          <p>
+            Notre site est un site statique servi via le réseau de diffusion Netlify. Netlify peut déposer un nombre réduit de cookies strictement techniques, nécessaires à l'acheminement des requêtes vers le bon serveur ou à la détection des abus. Ces cookies ne servent ni à vous identifier, ni à vous profiler, ni à constituer un historique d'utilisation à travers les sites.
+          </p>
+          <p>
+            Nous n'utilisons ni Google Analytics, ni Facebook Pixel, ni Hotjar, ni d'outil comparable sur ce site.
+          </p>
+
+          <h2>Google Maps intégré</h2>
+          <p>
+            Sur notre <a href={`/${lang}/contact`}>page contact</a>, nous intégrons une carte Google Maps en iframe pour vous montrer l'emplacement de la dropzone. Une fois l'iframe chargé, Google peut déposer ses propres cookies, conformément à la <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">politique de confidentialité de Google</a>. Nous n'avons aucun contrôle sur ce point et n'en recevons aucune donnée. Pour ne pas charger la carte, évitez la page contact ou utilisez une extension de navigateur qui bloque les iframes tiers.
+          </p>
+
+          <h2>Comment effacer les cookies dans votre navigateur</h2>
+          <ul>
+            <li><strong>Chrome :</strong> Paramètres &rarr; Confidentialité et sécurité &rarr; Effacer les données de navigation &rarr; cochez « Cookies et autres données de site » &rarr; Effacer les données.</li>
+            <li><strong>Firefox :</strong> Paramètres &rarr; Vie privée et sécurité &rarr; Cookies et données de sites &rarr; Effacer les données.</li>
+            <li><strong>Safari (macOS) :</strong> Menu Safari &rarr; Réglages &rarr; Confidentialité &rarr; Gérer les données de site web &rarr; Tout supprimer.</li>
+            <li><strong>Safari (iOS) :</strong> Réglages &rarr; Safari &rarr; Effacer historique, données de site.</li>
+            <li><strong>Edge :</strong> Paramètres &rarr; Confidentialité, recherche et services &rarr; Effacer les données de navigation &rarr; Choisir les éléments à effacer.</li>
+          </ul>
+
+          <h2>Questions</h2>
+          <p>
+            Pour toute question relative aux cookies ou à la confidentialité, écrivez à <a href="mailto:info@skydive.lu">info@skydive.lu</a>. Voir également notre <a href={`/${lang}/privacy`}>politique de confidentialité</a> complète.
+          </p>
+        </>
+      )}
+
+      {lang === 'de' && (
+        <>
+          <p><em>Letzte Aktualisierung: {updated}</em></p>
+
+          <h2>Die Kurzfassung</h2>
+          <p>
+            Wir verwenden auf dieser Website keine Tracking-Cookies, keine Analyse-Cookies, keine Werbe-Cookies und keine Tracker sozialer Netzwerke. Wir blenden auch kein Cookie-Banner ein, weil es nichts gibt, wofür wir nach luxemburgischem oder EU-Recht deine Einwilligung benötigten.
+          </p>
+
+          <h2>Was wir verwenden</h2>
+          <p>
+            Unsere Website ist eine statische Seite, die über das Netlify-Content-Delivery-Network ausgeliefert wird. Netlify kann eine kleine Anzahl rein technischer Cookies setzen, die nötig sind, um Anfragen an den richtigen Edge-Server zu leiten oder Missbrauch zu erkennen. Diese werden nicht zur Identifikation, zum Profiling oder zur Aufzeichnung deines Nutzungsverlaufs über Websites hinweg verwendet.
+          </p>
+          <p>
+            Wir setzen weder Google Analytics noch Facebook Pixel, Hotjar oder vergleichbare Werkzeuge ein.
+          </p>
+
+          <h2>Eingebettete Google Maps</h2>
+          <p>
+            Auf unserer <a href={`/${lang}/contact`}>Kontaktseite</a> binden wir eine Google-Maps-iFrame ein, damit du den Standort der Dropzone sehen kannst. Sobald dieser iFrame lädt, kann Google eigene Cookies gemäß der <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Datenschutzerklärung von Google</a> setzen. Darauf haben wir keinen Einfluss und erhalten daraus keine Daten. Wenn du die Karte nicht laden möchtest, rufe die Kontaktseite nicht auf oder nutze eine Browser-Erweiterung, die Drittanbieter-iFrames blockiert.
+          </p>
+
+          <h2>So löschst du Cookies in deinem Browser</h2>
+          <ul>
+            <li><strong>Chrome:</strong> Einstellungen &rarr; Datenschutz und Sicherheit &rarr; Browserdaten löschen &rarr; „Cookies und andere Websitedaten" anhaken &rarr; Daten löschen.</li>
+            <li><strong>Firefox:</strong> Einstellungen &rarr; Datenschutz &amp; Sicherheit &rarr; Cookies und Website-Daten &rarr; Daten entfernen.</li>
+            <li><strong>Safari (macOS):</strong> Safari-Menü &rarr; Einstellungen &rarr; Datenschutz &rarr; Website-Daten verwalten &rarr; Alle entfernen.</li>
+            <li><strong>Safari (iOS):</strong> Einstellungen &rarr; Safari &rarr; Verlauf und Websitedaten löschen.</li>
+            <li><strong>Edge:</strong> Einstellungen &rarr; Datenschutz, Suche und Dienste &rarr; Browserdaten löschen &rarr; Auswählen, was gelöscht werden soll.</li>
+          </ul>
+
+          <h2>Fragen</h2>
+          <p>
+            Bei Fragen zu Cookies oder zum Datenschutz schreib uns bitte an <a href="mailto:info@skydive.lu">info@skydive.lu</a>. Siehe auch unsere vollständige <a href={`/${lang}/privacy`}>Datenschutzerklärung</a>.
+          </p>
+        </>
+      )}
+    </div>
+  </div>
+</section>

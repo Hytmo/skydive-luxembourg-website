@@ -1,0 +1,197 @@
+---
+/**
+ * ImprintContent.astro — Legal imprint page. Picks copy by `lang` prop.
+ */
+import PageBanner from '../sections/PageBanner.astro';
+
+import bannerImg from '../../assets/img/Hero-2.jpg';
+
+const { lang = 'en' } = Astro.props;
+
+const t = {
+  en: {
+    eyebrow: 'Legal information',
+    title: 'Imprint',
+    subtitle: 'Mandatory legal information for this website.',
+  },
+
+  fr: {
+    eyebrow: 'Mentions légales',
+    title: 'Mentions légales',
+    subtitle: 'Informations légales obligatoires concernant ce site.',
+  },
+
+  de: {
+    eyebrow: 'Rechtliche Hinweise',
+    title: 'Impressum',
+    subtitle: 'Gesetzlich vorgeschriebene Angaben zu dieser Website.',
+  },
+}[lang];
+---
+
+<PageBanner
+  image={bannerImg}
+  alt="Skydive Luxembourg airfield from above"
+  eyebrow={t.eyebrow}
+  title={t.title}
+  subtitle={t.subtitle}
+/>
+
+<section class="section">
+  <div class="section__inner section__inner--narrow">
+    <div class="prose">
+      {lang === 'en' && (
+        <>
+          <h2>Publisher</h2>
+          <p>
+            <strong>Skydive Luxembourg a.s.b.l.</strong><br />
+            Aérodrome de Useldange<br />
+            L-8707 Useldange<br />
+            Grand Duchy of Luxembourg
+          </p>
+          <p>
+            Registered as a non-profit association (association sans but lucratif)<br />
+            RCS Luxembourg: F-XXXX<br />
+            Email: <a href="mailto:info@skydive.lu">info@skydive.lu</a><br />
+            Phone: +352 621 234 567
+          </p>
+
+          <h2>Responsible for content</h2>
+          <p>
+            John Doe, President of the Board<br />
+            On behalf of Skydive Luxembourg a.s.b.l.<br />
+            Email: <a href="mailto:info@skydive.lu">info@skydive.lu</a>
+          </p>
+
+          <h2>Board</h2>
+          <p>
+            The association is governed by an elected board of volunteers, including a President, a Vice-President, a Treasurer, a Secretary, and additional members. Members can be reached through the official email address above.
+          </p>
+
+          <h2>Hosting provider</h2>
+          <p>
+            This website is hosted by:<br />
+            <strong>Netlify, Inc.</strong><br />
+            44 Montgomery Street, Suite 300<br />
+            San Francisco, CA 94104, USA
+          </p>
+
+          <h2>Disclaimer</h2>
+          <p>
+            The content of this website has been compiled with the greatest possible care. We cannot, however, guarantee that the information is accurate, complete or up-to-date at all times. Any liability for damages arising directly or indirectly from the use of this website is excluded, except in cases of intentional or grossly negligent conduct.
+          </p>
+          <p>
+            Where this website links to external sites operated by third parties, we have no influence on the content of those sites. We are therefore not liable for the content of any linked external pages. At the time of linking, no illegal content was detected. If we become aware of any illegal content on a linked page, we will remove the link without undue delay.
+          </p>
+
+          <h2>Copyright</h2>
+          <p>
+            All text, images, video and design elements on this site are protected by copyright. Reproduction, distribution or any other use beyond the limits of copyright law requires the prior written consent of Skydive Luxembourg a.s.b.l. or the respective rights holder.
+          </p>
+        </>
+      )}
+
+      {lang === 'fr' && (
+        <>
+          <h2>Éditeur</h2>
+          <p>
+            <strong>Skydive Luxembourg a.s.b.l.</strong><br />
+            Aérodrome de Useldange<br />
+            L-8707 Useldange<br />
+            Grand-Duché de Luxembourg
+          </p>
+          <p>
+            Association sans but lucratif déclarée<br />
+            RCS Luxembourg : F-XXXX<br />
+            Courriel : <a href="mailto:info@skydive.lu">info@skydive.lu</a><br />
+            Téléphone : +352 621 234 567
+          </p>
+
+          <h2>Responsable de la publication</h2>
+          <p>
+            John Doe, Président du conseil d'administration<br />
+            Pour le compte de Skydive Luxembourg a.s.b.l.<br />
+            Courriel : <a href="mailto:info@skydive.lu">info@skydive.lu</a>
+          </p>
+
+          <h2>Conseil d'administration</h2>
+          <p>
+            L'association est dirigée par un conseil d'administration élu, composé de bénévoles : un président, un vice-président, un trésorier, un secrétaire et des membres supplémentaires. Les membres peuvent être contactés via l'adresse électronique officielle ci-dessus.
+          </p>
+
+          <h2>Hébergeur</h2>
+          <p>
+            Ce site est hébergé par :<br />
+            <strong>Netlify, Inc.</strong><br />
+            44 Montgomery Street, Suite 300<br />
+            San Francisco, CA 94104, États-Unis
+          </p>
+
+          <h2>Avertissement</h2>
+          <p>
+            Le contenu de ce site a été rassemblé avec le plus grand soin. Nous ne pouvons toutefois pas garantir l'exactitude, l'exhaustivité ou l'actualité des informations à tout moment. Toute responsabilité pour les dommages résultant directement ou indirectement de l'utilisation de ce site est exclue, sauf en cas de faute intentionnelle ou de négligence grave.
+          </p>
+          <p>
+            Lorsque ce site renvoie à des pages externes exploitées par des tiers, nous n'avons aucune influence sur leur contenu. Nous déclinons donc toute responsabilité pour ces contenus externes. À la date du lien, aucun contenu illicite n'avait été constaté. Si un contenu illicite est porté à notre connaissance, nous supprimerons le lien dans les meilleurs délais.
+          </p>
+
+          <h2>Droits d'auteur</h2>
+          <p>
+            L'ensemble des textes, images, vidéos et éléments de design présents sur ce site sont protégés par le droit d'auteur. Toute reproduction, distribution ou autre utilisation dépassant les limites du droit d'auteur nécessite l'accord écrit préalable de Skydive Luxembourg a.s.b.l. ou du titulaire des droits concerné.
+          </p>
+        </>
+      )}
+
+      {lang === 'de' && (
+        <>
+          <h2>Herausgeber</h2>
+          <p>
+            <strong>Skydive Luxembourg a.s.b.l.</strong><br />
+            Aérodrome de Useldange<br />
+            L-8707 Useldange<br />
+            Großherzogtum Luxemburg
+          </p>
+          <p>
+            Eingetragener gemeinnütziger Verein (association sans but lucratif)<br />
+            RCS Luxemburg: F-XXXX<br />
+            E-Mail: <a href="mailto:info@skydive.lu">info@skydive.lu</a><br />
+            Telefon: +352 621 234 567
+          </p>
+
+          <h2>Inhaltlich verantwortlich</h2>
+          <p>
+            John Doe, Präsident des Vorstands<br />
+            Im Auftrag von Skydive Luxembourg a.s.b.l.<br />
+            E-Mail: <a href="mailto:info@skydive.lu">info@skydive.lu</a>
+          </p>
+
+          <h2>Vorstand</h2>
+          <p>
+            Der Verein wird von einem gewählten ehrenamtlichen Vorstand geleitet — Präsident, Vizepräsident, Schatzmeister, Schriftführer und weitere Mitglieder. Die Vorstandsmitglieder sind über die oben genannte offizielle E-Mail-Adresse erreichbar.
+          </p>
+
+          <h2>Hosting-Anbieter</h2>
+          <p>
+            Diese Website wird gehostet von:<br />
+            <strong>Netlify, Inc.</strong><br />
+            44 Montgomery Street, Suite 300<br />
+            San Francisco, CA 94104, USA
+          </p>
+
+          <h2>Haftungsausschluss</h2>
+          <p>
+            Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Eine Haftung für Schäden, die direkt oder indirekt aus der Nutzung dieser Website entstehen, ist ausgeschlossen, soweit kein Vorsatz oder grobe Fahrlässigkeit vorliegt.
+          </p>
+          <p>
+            Soweit auf dieser Website auf externe, von Dritten betriebene Seiten verwiesen wird, haben wir keinen Einfluss auf deren Inhalte. Wir übernehmen daher keine Haftung für die Inhalte verlinkter externer Seiten. Zum Zeitpunkt der Verlinkung waren keine rechtswidrigen Inhalte erkennbar. Sollten uns rechtswidrige Inhalte auf einer verlinkten Seite bekannt werden, entfernen wir den Link unverzüglich.
+          </p>
+
+          <h2>Urheberrecht</h2>
+          <p>
+            Sämtliche Texte, Bilder, Videos und Designelemente auf dieser Website sind urheberrechtlich geschützt. Vervielfältigung, Verbreitung oder jede andere Nutzung über die Grenzen des Urheberrechts hinaus bedürfen der vorherigen schriftlichen Zustimmung von Skydive Luxembourg a.s.b.l. oder des jeweiligen Rechteinhabers.
+          </p>
+        </>
+      )}
+    </div>
+  </div>
+</section>

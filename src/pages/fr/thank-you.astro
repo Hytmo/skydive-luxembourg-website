@@ -1,11 +1,7 @@
 ---
-// REQ-FORM-01 — FR thank-you page (form submission landing).
 import Layout from '../../layouts/Layout.astro';
-
-const title = 'Merci';
+import ThankYouContent from '../../components/pages/ThankYouContent.astro';
 ---
-<Layout title={title}>
-  <h1>Merci</h1>
-  <p>Nous avons bien reçu votre demande et reviendrons vers vous dès que possible.</p>
-  <p><a href="/fr/">Retour à l'accueil</a></p>
+<Layout title="Merci" description="Merci — nous avons bien reçu votre message.">
+  <ThankYouContent lang="fr" />
 </Layout>

@@ -13,6 +13,7 @@
  */
 
 import '../styles/tokens.css';
+import '../styles/components.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
@@ -66,19 +67,13 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <header class="site-header">
-      <!-- TODO step 29: replace with <Nav /> component -->
-      <Nav />
-    </header>
+    <Nav />
 
     <main id="main">
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <!-- TODO step 30: replace with <Footer /> component -->
-      <Footer />
-    </footer>
+    <Footer />
 
     <style is:global>
       /* ---------- minimal modern reset ---------- */
@@ -145,20 +140,6 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
         border-radius: var(--radius-sm);
       }
       .skip-link:focus { top: var(--space-2); }
-
-      /* ---------- temporary header/footer styling ---------- */
-      /* These get replaced when Nav/Footer components arrive in 29/30 */
-
-      .site-header,
-      .site-footer {
-        padding: var(--space-4);
-        background: var(--color-bg-alt);
-      }
-      .site-header { border-bottom: 1px solid var(--color-border); }
-      .site-footer {
-        border-top: 1px solid var(--color-border);
-        margin-top: var(--space-16);
-      }
     </style>
   </body>
 </html>
