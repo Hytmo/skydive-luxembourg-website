@@ -52,12 +52,12 @@
 
 .btn--ghost {
   background: transparent;
-  color: var(--color-bg);
-  border-color: var(--color-bg);
+  color: var(--color-on-inverse);
+  border-color: var(--color-on-inverse);
 }
 .btn--ghost:hover {
-  background: var(--color-bg);
-  color: var(--color-fg);
+  background: var(--color-on-inverse);
+  color: var(--color-surface-inverse);
 }
 
 .btn--outline {
@@ -86,7 +86,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--color-bg);
+  color: var(--color-on-inverse);
   overflow: hidden;
   isolation: isolate;
 }
@@ -148,7 +148,7 @@
 }
 .section--tight  { padding: var(--space-12) var(--space-4); }
 .section--alt    { background: var(--color-bg-alt); }
-.section--dark   { background: var(--color-fg); color: var(--color-bg); }
+.section--dark   { background: var(--color-surface-inverse); color: var(--color-on-inverse); }
 .section--dark a { color: var(--color-blue); }
 
 .section__inner {
@@ -184,7 +184,7 @@
   max-width: 60ch;
   margin: 0 auto;
 }
-.section--dark .section__lead { color: var(--color-border); }
+.section--dark .section__lead { color: var(--color-on-inverse-muted); }
 
 
 /* ---------- GRID HELPERS ---------------------------------------------- */

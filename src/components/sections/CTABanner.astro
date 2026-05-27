@@ -27,8 +27,8 @@ const { title, subtitle, primaryCta, secondaryCta } = Astro.props;
 
 <style>
   .cta-banner {
-    background: var(--color-fg);
-    color: var(--color-bg);
+    background: var(--color-surface-inverse);
+    color: var(--color-on-inverse);
     padding: var(--space-16) var(--space-4);
     text-align: center;
   }
@@ -47,7 +47,7 @@ const { title, subtitle, primaryCta, secondaryCta } = Astro.props;
   .cta-banner__subtitle {
     font-size: var(--fs-lg);
     margin-bottom: var(--space-8);
-    color: var(--color-border);
+    color: var(--color-on-inverse-muted);
   }
 
   .cta-banner__ctas {

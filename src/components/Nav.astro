@@ -9,6 +9,7 @@
  */
 
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
 
 const lang = Astro.currentLocale ?? 'en';
 const path = Astro.url.pathname;
@@ -83,6 +84,7 @@ const isActive = (slug) => {
         ))}
       </ul>
       <LanguageSwitcher />
+      <ThemeToggle />
     </div>
 
   </div>

@@ -15,6 +15,13 @@
   --color-fg-muted:  #555555;   /* secondary text */
   --color-border:    #E0E0E0;   /* dividers, input borders */
 
+  /* Inverse surfaces — always dark, regardless of theme.
+     Use these for sections that are intentionally dark on every page
+     (footer, dark hero banners, CTA strip). */
+  --color-surface-inverse: #0A0A0A;
+  --color-on-inverse:      #FFFFFF;
+  --color-on-inverse-muted: #B5B5B5;
+
   /* Luxembourg flag accents */
   --color-blue:      #00A1DE;   /* LU flag light blue — primary accent */
   --color-blue-dark: #0083B5;   /* hover state */
@@ -91,4 +98,34 @@
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
+}
+
+
+/* ---------- DARK THEME --------------------------------------------------
+   Applied when the inline theme script sets [data-theme="dark"] on <html>.
+   The script resolves theme from localStorage, or falls back to the user's
+   system preference, before first paint — no flash.
+   ------------------------------------------------------------------------ */
+
+:root[data-theme="dark"] {
+  --color-bg:        #0E1117;
+  --color-bg-alt:    #161B22;
+  --color-fg:        #E6EDF3;
+  --color-fg-muted:  #8B949E;
+  --color-border:    #30363D;
+
+  --color-blue-dark: #33B6E5;   /* hover state lightens for dark bg */
+
+  --shadow-sm: 0 1px 2px  rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Smooth transition when toggling — only colors, not layout.
+   Skipped on first paint to avoid animating system theme detection. */
+:root.theme-ready,
+:root.theme-ready * {
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
 }

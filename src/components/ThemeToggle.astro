@@ -1,0 +1,108 @@
+---
+/**
+ * ThemeToggle.astro — light/dark toggle button.
+ * Default is system preference; user choice persists in localStorage.
+ * The no-flash resolver script lives in Layout.astro's <head>.
+ */
+
+const lang = Astro.currentLocale ?? 'en';
+
+const labels = {
+  en: { toLight: 'Switch to light mode', toDark: 'Switch to dark mode' },
+  fr: { toLight: 'Passer au mode clair', toDark: 'Passer au mode sombre' },
+  de: { toLight: 'Zum hellen Modus wechseln', toDark: 'Zum dunklen Modus wechseln' },
+};
+const t = labels[lang] ?? labels.en;
+---
+
+<button
+  type="button"
+  class="theme-toggle"
+  data-theme-toggle
+  data-label-light={t.toLight}
+  data-label-dark={t.toDark}
+  aria-label={t.toDark}
+>
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path><path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path><path d="M20 12h2"></path>
+    <path d="m4.93 19.07 1.41-1.41"></path><path d="m17.66 6.34 1.41-1.41"></path>
+  </svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<script>
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (btn) {
+    const root = document.documentElement;
+    const labelLight = btn.getAttribute('data-label-light') || '';
+    const labelDark  = btn.getAttribute('data-label-dark')  || '';
+
+    const sync = () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      btn.setAttribute('aria-label', isDark ? labelLight : labelDark);
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    };
+
+    sync();
+
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch {}
+      sync();
+    });
+
+    // If the user hasn't picked a theme, follow OS changes.
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    mql.addEventListener?.('change', (e) => {
+      let stored = null;
+      try { stored = localStorage.getItem('theme'); } catch {}
+      if (stored !== 'light' && stored !== 'dark') {
+        root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        sync();
+      }
+    });
+  }
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-fg);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+  .theme-toggle:hover {
+    background: var(--color-bg-alt);
+    color: var(--color-blue);
+  }
+
+  .theme-toggle__icon {
+    display: block;
+  }
+
+  /* Sun visible in dark mode (so clicking it goes to light); moon in light mode. */
+  .theme-toggle__icon--sun  { display: none; }
+  .theme-toggle__icon--moon { display: block; }
+
+  :global(:root[data-theme="dark"]) .theme-toggle__icon--sun  { display: block; }
+  :global(:root[data-theme="dark"]) .theme-toggle__icon--moon { display: none; }
+</style>
