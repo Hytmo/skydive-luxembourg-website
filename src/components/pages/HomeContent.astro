@@ -130,15 +130,46 @@ const contactHref = `/${lang}/contact`;
 const galleryHref = `/${lang}/gallery`;
 const affHref = `/${lang}/aff`;
 
-const gallery = [
-  { image: g1 }, { image: g2 }, { image: g3 },
-  { image: g4 }, { image: g5 }, { image: g6 },
-];
+const galleryAlt = {
+  en: [
+    'Skydivers in freefall above Luxembourg',
+    'Tandem skydive exit from the aircraft',
+    'Open parachute over the dropzone',
+    'Skydivers preparing for a jump',
+    'Canopy flight over the Luxembourg countryside',
+    'Skydive Luxembourg aircraft and jumpers',
+  ],
+  fr: [
+    'Parachutistes en chute libre au-dessus du Luxembourg',
+    'Sortie avion pour un saut en tandem',
+    'Parachute ouvert au-dessus de la DZ',
+    'Parachutistes en préparation avant le saut',
+    'Vol sous voile au-dessus de la campagne luxembourgeoise',
+    'Avion et parachutistes de Skydive Luxembourg',
+  ],
+  de: [
+    'Fallschirmspringer im freien Fall über Luxemburg',
+    'Tandemsprung beim Ausstieg aus dem Flugzeug',
+    'Geöffneter Fallschirm über der Dropzone',
+    'Fallschirmspringer bei der Vorbereitung vor dem Sprung',
+    'Schirmflug über der luxemburgischen Landschaft',
+    'Flugzeug und Springer von Skydive Luxembourg',
+  ],
+}[lang];
+
+const galleryImages = [g1, g2, g3, g4, g5, g6];
+const gallery = galleryImages.map((image, index) => ({
+  image,
+  alt: galleryAlt[index],
+}));
 
 // Attach images to cards
 t.cards[0].image = tandemImg;
+t.cards[0].alt = t.cards[0].title;
 t.cards[1].image = affImg;
+t.cards[1].alt = t.cards[1].title;
 t.cards[2].image = funImg;
+t.cards[2].alt = t.cards[2].title;
 ---
 
 <Hero

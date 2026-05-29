@@ -18,7 +18,7 @@ const t = {
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
     infoIntro: 'Our dropzone operates from a private grass airfield in the centre of the country. You can reach us by car in 25 minutes from Luxembourg City.',
     addressLabel: 'Address',
-    addressLines: ['Aérodrome de Useldange', 'L-8707 Useldange', 'Luxembourg'],
+    addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxembourg'],
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     hoursLabel: 'Opening hours',
@@ -28,8 +28,8 @@ const t = {
     formTitle: 'Send a message',
     formLead: 'For tandem bookings, AFF enquiries, group reservations or anything else — fill in the form below and we\'ll reply within two business days.',
     directionsTitle: 'How to get here',
-    directionsText: 'From Luxembourg City take the A7 motorway north, leave at exit 5 (Mersch / Useldange) and follow the signs to Useldange. The airfield entrance is signposted "Aérodrome" on the western edge of the village. Free parking on site.',
-    mapTitle: 'Map of Useldange airfield',
+    directionsText: 'From Luxembourg City, take the A7 north towards Ettelbruck/Wiltz, then continue to Noertrange/Winseler. The dropzone is at 32 Op der Louh, near Noertrange airfield. Free parking is available on site.',
+    mapTitle: 'Map of Noertrange airfield',
   },
 
   fr: {
@@ -40,7 +40,7 @@ const t = {
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
     infoIntro: 'Notre zone de saut se trouve sur un aérodrome privé en herbe au centre du pays. Comptez 25 minutes en voiture depuis Luxembourg-Ville.',
     addressLabel: 'Adresse',
-    addressLines: ['Aérodrome de Useldange', 'L-8707 Useldange', 'Luxembourg'],
+    addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxembourg'],
     emailLabel: 'Courriel',
     phoneLabel: 'Téléphone',
     hoursLabel: 'Horaires d\'ouverture',
@@ -50,8 +50,8 @@ const t = {
     formTitle: 'Envoyer un message',
     formLead: 'Pour les réservations tandem, les demandes AFF, les groupes ou toute autre question, remplissez le formulaire ci-dessous. Nous répondons sous deux jours ouvrés.',
     directionsTitle: 'Comment nous rejoindre',
-    directionsText: 'Depuis Luxembourg-Ville, prenez l\'autoroute A7 vers le nord, sortie 5 (Mersch / Useldange) puis suivez la direction Useldange. L\'entrée de l\'aérodrome est indiquée « Aérodrome » à la sortie ouest du village. Parking gratuit sur place.',
-    mapTitle: 'Carte de l\'aérodrome de Useldange',
+    directionsText: 'Depuis Luxembourg-Ville, prenez l\'A7 vers le nord en direction d\'Ettelbruck/Wiltz, puis continuez vers Noertrange/Winseler. La DZ se trouve au 32 Op der Louh, près de l\'aérodrome de Noertrange. Parking gratuit sur place.',
+    mapTitle: 'Carte de l\'aérodrome de Noertrange',
   },
 
   de: {
@@ -62,7 +62,7 @@ const t = {
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
     infoIntro: 'Unsere Dropzone liegt auf einem privaten Graspiste-Flugplatz in der Landesmitte. Von Luxemburg-Stadt sind es etwa 25 Autominuten.',
     addressLabel: 'Adresse',
-    addressLines: ['Aérodrome de Useldange', 'L-8707 Useldange', 'Luxemburg'],
+    addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxemburg'],
     emailLabel: 'E-Mail',
     phoneLabel: 'Telefon',
     hoursLabel: 'Öffnungszeiten',
@@ -72,14 +72,14 @@ const t = {
     formTitle: 'Nachricht senden',
     formLead: 'Für Tandembuchungen, AFF-Anfragen, Gruppenreservierungen oder andere Anliegen — fülle einfach das Formular aus. Wir antworten innerhalb von zwei Werktagen.',
     directionsTitle: 'Anfahrt',
-    directionsText: 'Von Luxemburg-Stadt nimm die Autobahn A7 Richtung Norden, Ausfahrt 5 (Mersch / Useldange), dann der Beschilderung nach Useldange folgen. Die Einfahrt zum Flugplatz ist mit „Aérodrome" am westlichen Ortsrand ausgeschildert. Kostenlose Parkplätze vor Ort.',
-    mapTitle: 'Karte des Flugplatzes Useldange',
+    directionsText: 'Von Luxemburg-Stadt nimm die A7 Richtung Norden nach Ettelbruck/Wiltz und fahre weiter nach Noertrange/Winseler. Die Dropzone liegt in 32 Op der Louh, nahe dem Flugplatz Noertrange. Kostenlose Parkplätze sind vor Ort verfügbar.',
+    mapTitle: 'Karte des Flugplatzes Noertrange',
   },
 }[lang];
 
-const email = 'info@skydive.lu';
-const phone = '+352 621 234 567';
-const phoneHref = 'tel:+352621234567';
+const email = 'mail@skydive.lu';
+const phone = '+352 621 701 194';
+const phoneHref = `tel:${phone.replace(/\s+/g, '')}`;
 ---
 
 <PageBanner
@@ -139,7 +139,7 @@ const phoneHref = 'tel:+352621234567';
     <div class="contact-map">
       <iframe
         title={t.mapTitle}
-        src="https://www.google.com/maps?q=Useldange,+Luxembourg&output=embed"
+        src="https://www.google.com/maps?q=Noertrange,+Luxembourg&output=embed"
         width="100%"
         height="420"
         style="border:0"

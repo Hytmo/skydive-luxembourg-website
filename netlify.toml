@@ -1,0 +1,54 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22.12.0"
+
+# Keep the public brand canonical on www.skydive.lu.
+[[redirects]]
+  from = "https://skydive.lu/*"
+  to = "https://www.skydive.lu/:splat"
+  status = 301
+  force = true
+
+# Static-build root fallback: send bare domain visitors to the default language.
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 302
+
+# Legacy WordPress/CPL-era URLs found during audit.
+[[redirects]]
+  from = "/?page_id=48"
+  to = "/en/about/"
+  status = 301
+
+[[redirects]]
+  from = "/?page_id=1590"
+  to = "/en/tandem/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-2/"
+  to = "/en/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/a-propos/"
+  to = "/fr/about/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

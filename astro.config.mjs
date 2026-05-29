@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Production URL. Used for the sitemap (added later), canonical
-  // links, and Open Graph / Twitter meta tags. Even though we're not
-  // live on this domain yet, configuring it now avoids rework.
-  site: 'https://skydive.lu',
+  // Production URL. Used for the sitemap, canonical links, and
+  // Open Graph / Twitter meta tags.
+  site: 'https://www.skydive.lu',
+
+  integrations: [sitemap()],
 
   // Multilingual routing configuration.
   i18n: {
@@ -22,8 +24,8 @@ export default defineConfig({
       // Cleaner and avoids weird cases where /about is EN but /fr/about is FR.
       prefixDefaultLocale: true,
 
-      // Visiting / will redirect to /en/.
-      redirectToDefaultLocale: true,
+      // Root redirect is handled by src/pages/index.astro for static hosts.
+      redirectToDefaultLocale: false,
     },
 
     // NOTE: no `fallback` block here on purpose.
