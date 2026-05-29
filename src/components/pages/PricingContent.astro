@@ -1,9 +1,10 @@
 ---
 /**
  * PricingContent.astro — pricing page body. Picks copy by `lang` prop.
+ * Prices are copied from the old/current public pricing page:
+ * https://www.cerclepara.lu/skydivers/prix/
  */
 import PageBanner from '../sections/PageBanner.astro';
-import PriceCards from '../sections/PriceCards.astro';
 import CTABanner from '../sections/CTABanner.astro';
 
 import bannerImg from '../../assets/img/Hero-3.jpg';
@@ -12,546 +13,160 @@ const BOOKING_URL = 'https://cpl.dz-cloud.com/en/Booking/s1_Options';
 
 const { lang = 'en' } = Astro.props;
 
+const priceRows = {
+  membership: [
+    { key: 'withInsurance', price: '300 €' },
+    { key: 'withoutInsurance', price: '230 €' },
+  ],
+  tandem: [
+    { key: 'tandemVideo', price: '350 €', featured: true },
+    { key: 'tshirt', price: '30 €' },
+  ],
+  school: [],
+  solo: [
+    { key: 'member4000', price: '35 €' },
+    { key: 'member2000', price: '35 €' },
+    { key: 'coached', price: '80 €' },
+    { key: 'checkjump', price: '90 €' },
+    { key: 'guest4000', price: '43 €' },
+    { key: 'guest2000', price: '43 €' },
+  ],
+  rental: [
+    { key: 'rentalMember', price: '15 €' },
+    { key: 'rentalGuest', price: '20 €' },
+    { key: 'packjob', price: '7 €' },
+  ],
+};
+
+const labels = {
+  en: {
+    withInsurance: 'Annual membership — third-party insurance and FAI licence included',
+    withoutInsurance: 'Annual membership — without insurance or FAI licence',
+    tandemVideo: 'Tandem & video',
+    tshirt: 'T-shirt',
+    member4000: 'Member jump — 4 000 m',
+    member2000: 'Member jump — 2 000 m',
+    coached: 'Coached jump — 1 on 1',
+    checkjump: 'Check jump',
+    guest4000: 'Guest jump — 4 000 m',
+    guest2000: 'Guest jump — 2 000 m',
+    rentalMember: 'Parachute rental — members',
+    rentalGuest: 'Parachute rental — guests',
+    packjob: 'Pack job',
+    trainingContact: 'AFF / training formula',
+  },
+  fr: {
+    withInsurance: 'Cotisation annuelle — assurance tiers et licence FAI incluses',
+    withoutInsurance: 'Cotisation annuelle — sans assurance ni licence FAI',
+    tandemVideo: 'Tandem & vidéo',
+    tshirt: 'T-shirt',
+    member4000: 'Saut membre — 4 000 m',
+    member2000: 'Saut membre — 2 000 m',
+    coached: 'Saut coaché — 1 on 1',
+    checkjump: 'Checkjump',
+    guest4000: 'Saut guest — 4 000 m',
+    guest2000: 'Saut guest — 2 000 m',
+    rentalMember: 'Location parachute — membres',
+    rentalGuest: 'Location parachute — guest',
+    packjob: 'Packjob',
+    trainingContact: 'Formule AFF / formation',
+  },
+  de: {
+    withInsurance: 'Jahresmitgliedschaft — Haftpflichtversicherung und FAI-Lizenz inklusive',
+    withoutInsurance: 'Jahresmitgliedschaft — ohne Versicherung und FAI-Lizenz',
+    tandemVideo: 'Tandem & Video',
+    tshirt: 'T-Shirt',
+    member4000: 'Mitgliedersprung — 4 000 m',
+    member2000: 'Mitgliedersprung — 2 000 m',
+    coached: 'Coach-Sprung — 1 on 1',
+    checkjump: 'Checkjump',
+    guest4000: 'Gastsprung — 4 000 m',
+    guest2000: 'Gastsprung — 2 000 m',
+    rentalMember: 'Fallschirmmiete — Mitglieder',
+    rentalGuest: 'Fallschirmmiete — Gäste',
+    packjob: 'Packjob',
+    trainingContact: 'AFF- / Ausbildungsformel',
+  },
+}[lang];
+
 const t = {
   en: {
     bannerEyebrow: 'Prices',
-    bannerTitle: 'Honest prices, set by jumpers.',
-    bannerSubtitle: 'As a non-profit club we keep costs as low as we can. Every euro funds aircraft, gear, training and the airfield.',
-
-    introEyebrow: 'How our pricing works',
-    introTitle: 'No hidden fees, no upsells.',
-    introText: 'All prices below are inclusive of VAT and dropzone fees. Members benefit from reduced jump tickets and free packing-area access. If anything is unclear, just ask — we\'d rather have a chat than surprise you.',
-
-    tandemEyebrow: 'Tandem skydive',
-    tandemTitle: 'Your first jump.',
-    tandemLead: 'Three ways to do it. Pick the one that fits.',
-    tandemCards: [
-      {
-        title: 'Standard tandem',
-        price: '€280',
-        priceNote: 'per person',
-        description: 'The full experience, no extras.',
-        features: [
-          'Briefing and gear hire',
-          '15-minute climb to 4 000 m',
-          '~50 seconds freefall',
-          '5-minute canopy descent',
-          'Digital certificate by email',
-        ],
-        cta: { label: 'Book a tandem', href: BOOKING_URL },
-      },
-      {
-        title: 'Tandem + photos + video',
-        price: '€380',
-        priceNote: 'per person',
-        description: 'Outside-camera flyer films the whole jump.',
-        features: [
-          'Everything in the standard package',
-          'A dedicated camera flyer',
-          'High-resolution photos',
-          'Edited HD video',
-          'Files delivered same day',
-        ],
-        cta: { label: 'Book with media', href: BOOKING_URL },
-        featured: true,
-      },
-      {
-        title: 'Group of 4 or more',
-        price: '€260',
-        priceNote: 'per person',
-        description: 'Birthdays, stag/hen, team builds — together is better.',
-        features: [
-          'Standard tandem for each',
-          'Group photo on the dropzone',
-          'Coffee and cake on us',
-          'Priority slot allocation',
-          'Add media for €100 each',
-        ],
-        cta: { label: 'Enquire for group', href: `/${lang}/contact` },
-      },
-    ],
-
-    affEyebrow: 'AFF student',
-    affTitle: 'Learning to skydive.',
-    affLead: 'The most cost-effective route to a licence in the region.',
-    affCards: [
-      {
-        title: 'Level 1 — trial day',
-        price: '€350',
-        priceNote: 'one-off',
-        description: 'See if the sport is for you, in one day.',
-        features: [
-          'Ground school (full day)',
-          'Equipment for the day',
-          'First jump with two jumpmasters',
-          'Debrief and logbook entry',
-          'Price deductible if you continue',
-        ],
-        cta: { label: 'Apply for AFF', href: `/${lang}/aff` },
-      },
-      {
-        title: 'Full AFF course',
-        price: '€2 400',
-        priceNote: 'all-in',
-        description: 'Ground school + 7 AFF levels + gear hire.',
-        features: [
-          'Full ground school',
-          'All 7 AFF levels (level repeats not included)',
-          'Equipment hire throughout',
-          'Logbook and progression card',
-          'Free packing-area access during training',
-        ],
-        cta: { label: 'Apply now', href: `/${lang}/aff` },
-        featured: true,
-      },
-      {
-        title: 'Re-jumps & consolidation',
-        price: 'from €60',
-        priceNote: 'per jump',
-        description: 'Level repeats, consolidation jumps, coach jumps.',
-        features: [
-          'Level repeat: €120 (with instructor)',
-          'Consolidation solo: €60',
-          'Coach jump: €90',
-          'Gear hire included',
-          'Until A-licence is awarded',
-        ],
-        cta: { label: 'Contact us', href: `/${lang}/contact` },
-      },
-    ],
-
-    funEyebrow: 'Fun jumpers',
-    funTitle: 'Licensed sport jumpers.',
-    funLead: 'Single tickets, jump cards and annual membership.',
-    funCards: [
-      {
-        title: 'Single jump ticket',
-        price: '€35',
-        priceNote: 'to 4 000 m',
-        description: 'Walk-up rate for non-members.',
-        features: [
-          'Full-altitude lift',
-          'Use of packing area',
-          'No commitment',
-          'Members rate: €28',
-          'Hop & pop from €18',
-        ],
-        cta: { label: 'Visit the DZ', href: `/${lang}/fun-jumpers` },
-      },
-      {
-        title: '10-jump card',
-        price: '€320',
-        priceNote: 'pre-paid',
-        description: 'Saves €30 vs. single tickets.',
-        features: [
-          '10 full-altitude jumps',
-          'Valid 12 months',
-          'Transferable between members',
-          'Tandem video flyers: 50 % off',
-          'No blackout dates',
-        ],
-        cta: { label: 'Buy a jump card', href: `/${lang}/contact` },
-        featured: true,
-      },
-      {
-        title: 'Annual membership',
-        price: '€220',
-        priceNote: 'per year',
-        description: 'The best deal if you jump more than 30 times a year.',
-        features: [
-          'Reduced jump tickets (€28)',
-          'Free camping behind the hangar',
-          'Access to club events and boogies',
-          'Voting rights at the AGM',
-          'A.s.b.l. third-party insurance included',
-        ],
-        cta: { label: 'Become a member', href: `/${lang}/contact` },
-      },
-    ],
-
-    notesEyebrow: 'The small print',
-    notesTitle: 'What\'s in, what\'s out.',
-    includedTitle: 'Included in all prices',
-    included: [
-      'VAT and dropzone fees',
-      'Aircraft slot and pilot',
-      'Use of common areas and facilities',
-      'Weather reschedules at no extra cost',
-    ],
-    excludedTitle: 'Not included',
-    excluded: [
-      'Personal third-party insurance for non-licensed visitors (we can arrange day cover)',
-      'Travel to and from the dropzone',
-      'Food and drink beyond complimentary water and coffee',
-      'Personal gear rental beyond AFF / tandem packages (ask for rates)',
-    ],
-
-    ctaTitle: 'Pick a date and let\'s jump.',
-    ctaSubtitle: 'All booking and enquiry options are one click away.',
+    bannerTitle: 'Current club formulas.',
+    bannerSubtitle: 'The formulas below are copied from the current published Skydive Luxembourg tariff page — no invented packages, no fake upsells.',
+    introEyebrow: 'Tariffs',
+    introTitle: 'Simple prices for members, guests and tandem passengers.',
+    introText: 'All prices are the current published club prices. Écolage/training does not currently list a public price on the old site, so it is shown as contact-first instead of guessing.',
+    sourceText: 'Source: current old-site pricing page checked during rebuild.',
+    ctaTitle: 'Questions about a formula?',
+    ctaSubtitle: 'Write to us before booking — especially for training, licences, guest jumps or equipment rental.',
     ctaPrimary: 'Book a tandem',
     ctaSecondary: 'Contact us',
+    contact: 'Ask us',
+    onRequest: 'On request',
+    sections: {
+      membership: { eyebrow: 'Membership', title: 'Become a member', description: 'Annual club membership options.' },
+      tandem: { eyebrow: 'Tandem jumps', title: 'Tandem formulas', description: 'Current tandem package and T-shirt price.' },
+      school: { eyebrow: 'Training', title: 'Écolage', description: 'No public training price is listed on the old tariff page. Contact us for the current AFF/training formula.' },
+      solo: { eyebrow: 'Solo skydivers', title: 'Jump tickets', description: 'Member, guest, coached and check-jump prices.' },
+      rental: { eyebrow: 'Rental', title: 'Gear and packing', description: 'Rental and pack-job prices.' },
+    },
   },
-
   fr: {
     bannerEyebrow: 'Tarifs',
-    bannerTitle: 'Des prix honnêtes, fixés par les parachutistes.',
-    bannerSubtitle: 'En tant qu\'association sans but lucratif, nous gardons les tarifs au plus bas. Chaque euro finance l\'avion, le matériel, la formation et l\'aérodrome.',
-
-    introEyebrow: 'Comment fonctionne notre tarification',
-    introTitle: 'Pas de frais cachés, pas de ventes additionnelles.',
-    introText: 'Tous les prix ci-dessous incluent la TVA et les redevances de DZ. Les membres bénéficient de tickets de saut réduits et d\'un accès gratuit à l\'aire de pliage. Au moindre doute, demandez-nous — nous préférons en discuter plutôt que de vous surprendre.',
-
-    tandemEyebrow: 'Saut en tandem',
-    tandemTitle: 'Votre premier saut.',
-    tandemLead: 'Trois formules. Choisissez celle qui vous convient.',
-    tandemCards: [
-      {
-        title: 'Tandem standard',
-        price: '280 €',
-        priceNote: 'par personne',
-        description: 'L\'expérience complète, sans options.',
-        features: [
-          'Briefing et location du matériel',
-          'Montée de 15 minutes à 4 000 m',
-          '~50 secondes de chute libre',
-          '5 minutes de vol sous voile',
-          'Certificat numérique par e-mail',
-        ],
-        cta: { label: 'Réserver un tandem', href: BOOKING_URL },
-      },
-      {
-        title: 'Tandem + photos + vidéo',
-        price: '380 €',
-        priceNote: 'par personne',
-        description: 'Un caméraman extérieur filme tout le saut.',
-        features: [
-          'Tout le contenu de la formule standard',
-          'Un caméraman dédié',
-          'Photos haute résolution',
-          'Vidéo HD montée',
-          'Fichiers livrés le jour même',
-        ],
-        cta: { label: 'Réserver avec média', href: BOOKING_URL },
-        featured: true,
-      },
-      {
-        title: 'Groupe de 4 ou plus',
-        price: '260 €',
-        priceNote: 'par personne',
-        description: 'Anniversaires, EVG/EVJF, team building — à plusieurs c\'est mieux.',
-        features: [
-          'Tandem standard pour chacun',
-          'Photo de groupe sur la DZ',
-          'Café et gâteau offerts',
-          'Créneaux prioritaires',
-          'Option média : +100 €/personne',
-        ],
-        cta: { label: 'Demande de groupe', href: `/${lang}/contact` },
-      },
-    ],
-
-    affEyebrow: 'Élève AFF',
-    affTitle: 'Apprendre à sauter.',
-    affLead: 'La voie la plus économique vers une licence dans la région.',
-    affCards: [
-      {
-        title: 'Niveau 1 — journée découverte',
-        price: '350 €',
-        priceNote: 'forfait',
-        description: 'Voyez si le sport vous correspond en une seule journée.',
-        features: [
-          'Formation au sol (journée complète)',
-          'Matériel fourni pour la journée',
-          'Premier saut avec deux moniteurs',
-          'Débriefing et carnet de sauts',
-          'Tarif déductible si vous continuez',
-        ],
-        cta: { label: 'S\'inscrire AFF', href: `/${lang}/aff` },
-      },
-      {
-        title: 'Stage AFF complet',
-        price: '2 400 €',
-        priceNote: 'tout compris',
-        description: 'Formation au sol + 7 niveaux AFF + matériel.',
-        features: [
-          'Formation au sol complète',
-          'Les 7 niveaux AFF (répétitions non incluses)',
-          'Location du matériel pendant tout le stage',
-          'Carnet de sauts et carte de progression',
-          'Accès gratuit à l\'aire de pliage pendant la formation',
-        ],
-        cta: { label: 'S\'inscrire', href: `/${lang}/aff` },
-        featured: true,
-      },
-      {
-        title: 'Re-sauts et consolidation',
-        price: 'dès 60 €',
-        priceNote: 'par saut',
-        description: 'Répétitions de niveau, sauts de consolidation, sauts coach.',
-        features: [
-          'Répétition de niveau : 120 € (avec moniteur)',
-          'Consolidation solo : 60 €',
-          'Saut coach : 90 €',
-          'Location du matériel incluse',
-          'Jusqu\'à l\'obtention du brevet A',
-        ],
-        cta: { label: 'Nous contacter', href: `/${lang}/contact` },
-      },
-    ],
-
-    funEyebrow: 'Parachutistes confirmés',
-    funTitle: 'Parachutistes brevetés.',
-    funLead: 'Tickets à l\'unité, carnets de sauts et adhésion annuelle.',
-    funCards: [
-      {
-        title: 'Ticket à l\'unité',
-        price: '35 €',
-        priceNote: 'à 4 000 m',
-        description: 'Tarif visiteur sans engagement.',
-        features: [
-          'Largage pleine altitude',
-          'Accès à l\'aire de pliage',
-          'Aucun engagement',
-          'Tarif membre : 28 €',
-          'Hop & pop dès 18 €',
-        ],
-        cta: { label: 'Visiter la DZ', href: `/${lang}/fun-jumpers` },
-      },
-      {
-        title: 'Carnet de 10 sauts',
-        price: '320 €',
-        priceNote: 'prépayé',
-        description: 'Économisez 30 € par rapport aux tickets à l\'unité.',
-        features: [
-          '10 sauts pleine altitude',
-          'Validité 12 mois',
-          'Transférable entre membres',
-          'Caméra tandem : -50 %',
-          'Aucune date bloquée',
-        ],
-        cta: { label: 'Acheter un carnet', href: `/${lang}/contact` },
-        featured: true,
-      },
-      {
-        title: 'Adhésion annuelle',
-        price: '220 €',
-        priceNote: 'par an',
-        description: 'La meilleure option si vous sautez plus de 30 fois par an.',
-        features: [
-          'Tickets de saut réduits (28 €)',
-          'Bivouac gratuit derrière le hangar',
-          'Accès aux événements et boogies du club',
-          'Droit de vote à l\'AG',
-          'Assurance RC association incluse',
-        ],
-        cta: { label: 'Devenir membre', href: `/${lang}/contact` },
-      },
-    ],
-
-    notesEyebrow: 'Petits caractères',
-    notesTitle: 'Ce qui est inclus, ce qui ne l\'est pas.',
-    includedTitle: 'Inclus dans tous nos tarifs',
-    included: [
-      'TVA et redevances DZ',
-      'Place avion et pilote',
-      'Accès aux espaces communs',
-      'Reports météo sans frais supplémentaires',
-    ],
-    excludedTitle: 'Non inclus',
-    excluded: [
-      'Assurance RC personnelle pour les visiteurs non brevetés (nous proposons une couverture à la journée)',
-      'Transport jusqu\'à la DZ',
-      'Nourriture et boissons au-delà de l\'eau et du café offerts',
-      'Location de matériel personnel au-delà des forfaits AFF / tandem (tarifs sur demande)',
-    ],
-
-    ctaTitle: 'Choisissez une date et sautez avec nous.',
-    ctaSubtitle: 'Toutes les options de réservation et de contact sont à un clic.',
+    bannerTitle: 'Les formules actuelles du club.',
+    bannerSubtitle: 'Les formules ci-dessous reprennent les prix actuellement publiés sur l’ancien site Skydive Luxembourg — pas de forfaits inventés.',
+    introEyebrow: 'Tarifs',
+    introTitle: 'Des prix simples pour membres, guests et passagers tandem.',
+    introText: 'Tous les montants sont les prix actuellement publiés par le club. L’écolage/la formation n’affiche pas de prix public sur l’ancien site; nous l’indiquons donc sur demande au lieu d’inventer un tarif.',
+    sourceText: 'Source : page tarifs actuelle de l’ancien site, vérifiée pendant la reconstruction.',
+    ctaTitle: 'Une question sur une formule ?',
+    ctaSubtitle: 'Contactez-nous avant de réserver — surtout pour la formation, les licences, les sauts guest ou la location de matériel.',
     ctaPrimary: 'Réserver un tandem',
     ctaSecondary: 'Nous contacter',
+    contact: 'Nous demander',
+    onRequest: 'Sur demande',
+    sections: {
+      membership: { eyebrow: 'Membres', title: 'Devenir membre', description: 'Options de cotisation annuelle du club.' },
+      tandem: { eyebrow: 'Sauts en tandem', title: 'Formules tandem', description: 'Forfait tandem actuel et prix du T-shirt.' },
+      school: { eyebrow: 'Formation', title: 'Écolage', description: 'Aucun prix de formation public n’est indiqué sur l’ancienne page tarifs. Contactez-nous pour la formule AFF/formation actuelle.' },
+      solo: { eyebrow: 'Solo skydivers', title: 'Tickets de saut', description: 'Prix membres, guests, sauts coachés et checkjumps.' },
+      rental: { eyebrow: 'Location', title: 'Matériel et pliage', description: 'Prix de location et de packjob.' },
+    },
   },
-
   de: {
     bannerEyebrow: 'Preise',
-    bannerTitle: 'Faire Preise, von Springern für Springer.',
-    bannerSubtitle: 'Als gemeinnütziger Verein halten wir die Kosten so niedrig wie möglich. Jeder Euro fließt in Flugzeug, Material, Ausbildung und Flugplatz.',
-
-    introEyebrow: 'So funktioniert unsere Preisgestaltung',
-    introTitle: 'Keine versteckten Gebühren, kein Upselling.',
-    introText: 'Alle Preise unten verstehen sich inklusive Mehrwertsteuer und Flugplatzgebühren. Mitglieder erhalten reduzierte Sprungtickets und freien Zugang zum Packbereich. Wenn etwas unklar ist, frag einfach — wir reden lieber, als dich zu überraschen.',
-
-    tandemEyebrow: 'Tandemsprung',
-    tandemTitle: 'Dein erster Sprung.',
-    tandemLead: 'Drei Möglichkeiten. Wähle die passende.',
-    tandemCards: [
-      {
-        title: 'Standard-Tandem',
-        price: '280 €',
-        priceNote: 'pro Person',
-        description: 'Das ganze Erlebnis, ohne Extras.',
-        features: [
-          'Briefing und Material',
-          '15 Minuten Steigflug auf 4 000 m',
-          '~50 Sekunden freier Fall',
-          '5 Minuten Schirmflug',
-          'Digitale Sprungurkunde per E-Mail',
-        ],
-        cta: { label: 'Tandem buchen', href: BOOKING_URL },
-      },
-      {
-        title: 'Tandem + Fotos + Video',
-        price: '380 €',
-        priceNote: 'pro Person',
-        description: 'Ein Kameraflieger filmt den gesamten Sprung von außen.',
-        features: [
-          'Alles aus dem Standard-Paket',
-          'Eigener Kameraflieger',
-          'Hochauflösende Fotos',
-          'Geschnittenes HD-Video',
-          'Lieferung noch am selben Tag',
-        ],
-        cta: { label: 'Mit Medien buchen', href: BOOKING_URL },
-        featured: true,
-      },
-      {
-        title: 'Gruppe ab 4 Personen',
-        price: '260 €',
-        priceNote: 'pro Person',
-        description: 'Geburtstage, JGA, Teamevents — zusammen ist es besser.',
-        features: [
-          'Standard-Tandem für alle',
-          'Gruppenfoto am Flugplatz',
-          'Kaffee und Kuchen aufs Haus',
-          'Bevorzugte Slot-Vergabe',
-          'Medien-Option: +100 €/Person',
-        ],
-        cta: { label: 'Gruppen-Anfrage', href: `/${lang}/contact` },
-      },
-    ],
-
-    affEyebrow: 'AFF-Schüler',
-    affTitle: 'Springen lernen.',
-    affLead: 'Der kostengünstigste Weg zur Lizenz in der Region.',
-    affCards: [
-      {
-        title: 'Stufe 1 — Schnuppertag',
-        price: '350 €',
-        priceNote: 'Pauschale',
-        description: 'Finde an einem Tag heraus, ob der Sport zu dir passt.',
-        features: [
-          'Ganztägige Bodenausbildung',
-          'Material für den Tag',
-          'Erster Sprung mit zwei Lehrern',
-          'Debrief und Eintrag im Sprungbuch',
-          'Preis wird bei Fortsetzung angerechnet',
-        ],
-        cta: { label: 'AFF anmelden', href: `/${lang}/aff` },
-      },
-      {
-        title: 'Voller AFF-Kurs',
-        price: '2 400 €',
-        priceNote: 'all-in',
-        description: 'Bodenausbildung + 7 AFF-Stufen + Material.',
-        features: [
-          'Komplette Bodenausbildung',
-          'Alle 7 AFF-Stufen (Wiederholungen exklusive)',
-          'Material während der gesamten Ausbildung',
-          'Sprungbuch und Progressionskarte',
-          'Freier Packbereich-Zugang während der Ausbildung',
-        ],
-        cta: { label: 'Jetzt anmelden', href: `/${lang}/aff` },
-        featured: true,
-      },
-      {
-        title: 'Wiederholungen & Konsolidierung',
-        price: 'ab 60 €',
-        priceNote: 'pro Sprung',
-        description: 'Stufen-Wiederholungen, Konsolidierungssprünge, Coach-Sprünge.',
-        features: [
-          'Stufen-Wiederholung: 120 € (mit Lehrer)',
-          'Konsolidierung solo: 60 €',
-          'Coach-Sprung: 90 €',
-          'Material inklusive',
-          'Bis zur A-Lizenz',
-        ],
-        cta: { label: 'Kontakt', href: `/${lang}/contact` },
-      },
-    ],
-
-    funEyebrow: 'Sportspringer',
-    funTitle: 'Lizenzierte Sportspringer.',
-    funLead: 'Einzeltickets, Sprungkarten und Jahresmitgliedschaft.',
-    funCards: [
-      {
-        title: 'Einzelsprung-Ticket',
-        price: '35 €',
-        priceNote: 'auf 4 000 m',
-        description: 'Walk-up-Preis für Nicht-Mitglieder.',
-        features: [
-          'Sprung auf voller Höhe',
-          'Nutzung Packbereich',
-          'Keine Verpflichtung',
-          'Mitgliederpreis: 28 €',
-          'Hop & Pop ab 18 €',
-        ],
-        cta: { label: 'DZ besuchen', href: `/${lang}/fun-jumpers` },
-      },
-      {
-        title: '10er-Sprungkarte',
-        price: '320 €',
-        priceNote: 'im Voraus',
-        description: 'Spart 30 € gegenüber Einzeltickets.',
-        features: [
-          '10 Sprünge auf voller Höhe',
-          '12 Monate gültig',
-          'Übertragbar zwischen Mitgliedern',
-          'Tandem-Kameraflieger: 50 % Rabatt',
-          'Keine Sperrtage',
-        ],
-        cta: { label: 'Sprungkarte kaufen', href: `/${lang}/contact` },
-        featured: true,
-      },
-      {
-        title: 'Jahresmitgliedschaft',
-        price: '220 €',
-        priceNote: 'pro Jahr',
-        description: 'Lohnt sich ab etwa 30 Sprüngen im Jahr.',
-        features: [
-          'Reduzierte Sprungtickets (28 €)',
-          'Kostenloses Zelten hinter dem Hangar',
-          'Zugang zu Club-Events und Boogies',
-          'Stimmrecht bei der Mitgliederversammlung',
-          'Vereins-Haftpflicht inklusive',
-        ],
-        cta: { label: 'Mitglied werden', href: `/${lang}/contact` },
-      },
-    ],
-
-    notesEyebrow: 'Das Kleingedruckte',
-    notesTitle: 'Was drin ist, was nicht.',
-    includedTitle: 'In allen Preisen enthalten',
-    included: [
-      'MwSt. und Flugplatzgebühren',
-      'Flugzeug-Slot und Pilot',
-      'Nutzung der Gemeinschaftsbereiche',
-      'Wetter-Verschiebungen ohne Mehrkosten',
-    ],
-    excludedTitle: 'Nicht enthalten',
-    excluded: [
-      'Persönliche Haftpflichtversicherung für nicht-lizenzierte Besucher (Tagesversicherung möglich)',
-      'Anreise zum Flugplatz',
-      'Essen und Getränke über kostenlosem Wasser und Kaffee hinaus',
-      'Material-Miete über AFF-/Tandem-Pakete hinaus (Preise auf Anfrage)',
-    ],
-
-    ctaTitle: 'Wähle einen Termin — und ab in die Luft.',
-    ctaSubtitle: 'Buchung und Kontakt sind einen Klick entfernt.',
+    bannerTitle: 'Die aktuellen Club-Formeln.',
+    bannerSubtitle: 'Die Formeln unten übernehmen die aktuell veröffentlichten Preise der alten Skydive-Luxembourg-Seite — keine erfundenen Pakete.',
+    introEyebrow: 'Tarife',
+    introTitle: 'Klare Preise für Mitglieder, Gäste und Tandempassagiere.',
+    introText: 'Alle Beträge sind die aktuell veröffentlichten Clubpreise. Für Écolage/Ausbildung steht auf der alten Seite kein öffentlicher Preis; deshalb zeigen wir hier Kontakt statt Fantasiepreis.',
+    sourceText: 'Quelle: aktuelle Preisseite der alten Website, während des Rebuilds geprüft.',
+    ctaTitle: 'Frage zu einer Formel?',
+    ctaSubtitle: 'Schreib uns vor der Buchung — besonders bei Ausbildung, Lizenzen, Gastsprüngen oder Materialmiete.',
     ctaPrimary: 'Tandem buchen',
     ctaSecondary: 'Kontakt',
+    contact: 'Anfragen',
+    onRequest: 'Auf Anfrage',
+    sections: {
+      membership: { eyebrow: 'Mitgliedschaft', title: 'Mitglied werden', description: 'Jährliche Club-Mitgliedschaften.' },
+      tandem: { eyebrow: 'Tandemsprünge', title: 'Tandem-Formeln', description: 'Aktuelles Tandempaket und T-Shirt-Preis.' },
+      school: { eyebrow: 'Ausbildung', title: 'Écolage', description: 'Auf der alten Preisseite ist kein öffentlicher Ausbildungspreis angegeben. Kontaktiere uns für die aktuelle AFF-/Ausbildungsformel.' },
+      solo: { eyebrow: 'Solo skydivers', title: 'Sprungtickets', description: 'Preise für Mitglieder, Gäste, Coach-Sprünge und Checkjumps.' },
+      rental: { eyebrow: 'Miete', title: 'Material und Packen', description: 'Preise für Materialmiete und Packjob.' },
+    },
   },
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+
+const cards = [
+  { id: 'membership', rows: priceRows.membership, cta: { label: t.contact, href: contactHref } },
+  { id: 'tandem', rows: priceRows.tandem, cta: { label: t.ctaPrimary, href: BOOKING_URL }, highlighted: true },
+  { id: 'school', rows: [{ key: 'trainingContact', price: t.onRequest }], cta: { label: t.contact, href: `/${lang}/aff` } },
+  { id: 'solo', rows: priceRows.solo, cta: { label: t.contact, href: `/${lang}/fun-jumpers` } },
+  { id: 'rental', rows: priceRows.rental, cta: { label: t.contact, href: contactHref } },
+];
 ---
 
 <PageBanner
@@ -568,62 +183,51 @@ const contactHref = `/${lang}/contact`;
       <p class="section__eyebrow">{t.introEyebrow}</p>
       <h2 class="section__title">{t.introTitle}</h2>
       <p class="section__lead">{t.introText}</p>
+      <p class="tariff-source">{t.sourceText}</p>
     </header>
   </div>
 </section>
 
 <section class="section section--alt">
   <div class="section__inner">
-    <header class="section__header">
-      <p class="section__eyebrow">{t.tandemEyebrow}</p>
-      <h2 class="section__title">{t.tandemTitle}</h2>
-      <p class="section__lead">{t.tandemLead}</p>
-    </header>
-    <PriceCards items={t.tandemCards} />
-  </div>
-</section>
+    <div class="tariff-grid">
+      {cards.map((card) => {
+        const section = t.sections[card.id];
+        return (
+          <article class={`tariff-card${card.highlighted ? ' tariff-card--highlighted' : ''}`}>
+            <div class="tariff-card__header">
+              <p class="tariff-card__eyebrow">{section.eyebrow}</p>
+              <h2>{section.title}</h2>
+              <p>{section.description}</p>
+            </div>
 
-<section class="section">
-  <div class="section__inner">
-    <header class="section__header">
-      <p class="section__eyebrow">{t.affEyebrow}</p>
-      <h2 class="section__title">{t.affTitle}</h2>
-      <p class="section__lead">{t.affLead}</p>
-    </header>
-    <PriceCards items={t.affCards} />
-  </div>
-</section>
+            {card.rows.length > 0 ? (
+              <dl class="tariff-list">
+                {card.rows.map((row) => (
+                  <div class={`tariff-row${row.featured ? ' tariff-row--featured' : ''}`}>
+                    <dt>{labels[row.key]}</dt>
+                    <dd>{row.price}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : (
+              <div class="tariff-empty">
+                <p>{section.description}</p>
+              </div>
+            )}
 
-<section class="section section--alt">
-  <div class="section__inner">
-    <header class="section__header">
-      <p class="section__eyebrow">{t.funEyebrow}</p>
-      <h2 class="section__title">{t.funTitle}</h2>
-      <p class="section__lead">{t.funLead}</p>
-    </header>
-    <PriceCards items={t.funCards} />
-  </div>
-</section>
-
-<section class="section">
-  <div class="section__inner section__inner--narrow">
-    <header class="section__header">
-      <p class="section__eyebrow">{t.notesEyebrow}</p>
-      <h2 class="section__title">{t.notesTitle}</h2>
-    </header>
-    <div class="grid grid--2">
-      <div class="notes-box">
-        <h3>{t.includedTitle}</h3>
-        <ul>
-          {t.included.map((i) => <li>{i}</li>)}
-        </ul>
-      </div>
-      <div class="notes-box notes-box--excl">
-        <h3>{t.excludedTitle}</h3>
-        <ul>
-          {t.excluded.map((i) => <li>{i}</li>)}
-        </ul>
-      </div>
+            {card.cta && (
+              <a
+                href={card.cta.href}
+                class={`btn ${card.highlighted ? 'btn--primary' : 'btn--outline'}`}
+                {...(card.cta.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {card.cta.label}
+              </a>
+            )}
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
@@ -636,38 +240,122 @@ const contactHref = `/${lang}/contact`;
 />
 
 <style>
-  .notes-box {
+  .tariff-source {
+    margin-top: var(--space-4);
+    color: var(--color-fg-muted);
+    font-size: var(--fs-sm);
+  }
+
+  .tariff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .tariff-card {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-8);
-  }
-  .notes-box h3 {
-    margin-bottom: var(--space-4);
-    font-size: var(--fs-lg);
-  }
-  .notes-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-6);
+    box-shadow: var(--shadow-sm);
   }
-  .notes-box li {
-    padding-left: var(--space-6);
-    position: relative;
+
+  .tariff-card--highlighted {
+    border-color: var(--color-cta);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .tariff-card__header {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .tariff-card__eyebrow {
+    margin: 0;
+    color: var(--color-blue);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tariff-card__header h2 {
+    font-size: var(--fs-2xl);
+    margin: 0;
+  }
+
+  .tariff-card__header p:last-child,
+  .tariff-empty p {
+    margin: 0;
     color: var(--color-fg-muted);
   }
-  .notes-box li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--color-blue);
-    font-weight: var(--fw-bold);
+
+  .tariff-list {
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
   }
-  .notes-box--excl li::before {
-    content: '–';
-    color: var(--color-red, var(--color-fg-muted));
+
+  .tariff-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-alt);
+  }
+
+  .tariff-row--featured {
+    border-color: var(--color-cta);
+    background: color-mix(in srgb, var(--color-cta) 8%, var(--color-bg));
+  }
+
+  .tariff-row dt {
+    font-weight: var(--fw-medium);
+  }
+
+  .tariff-row dd {
+    margin: 0;
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-fg);
+    white-space: nowrap;
+  }
+
+  .tariff-empty {
+    flex: 1;
+    padding: var(--space-5);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-alt);
+  }
+
+  .tariff-card .btn {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  @media (max-width: 900px) {
+    .tariff-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .tariff-card {
+      padding: var(--space-6);
+    }
+
+    .tariff-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
   }
 </style>
