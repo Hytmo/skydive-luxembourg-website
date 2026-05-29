@@ -8,8 +8,13 @@
  *       contact form now live on the same page.
  */
 
+import { Image } from 'astro:assets';
+
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
+
+import logoBlack from '../assets/logo/skydive-logo-black.png';
+import logoWhite from '../assets/logo/skydive-logo-white.png';
 
 const lang = Astro.currentLocale ?? 'en';
 const path = Astro.url.pathname;
@@ -57,8 +62,23 @@ const isActive = (slug) => {
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav__inner">
 
-    <a href={`/${lang}/`} class="site-nav__logo">
-      <strong>Skydive</strong> <span>Luxembourg</span>
+    <a href={`/${lang}/`} class="site-nav__logo" aria-label="Skydive Luxembourg home">
+      <Image
+        src={logoBlack}
+        alt=""
+        class="site-nav__logo-img site-nav__logo-img--black"
+        widths={[180, 320, 480]}
+        sizes="180px"
+        loading="eager"
+      />
+      <Image
+        src={logoWhite}
+        alt=""
+        class="site-nav__logo-img site-nav__logo-img--white"
+        widths={[180, 320, 480]}
+        sizes="180px"
+        loading="eager"
+      />
     </a>
 
     <button
@@ -122,14 +142,22 @@ const isActive = (slug) => {
   }
 
   .site-nav__logo {
-    color: var(--color-fg);
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-size: var(--fs-lg);
-    line-height: 1;
     flex-shrink: 0;
   }
-  .site-nav__logo strong { color: var(--color-red); }
-  .site-nav__logo span   { color: var(--color-blue); font-weight: var(--fw-medium); }
+
+  .site-nav__logo-img {
+    display: block;
+    width: clamp(140px, 16vw, 190px);
+    height: auto;
+  }
+
+  .site-nav__logo-img--white { display: none; }
+
+  :global(:root[data-theme="dark"]) .site-nav__logo-img--black { display: none; }
+  :global(:root[data-theme="dark"]) .site-nav__logo-img--white { display: block; }
 
   .site-nav__toggle {
     display: none;

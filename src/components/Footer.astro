@@ -5,6 +5,10 @@
  * Self-contained translations and styles.
  */
 
+import { Image } from 'astro:assets';
+
+import logoWhite from '../assets/logo/skydive-logo-white.png';
+
 const lang = Astro.currentLocale ?? 'en';
 const year = new Date().getFullYear();
 
@@ -48,9 +52,14 @@ const t = labels[lang] ?? labels.en;
   <div class="site-footer__inner">
 
     <div class="site-footer__brand">
-      <p class="site-footer__name">
-        <strong>Skydive</strong> <span>Luxembourg</span>
-      </p>
+      <Image
+        src={logoWhite}
+        alt="Skydive Luxembourg"
+        class="site-footer__logo"
+        widths={[220, 360, 520]}
+        sizes="220px"
+        loading="lazy"
+      />
       <p class="site-footer__tagline">{t.tagline}</p>
     </div>
 
@@ -115,12 +124,12 @@ const t = labels[lang] ?? labels.en;
     gap: var(--space-8);
   }
 
-  .site-footer__name {
-    font-size: var(--fs-xl);
+  .site-footer__logo {
+    display: block;
+    width: min(220px, 80vw);
+    height: auto;
     margin-bottom: var(--space-2);
   }
-  .site-footer__name strong { color: var(--color-red); }
-  .site-footer__name span   { color: var(--color-blue); font-weight: var(--fw-medium); }
 
   .site-footer__tagline {
     color: var(--color-on-inverse-muted);
