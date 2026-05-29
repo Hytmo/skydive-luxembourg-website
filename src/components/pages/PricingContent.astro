@@ -1,8 +1,7 @@
 ---
 /**
  * PricingContent.astro — pricing page body. Picks copy by `lang` prop.
- * Prices are copied from the old/current public pricing page:
- * https://www.cerclepara.lu/skydivers/prix/
+ * Club formulas: old/current public pricing page plus confirmed AFF price from Fränz.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import CTABanner from '../sections/CTABanner.astro';
@@ -13,37 +12,13 @@ const BOOKING_URL = 'https://cpl.dz-cloud.com/en/Booking/s1_Options';
 
 const { lang = 'en' } = Astro.props;
 
-const priceRows = {
-  membership: [
-    { key: 'withInsurance', price: '300 €' },
-    { key: 'withoutInsurance', price: '230 €' },
-  ],
-  tandem: [
-    { key: 'tandemVideo', price: '350 €', featured: true },
-    { key: 'tshirt', price: '30 €' },
-  ],
-  school: [],
-  solo: [
-    { key: 'member4000', price: '35 €' },
-    { key: 'member2000', price: '35 €' },
-    { key: 'coached', price: '80 €' },
-    { key: 'checkjump', price: '90 €' },
-    { key: 'guest4000', price: '43 €' },
-    { key: 'guest2000', price: '43 €' },
-  ],
-  rental: [
-    { key: 'rentalMember', price: '15 €' },
-    { key: 'rentalGuest', price: '20 €' },
-    { key: 'packjob', price: '7 €' },
-  ],
-};
-
 const labels = {
   en: {
-    withInsurance: 'Annual membership — third-party insurance and FAI licence included',
-    withoutInsurance: 'Annual membership — without insurance or FAI licence',
+    affFormula: 'AFF course',
     tandemVideo: 'Tandem & video',
     tshirt: 'T-shirt',
+    withInsurance: 'Annual membership — third-party insurance and FAI licence included',
+    withoutInsurance: 'Annual membership — without insurance or FAI licence',
     member4000: 'Member jump — 4 000 m',
     member2000: 'Member jump — 2 000 m',
     coached: 'Coached jump — 1 on 1',
@@ -53,13 +28,13 @@ const labels = {
     rentalMember: 'Parachute rental — members',
     rentalGuest: 'Parachute rental — guests',
     packjob: 'Pack job',
-    trainingContact: 'AFF / training formula',
   },
   fr: {
-    withInsurance: 'Cotisation annuelle — assurance tiers et licence FAI incluses',
-    withoutInsurance: 'Cotisation annuelle — sans assurance ni licence FAI',
+    affFormula: 'Cours AFF',
     tandemVideo: 'Tandem & vidéo',
     tshirt: 'T-shirt',
+    withInsurance: 'Cotisation annuelle — assurance tiers et licence FAI incluses',
+    withoutInsurance: 'Cotisation annuelle — sans assurance ni licence FAI',
     member4000: 'Saut membre — 4 000 m',
     member2000: 'Saut membre — 2 000 m',
     coached: 'Saut coaché — 1 on 1',
@@ -69,13 +44,13 @@ const labels = {
     rentalMember: 'Location parachute — membres',
     rentalGuest: 'Location parachute — guest',
     packjob: 'Packjob',
-    trainingContact: 'Formule AFF / formation',
   },
   de: {
-    withInsurance: 'Jahresmitgliedschaft — Haftpflichtversicherung und FAI-Lizenz inklusive',
-    withoutInsurance: 'Jahresmitgliedschaft — ohne Versicherung und FAI-Lizenz',
+    affFormula: 'AFF-Kurs',
     tandemVideo: 'Tandem & Video',
     tshirt: 'T-Shirt',
+    withInsurance: 'Jahresmitgliedschaft — Haftpflichtversicherung und FAI-Lizenz inklusive',
+    withoutInsurance: 'Jahresmitgliedschaft — ohne Versicherung und FAI-Lizenz',
     member4000: 'Mitgliedersprung — 4 000 m',
     member2000: 'Mitgliedersprung — 2 000 m',
     coached: 'Coach-Sprung — 1 on 1',
@@ -85,7 +60,6 @@ const labels = {
     rentalMember: 'Fallschirmmiete — Mitglieder',
     rentalGuest: 'Fallschirmmiete — Gäste',
     packjob: 'Packjob',
-    trainingContact: 'AFF- / Ausbildungsformel',
   },
 }[lang];
 
@@ -93,21 +67,20 @@ const t = {
   en: {
     bannerEyebrow: 'Prices',
     bannerTitle: 'Current club formulas.',
-    bannerSubtitle: 'The formulas below are copied from the current published Skydive Luxembourg tariff page — no invented packages, no fake upsells.',
+    bannerSubtitle: 'AFF and tandem first, then the current club prices for members, guests, rental and packing.',
     introEyebrow: 'Tariffs',
-    introTitle: 'Simple prices for members, guests and tandem passengers.',
-    introText: 'All prices are the current published club prices. Écolage/training does not currently list a public price on the old site, so it is shown as contact-first instead of guessing.',
-    sourceText: 'Source: current old-site pricing page checked during rebuild.',
+    introTitle: 'Start with the main formulas. Everything else stays easy to scan.',
+    introText: 'AFF is now shown at the confirmed club price of 2 500 €. The remaining formulas are copied from the current published Skydive Luxembourg tariff page.',
+    sourceText: 'Sources: current old-site pricing page, plus confirmed AFF price from SDL.',
+    affNote: 'Training formula',
+    tandemNote: 'Most common first-jump formula',
+    primaryAction: 'Ask about AFF',
+    tandemAction: 'Book a tandem',
     ctaTitle: 'Questions about a formula?',
     ctaSubtitle: 'Write to us before booking — especially for training, licences, guest jumps or equipment rental.',
-    ctaPrimary: 'Book a tandem',
     ctaSecondary: 'Contact us',
-    contact: 'Ask us',
-    onRequest: 'On request',
     sections: {
       membership: { eyebrow: 'Membership', title: 'Become a member', description: 'Annual club membership options.' },
-      tandem: { eyebrow: 'Tandem jumps', title: 'Tandem formulas', description: 'Current tandem package and T-shirt price.' },
-      school: { eyebrow: 'Training', title: 'Écolage', description: 'No public training price is listed on the old tariff page. Contact us for the current AFF/training formula.' },
       solo: { eyebrow: 'Solo skydivers', title: 'Jump tickets', description: 'Member, guest, coached and check-jump prices.' },
       rental: { eyebrow: 'Rental', title: 'Gear and packing', description: 'Rental and pack-job prices.' },
     },
@@ -115,21 +88,20 @@ const t = {
   fr: {
     bannerEyebrow: 'Tarifs',
     bannerTitle: 'Les formules actuelles du club.',
-    bannerSubtitle: 'Les formules ci-dessous reprennent les prix actuellement publiés sur l’ancien site Skydive Luxembourg — pas de forfaits inventés.',
+    bannerSubtitle: 'AFF et tandem en premier, puis les prix actuels pour membres, guests, location et pliage.',
     introEyebrow: 'Tarifs',
-    introTitle: 'Des prix simples pour membres, guests et passagers tandem.',
-    introText: 'Tous les montants sont les prix actuellement publiés par le club. L’écolage/la formation n’affiche pas de prix public sur l’ancien site; nous l’indiquons donc sur demande au lieu d’inventer un tarif.',
-    sourceText: 'Source : page tarifs actuelle de l’ancien site, vérifiée pendant la reconstruction.',
+    introTitle: 'Les formules principales d’abord. Le reste reste facile à lire.',
+    introText: 'L’AFF est maintenant affiché au prix club confirmé de 2 500 €. Les autres formules reprennent les tarifs actuellement publiés par Skydive Luxembourg.',
+    sourceText: 'Sources : page tarifs actuelle de l’ancien site, plus prix AFF confirmé par SDL.',
+    affNote: 'Formule formation',
+    tandemNote: 'Formule premier saut la plus demandée',
+    primaryAction: 'Demander l’AFF',
+    tandemAction: 'Réserver un tandem',
     ctaTitle: 'Une question sur une formule ?',
     ctaSubtitle: 'Contactez-nous avant de réserver — surtout pour la formation, les licences, les sauts guest ou la location de matériel.',
-    ctaPrimary: 'Réserver un tandem',
     ctaSecondary: 'Nous contacter',
-    contact: 'Nous demander',
-    onRequest: 'Sur demande',
     sections: {
       membership: { eyebrow: 'Membres', title: 'Devenir membre', description: 'Options de cotisation annuelle du club.' },
-      tandem: { eyebrow: 'Sauts en tandem', title: 'Formules tandem', description: 'Forfait tandem actuel et prix du T-shirt.' },
-      school: { eyebrow: 'Formation', title: 'Écolage', description: 'Aucun prix de formation public n’est indiqué sur l’ancienne page tarifs. Contactez-nous pour la formule AFF/formation actuelle.' },
       solo: { eyebrow: 'Solo skydivers', title: 'Tickets de saut', description: 'Prix membres, guests, sauts coachés et checkjumps.' },
       rental: { eyebrow: 'Location', title: 'Matériel et pliage', description: 'Prix de location et de packjob.' },
     },
@@ -137,21 +109,20 @@ const t = {
   de: {
     bannerEyebrow: 'Preise',
     bannerTitle: 'Die aktuellen Club-Formeln.',
-    bannerSubtitle: 'Die Formeln unten übernehmen die aktuell veröffentlichten Preise der alten Skydive-Luxembourg-Seite — keine erfundenen Pakete.',
+    bannerSubtitle: 'AFF und Tandem zuerst, danach die aktuellen Clubpreise für Mitglieder, Gäste, Miete und Packen.',
     introEyebrow: 'Tarife',
-    introTitle: 'Klare Preise für Mitglieder, Gäste und Tandempassagiere.',
-    introText: 'Alle Beträge sind die aktuell veröffentlichten Clubpreise. Für Écolage/Ausbildung steht auf der alten Seite kein öffentlicher Preis; deshalb zeigen wir hier Kontakt statt Fantasiepreis.',
-    sourceText: 'Quelle: aktuelle Preisseite der alten Website, während des Rebuilds geprüft.',
+    introTitle: 'Die wichtigsten Formeln zuerst. Der Rest bleibt einfach scannbar.',
+    introText: 'AFF ist jetzt mit dem bestätigten Clubpreis von 2 500 € angegeben. Die übrigen Formeln übernehmen die aktuell veröffentlichten Preise von Skydive Luxembourg.',
+    sourceText: 'Quellen: aktuelle Preisseite der alten Website plus bestätigter AFF-Preis von SDL.',
+    affNote: 'Ausbildungsformel',
+    tandemNote: 'Häufigste Erst-Sprung-Formel',
+    primaryAction: 'AFF anfragen',
+    tandemAction: 'Tandem buchen',
     ctaTitle: 'Frage zu einer Formel?',
     ctaSubtitle: 'Schreib uns vor der Buchung — besonders bei Ausbildung, Lizenzen, Gastsprüngen oder Materialmiete.',
-    ctaPrimary: 'Tandem buchen',
     ctaSecondary: 'Kontakt',
-    contact: 'Anfragen',
-    onRequest: 'Auf Anfrage',
     sections: {
       membership: { eyebrow: 'Mitgliedschaft', title: 'Mitglied werden', description: 'Jährliche Club-Mitgliedschaften.' },
-      tandem: { eyebrow: 'Tandemsprünge', title: 'Tandem-Formeln', description: 'Aktuelles Tandempaket und T-Shirt-Preis.' },
-      school: { eyebrow: 'Ausbildung', title: 'Écolage', description: 'Auf der alten Preisseite ist kein öffentlicher Ausbildungspreis angegeben. Kontaktiere uns für die aktuelle AFF-/Ausbildungsformel.' },
       solo: { eyebrow: 'Solo skydivers', title: 'Sprungtickets', description: 'Preise für Mitglieder, Gäste, Coach-Sprünge und Checkjumps.' },
       rental: { eyebrow: 'Miete', title: 'Material und Packen', description: 'Preise für Materialmiete und Packjob.' },
     },
@@ -159,13 +130,63 @@ const t = {
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+const affHref = `/${lang}/aff`;
+const funJumpersHref = `/${lang}/fun-jumpers`;
 
-const cards = [
-  { id: 'membership', rows: priceRows.membership, cta: { label: t.contact, href: contactHref } },
-  { id: 'tandem', rows: priceRows.tandem, cta: { label: t.ctaPrimary, href: BOOKING_URL }, highlighted: true },
-  { id: 'school', rows: [{ key: 'trainingContact', price: t.onRequest }], cta: { label: t.contact, href: `/${lang}/aff` } },
-  { id: 'solo', rows: priceRows.solo, cta: { label: t.contact, href: `/${lang}/fun-jumpers` } },
-  { id: 'rental', rows: priceRows.rental, cta: { label: t.contact, href: contactHref } },
+const featured = [
+  {
+    id: 'aff',
+    eyebrow: 'AFF',
+    title: labels.affFormula,
+    price: '2 500 €',
+    note: t.affNote,
+    href: affHref,
+    cta: t.primaryAction,
+    variant: 'dark',
+  },
+  {
+    id: 'tandem',
+    eyebrow: 'Tandem',
+    title: labels.tandemVideo,
+    price: '350 €',
+    note: t.tandemNote,
+    href: BOOKING_URL,
+    cta: t.tandemAction,
+    variant: 'light',
+  },
+];
+
+const detailCards = [
+  {
+    id: 'membership',
+    rows: [
+      { key: 'withInsurance', price: '300 €' },
+      { key: 'withoutInsurance', price: '230 €' },
+    ],
+    href: contactHref,
+  },
+  {
+    id: 'solo',
+    rows: [
+      { key: 'member4000', price: '35 €' },
+      { key: 'member2000', price: '35 €' },
+      { key: 'coached', price: '80 €' },
+      { key: 'checkjump', price: '90 €' },
+      { key: 'guest4000', price: '43 €' },
+      { key: 'guest2000', price: '43 €' },
+    ],
+    href: funJumpersHref,
+  },
+  {
+    id: 'rental',
+    rows: [
+      { key: 'tshirt', price: '30 €' },
+      { key: 'rentalMember', price: '15 €' },
+      { key: 'rentalGuest', price: '20 €' },
+      { key: 'packjob', price: '7 €' },
+    ],
+    href: contactHref,
+  },
 ];
 ---
 
@@ -188,43 +209,47 @@ const cards = [
   </div>
 </section>
 
-<section class="section section--alt">
+<section class="section section--alt pricing-section">
   <div class="section__inner">
-    <div class="tariff-grid">
-      {cards.map((card) => {
+    <div class="featured-prices">
+      {featured.map((item) => (
+        <article class={`formula-card formula-card--${item.variant}`}>
+          <div>
+            <p class="formula-card__eyebrow">{item.eyebrow}</p>
+            <h2>{item.title}</h2>
+            <p>{item.note}</p>
+          </div>
+          <p class="formula-card__price">{item.price}</p>
+          <a
+            href={item.href}
+            class={`btn ${item.variant === 'dark' ? 'btn--primary' : 'btn--outline'}`}
+            {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {item.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="detail-prices">
+      {detailCards.map((card) => {
         const section = t.sections[card.id];
         return (
-          <article class={`tariff-card${card.highlighted ? ' tariff-card--highlighted' : ''}`}>
-            <div class="tariff-card__header">
-              <p class="tariff-card__eyebrow">{section.eyebrow}</p>
+          <article class="detail-card">
+            <header class="detail-card__header">
+              <p class="detail-card__eyebrow">{section.eyebrow}</p>
               <h2>{section.title}</h2>
               <p>{section.description}</p>
-            </div>
-
-            {card.rows.length > 0 ? (
-              <dl class="tariff-list">
-                {card.rows.map((row) => (
-                  <div class={`tariff-row${row.featured ? ' tariff-row--featured' : ''}`}>
-                    <dt>{labels[row.key]}</dt>
-                    <dd>{row.price}</dd>
-                  </div>
-                ))}
-              </dl>
-            ) : (
-              <div class="tariff-empty">
-                <p>{section.description}</p>
-              </div>
-            )}
-
-            {card.cta && (
-              <a
-                href={card.cta.href}
-                class={`btn ${card.highlighted ? 'btn--primary' : 'btn--outline'}`}
-                {...(card.cta.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {card.cta.label}
-              </a>
-            )}
+            </header>
+            <dl class="tariff-list">
+              {card.rows.map((row) => (
+                <div class="tariff-row">
+                  <dt>{labels[row.key]}</dt>
+                  <dd>{row.price}</dd>
+                </div>
+              ))}
+            </dl>
+            <a href={card.href} class="detail-card__link">{t.ctaSecondary} →</a>
           </article>
         );
       })}
@@ -235,7 +260,7 @@ const cards = [
 <CTABanner
   title={t.ctaTitle}
   subtitle={t.ctaSubtitle}
-  primaryCta={{ label: t.ctaPrimary, href: BOOKING_URL }}
+  primaryCta={{ label: t.tandemAction, href: BOOKING_URL }}
   secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
 />
 
@@ -246,50 +271,130 @@ const cards = [
     font-size: var(--fs-sm);
   }
 
-  .tariff-grid {
+  .pricing-section {
+    padding-top: var(--space-8);
+  }
+
+  .pricing-section :global(.section__inner) {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .featured-prices {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-6);
-    align-items: start;
   }
 
-  .tariff-card {
+  .formula-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+    padding: clamp(var(--space-8), 4vw, var(--space-12));
+    border-radius: var(--radius-lg, 24px);
+    display: grid;
+    align-content: space-between;
+    gap: var(--space-8);
+    box-shadow: rgba(50, 50, 93, 0.25) 0 30px 45px -30px, rgba(0, 0, 0, 0.1) 0 18px 36px -18px;
+  }
+
+  .formula-card--dark {
+    color: white;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(249, 107, 238, 0.35), transparent 32%),
+      linear-gradient(135deg, #061b31 0%, #1c1e54 56%, #533afd 130%);
+  }
+
+  .formula-card--light {
+    color: var(--color-fg);
+    background:
+      radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--color-cta) 24%, transparent), transparent 34%),
+      linear-gradient(145deg, color-mix(in srgb, var(--color-cta) 7%, var(--color-bg)) 0%, var(--color-bg) 48%),
+      var(--color-bg);
+    border: 1px solid color-mix(in srgb, var(--color-cta) 24%, var(--color-border));
+  }
+
+  .formula-card__eyebrow,
+  .detail-card__eyebrow {
+    margin: 0 0 var(--space-3);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .formula-card__eyebrow {
+    color: color-mix(in srgb, currentColor 72%, transparent);
+  }
+
+  .formula-card h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .formula-card p:not(.formula-card__price) {
+    margin: var(--space-3) 0 0;
+    max-width: 34rem;
+    color: color-mix(in srgb, currentColor 72%, transparent);
+    font-size: var(--fs-lg);
+  }
+
+  .formula-card__price {
+    margin: 0;
+    font-size: clamp(3.75rem, 9vw, 6.5rem);
+    font-weight: var(--fw-bold);
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .formula-card .btn {
+    justify-self: start;
+    min-width: 12rem;
+  }
+
+  .formula-card--dark .btn--primary {
+    background: white;
+    border-color: white;
+    color: #061b31;
+  }
+
+  .detail-prices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    align-items: stretch;
+  }
+
+  .detail-card {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--space-8);
-    display: flex;
-    flex-direction: column;
+    padding: var(--space-10) var(--space-7) var(--space-8);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     gap: var(--space-6);
     box-shadow: var(--shadow-sm);
   }
 
-  .tariff-card--highlighted {
-    border-color: var(--color-cta);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .tariff-card__header {
+  .detail-card__header {
     display: grid;
     gap: var(--space-2);
+    padding-top: var(--space-2);
   }
 
-  .tariff-card__eyebrow {
-    margin: 0;
+  .detail-card__eyebrow {
     color: var(--color-blue);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
   }
 
-  .tariff-card__header h2 {
-    font-size: var(--fs-2xl);
+  .detail-card__header h2 {
     margin: 0;
+    font-size: var(--fs-2xl);
   }
 
-  .tariff-card__header p:last-child,
-  .tariff-empty p {
+  .detail-card__header p {
     margin: 0;
     color: var(--color-fg-muted);
   }
@@ -297,8 +402,8 @@ const cards = [
   .tariff-list {
     margin: 0;
     display: grid;
-    gap: var(--space-3);
     align-content: start;
+    gap: var(--space-3);
   }
 
   .tariff-row {
@@ -306,56 +411,63 @@ const cards = [
     grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-4);
     align-items: baseline;
-    padding: var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--color-bg-alt);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .tariff-row--featured {
-    border-color: var(--color-cta);
-    background: color-mix(in srgb, var(--color-cta) 8%, var(--color-bg));
+  .tariff-row:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .tariff-row dt {
+    color: var(--color-fg-muted);
     font-weight: var(--fw-medium);
   }
 
   .tariff-row dd {
     margin: 0;
-    font-size: var(--fs-2xl);
-    font-weight: var(--fw-bold);
     color: var(--color-fg);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 
-  .tariff-empty {
-    flex: 1;
-    padding: var(--space-5);
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--color-bg-alt);
+  .detail-card__link {
+    color: var(--color-cta);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
   }
 
-  .tariff-card .btn {
-    width: 100%;
-    margin-top: auto;
+  .detail-card__link:hover {
+    text-decoration: underline;
   }
 
-  @media (max-width: 900px) {
-    .tariff-grid {
+  @media (max-width: 980px) {
+    .featured-prices,
+    .detail-prices {
       grid-template-columns: 1fr;
+    }
+
+    .formula-card {
+      min-height: 280px;
     }
   }
 
   @media (max-width: 560px) {
-    .tariff-card {
+    .formula-card,
+    .detail-card {
       padding: var(--space-6);
+    }
+
+    .formula-card__price {
+      font-size: clamp(3rem, 18vw, 4.5rem);
     }
 
     .tariff-row {
       grid-template-columns: 1fr;
-      gap: var(--space-2);
+      gap: var(--space-1);
     }
   }
 </style>
