@@ -98,7 +98,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 58%;
-  z-index: -2;
+  z-index: 0;
 }
 
 .page-banner::after {
@@ -112,10 +112,12 @@
     rgba(0, 0, 0, 0.08) 72%,
     rgba(0, 0, 0, 0.02) 100%
   );
-  z-index: -1;
+  z-index: 1;
 }
 
 .page-banner__inner {
+  position: relative;
+  z-index: 2;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
