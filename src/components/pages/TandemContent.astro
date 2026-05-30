@@ -1,6 +1,6 @@
 ---
 /**
- * TandemContent.astro — tandem jump page body. Picks copy by `lang` prop.
+ * TandemContent.astro - tandem jump page body. Picks copy by `lang` prop.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
@@ -18,12 +18,12 @@ const { lang = 'en' } = Astro.props;
 const t = {
   en: {
     bannerEyebrow: 'Tandem skydive',
-    bannerTitle: 'Your first jump — strapped to a pro.',
+    bannerTitle: 'Your first jump, strapped to a pro.',
     bannerSubtitle: 'A 20-minute scenic flight, a jump from 4,000 metres and freefall at around 200 km/h. No experience required.',
 
     introEyebrow: 'What is a tandem jump?',
-    introTitle: 'The easiest way to skydive.',
-    introText: 'Experience the thrill of freefall with a tandem skydive. After a quick 15-minute briefing, you are securely harnessed to a professional instructor. Enjoy a 20-minute scenic flight, then jump from 4,000 m, reaching around 200 km/h in freefall. At about 1,500 m, your parachute opens for a 5–7 minute glide to a smooth landing.',
+    introTitle: 'The easiest and most accessible way to skydive.',
+    introText: 'Experience the thrill of freefall with a tandem skydive. After a 15-minute briefing, you are securely harnessed to a professional instructor. Enjoy a 20-minute scenic flight, then jump from 4,000 m, reaching around 200 km/h in freefall. At about 1,500 m, your parachute opens for a 5-7 minute glide to a smooth landing.',
 
     expectEyebrow: 'What to expect',
     expectTitle: 'Three steps from ground to ground.',
@@ -31,24 +31,24 @@ const t = {
 
     steps: [
       { title: '1. Briefing & gear-up', text: 'On arrival we sign you in, weigh you, then walk you through a 15-minute briefing covering the exit, the freefall position and the landing. Your instructor fits your harness and double-checks every buckle before you board.', image: step1Img, alt: 'Tandem briefing on the ground' },
-      { title: '2. Scenic flight to altitude', text: 'Enjoy a roughly 20-minute flight before the door opens at 4,000 metres. Take in the view over Luxembourg and the surrounding region — then get ready for the big moment.', image: step2Img, alt: 'View from the aircraft on the climb' },
-      { title: '3. Freefall & canopy', text: 'Freefall at around 200 km/h, then your instructor opens the canopy at about 1,500 metres for a calm 5–7 minute glide back to the dropzone and a smooth landing.', image: step3Img, alt: 'Open canopy on the descent' },
+      { title: '2. Scenic flight to altitude', text: 'Enjoy a roughly 20-minute flight before the door opens at 4,000 metres. Take in the view over Luxembourg and the surrounding region, then get ready for the big moment.', image: step2Img, alt: 'View from the aircraft on the climb' },
+      { title: '3. Freefall & canopy', text: 'Freefall at around 200 km/h, then your instructor opens the canopy at about 1,500 metres for a calm 5-7 minute glide back to the dropzone and a smooth landing.', image: step3Img, alt: 'Open canopy on the descent' },
     ],
 
     reqEyebrow: 'Requirements',
     reqTitle: 'Can I jump?',
-    reqLead: 'Most adults in reasonable health can. Please read through the points below — if anything is unclear, get in touch before booking.',
+    reqLead: 'Most adults in reasonable health can. Please read through the points below - if anything is unclear, get in touch before booking.',
     reqs: [
       'Minimum age 14. Under-18s need parental consent.',
       'Maximum body weight 90 kg and minimum height 150 cm.',
       'Not allowed during pregnancy, or with heart, respiratory or back problems. If unsure, contact us before booking.',
       'No scuba diving in the 24 hours before your jump.',
-      'No alcohol before your jump.',
+      'No alcohol or drugs before your jump.',
     ],
 
     bookEyebrow: 'Booking',
     bookTitle: 'Pick a date and we\'ll see you on the dropzone.',
-    bookText: 'Tandem jumps are weather dependent. If conditions are unsafe, we reschedule. Cancellations are accepted only with a medical certificate; no-shows lose the jump. Jumps are valid for 3 years, non-refundable but transferable. Gift vouchers are possible — please make sure the recipient contact details are correct.',
+    bookText: 'Tandem jumps are weather dependent. If conditions are unsafe, we reschedule. Cancellations are accepted only with a medical certificate; no-shows lose the jump. Jumps are valid for 3 years, non-refundable but transferable. Gift vouchers are possible - please make sure the recipient contact details are correct.',
     bookCta: 'Book your tandem',
 
     bringEyebrow: 'On the day',
@@ -57,7 +57,7 @@ const t = {
       'Photo ID (passport or national ID).',
       'Comfortable, weather-appropriate clothing. Layers in spring and autumn.',
       'Trainers or light boots with ankle support. No sandals or open shoes.',
-      'Glasses are fine — we provide goggles that fit over them.',
+      'Glasses are fine - we provide goggles that fit over them.',
       'A good night\'s sleep and a light meal beforehand.',
     ],
 
@@ -82,13 +82,13 @@ const t = {
 
     steps: [
       { title: '1. Briefing et équipement', text: 'À votre arrivée, nous procédons à l\'enregistrement, à la pesée, puis à un briefing de 15 minutes : la sortie, la position en chute, l\'atterrissage. Votre moniteur ajuste le harnais et vérifie chaque boucle avant l\'embarquement.', image: step1Img, alt: 'Briefing tandem au sol' },
-      { title: '2. Vol panoramique vers l’altitude', text: 'Profitez d’un vol d’environ 20 minutes avant l’ouverture de la porte à 4 000 mètres. Admirez le Luxembourg et la région — puis préparez-vous pour le grand moment.', image: step2Img, alt: 'Vue depuis l\'avion pendant la montée' },
+      { title: '2. Vol panoramique vers l’altitude', text: 'Profitez d’un vol d’environ 20 minutes avant l’ouverture de la porte à 4 000 mètres. Admirez le Luxembourg et la région - puis préparez-vous pour le grand moment.', image: step2Img, alt: 'Vue depuis l\'avion pendant la montée' },
       { title: '3. Chute libre et voile', text: 'Chute libre à environ 200 km/h, puis ouverture de la voile vers 1 500 mètres pour une descente douce de 5–7 minutes jusqu’à l’atterrissage.', image: step3Img, alt: 'Voile ouverte pendant la descente' },
     ],
 
     reqEyebrow: 'Conditions',
     reqTitle: 'Puis-je sauter ?',
-    reqLead: 'La plupart des adultes en bonne santé le peuvent. Lisez les points ci-dessous — au moindre doute, contactez-nous avant de réserver.',
+    reqLead: 'La plupart des adultes en bonne santé le peuvent. Lisez les points ci-dessous - au moindre doute, contactez-nous avant de réserver.',
     reqs: [
       'Âge minimum : 14 ans. Les mineurs doivent fournir une autorisation parentale.',
       'Poids maximum : 90 kg et taille minimum : 150 cm.',
@@ -98,8 +98,8 @@ const t = {
     ],
 
     bookEyebrow: 'Réservation',
-    bookTitle: 'Choisissez une date — on vous attend sur la DZ.',
-    bookText: 'Les sauts en tandem dépendent de la météo. Si les conditions ne sont pas sûres, le saut est reporté. Les annulations sont acceptées uniquement avec certificat médical; en cas d’absence, le saut est perdu. Les sauts sont valables 3 ans, non remboursables mais transférables. Les bons cadeaux sont possibles — assurez-vous des bonnes coordonnées du bénéficiaire.',
+    bookTitle: 'Choisissez une date - on vous attend sur la DZ.',
+    bookText: 'Les sauts en tandem dépendent de la météo. Si les conditions ne sont pas sûres, le saut est reporté. Les annulations sont acceptées uniquement avec certificat médical; en cas d’absence, le saut est perdu. Les sauts sont valables 3 ans, non remboursables mais transférables. Les bons cadeaux sont possibles - assurez-vous des bonnes coordonnées du bénéficiaire.',
     bookCta: 'Réserver mon tandem',
 
     bringEyebrow: 'Le jour J',
@@ -108,7 +108,7 @@ const t = {
       'Une pièce d\'identité avec photo (passeport ou carte d\'identité).',
       'Des vêtements confortables et adaptés à la météo. Pensez aux couches au printemps et en automne.',
       'Des baskets ou chaussures montantes avec maintien de cheville. Pas de sandales ni de chaussures ouvertes.',
-      'Les lunettes de vue ne posent aucun problème — nos masques se mettent par-dessus.',
+      'Les lunettes de vue ne posent aucun problème - nos masques se mettent par-dessus.',
       'Une bonne nuit de sommeil et un repas léger avant de venir.',
     ],
 
@@ -120,7 +120,7 @@ const t = {
 
   de: {
     bannerEyebrow: 'Tandemsprung',
-    bannerTitle: 'Dein erster Sprung — angeschnallt an einen Profi.',
+    bannerTitle: 'Dein erster Sprung - angeschnallt an einen Profi.',
     bannerSubtitle: 'Ein 20-minütiger Rundflug, ein Sprung aus 4 000 Metern und freier Fall mit rund 200 km/h. Keine Vorkenntnisse nötig.',
 
     introEyebrow: 'Was ist ein Tandemsprung?',
@@ -133,13 +133,13 @@ const t = {
 
     steps: [
       { title: '1. Briefing und Anlegen', text: 'Bei der Ankunft melden wir dich an, wiegen dich und geben dir ein 15-minütiges Briefing zu Ausstieg, Fallhaltung und Landung. Dein Lehrer passt den Gurt an und kontrolliert vor dem Einsteigen jede einzelne Schnalle.', image: step1Img, alt: 'Tandem-Briefing am Boden' },
-      { title: '2. Rundflug auf Höhe', text: 'Genieße einen etwa 20-minütigen Flug, bevor sich die Tür auf 4 000 Metern öffnet. Blick über Luxemburg und die Region — dann kommt der große Moment.', image: step2Img, alt: 'Blick aus dem Flugzeug beim Steigflug' },
+      { title: '2. Rundflug auf Höhe', text: 'Genieße einen etwa 20-minütigen Flug, bevor sich die Tür auf 4 000 Metern öffnet. Blick über Luxemburg und die Region - dann kommt der große Moment.', image: step2Img, alt: 'Blick aus dem Flugzeug beim Steigflug' },
       { title: '3. Freier Fall und Schirm', text: 'Freier Fall mit rund 200 km/h, dann öffnet dein Lehrer den Schirm auf etwa 1 500 Metern für eine 5–7-minütige Gleitphase bis zur sicheren Landung.', image: step3Img, alt: 'Offener Schirm beim Abstieg' },
     ],
 
     reqEyebrow: 'Voraussetzungen',
     reqTitle: 'Darf ich springen?',
-    reqLead: 'Die meisten gesunden Erwachsenen können das. Bitte lies die Punkte unten — wenn etwas unklar ist, melde dich vor der Buchung bei uns.',
+    reqLead: 'Die meisten gesunden Erwachsenen können das. Bitte lies die Punkte unten - wenn etwas unklar ist, melde dich vor der Buchung bei uns.',
     reqs: [
       'Mindestalter 14 Jahre. Unter 18 Jahren ist die Einverständniserklärung eines Erziehungsberechtigten nötig.',
       'Höchstgewicht 90 kg und Mindestgröße 150 cm.',
@@ -149,8 +149,8 @@ const t = {
     ],
 
     bookEyebrow: 'Buchung',
-    bookTitle: 'Wähle ein Datum — wir sehen uns am Flugplatz.',
-    bookText: 'Tandemsprünge sind wetterabhängig. Wenn die Bedingungen nicht sicher sind, wird der Sprung verschoben. Stornierungen sind nur mit Attest möglich; Nichterscheinen bedeutet Verlust des Sprungs. Sprünge sind 3 Jahre gültig, nicht erstattungsfähig, aber übertragbar. Gutscheine sind möglich — bitte korrekte Kontaktdaten des Empfängers angeben.',
+    bookTitle: 'Wähle ein Datum - wir sehen uns am Flugplatz.',
+    bookText: 'Tandemsprünge sind wetterabhängig. Wenn die Bedingungen nicht sicher sind, wird der Sprung verschoben. Stornierungen sind nur mit Attest möglich; Nichterscheinen bedeutet Verlust des Sprungs. Sprünge sind 3 Jahre gültig, nicht erstattungsfähig, aber übertragbar. Gutscheine sind möglich - bitte korrekte Kontaktdaten des Empfängers angeben.',
     bookCta: 'Tandem buchen',
 
     bringEyebrow: 'Am Sprungtag',
@@ -159,7 +159,7 @@ const t = {
       'Einen Lichtbildausweis (Reisepass oder Personalausweis).',
       'Bequeme, wettergerechte Kleidung. Im Frühling und Herbst Zwiebellook.',
       'Turnschuhe oder leichte Stiefel mit Knöchelhalt. Keine Sandalen oder offenen Schuhe.',
-      'Brillen sind kein Problem — unsere Schutzbrillen passen darüber.',
+      'Brillen sind kein Problem - unsere Schutzbrillen passen darüber.',
       'Eine gute Nacht Schlaf und eine leichte Mahlzeit vorher.',
     ],
 

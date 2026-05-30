@@ -1,5 +1,5 @@
 /* =========================================================================
-   Skydive Luxembourg — Design Tokens
+   Skydive Luxembourg - Design Tokens
    Single source of truth for colors, typography, spacing, and motion.
    Change a value here and it propagates everywhere.
    ========================================================================= */
@@ -11,11 +11,11 @@
   /* Base palette */
   --color-bg:        #FFFFFF;   /* page background */
   --color-bg-alt:    #F5F5F5;   /* alternating sections, cards */
-  --color-fg:        #0A0A0A;   /* main text — softer than pure black */
+  --color-fg:        #0A0A0A;   /* main text - softer than pure black */
   --color-fg-muted:  #555555;   /* secondary text */
   --color-border:    #E0E0E0;   /* dividers, input borders */
 
-  /* Inverse surfaces — always dark, regardless of theme.
+  /* Inverse surfaces - always dark, regardless of theme.
      Use these for sections that are intentionally dark on every page
      (footer, dark hero banners, CTA strip). */
   --color-surface-inverse: #0A0A0A;
@@ -23,9 +23,9 @@
   --color-on-inverse-muted: #B5B5B5;
 
   /* Luxembourg flag accents */
-  --color-blue:      #00A1DE;   /* LU flag light blue — primary accent */
+  --color-blue:      #00A1DE;   /* LU flag light blue - primary accent */
   --color-blue-dark: #0083B5;   /* hover state */
-  --color-red:       #EF3340;   /* LU flag red — secondary accent */
+  --color-red:       #EF3340;   /* LU flag red - secondary accent */
   --color-red-dark:  #C5232E;   /* hover state */
 
   /* Semantic colors (use these in components, not the raw values above) */
@@ -39,20 +39,20 @@
 
   /* ---------- TYPOGRAPHY ------------------------------------------------ */
 
-  /* System font stack — no external font load, instant render, looks good */
+  /* System font stack - no external font load, instant render, looks good */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-sans);
 
   /* Type scale */
-  --fs-xs:   0.75rem;    /* 12px — footnotes, captions */
-  --fs-sm:   0.875rem;   /* 14px — secondary text */
-  --fs-base: 1rem;       /* 16px — body */
-  --fs-lg:   1.125rem;   /* 18px — lead paragraphs */
-  --fs-xl:   1.5rem;     /* 24px — h3 / card titles */
-  --fs-2xl:  2rem;       /* 32px — h2 / section titles */
-  --fs-3xl:  2.5rem;     /* 40px — h1 / page titles */
-  --fs-4xl:  3.5rem;     /* 56px — hero only */
+  --fs-xs:   0.75rem;    /* 12px - footnotes, captions */
+  --fs-sm:   0.875rem;   /* 14px - secondary text */
+  --fs-base: 1rem;       /* 16px - body */
+  --fs-lg:   1.125rem;   /* 18px - lead paragraphs */
+  --fs-xl:   1.5rem;     /* 24px - h3 / card titles */
+  --fs-2xl:  2rem;       /* 32px - h2 / section titles */
+  --fs-3xl:  2.5rem;     /* 40px - h1 / page titles */
+  --fs-4xl:  3.5rem;     /* 56px - hero only */
 
   --fw-regular: 400;
   --fw-medium:  500;
@@ -108,7 +108,7 @@
 /* ---------- DARK THEME --------------------------------------------------
    Applied when the inline theme script sets [data-theme="dark"] on <html>.
    The script resolves theme from localStorage, or falls back to the user's
-   system preference, before first paint — no flash.
+   system preference, before first paint - no flash.
    ------------------------------------------------------------------------ */
 
 :root[data-theme="dark"] {
@@ -125,7 +125,7 @@
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
-/* Smooth transition when toggling — only colors, not layout.
+/* Smooth transition when toggling - only colors, not layout.
    Skipped on first paint to avoid animating system theme detection. */
 :root.theme-ready,
 :root.theme-ready * {

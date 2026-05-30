@@ -1,6 +1,6 @@
 ---
 /**
- * AFFContent.astro — AFF student page body. Picks copy by `lang` prop.
+ * AFFContent.astro - AFF student page body. Picks copy by `lang` prop.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
@@ -16,66 +16,66 @@ const { lang = 'en' } = Astro.props;
 
 const t = {
   en: {
-    bannerEyebrow: 'AFF — Accelerated Freefall',
+    bannerEyebrow: 'AFF - Accelerated Freefall',
     bannerTitle: 'Learn to skydive on your own.',
-    bannerSubtitle: 'The fastest, safest way to a solo skydiving licence — recognised across Europe.',
+    bannerSubtitle: 'The fastest, safest way to a solo skydiving licence, recognised across Europe.',
 
     introEyebrow: 'What is AFF?',
     introTitle: 'From first jump to solo licence in seven steps.',
-    introText: 'Accelerated Freefall is the modern way to learn how to skydive. Unlike older static-line programmes, AFF puts you in freefall from the very first jump — alongside two qualified jumpmasters who fly with you, give signals in the air, and help correct your body position. The course is structured around seven levels of increasing autonomy. By the end, you\'ll be exiting the aircraft alone, doing your own checks, your own freefall, and your own canopy flight. Around 25 jumps later, you can apply for your A-licence and join the worldwide community of sport parachutists.',
+    introText: 'Accelerated Freefall is the modern way to learn how to skydive. Unlike older static-line programmes, AFF puts you in freefall from the very first jump, alongside two qualified jumpmasters who fly with you, give signals in the air, and help correct your body position. The course is structured around seven levels of increasing autonomy. By the end, you\'ll be exiting the aircraft alone, doing your own checks, your own freefall, and your own canopy flight. Around 25 jumps later, you can apply for your A-licence and join the worldwide community of sport parachutists.',
 
     levelsEyebrow: 'How the course works',
     levelsTitle: 'Seven levels, one mountain to climb.',
-    levelsLead: 'Each level has clear learning objectives. You can repeat any level — there is no rush, no pressure, and no judgement.',
+    levelsLead: 'Each level has clear learning objectives. You can repeat any level. There is no rush, no pressure, and no judgement.',
 
     cards: [
-      { title: 'Ground school', text: 'A full day of classroom and practical training covering equipment, freefall body position, emergency procedures, canopy flight, and landing patterns. You must pass a written and practical exam before your first jump.', image: classroomImg, alt: 'AFF ground school' },
+      { title: 'Ground school', text: 'A full day of classroom and practical training covering equipment, freefall body position, emergency procedures, canopy flight, and landing patterns.', image: classroomImg, alt: 'AFF ground school' },
       { title: 'Levels 1 to 3', text: 'You exit the aircraft with two jumpmasters holding you. Each level teaches a new skill: stable position, turns, forward movement. Two instructors stay with you until you can fly stably on your own.', image: progressImg, alt: 'AFF student in freefall with instructors' },
-      { title: 'Levels 4 to 7', text: 'You\'re now solo in freefall, with one jumpmaster flying nearby to observe and coach. You learn 360° turns, tracking, barrel rolls, and unstable exits — the toolkit you\'ll use for the rest of your jumping career.', image: afterImg, alt: 'Solo AFF student' },
+      { title: 'Levels 4 to 7', text: 'You\'re now solo in freefall, with one jumpmaster flying nearby to observe and coach. You learn 360° turns, tracking, barrel rolls, and unstable exits: the toolkit you\'ll use for the rest of your jumping career.', image: afterImg, alt: 'Solo AFF student' },
     ],
 
     reqEyebrow: 'Requirements',
     reqTitle: 'Who can start AFF?',
-    reqLead: 'AFF is open to most fit adults. There are a few medical and administrative requirements.',
+    reqLead: 'AFF is open to most adults. There are a few medical and administrative requirements.',
     reqs: [
       'Minimum age 16 (parental consent required under 18).',
-      'Body weight between 45 and 100 kg fully clothed.',
-      'A signed medical declaration of fitness; a doctor\'s certificate is required if you answer "yes" to any health question.',
-      'A working knowledge of English, French or German — your instructor must be able to communicate clearly with you in the air.',
-      'Two days of availability for ground school + first jump (we recommend a free week to complete all seven levels).',
+      'Body weight between 45 and 110 kg fully clothed.',
+      'A signed medical declaration of fitness; a doctor\'s certificate is required if you answer "yes" to any health question. We will provide a list of DAC-approved doctors.',
+      'A working knowledge of English, French, German or Luxembourgish; your instructor must be able to communicate clearly with you in the air.',
+      'Two days of availability for ground school + first jump. Always block the whole day during AFF.',
     ],
 
     afterEyebrow: 'After AFF',
     afterTitle: 'Your A-licence is just the beginning.',
-    afterText: 'Once you finish level 7 you\'ll do a few consolidation jumps, then move on to your A-licence proficiency card: pull-priority drills, water landing brief, canopy course, and a 25-jump count. From there, the sport opens up: belly flying with other jumpers, freefly, wingsuiting, formation skydiving, canopy piloting, and — for many of our students — coaching the next generation. We host coach courses, organisers, and load organisers throughout the season.',
+    afterText: 'Once you finish level 7 you\'ll do a few consolidation jumps, then move on to your A-licence proficiency card: pull-priority drills, water landing brief, canopy course, and a 25-jump count. From there, the sport opens up: belly flying with other jumpers, freefly, wingsuiting, formation skydiving, canopy piloting and, for many of our students, coaching the next generation. We host coach courses, organisers, and load organisers throughout the season.',
 
     formEyebrow: 'Sign up',
     formTitle: 'Request information or apply.',
-    formText: 'Season 2026 runs from 04.04 to 31.10.2026. Published AFF courses: course 1 from 30 April to 3 May; course 2 from 3 to 5 July; course 3 to be confirmed, either the last weekend of August or the first weekend of September. Fill in the form below and we will confirm availability and next steps.',
+    formText: 'Season 2026 runs from 04.04 to 31.10.2026. Published AFF courses: course 1 from 30 April to 3 May (closed); course 2 from 3 to 5 July; course 3 to be confirmed, either the last weekend of August or the first weekend of September. Fill in the form below and we will confirm availability and next steps.',
 
     ctaTitle: 'See you in the briefing room.',
-    ctaSubtitle: 'Our next AFF course is filling up — register your interest now.',
+    ctaSubtitle: 'Our next AFF course is filling up. Register your interest now.',
     ctaPrimary: 'Apply now',
     ctaSecondary: 'Contact us',
   },
 
   fr: {
-    bannerEyebrow: 'AFF — Progression Accélérée en Chute',
+    bannerEyebrow: 'AFF - Progression Accélérée en Chute',
     bannerTitle: 'Apprenez à sauter en solo.',
-    bannerSubtitle: 'La voie la plus rapide et la plus sûre vers le brevet de parachutiste autonome — reconnue dans toute l\'Europe.',
+    bannerSubtitle: 'La voie la plus rapide et la plus sûre vers le brevet de parachutiste autonome - reconnue dans toute l\'Europe.',
 
     introEyebrow: 'Qu\'est-ce que l\'AFF ?',
     introTitle: 'Du premier saut à la licence en sept étapes.',
-    introText: 'La méthode AFF est la façon moderne d\'apprendre le parachutisme. Contrairement aux anciens programmes à ouverture automatique, l\'AFF vous met en chute libre dès le premier saut — accompagné de deux moniteurs qualifiés qui volent à vos côtés, vous donnent des signes et corrigent votre position. Le stage est structuré autour de sept niveaux d\'autonomie croissante. À la fin, vous sortirez de l\'avion seul, ferez vos propres vérifications, votre propre chute libre et votre propre vol sous voile. Une vingtaine de sauts plus tard, vous pourrez postuler à votre brevet A et rejoindre la communauté mondiale des parachutistes sportifs.',
+    introText: 'La méthode AFF est la façon moderne d\'apprendre le parachutisme. Contrairement aux anciens programmes à ouverture automatique, l\'AFF vous met en chute libre dès le premier saut - accompagné de deux moniteurs qualifiés qui volent à vos côtés, vous donnent des signes et corrigent votre position. Le stage est structuré autour de sept niveaux d\'autonomie croissante. À la fin, vous sortirez de l\'avion seul, ferez vos propres vérifications, votre propre chute libre et votre propre vol sous voile. Une vingtaine de sauts plus tard, vous pourrez postuler à votre brevet A et rejoindre la communauté mondiale des parachutistes sportifs.',
 
     levelsEyebrow: 'Le déroulé du stage',
     levelsTitle: 'Sept niveaux, une seule progression.',
-    levelsLead: 'Chaque niveau a ses objectifs pédagogiques. Vous pouvez répéter un niveau — pas de course, pas de pression, pas de jugement.',
+    levelsLead: 'Chaque niveau a ses objectifs pédagogiques. Vous pouvez répéter un niveau - pas de course, pas de pression, pas de jugement.',
 
     cards: [
       { title: 'Formation au sol', text: 'Une journée complète de cours théorique et pratique : matériel, position en chute libre, procédures de secours, vol sous voile, circuits d\'atterrissage. Un examen écrit et pratique valide votre formation avant le premier saut.', image: classroomImg, alt: 'Formation AFF au sol' },
       { title: 'Niveaux 1 à 3', text: 'Vous sortez de l\'avion avec deux moniteurs qui vous tiennent. Chaque niveau introduit une compétence : position stable, virages, déplacement. Les deux instructeurs restent avec vous jusqu\'à ce que vous voliez seul de façon stable.', image: progressImg, alt: 'Élève AFF en chute libre avec instructeurs' },
-      { title: 'Niveaux 4 à 7', text: 'Vous êtes désormais seul en chute libre, avec un moniteur qui vous observe et vous coache à côté. Vous apprenez les virages 360°, le déplacement horizontal, les vrilles et les sorties instables — les bases qui vous serviront toute votre carrière.', image: afterImg, alt: 'Élève AFF en solo' },
+      { title: 'Niveaux 4 à 7', text: 'Vous êtes désormais seul en chute libre, avec un moniteur qui vous observe et vous coache à côté. Vous apprenez les virages 360°, le déplacement horizontal, les vrilles et les sorties instables - les bases qui vous serviront toute votre carrière.', image: afterImg, alt: 'Élève AFF en solo' },
     ],
 
     reqEyebrow: 'Conditions',
@@ -85,41 +85,41 @@ const t = {
       'Âge minimum 16 ans (autorisation parentale obligatoire avant 18 ans).',
       'Poids entre 45 et 100 kg habillé.',
       'Déclaration d\'aptitude médicale signée ; un certificat médical est demandé si vous répondez « oui » à une question de santé.',
-      'Une bonne compréhension de l\'anglais, du français ou de l\'allemand — votre moniteur doit pouvoir communiquer clairement avec vous en l\'air.',
+      'Une bonne compréhension de l\'anglais, du français ou de l\'allemand - votre moniteur doit pouvoir communiquer clairement avec vous en l\'air.',
       'Deux jours libres pour la formation au sol et le premier saut (nous recommandons une semaine pour boucler les sept niveaux).',
     ],
 
     afterEyebrow: 'Après l\'AFF',
     afterTitle: 'La licence A n\'est qu\'un début.',
-    afterText: 'Après le niveau 7, vous enchaînez quelques sauts de consolidation, puis votre carnet de progression vers le brevet A : exercices de priorité d\'ouverture, briefing posé dans l\'eau, stage voile et compteur à 25 sauts. Ensuite, le sport s\'ouvre à vous : vol ventre en formation, freefly, wingsuit, voile contact, pilotage sous voile et — pour beaucoup de nos élèves — l\'enseignement à la génération suivante. Nous accueillons des stages coachs, organisateurs et load organizers toute la saison.',
+    afterText: 'Après le niveau 7, vous enchaînez quelques sauts de consolidation, puis votre carnet de progression vers le brevet A : exercices de priorité d\'ouverture, briefing posé dans l\'eau, stage voile et compteur à 25 sauts. Ensuite, le sport s\'ouvre à vous : vol ventre en formation, freefly, wingsuit, voile contact, pilotage sous voile et - pour beaucoup de nos élèves - l\'enseignement à la génération suivante. Nous accueillons des stages coachs, organisateurs et load organizers toute la saison.',
 
     formEyebrow: 'Inscription',
     formTitle: 'Demande d\'informations ou inscription.',
     formText: 'Saison 2026 : du 04.04 au 31.10.2026. Cours AFF publiés : cours 1 du 30 avril au 3 mai; cours 2 du 3 au 5 juillet; cours 3 à confirmer, soit le dernier week-end d’août soit le premier week-end de septembre. Remplissez le formulaire ci-dessous : nous confirmerons les disponibilités et les prochaines étapes.',
 
     ctaTitle: 'Rendez-vous en salle de briefing.',
-    ctaSubtitle: 'Notre prochain stage AFF se remplit — manifestez-vous dès maintenant.',
+    ctaSubtitle: 'Notre prochain stage AFF se remplit - manifestez-vous dès maintenant.',
     ctaPrimary: 'S\'inscrire',
     ctaSecondary: 'Nous contacter',
   },
 
   de: {
-    bannerEyebrow: 'AFF — Accelerated Freefall',
+    bannerEyebrow: 'AFF - Accelerated Freefall',
     bannerTitle: 'Lerne, allein zu springen.',
-    bannerSubtitle: 'Der schnellste, sicherste Weg zur Solo-Sprunglizenz — europaweit anerkannt.',
+    bannerSubtitle: 'Der schnellste, sicherste Weg zur Solo-Sprunglizenz - europaweit anerkannt.',
 
     introEyebrow: 'Was ist AFF?',
     introTitle: 'Vom ersten Sprung zur Lizenz in sieben Stufen.',
-    introText: 'Accelerated Freefall ist die moderne Art, Fallschirmspringen zu lernen. Anders als ältere Reißleinen-Programme bist du beim AFF schon ab dem ersten Sprung im freien Fall — begleitet von zwei geprüften Lehrern, die mit dir fliegen, dir Zeichen geben und deine Körperhaltung korrigieren. Der Kurs ist in sieben Stufen mit wachsender Autonomie aufgebaut. Am Ende verlässt du das Flugzeug allein, machst deine eigenen Checks, deinen eigenen freien Fall und deinen eigenen Schirmflug. Rund 25 Sprünge später kannst du die A-Lizenz beantragen und Teil der weltweiten Sportspringer-Familie werden.',
+    introText: 'Accelerated Freefall ist die moderne Art, Fallschirmspringen zu lernen. Anders als ältere Reißleinen-Programme bist du beim AFF schon ab dem ersten Sprung im freien Fall - begleitet von zwei geprüften Lehrern, die mit dir fliegen, dir Zeichen geben und deine Körperhaltung korrigieren. Der Kurs ist in sieben Stufen mit wachsender Autonomie aufgebaut. Am Ende verlässt du das Flugzeug allein, machst deine eigenen Checks, deinen eigenen freien Fall und deinen eigenen Schirmflug. Rund 25 Sprünge später kannst du die A-Lizenz beantragen und Teil der weltweiten Sportspringer-Familie werden.',
 
     levelsEyebrow: 'So läuft der Kurs ab',
     levelsTitle: 'Sieben Stufen, ein gemeinsames Ziel.',
-    levelsLead: 'Jede Stufe hat klare Lernziele. Du kannst jede Stufe wiederholen — kein Druck, keine Eile, kein Urteil.',
+    levelsLead: 'Jede Stufe hat klare Lernziele. Du kannst jede Stufe wiederholen - kein Druck, keine Eile, kein Urteil.',
 
     cards: [
       { title: 'Bodenausbildung', text: 'Ein ganzer Tag Theorie und Praxis: Material, Fallhaltung, Notverfahren, Schirmflug, Landeeinteilung. Eine schriftliche und praktische Prüfung muss vor dem ersten Sprung bestanden werden.', image: classroomImg, alt: 'AFF-Bodenausbildung' },
       { title: 'Stufen 1 bis 3', text: 'Du verlässt das Flugzeug mit zwei Lehrern, die dich halten. Jede Stufe trainiert eine neue Fertigkeit: stabile Lage, Drehungen, Vorwärtsbewegung. Beide Lehrer bleiben bei dir, bis du stabil allein fliegen kannst.', image: progressImg, alt: 'AFF-Schüler im freien Fall mit Lehrern' },
-      { title: 'Stufen 4 bis 7', text: 'Jetzt bist du allein im freien Fall, ein Lehrer fliegt zur Beobachtung und zum Coaching neben dir. Du lernst 360°-Drehungen, Tracking, Rollen und instabile Ausstiege — das Werkzeug für deine gesamte Sprung-Karriere.', image: afterImg, alt: 'Solo-AFF-Schüler' },
+      { title: 'Stufen 4 bis 7', text: 'Jetzt bist du allein im freien Fall, ein Lehrer fliegt zur Beobachtung und zum Coaching neben dir. Du lernst 360°-Drehungen, Tracking, Rollen und instabile Ausstiege - das Werkzeug für deine gesamte Sprung-Karriere.', image: afterImg, alt: 'Solo-AFF-Schüler' },
     ],
 
     reqEyebrow: 'Voraussetzungen',
@@ -129,20 +129,20 @@ const t = {
       'Mindestalter 16 Jahre (Einverständnis der Eltern unter 18).',
       'Körpergewicht zwischen 45 und 100 kg in voller Bekleidung.',
       'Unterschriebene medizinische Eignungserklärung; ärztliches Attest, wenn du eine Gesundheitsfrage mit „ja" beantwortest.',
-      'Solide Kenntnisse in Englisch, Französisch oder Deutsch — dein Lehrer muss klar mit dir in der Luft kommunizieren können.',
+      'Solide Kenntnisse in Englisch, Französisch oder Deutsch - dein Lehrer muss klar mit dir in der Luft kommunizieren können.',
       'Zwei freie Tage für Bodenausbildung und ersten Sprung (für alle sieben Stufen empfehlen wir eine ganze Woche).',
     ],
 
     afterEyebrow: 'Nach AFF',
     afterTitle: 'Die A-Lizenz ist erst der Anfang.',
-    afterText: 'Nach Stufe 7 folgen ein paar Konsolidierungssprünge, dann das A-Lizenz-Sprungbuch: Öffnungspriorität-Übungen, Wasser-Landungs-Briefing, Schirmkurs und der Sprungzähler bis 25. Danach öffnet sich der Sport: Bauchlage in Formation, Freefly, Wingsuit, Canopy Relative Work, Canopy Piloting — und für viele unserer Schüler die Ausbildung der nächsten Generation. Wir bieten Coach-Kurse, Organizer- und Load-Organizer-Kurse die ganze Saison über an.',
+    afterText: 'Nach Stufe 7 folgen ein paar Konsolidierungssprünge, dann das A-Lizenz-Sprungbuch: Öffnungspriorität-Übungen, Wasser-Landungs-Briefing, Schirmkurs und der Sprungzähler bis 25. Danach öffnet sich der Sport: Bauchlage in Formation, Freefly, Wingsuit, Canopy Relative Work, Canopy Piloting - und für viele unserer Schüler die Ausbildung der nächsten Generation. Wir bieten Coach-Kurse, Organizer- und Load-Organizer-Kurse die ganze Saison über an.',
 
     formEyebrow: 'Anmeldung',
     formTitle: 'Informationen anfragen oder anmelden.',
-    formText: 'Saison 2026: vom 04.04 bis 31.10.2026. Veröffentlichte AFF-Kurse: Kurs 1 vom 30. April bis 3. Mai; Kurs 2 vom 3. bis 5. Juli; Kurs 3 wird bestätigt, entweder am letzten Augustwochenende oder am ersten Septemberwochenende. Fülle das Formular unten aus — wir bestätigen Verfügbarkeit und nächste Schritte.',
+    formText: 'Saison 2026: vom 04.04 bis 31.10.2026. Veröffentlichte AFF-Kurse: Kurs 1 vom 30. April bis 3. Mai; Kurs 2 vom 3. bis 5. Juli; Kurs 3 wird bestätigt, entweder am letzten Augustwochenende oder am ersten Septemberwochenende. Fülle das Formular unten aus - wir bestätigen Verfügbarkeit und nächste Schritte.',
 
     ctaTitle: 'Wir sehen uns im Briefing-Raum.',
-    ctaSubtitle: 'Unser nächster AFF-Kurs füllt sich — melde jetzt dein Interesse an.',
+    ctaSubtitle: 'Unser nächster AFF-Kurs füllt sich - melde jetzt dein Interesse an.',
     ctaPrimary: 'Jetzt anmelden',
     ctaSecondary: 'Kontakt',
   },

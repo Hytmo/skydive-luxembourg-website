@@ -1,6 +1,6 @@
 ---
 /**
- * AboutContent.astro — about page body. Picks copy by `lang` prop.
+ * AboutContent.astro - about page body. Picks copy by `lang` prop.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
@@ -17,11 +17,11 @@ const t = {
   en: {
     bannerEyebrow: 'About us',
     bannerTitle: 'A non-profit club, run by jumpers, for jumpers.',
-    bannerSubtitle: 'Skydive Luxembourg a.s.b.l. — the Grand Duchy\'s only registered parachute club.',
+    bannerSubtitle: 'Skydive Luxembourg a.s.b.l., the Grand Duchy\'s only registered parachute club.',
 
     introEyebrow: 'Who we are',
     introTitle: 'More than 60 years of skydiving in Luxembourg.',
-    introText: 'The Cercle Parachutiste Luxembourgeois a.s.b.l., now Skydive Luxembourg, was created in 1965 and has carried out its skydiving activities in Luxembourg ever since. It is the only skydiving club in Luxembourg.',
+    introText: 'The Cercle Parachutiste Luxembourgeois a.s.b.l., now Skydive Luxembourg a.s.b.l., was founded in 1965 and has carried out its skydiving activities in Luxembourg ever since. It is the only skydiving club in Luxembourg.',
 
     whatEyebrow: 'What we do',
     whatTitle: 'Three activities, one community.',
@@ -30,19 +30,19 @@ const t = {
     cards: [
       { title: 'Tandem skydives', text: 'First-jump experiences for anyone aged 16 and over. A short briefing, then a freefall from 4,000 metres harnessed to a qualified tandem master.', image: tandemImg, alt: 'Tandem skydive in freefall' },
       { title: 'AFF student training', text: 'Our Accelerated Freefall course is the modern, fast-track route to a solo skydiving licence. Seven levels of one-on-one instruction with two jumpmasters on your first dives.', image: affImg, alt: 'AFF student under canopy' },
-      { title: 'Sport jumpers', text: 'Licensed parachutists are welcome to manifest on our Cessna 208 Caravan. Wing-loading checks, formation coaching and friendly hosts every weekend in season.', image: funImg, alt: 'Sport jumpers exiting the aircraft' },
+      { title: 'Sport jumpers', text: 'Licensed parachutists are welcome to manifest on our Airvan GA8. Wing-loading checks, formation coaching and friendly hosts every weekend in season.', image: funImg, alt: 'Sport jumpers exiting the aircraft' },
     ],
 
     historyEyebrow: 'Our history',
     historyTitle: 'From Cercle Para to Skydive Luxembourg.',
-    historyText: 'The club celebrated its 50th anniversary in 2015 with an event during the National Day weekend, including several jump aircraft, hot-air balloons and activities. The name has moved forward to Skydive Luxembourg, but the club history remains part of the story.',
+    historyText: 'The club celebrated its 60th anniversary in 2025 with the Sexy Sixty Boogie during jump week, including several jump aircraft, evening animation, load organising and activities. The name has moved forward to Skydive Luxembourg, but the club history remains part of the story.',
 
     ethosEyebrow: 'Our ethos',
     ethosTitle: 'Safety first. Fun a very close second.',
-    ethosText: 'We believe skydiving should be accessible, well-taught, and joyful. Our gear is maintained to the highest European standards, our instructors hold current international ratings, and our briefings never get cut short. We treat every visitor — first-timer or 5,000-jump wonder — as part of the family from the moment they step onto the dropzone.',
+    ethosText: 'We believe skydiving should be safe, accessible, well-taught, and joyful. Our gear is maintained to the highest European standards, our instructors hold current international ratings, and our briefings never get cut short. We treat every visitor, first-timer or 5,000-jump wonder, as part of the family from the moment they step onto the dropzone.',
 
     ctaTitle: 'Come and meet us.',
-    ctaSubtitle: 'The clubhouse door is open every weekend from April to October. Drop in for a coffee, a chat, or your first jump.',
+    ctaSubtitle: 'The hangar door is open every weekend from April to October. Drop in for a coffee, a chat, or your first jump.',
     ctaPrimary: 'Book a tandem',
     ctaSecondary: 'Contact us',
   },
@@ -50,7 +50,7 @@ const t = {
   fr: {
     bannerEyebrow: 'À propos',
     bannerTitle: 'Une association sans but lucratif, gérée par et pour les parachutistes.',
-    bannerSubtitle: 'Skydive Luxembourg a.s.b.l. — le seul club de parachutisme déclaré du Grand-Duché.',
+    bannerSubtitle: 'Skydive Luxembourg a.s.b.l. - le seul club de parachutisme déclaré du Grand-Duché.',
 
     introEyebrow: 'Qui sommes-nous',
     introTitle: 'Plus de 60 ans de parachutisme au Luxembourg.',
@@ -72,7 +72,7 @@ const t = {
 
     ethosEyebrow: 'Notre philosophie',
     ethosTitle: 'La sécurité d\'abord. Le plaisir juste après.',
-    ethosText: 'Nous croyons que le parachutisme doit être accessible, bien enseigné et joyeux. Notre matériel est entretenu selon les standards européens les plus exigeants, nos moniteurs détiennent des qualifications internationales à jour, et nous ne bâclons jamais un briefing. Chaque visiteur — qu\'il en soit à son premier saut ou à son 5 000ᵉ — fait partie de la famille dès qu\'il pose le pied sur la DZ.',
+    ethosText: 'Nous croyons que le parachutisme doit être accessible, bien enseigné et joyeux. Notre matériel est entretenu selon les standards européens les plus exigeants, nos moniteurs détiennent des qualifications internationales à jour, et nous ne bâclons jamais un briefing. Chaque visiteur - qu\'il en soit à son premier saut ou à son 5 000ᵉ - fait partie de la famille dès qu\'il pose le pied sur la DZ.',
 
     ctaTitle: 'Venez nous rencontrer.',
     ctaSubtitle: 'Le club-house est ouvert chaque week-end d\'avril à octobre. Passez prendre un café, discuter ou faire votre premier saut.',
@@ -82,8 +82,8 @@ const t = {
 
   de: {
     bannerEyebrow: 'Über uns',
-    bannerTitle: 'Ein gemeinnütziger Verein — von Springern, für Springer.',
-    bannerSubtitle: 'Skydive Luxembourg a.s.b.l. — der einzige eingetragene Fallschirmverein des Großherzogtums.',
+    bannerTitle: 'Ein gemeinnütziger Verein - von Springern, für Springer.',
+    bannerSubtitle: 'Skydive Luxembourg a.s.b.l. - der einzige eingetragene Fallschirmverein des Großherzogtums.',
 
     introEyebrow: 'Wer wir sind',
     introTitle: 'Mehr als 60 Jahre Fallschirmsport in Luxemburg.',
@@ -105,7 +105,7 @@ const t = {
 
     ethosEyebrow: 'Unsere Philosophie',
     ethosTitle: 'Sicherheit zuerst. Spaß ganz knapp dahinter.',
-    ethosText: 'Wir glauben, dass Fallschirmspringen zugänglich, gut unterrichtet und freudvoll sein soll. Unser Material wird nach den höchsten europäischen Standards gewartet, unsere Lehrer besitzen aktuelle internationale Lizenzen, und unsere Briefings werden nie abgekürzt. Jeden Besucher — ob beim ersten Sprung oder beim 5 000. — behandeln wir vom Moment des Eintreffens am Flugplatz als Teil der Familie.',
+    ethosText: 'Wir glauben, dass Fallschirmspringen zugänglich, gut unterrichtet und freudvoll sein soll. Unser Material wird nach den höchsten europäischen Standards gewartet, unsere Lehrer besitzen aktuelle internationale Lizenzen, und unsere Briefings werden nie abgekürzt. Jeden Besucher - ob beim ersten Sprung oder beim 5 000. - behandeln wir vom Moment des Eintreffens am Flugplatz als Teil der Familie.',
 
     ctaTitle: 'Komm vorbei.',
     ctaSubtitle: 'Das Vereinsheim ist von April bis Oktober jedes Wochenende geöffnet. Auf einen Kaffee, ein Gespräch oder deinen ersten Sprung.',

@@ -1,6 +1,6 @@
 ---
 /**
- * Layout.astro — the base page shell.
+ * Layout.astro - the base page shell.
  * Every page imports and wraps itself in this component.
  *
  * Usage from a page:
@@ -19,7 +19,7 @@ import Footer from '../components/Footer.astro';
 
 const {
   title = 'Skydive Luxembourg',
-  description = 'Official website of Skydive Luxembourg a.s.b.l. — tandem jumps, AFF courses, and the home of skydiving in Luxembourg.',
+  description = 'Official website of Skydive Luxembourg a.s.b.l. - tandem jumps, AFF courses, and the home of skydiving in Luxembourg.',
 } = Astro.props;
 
 const lang = Astro.currentLocale ?? 'en';
@@ -140,7 +140,7 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
 
       main { min-height: 60vh; }
 
-      /* container helper — use on a wrapping <div class="container"> */
+      /* container helper - use on a wrapping <div class="container"> */
       .container {
         max-width: var(--content-max);
         margin: 0 auto;

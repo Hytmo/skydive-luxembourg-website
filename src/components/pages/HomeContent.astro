@@ -1,6 +1,6 @@
 ---
 /**
- * HomeContent.astro — homepage body. Picks copy by `lang` prop.
+ * HomeContent.astro - homepage body. Picks copy by `lang` prop.
  */
 import Hero from '../sections/Hero.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
@@ -24,7 +24,7 @@ const t = {
   en: {
     heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
     heroTitle: 'Jump into the sky above Luxembourg.',
-    heroSubtitle: 'More than 60 years of skydiving in Luxembourg — tandem jumps, AFF training, coaching and sport jumping since 1965.',
+    heroSubtitle: 'More than 60 years of skydiving in Luxembourg: tandem jumps, AFF training, coaching and sport jumping since 1965.',
     heroPrimary: 'Book a tandem',
     heroSecondary: 'Learn to skydive',
 
@@ -34,8 +34,8 @@ const t = {
 
     cards: [
       { title: 'Tandem jumps', text: 'No experience needed. A 15-minute briefing, then 4,000 m of pure freefall with one of our qualified tandem masters.', cta: 'Book a tandem', href: `/${''}en/tandem` },
-      { title: 'AFF — learn to skydive', text: 'Become a licensed solo skydiver. Our Accelerated Freefall course takes you from zero to A-licence in around two weeks.', cta: 'Discover AFF', href: `/${''}en/aff` },
-      { title: 'Fun jumpers', text: 'Already licensed? Manifest with us, jump our Cessna 208 Caravan, and join one of the friendliest dropzones in Europe.', cta: 'Visit the DZ', href: `/${''}en/fun-jumpers` },
+      { title: 'AFF - learn to skydive', text: 'Become a licensed solo skydiver. Our Accelerated Freefall course takes you from zero to A-licence at your own pace.', cta: 'Discover AFF', href: `/${''}en/aff` },
+      { title: 'Fun jumpers', text: 'Already licensed? Manifest with us, jump our Gippsland Airvan GA8, and join one of the friendliest dropzones in Europe.', cta: 'Visit the DZ', href: `/${''}en/fun-jumpers` },
     ],
 
     galleryEyebrow: 'In the air',
@@ -44,7 +44,7 @@ const t = {
 
     aboutEyebrow: 'About us',
     aboutTitle: 'A non-profit club, run by jumpers, for jumpers.',
-    aboutText: 'The Cercle Parachutiste Luxembourgeois a.s.b.l., now Skydive Luxembourg, was created in 1965 and has carried out its activities in Luxembourg ever since. It is the only skydiving club in Luxembourg.',
+    aboutText: 'The Cercle Parachutiste Luxembourgeois a.s.b.l., now Skydive Luxembourg a.s.b.l., was founded in 1965 and has carried out its activities in Luxembourg ever since. It is the only skydiving club in Luxembourg.',
     aboutCta: 'Read our story',
 
     ctaTitle: 'Ready when you are.',
@@ -56,7 +56,7 @@ const t = {
   fr: {
     heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
     heroTitle: 'Sautez dans le ciel du Luxembourg.',
-    heroSubtitle: 'Plus de 60 ans de parachutisme au Luxembourg — sauts en tandem, formation AFF, coaching et sauts sportifs depuis 1965.',
+    heroSubtitle: 'Plus de 60 ans de parachutisme au Luxembourg - sauts en tandem, formation AFF, coaching et sauts sportifs depuis 1965.',
     heroPrimary: 'Réserver un tandem',
     heroSecondary: 'Apprendre à sauter',
 
@@ -66,7 +66,7 @@ const t = {
 
     cards: [
       { title: 'Sauts en tandem', text: 'Aucune expérience requise. 15 minutes de briefing, puis 4 000 m de chute libre avec l\'un de nos moniteurs brevetés.', cta: 'Réserver un tandem', href: `/${''}fr/tandem` },
-      { title: 'AFF — apprendre à sauter', text: 'Devenez parachutiste autonome. Notre stage AFF vous mène du débutant à la licence A en deux semaines environ.', cta: 'Découvrir l\'AFF', href: `/${''}fr/aff` },
+      { title: 'AFF - apprendre à sauter', text: 'Devenez parachutiste autonome. Notre stage AFF vous mène du débutant à la licence A en deux semaines environ.', cta: 'Découvrir l\'AFF', href: `/${''}fr/aff` },
       { title: 'Parachutistes confirmés', text: 'Déjà breveté ? Manifestez-vous, sautez de notre Cessna 208 Caravan et rejoignez l\'une des DZ les plus accueillantes d\'Europe.', cta: 'Visiter la DZ', href: `/${''}fr/fun-jumpers` },
     ],
 
@@ -88,17 +88,17 @@ const t = {
   de: {
     heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
     heroTitle: 'Spring in den Himmel über Luxemburg.',
-    heroSubtitle: 'Mehr als 60 Jahre Fallschirmsport in Luxemburg — Tandemsprünge, AFF-Ausbildung, Coaching und Sportsprünge seit 1965.',
+    heroSubtitle: 'Mehr als 60 Jahre Fallschirmsport in Luxemburg - Tandemsprünge, AFF-Ausbildung, Coaching und Sportsprünge seit 1965.',
     heroPrimary: 'Tandem buchen',
     heroSecondary: 'Springen lernen',
 
     pickEyebrow: 'Drei Arten zu springen',
-    pickTitle: 'Egal welches Niveau — die Tür ist offen.',
+    pickTitle: 'Egal welches Niveau - die Tür ist offen.',
     pickLead: 'All skydivers welcome: Wir bieten AFF-Ausbildung, Trainingssprünge und Coaching. Kontakt: mail@skydive.lu.',
 
     cards: [
       { title: 'Tandemsprünge', text: 'Keine Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m freier Fall mit einem unserer geprüften Tandemmaster.', cta: 'Tandem buchen', href: `/${''}de/tandem` },
-      { title: 'AFF — Sprungausbildung', text: 'Werde lizenzierter Solo-Springer. Unser Accelerated-Freefall-Kurs bringt dich in rund zwei Wochen zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
+      { title: 'AFF - Sprungausbildung', text: 'Werde lizenzierter Solo-Springer. Unser Accelerated-Freefall-Kurs bringt dich in rund zwei Wochen zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
       { title: 'Sportspringer', text: 'Schon lizenziert? Melde dich an, spring aus unserer Cessna 208 Caravan und genieße eine der freundlichsten DZs Europas.', cta: 'DZ besuchen', href: `/${''}de/fun-jumpers` },
     ],
 
@@ -107,7 +107,7 @@ const t = {
     galleryCta: 'Zur Galerie',
 
     aboutEyebrow: 'Über uns',
-    aboutTitle: 'Ein gemeinnütziger Verein — von Springern, für Springer.',
+    aboutTitle: 'Ein gemeinnütziger Verein - von Springern, für Springer.',
     aboutText: 'Der Cercle Parachutiste Luxembourgeois a.s.b.l., heute Skydive Luxembourg, wurde 1965 gegründet und betreibt seither Fallschirmsport in Luxemburg. Er ist der einzige Fallschirmverein in Luxemburg.',
     aboutCta: 'Unsere Geschichte',
 

@@ -1,33 +1,33 @@
 ---
 /**
- * ThankYouContent.astro — confirmation page after form submission. Picks copy by `lang` prop.
+ * ThankYouContent.astro - confirmation page after form submission. Picks copy by `lang` prop.
  */
 const { lang = 'en' } = Astro.props;
 
 const t = {
   en: {
     eyebrow: 'Message received',
-    title: 'Thank you — we have your message.',
-    message: 'We have received your inquiry and a member of our team will get back to you within two business days. In high season, expect to hear from us sooner.',
-    note: 'In the meantime, blue skies — and feel free to browse around.',
+    title: 'Thank you - we have your message.',
+    body: 'We have received your inquiry and a member of our team will get back to you within two to three business days. In high season, expect to hear from us sooner.',
+    note: 'In the meantime, blue skies - and feel free to browse around.',
     primary: 'Back to home',
     secondary: 'View FAQ',
   },
 
   fr: {
     eyebrow: 'Message reçu',
-    title: 'Merci — votre message nous est bien parvenu.',
+    title: 'Merci - votre message nous est bien parvenu.',
     message: 'Nous avons reçu votre demande. Un membre de l\'équipe vous répondra sous deux jours ouvrés. En pleine saison, nous revenons vers vous plus rapidement.',
-    note: 'En attendant, bleu ciel — et n\'hésitez pas à parcourir le site.',
+    note: 'En attendant, bleu ciel - et n\'hésitez pas à parcourir le site.',
     primary: 'Retour à l\'accueil',
     secondary: 'Voir la FAQ',
   },
 
   de: {
     eyebrow: 'Nachricht erhalten',
-    title: 'Danke — wir haben deine Nachricht.',
+    title: 'Danke - wir haben deine Nachricht.',
     message: 'Wir haben deine Anfrage erhalten. Ein Teammitglied meldet sich innerhalb von zwei Werktagen zurück. In der Hochsaison hörst du in der Regel früher von uns.',
-    note: 'Bis dahin: blaue Himmel — schau dich gern auf der Seite um.',
+    note: 'Bis dahin: blaue Himmel - schau dich gern auf der Seite um.',
     primary: 'Zur Startseite',
     secondary: 'Zu den FAQ',
   },

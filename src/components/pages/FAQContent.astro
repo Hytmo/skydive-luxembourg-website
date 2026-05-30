@@ -1,6 +1,6 @@
 ---
 /**
- * FAQContent.astro — Frequently Asked Questions page. Picks copy by `lang` prop.
+ * FAQContent.astro - Frequently Asked Questions page. Picks copy by `lang` prop.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import FAQList from '../sections/FAQList.astro';
@@ -15,28 +15,28 @@ const t = {
     title: 'Frequently asked questions',
     subtitle: 'Everything you need to know before stepping out of the plane.',
     sectionEyebrow: 'Answers',
-    sectionTitle: 'Before your jump — and after.',
+    sectionTitle: 'Before your jump and after.',
     sectionLead: 'Can\'t find your answer? Drop us a line and we\'ll get back to you.',
     items: [
       {
         q: 'Are there weight and age limits for a tandem jump?',
-        a: 'Yes. Tandem passengers must be at least 16 years old (with written parental consent if under 18) and weigh no more than 100 kg (220 lb) fully clothed. We may apply a small surcharge above 95 kg to cover the heavier equipment required. There is no formal upper age limit, but you must be in reasonable health — please tell us in advance about any medical conditions.',
+        a: 'Yes. Tandem passengers must be at least 16 years old (with written parental consent if under 18) and weigh no more than 90 kg (200 lb) fully clothed. There is no formal upper age limit, but you must be in reasonable health. Please tell us in advance about any medical conditions.',
       },
       {
         q: 'What happens if the weather is bad?',
-        a: 'Safety always comes first. Strong winds, low cloud or rain will ground us. If we cannot fly on the day of your booking we will reschedule you free of charge to the next available slot, or refund the jump in full. We make the call on the morning of your jump after consulting aviation weather services.',
+        a: 'Safety always comes first. Strong winds, low cloud or rain will ground us. If we cannot fly on the day of your booking, we will reschedule you free of charge to the next available slot. We make the call on the morning of your jump after consulting aviation weather services. Before leaving home, check your phone and emails.',
       },
       {
         q: 'What should I wear?',
-        a: 'Comfortable clothing suitable for the season and closed lace-up trainers or light hiking shoes. Avoid heavy boots, sandals, dresses or skirts. We provide a jumpsuit, goggles and helmet. In winter, dress in warm layers — it is roughly 10 °C colder at altitude than on the ground.',
+        a: 'Comfortable clothing suitable for the season and closed lace-up trainers or light hiking shoes. Avoid heavy boots, sandals, dresses or skirts. We provide a jumpsuit, goggles and helmet. In winter, dress in warm layers. It is roughly 15 °C colder at altitude than on the ground.',
       },
       {
         q: 'Can I bring my own camera or phone?',
-        a: 'For safety reasons, only licensed skydivers with a camera rating may jump with their own equipment. Phones, GoPros and other devices are not permitted in freefall for tandem passengers. If you would like footage of your jump, you can book one of our qualified video flyers who will jump alongside you.',
+        a: 'For safety reasons, only licensed skydivers with a camera rating may jump with their own equipment. Phones, GoPros and other devices are not permitted in freefall for tandem passengers. Footage of your jump is included in your booking.',
       },
       {
         q: 'Is skydiving safe?',
-        a: 'Modern sport skydiving has an excellent safety record. Our equipment is maintained to manufacturer specifications, our instructors are certified by recognised national federations, and every parachute system includes an automatic activation device as a backup. That said, skydiving is an extreme sport — you should be aware that residual risk exists.',
+        a: 'Modern sport skydiving has an excellent safety record. Our equipment is maintained to manufacturer specifications, our instructors are certified by recognised national and international federations, and every parachute system includes an automatic activation device as a backup. That said, skydiving is an extreme sport, and you should be aware that residual risk exists.',
       },
       {
         q: 'How high do we jump from?',
@@ -44,27 +44,27 @@ const t = {
       },
       {
         q: 'What does AFF stand for?',
-        a: 'AFF means Accelerated Freefall. It is the modern method of learning to skydive solo — from your very first jump you fly your own parachute, accompanied in freefall by one or two instructors who release you once you demonstrate stability and control.',
+        a: 'AFF means Accelerated Freefall. It is the modern method of learning to skydive solo. From your very first jump you fly your own parachute, accompanied in freefall by one or two instructors who release you once you demonstrate stability and control.',
       },
       {
         q: 'How long does the AFF course take?',
-        a: 'The ground school is one full day, followed by a progression of seven to nine training jumps and a number of consolidation jumps before your A licence check. With good weather, motivated students complete the full programme in two to three weeks. Spread out, it can take a whole season.',
+        a: 'The ground school is one full day, followed by a progression of seven to nine training jumps and a number of consolidation jumps before your A licence check. With good weather, motivated students complete the full programme in two to three weekends. Spread out, it can take a whole season.',
       },
       {
         q: 'Can I jump with a medical condition?',
-        a: 'Many conditions are no obstacle, but some — heart, lung, back, or neurological issues — require a doctor\'s clearance. Please mention any condition or medication in the medical form you sign on the day. If in doubt, contact us before booking and we\'ll advise.',
+        a: 'Many conditions are no obstacle, but some, such as heart, lung, back, or neurological issues, require a doctor\'s clearance. Please mention any condition or medication in the medical form you sign on the day. If in doubt, contact us before booking and we\'ll advise.',
       },
       {
         q: 'Do you sell gift vouchers?',
-        a: 'Yes. Tandem gift vouchers are valid for 12 months from purchase and are transferable. We can email a PDF voucher or post a printed card. Vouchers are a popular birthday, retirement and wedding gift — we just ask that recipients book early in the season.',
+        a: 'Yes. Tandem gift vouchers are valid for 3 years from purchase and are transferable. We can email a PDF voucher. Vouchers are a popular birthday, retirement and wedding gift. We just ask that recipients book early in the season.',
       },
       {
         q: 'What is your refund and cancellation policy?',
-        a: 'If we cancel because of weather or technical reasons, you can rebook or get a full refund. If you cancel more than 7 days in advance, we refund minus a small administrative fee. Within 7 days of your slot, the booking is non-refundable but can be transferred to another person. No-shows forfeit the booking.',
+        a: 'If we cancel because of weather or technical reasons, you can rebook. If you cancel more than 7 days in advance, you can rebook for another day. Bookings are non-refundable but can be transferred to another person. No-shows forfeit the booking.',
       },
       {
         q: 'Will I get photos or video of my jump?',
-        a: 'Only if you book the photo/video option. Our outside camera flyer films the briefing, the exit, your freefall and the canopy flight, then delivers an edited video and a set of still photos within a few days. Pricing is shown on the Tandem page.',
+        a: 'Yes, every tandem booking includes a video of your jump.'
       },
     ],
   },
@@ -74,12 +74,12 @@ const t = {
     title: 'Questions fréquentes',
     subtitle: 'Tout ce qu\'il faut savoir avant de franchir la porte de l\'avion.',
     sectionEyebrow: 'Réponses',
-    sectionTitle: 'Avant votre saut — et après.',
+    sectionTitle: 'Avant votre saut - et après.',
     sectionLead: 'Vous ne trouvez pas votre réponse ? Écrivez-nous, nous reviendrons vers vous rapidement.',
     items: [
       {
         q: 'Y a-t-il des limites de poids et d\'âge pour un tandem ?',
-        a: 'Oui. Les passagers tandem doivent avoir au moins 16 ans (avec autorisation parentale écrite pour les mineurs) et peser au maximum 100 kg tout habillés. Un petit supplément peut s\'appliquer au-delà de 95 kg pour couvrir l\'équipement plus lourd. Il n\'y a pas de limite d\'âge supérieure formelle, mais une bonne santé est nécessaire — signalez-nous tout antécédent médical à l\'avance.',
+        a: 'Oui. Les passagers tandem doivent avoir au moins 16 ans (avec autorisation parentale écrite pour les mineurs) et peser au maximum 100 kg tout habillés. Un petit supplément peut s\'appliquer au-delà de 95 kg pour couvrir l\'équipement plus lourd. Il n\'y a pas de limite d\'âge supérieure formelle, mais une bonne santé est nécessaire - signalez-nous tout antécédent médical à l\'avance.',
       },
       {
         q: 'Que se passe-t-il si la météo est mauvaise ?',
@@ -111,11 +111,11 @@ const t = {
       },
       {
         q: 'Puis-je sauter avec une condition médicale ?',
-        a: 'De nombreuses conditions ne posent aucun problème, mais certaines — cardiaques, pulmonaires, dorsales ou neurologiques — nécessitent un certificat médical. Mentionnez toute pathologie ou traitement sur le formulaire médical signé le jour J. En cas de doute, contactez-nous avant de réserver.',
+        a: 'De nombreuses conditions ne posent aucun problème, mais certaines - cardiaques, pulmonaires, dorsales ou neurologiques - nécessitent un certificat médical. Mentionnez toute pathologie ou traitement sur le formulaire médical signé le jour J. En cas de doute, contactez-nous avant de réserver.',
       },
       {
         q: 'Vendez-vous des bons cadeaux ?',
-        a: 'Oui. Les bons tandem sont valables 12 mois à compter de l\'achat et sont transférables. Nous pouvons envoyer un PDF par e-mail ou expédier une carte imprimée. C\'est un cadeau apprécié pour les anniversaires, retraites et mariages — nous demandons simplement aux bénéficiaires de réserver tôt dans la saison.',
+        a: 'Oui. Les bons tandem sont valables 12 mois à compter de l\'achat et sont transférables. Nous pouvons envoyer un PDF par e-mail ou expédier une carte imprimée. C\'est un cadeau apprécié pour les anniversaires, retraites et mariages - nous demandons simplement aux bénéficiaires de réserver tôt dans la saison.',
       },
       {
         q: 'Quelle est votre politique d\'annulation et de remboursement ?',
@@ -133,12 +133,12 @@ const t = {
     title: 'Häufig gestellte Fragen',
     subtitle: 'Alles, was du vor dem Schritt aus dem Flugzeug wissen solltest.',
     sectionEyebrow: 'Antworten',
-    sectionTitle: 'Vor dem Sprung — und danach.',
-    sectionLead: 'Antwort nicht dabei? Schreib uns kurz — wir melden uns zurück.',
+    sectionTitle: 'Vor dem Sprung - und danach.',
+    sectionLead: 'Antwort nicht dabei? Schreib uns kurz - wir melden uns zurück.',
     items: [
       {
         q: 'Gibt es Gewichts- und Altersgrenzen für einen Tandemsprung?',
-        a: 'Ja. Tandem-Passagiere müssen mindestens 16 Jahre alt sein (mit schriftlicher Einverständniserklärung der Eltern bei Minderjährigen) und dürfen voll bekleidet höchstens 100 kg wiegen. Ab 95 kg kann ein kleiner Aufschlag für die schwerere Ausrüstung anfallen. Eine formale Obergrenze beim Alter gibt es nicht, du solltest aber gesundheitlich fit sein — bitte teile uns Vorerkrankungen vorab mit.',
+        a: 'Ja. Tandem-Passagiere müssen mindestens 16 Jahre alt sein (mit schriftlicher Einverständniserklärung der Eltern bei Minderjährigen) und dürfen voll bekleidet höchstens 100 kg wiegen. Ab 95 kg kann ein kleiner Aufschlag für die schwerere Ausrüstung anfallen. Eine formale Obergrenze beim Alter gibt es nicht, du solltest aber gesundheitlich fit sein - bitte teile uns Vorerkrankungen vorab mit.',
       },
       {
         q: 'Was passiert bei schlechtem Wetter?',
@@ -146,7 +146,7 @@ const t = {
       },
       {
         q: 'Was soll ich anziehen?',
-        a: 'Bequeme, jahreszeitgerechte Kleidung und geschlossene Schnürschuhe (Turnschuhe oder leichte Wanderschuhe). Vermeide schwere Stiefel, Sandalen, Kleider oder Röcke. Wir stellen Overall, Brille und Helm. Im Winter mehrere Schichten anziehen — in der Höhe ist es rund 10 °C kälter als am Boden.',
+        a: 'Bequeme, jahreszeitgerechte Kleidung und geschlossene Schnürschuhe (Turnschuhe oder leichte Wanderschuhe). Vermeide schwere Stiefel, Sandalen, Kleider oder Röcke. Wir stellen Overall, Brille und Helm. Im Winter mehrere Schichten anziehen - in der Höhe ist es rund 10 °C kälter als am Boden.',
       },
       {
         q: 'Darf ich meine eigene Kamera oder mein Handy mitnehmen?',
@@ -154,7 +154,7 @@ const t = {
       },
       {
         q: 'Ist Fallschirmspringen sicher?',
-        a: 'Der moderne Sportfallschirmsport hat eine sehr gute Sicherheitsbilanz. Unsere Ausrüstung wird nach Herstellervorgaben gewartet, unsere Lehrer sind durch anerkannte nationale Verbände zertifiziert, und jedes System verfügt über einen automatischen Öffnungsautomaten als Backup. Trotzdem bleibt es ein Extremsport — ein Restrisiko besteht.',
+        a: 'Der moderne Sportfallschirmsport hat eine sehr gute Sicherheitsbilanz. Unsere Ausrüstung wird nach Herstellervorgaben gewartet, unsere Lehrer sind durch anerkannte nationale Verbände zertifiziert, und jedes System verfügt über einen automatischen Öffnungsautomaten als Backup. Trotzdem bleibt es ein Extremsport - ein Restrisiko besteht.',
       },
       {
         q: 'Aus welcher Höhe springen wir?',
@@ -170,11 +170,11 @@ const t = {
       },
       {
         q: 'Kann ich mit einer Vorerkrankung springen?',
-        a: 'Viele Vorerkrankungen sind kein Hindernis, einige — Herz, Lunge, Rücken oder neurologische Probleme — erfordern jedoch eine ärztliche Freigabe. Bitte gib alle Erkrankungen und Medikamente auf dem medizinischen Formular an, das du vor Ort unterschreibst. Im Zweifel melde dich vor der Buchung bei uns.',
+        a: 'Viele Vorerkrankungen sind kein Hindernis, einige - Herz, Lunge, Rücken oder neurologische Probleme - erfordern jedoch eine ärztliche Freigabe. Bitte gib alle Erkrankungen und Medikamente auf dem medizinischen Formular an, das du vor Ort unterschreibst. Im Zweifel melde dich vor der Buchung bei uns.',
       },
       {
         q: 'Verkauft ihr Gutscheine?',
-        a: 'Ja. Tandem-Gutscheine sind ab Kaufdatum 12 Monate gültig und übertragbar. Wir versenden einen PDF-Gutschein per E-Mail oder eine gedruckte Karte per Post. Sehr beliebt zu Geburtstagen, Hochzeiten oder zum Ruhestand — wir bitten lediglich darum, früh in der Saison zu buchen.',
+        a: 'Ja. Tandem-Gutscheine sind ab Kaufdatum 12 Monate gültig und übertragbar. Wir versenden einen PDF-Gutschein per E-Mail oder eine gedruckte Karte per Post. Sehr beliebt zu Geburtstagen, Hochzeiten oder zum Ruhestand - wir bitten lediglich darum, früh in der Saison zu buchen.',
       },
       {
         q: 'Wie sind eure Stornierungs- und Erstattungsbedingungen?',

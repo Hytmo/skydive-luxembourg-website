@@ -1,6 +1,6 @@
 ---
 /**
- * ContactContent.astro — Contact page. Picks copy by `lang` prop.
+ * ContactContent.astro - Contact page. Picks copy by `lang` prop.
  */
 import PageBanner from '../sections/PageBanner.astro';
 import ContactForm from '../ContactForm.astro';
@@ -13,20 +13,20 @@ const t = {
   en: {
     eyebrow: 'Get in touch',
     title: 'Contact us',
-    subtitle: 'Questions, bookings, group enquiries — we read every message.',
+    subtitle: 'Questions, bookings, group enquiries: we read every message.',
     infoEyebrow: 'Find us',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
-    infoIntro: 'Our dropzone operates from a private grass airfield in the centre of the country. You can reach us by car in 25 minutes from Luxembourg City.',
+    infoIntro: 'Our dropzone operates from a private grass airfield in the north of the country. You can reach us by car in 25 minutes from Luxembourg City.',
     addressLabel: 'Address',
     addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxembourg'],
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     hoursLabel: 'Opening hours',
     hoursLines: ['Weekends, April to October', '09:00 – 18:00'],
-    hoursNote: 'Outside the main season we operate on request only — please contact us in advance.',
+    hoursNote: 'Outside the main season we operate on request only. Please contact us in advance.',
     formEyebrow: 'Write to us',
     formTitle: 'Send a message',
-    formLead: 'For tandem bookings, AFF enquiries, group reservations or anything else — fill in the form below and we\'ll reply within two business days.',
+    formLead: 'For tandem bookings, AFF enquiries, group reservations or anything else, fill in the form below and we\'ll reply within two to three business days.',
     directionsTitle: 'How to get here',
     directionsText: 'From Luxembourg City, take the A7 north towards Ettelbruck/Wiltz, then continue to Noertrange/Winseler. The dropzone is at 32 Op der Louh, near Noertrange airfield. Free parking is available on site.',
     mapTitle: 'Map of Noertrange airfield',
@@ -35,7 +35,7 @@ const t = {
   fr: {
     eyebrow: 'Nous joindre',
     title: 'Contact',
-    subtitle: 'Questions, réservations, groupes — nous lisons chaque message.',
+    subtitle: 'Questions, réservations, groupes - nous lisons chaque message.',
     infoEyebrow: 'Nous trouver',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
     infoIntro: 'Notre zone de saut se trouve sur un aérodrome privé en herbe au centre du pays. Comptez 25 minutes en voiture depuis Luxembourg-Ville.',
@@ -45,7 +45,7 @@ const t = {
     phoneLabel: 'Téléphone',
     hoursLabel: 'Horaires d\'ouverture',
     hoursLines: ['Week-ends, d\'avril à octobre', '09h00 – 18h00'],
-    hoursNote: 'Hors saison principale, nous fonctionnons uniquement sur demande — merci de nous prévenir à l\'avance.',
+    hoursNote: 'Hors saison principale, nous fonctionnons uniquement sur demande - merci de nous prévenir à l\'avance.',
     formEyebrow: 'Écrivez-nous',
     formTitle: 'Envoyer un message',
     formLead: 'Pour les réservations tandem, les demandes AFF, les groupes ou toute autre question, remplissez le formulaire ci-dessous. Nous répondons sous deux jours ouvrés.',
@@ -57,7 +57,7 @@ const t = {
   de: {
     eyebrow: 'Kontakt',
     title: 'Kontakt aufnehmen',
-    subtitle: 'Fragen, Buchungen, Gruppenanfragen — wir lesen jede Nachricht.',
+    subtitle: 'Fragen, Buchungen, Gruppenanfragen - wir lesen jede Nachricht.',
     infoEyebrow: 'So findest du uns',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
     infoIntro: 'Unsere Dropzone liegt auf einem privaten Graspiste-Flugplatz in der Landesmitte. Von Luxemburg-Stadt sind es etwa 25 Autominuten.',
@@ -67,10 +67,10 @@ const t = {
     phoneLabel: 'Telefon',
     hoursLabel: 'Öffnungszeiten',
     hoursLines: ['Wochenenden, April bis Oktober', '09:00 – 18:00 Uhr'],
-    hoursNote: 'Außerhalb der Hauptsaison nur nach Vereinbarung — bitte vorab Kontakt aufnehmen.',
+    hoursNote: 'Außerhalb der Hauptsaison nur nach Vereinbarung - bitte vorab Kontakt aufnehmen.',
     formEyebrow: 'Schreib uns',
     formTitle: 'Nachricht senden',
-    formLead: 'Für Tandembuchungen, AFF-Anfragen, Gruppenreservierungen oder andere Anliegen — fülle einfach das Formular aus. Wir antworten innerhalb von zwei Werktagen.',
+    formLead: 'Für Tandembuchungen, AFF-Anfragen, Gruppenreservierungen oder andere Anliegen - fülle einfach das Formular aus. Wir antworten innerhalb von zwei Werktagen.',
     directionsTitle: 'Anfahrt',
     directionsText: 'Von Luxemburg-Stadt nimm die A7 Richtung Norden nach Ettelbruck/Wiltz und fahre weiter nach Noertrange/Winseler. Die Dropzone liegt in 32 Op der Louh, nahe dem Flugplatz Noertrange. Kostenlose Parkplätze sind vor Ort verfügbar.',
     mapTitle: 'Karte des Flugplatzes Noertrange',
@@ -78,8 +78,8 @@ const t = {
 }[lang];
 
 const email = 'mail@skydive.lu';
-const phone = '+352 621 701 194';
-const phoneHref = `tel:${phone.replace(/\s+/g, '')}`;
+const phone = '+352 621 701 194 (SMS or WhatsApp only; phone calls by appointment)';
+const phoneHref = 'tel:+352621701194';
 ---
 
 <PageBanner

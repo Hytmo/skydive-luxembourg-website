@@ -1,5 +1,5 @@
 /* =========================================================================
-   Skydive Luxembourg — Global utility classes
+   Skydive Luxembourg - Global utility classes
    Buttons, sections, simple grid helpers used across pages.
    ========================================================================= */
 
@@ -77,7 +77,7 @@
 
 
 /* ---------- PAGE TITLE BANNER ----------------------------------------- */
-/* Compact hero for inner pages — image bg, dark overlay, centered title. */
+/* Compact hero for inner pages - image bg, dark overlay, centered title. */
 
 .page-banner {
   position: relative;

@@ -1,6 +1,6 @@
 ---
 /**
- * PricingContent.astro — pricing page body. Picks copy by `lang` prop.
+ * PricingContent.astro - pricing page body. Picks copy by `lang` prop.
  * Club formulas: old/current public pricing page plus confirmed AFF price from Fränz.
  */
 import PageBanner from '../sections/PageBanner.astro';
@@ -17,48 +17,48 @@ const labels = {
     affFormula: 'AFF course',
     tandemVideo: 'Tandem & video',
     tshirt: 'T-shirt',
-    withInsurance: 'Annual membership — third-party insurance and FAI licence included',
-    withoutInsurance: 'Annual membership — without insurance or FAI licence',
-    member4000: 'Member jump — 4 000 m',
-    member2000: 'Member jump — 2 000 m',
-    coached: 'Coached jump — 1 on 1',
+    withInsurance: 'Annual membership - third-party insurance and FAI licence included',
+    withoutInsurance: 'Annual membership - without insurance or FAI licence',
+    member4000: 'Member jump - 4 000 m',
+    member2000: 'Member jump - 2 000 m',
+    coached: 'Coached jump - 1 on 1',
     checkjump: 'Check jump',
-    guest4000: 'Guest jump — 4 000 m',
-    guest2000: 'Guest jump — 2 000 m',
-    rentalMember: 'Parachute rental — members',
-    rentalGuest: 'Parachute rental — guests',
+    guest4000: 'Guest jump - 4 000 m',
+    guest2000: 'Guest jump - 2 000 m',
+    rentalMember: 'Parachute rental - members',
+    rentalGuest: 'Parachute rental - guests',
     packjob: 'Pack job',
   },
   fr: {
     affFormula: 'Cours AFF',
     tandemVideo: 'Tandem & vidéo',
     tshirt: 'T-shirt',
-    withInsurance: 'Cotisation annuelle — assurance tiers et licence FAI incluses',
-    withoutInsurance: 'Cotisation annuelle — sans assurance ni licence FAI',
-    member4000: 'Saut membre — 4 000 m',
-    member2000: 'Saut membre — 2 000 m',
-    coached: 'Saut coaché — 1 on 1',
+    withInsurance: 'Cotisation annuelle - assurance tiers et licence FAI incluses',
+    withoutInsurance: 'Cotisation annuelle - sans assurance ni licence FAI',
+    member4000: 'Saut membre - 4 000 m',
+    member2000: 'Saut membre - 2 000 m',
+    coached: 'Saut coaché - 1 on 1',
     checkjump: 'Checkjump',
-    guest4000: 'Saut guest — 4 000 m',
-    guest2000: 'Saut guest — 2 000 m',
-    rentalMember: 'Location parachute — membres',
-    rentalGuest: 'Location parachute — guest',
+    guest4000: 'Saut guest - 4 000 m',
+    guest2000: 'Saut guest - 2 000 m',
+    rentalMember: 'Location parachute - membres',
+    rentalGuest: 'Location parachute - guest',
     packjob: 'Packjob',
   },
   de: {
     affFormula: 'AFF-Kurs',
     tandemVideo: 'Tandem & Video',
     tshirt: 'T-Shirt',
-    withInsurance: 'Jahresmitgliedschaft — Haftpflichtversicherung und FAI-Lizenz inklusive',
-    withoutInsurance: 'Jahresmitgliedschaft — ohne Versicherung und FAI-Lizenz',
-    member4000: 'Mitgliedersprung — 4 000 m',
-    member2000: 'Mitgliedersprung — 2 000 m',
-    coached: 'Coach-Sprung — 1 on 1',
+    withInsurance: 'Jahresmitgliedschaft - Haftpflichtversicherung und FAI-Lizenz inklusive',
+    withoutInsurance: 'Jahresmitgliedschaft - ohne Versicherung und FAI-Lizenz',
+    member4000: 'Mitgliedersprung - 4 000 m',
+    member2000: 'Mitgliedersprung - 2 000 m',
+    coached: 'Coach-Sprung - 1 on 1',
     checkjump: 'Checkjump',
-    guest4000: 'Gastsprung — 4 000 m',
-    guest2000: 'Gastsprung — 2 000 m',
-    rentalMember: 'Fallschirmmiete — Mitglieder',
-    rentalGuest: 'Fallschirmmiete — Gäste',
+    guest4000: 'Gastsprung - 4 000 m',
+    guest2000: 'Gastsprung - 2 000 m',
+    rentalMember: 'Fallschirmmiete - Mitglieder',
+    rentalGuest: 'Fallschirmmiete - Gäste',
     packjob: 'Packjob',
   },
 }[lang];
@@ -67,17 +67,17 @@ const t = {
   en: {
     bannerEyebrow: 'Prices',
     bannerTitle: 'Current club formulas.',
-    bannerSubtitle: 'AFF and tandem first, then the current club prices for members, guests, rental and packing.',
-    introEyebrow: 'Tariffs',
-    introTitle: 'Start with the main formulas. Everything else stays easy to scan.',
-    introText: 'AFF is now shown at the confirmed club price of 2 500 €. The remaining formulas are copied from the current published Skydive Luxembourg tariff page.',
-    sourceText: 'Sources: current old-site pricing page, plus confirmed AFF price from SDL.',
+    bannerSubtitle: 'AFF and tandem first, then club prices for members, guests, rental and packing.',
+    introEyebrow: 'Prices',
+    introTitle: 'Main formulas at a glance.',
+    introText: 'AFF and tandem are shown first, followed by the current club prices for members, guests, rental and packing.',
+    sourceText: '',
     affNote: 'Training formula',
     tandemNote: 'Most common first-jump formula',
     primaryAction: 'Ask about AFF',
     tandemAction: 'Book a tandem',
     ctaTitle: 'Questions about a formula?',
-    ctaSubtitle: 'Write to us before booking — especially for training, licences, guest jumps or equipment rental.',
+    ctaSubtitle: 'Write to us before booking, especially for training, licences, guest jumps or equipment rental.',
     ctaSecondary: 'Contact us',
     sections: {
       membership: { eyebrow: 'Membership', title: 'Become a member', description: 'Annual club membership options.' },
@@ -98,7 +98,7 @@ const t = {
     primaryAction: 'Demander l’AFF',
     tandemAction: 'Réserver un tandem',
     ctaTitle: 'Une question sur une formule ?',
-    ctaSubtitle: 'Contactez-nous avant de réserver — surtout pour la formation, les licences, les sauts guest ou la location de matériel.',
+    ctaSubtitle: 'Contactez-nous avant de réserver - surtout pour la formation, les licences, les sauts guest ou la location de matériel.',
     ctaSecondary: 'Nous contacter',
     sections: {
       membership: { eyebrow: 'Membres', title: 'Devenir membre', description: 'Options de cotisation annuelle du club.' },
@@ -119,7 +119,7 @@ const t = {
     primaryAction: 'AFF anfragen',
     tandemAction: 'Tandem buchen',
     ctaTitle: 'Frage zu einer Formel?',
-    ctaSubtitle: 'Schreib uns vor der Buchung — besonders bei Ausbildung, Lizenzen, Gastsprüngen oder Materialmiete.',
+    ctaSubtitle: 'Schreib uns vor der Buchung - besonders bei Ausbildung, Lizenzen, Gastsprüngen oder Materialmiete.',
     ctaSecondary: 'Kontakt',
     sections: {
       membership: { eyebrow: 'Mitgliedschaft', title: 'Mitglied werden', description: 'Jährliche Club-Mitgliedschaften.' },
@@ -205,7 +205,7 @@ const detailCards = [
       <p class="section__eyebrow">{t.introEyebrow}</p>
       <h2 class="section__title">{t.introTitle}</h2>
       <p class="section__lead">{t.introText}</p>
-      <p class="tariff-source">{t.sourceText}</p>
+      {t.sourceText && <p class="tariff-source">{t.sourceText}</p>}
     </header>
   </div>
 </section>
