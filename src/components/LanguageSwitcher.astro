@@ -18,10 +18,16 @@ const locales = [
   ['de', 'DE'],
 ];
 
+const labels = {
+  en: 'Language',
+  fr: 'Langue',
+  de: 'Sprache',
+};
+
 const buildLink = (loc) => `/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/');
 ---
 
-<div class="lang-switcher" role="group" aria-label="Language">
+<div class="lang-switcher" role="group" aria-label={labels[lang] ?? labels.en}>
   {locales.map(([code, label]) => (
     <a
       href={buildLink(code)}
