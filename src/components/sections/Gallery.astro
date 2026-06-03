@@ -1,21 +1,152 @@
 ---
 /**
- * Gallery.astro - responsive masonry-style photo grid.
+ * Gallery.astro - responsive masonry-style photo grid with lightbox carousel.
  * Props:
  *   items: Array<{ image, alt? }>
  */
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 
 const { items = [] } = Astro.props;
+
+const galleryItems = await Promise.all(
+  items.map(async (item) => {
+    const lightboxImage = await getImage({
+      src: item.image,
+      width: 1800,
+      format: 'webp',
+      quality: 84,
+    });
+
+    return {
+      ...item,
+      lightboxSrc: lightboxImage.src,
+    };
+  }),
+);
 ---
 
-<div class="gallery">
-  {items.map((item) => (
+<div class="gallery" data-gallery>
+  {galleryItems.map((item, index) => (
     <figure class="gallery__item">
-      <Image src={item.image} alt={item.alt ?? ''} widths={[400, 700, 1000]} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+      <button
+        class="gallery__button"
+        type="button"
+        data-gallery-trigger
+        data-gallery-index={index}
+        data-gallery-src={item.lightboxSrc}
+        data-gallery-alt={item.alt ?? ''}
+        aria-label={`Open photo ${index + 1} of ${galleryItems.length}`}
+      >
+        <Image src={item.image} alt={item.alt ?? ''} widths={[400, 700, 1000]} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" loading="lazy" />
+      </button>
     </figure>
   ))}
 </div>
+
+<div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true">
+  <div class="gallery-lightbox__backdrop" data-gallery-close></div>
+  <div class="gallery-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Photo carousel">
+    <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Close photo carousel">×</button>
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" type="button" data-gallery-prev aria-label="Previous photo">‹</button>
+    <img class="gallery-lightbox__image" data-gallery-image src="" alt="" />
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" data-gallery-next aria-label="Next photo">›</button>
+    <p class="gallery-lightbox__counter" data-gallery-counter aria-live="polite"></p>
+  </div>
+</div>
+
+<script>
+  const AUTOPLAY_MS = 5000;
+
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const lightbox = gallery.nextElementSibling;
+    if (!lightbox?.matches('[data-gallery-lightbox]')) return;
+
+    const triggers = Array.from(gallery.querySelectorAll('[data-gallery-trigger]'));
+    const image = lightbox.querySelector('[data-gallery-image]');
+    const counter = lightbox.querySelector('[data-gallery-counter]');
+    const closeButtons = lightbox.querySelectorAll('[data-gallery-close]');
+    const prevButton = lightbox.querySelector('[data-gallery-prev]');
+    const nextButton = lightbox.querySelector('[data-gallery-next]');
+
+    let currentIndex = 0;
+    let autoplayId = null;
+    let lastFocused = null;
+
+    const stopAutoplay = () => {
+      if (autoplayId) {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (triggers.length > 1) {
+        autoplayId = window.setInterval(() => showPhoto(currentIndex + 1), AUTOPLAY_MS);
+      }
+    };
+
+    const normalizeIndex = (index) => (index + triggers.length) % triggers.length;
+
+    function showPhoto(index) {
+      if (!triggers.length) return;
+      currentIndex = normalizeIndex(index);
+      const trigger = triggers[currentIndex];
+      image.src = trigger.dataset.gallerySrc;
+      image.alt = trigger.dataset.galleryAlt || '';
+      counter.textContent = `${currentIndex + 1} / ${triggers.length}`;
+    }
+
+    const openLightbox = (index) => {
+      lastFocused = document.activeElement;
+      showPhoto(index);
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('gallery-lightbox-open');
+      nextButton?.focus();
+      startAutoplay();
+    };
+
+    const closeLightbox = () => {
+      stopAutoplay();
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('gallery-lightbox-open');
+      image.removeAttribute('src');
+      if (lastFocused instanceof HTMLElement) lastFocused.focus();
+    };
+
+    const navigate = (direction) => {
+      showPhoto(currentIndex + direction);
+      startAutoplay();
+    };
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeButtons.forEach((button) => button.addEventListener('click', closeLightbox));
+    prevButton?.addEventListener('click', () => navigate(-1));
+    nextButton?.addEventListener('click', () => navigate(1));
+
+    document.addEventListener('keydown', (event) => {
+      if (lightbox.getAttribute('aria-hidden') === 'true') return;
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        navigate(-1);
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        navigate(1);
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeLightbox();
+      }
+    });
+  });
+</script>
 
 <style>
   .gallery {
@@ -37,13 +168,162 @@ const { items = [] } = Astro.props;
     border-radius: var(--radius-sm);
     background: var(--color-bg-alt);
   }
+
+  .gallery__button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    color: inherit;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .gallery__button:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
   .gallery__item :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-base);
   }
-  .gallery__item:hover :global(img) {
+  .gallery__item:hover :global(img),
+  .gallery__button:focus-visible :global(img) {
     transform: scale(1.05);
+  }
+
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .gallery-lightbox[aria-hidden='false'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .gallery-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+  }
+
+  .gallery-lightbox__dialog {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 1180px);
+    max-height: 88vh;
+  }
+
+  .gallery-lightbox__image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .gallery-lightbox__close,
+  .gallery-lightbox__nav {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    border: 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transition: background var(--transition-base), transform var(--transition-base);
+  }
+
+  .gallery-lightbox__close:hover,
+  .gallery-lightbox__nav:hover,
+  .gallery-lightbox__close:focus-visible,
+  .gallery-lightbox__nav:focus-visible {
+    background: rgba(0, 0, 0, 0.82);
+    transform: scale(1.04);
+  }
+
+  .gallery-lightbox__close {
+    top: -0.5rem;
+    right: -0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .gallery-lightbox__nav {
+    top: 50%;
+    width: clamp(2.75rem, 7vw, 4.5rem);
+    height: clamp(2.75rem, 7vw, 4.5rem);
+    border-radius: 999px;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+
+  .gallery-lightbox__nav:hover,
+  .gallery-lightbox__nav:focus-visible {
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .gallery-lightbox__nav--prev {
+    left: clamp(0.5rem, 2vw, 1.25rem);
+  }
+
+  .gallery-lightbox__nav--next {
+    right: clamp(0.5rem, 2vw, 1.25rem);
+  }
+
+  .gallery-lightbox__counter {
+    position: absolute;
+    bottom: -2.35rem;
+    left: 50%;
+    margin: 0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateX(-50%);
+  }
+
+  :global(.gallery-lightbox-open) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 700px) {
+    .gallery-lightbox {
+      padding: 0.75rem;
+    }
+
+    .gallery-lightbox__dialog {
+      max-height: 84vh;
+    }
+
+    .gallery-lightbox__image {
+      max-height: 76vh;
+    }
+
+    .gallery-lightbox__close {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
   }
 </style>
