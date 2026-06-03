@@ -50,7 +50,10 @@ const galleryItems = await Promise.all(
     <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" type="button" data-gallery-prev aria-label="Previous photo">‹</button>
     <img class="gallery-lightbox__image" data-gallery-image src="" alt="" />
     <button class="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" data-gallery-next aria-label="Next photo">›</button>
-    <p class="gallery-lightbox__counter" data-gallery-counter aria-live="polite"></p>
+    <div class="gallery-lightbox__status">
+      <p class="gallery-lightbox__counter" data-gallery-counter aria-live="polite"></p>
+      <button class="gallery-lightbox__autoplay" type="button" data-gallery-autoplay aria-pressed="false">Pause autoplay</button>
+    </div>
   </div>
 </div>
 
@@ -64,12 +67,14 @@ const galleryItems = await Promise.all(
     const triggers = Array.from(gallery.querySelectorAll('[data-gallery-trigger]'));
     const image = lightbox.querySelector('[data-gallery-image]');
     const counter = lightbox.querySelector('[data-gallery-counter]');
+    const autoplayButton = lightbox.querySelector('[data-gallery-autoplay]');
     const closeButtons = lightbox.querySelectorAll('[data-gallery-close]');
     const prevButton = lightbox.querySelector('[data-gallery-prev]');
     const nextButton = lightbox.querySelector('[data-gallery-next]');
 
     let currentIndex = 0;
     let autoplayId = null;
+    let isAutoplayPaused = false;
     let lastFocused = null;
 
     const stopAutoplay = () => {
@@ -79,11 +84,23 @@ const galleryItems = await Promise.all(
       }
     };
 
+    const updateAutoplayButton = () => {
+      if (!autoplayButton) return;
+      autoplayButton.textContent = isAutoplayPaused ? 'Resume autoplay' : 'Pause autoplay';
+      autoplayButton.setAttribute('aria-pressed', String(isAutoplayPaused));
+    };
+
     const startAutoplay = () => {
       stopAutoplay();
-      if (triggers.length > 1) {
+      if (!isAutoplayPaused && triggers.length > 1) {
         autoplayId = window.setInterval(() => showPhoto(currentIndex + 1), AUTOPLAY_MS);
       }
+      updateAutoplayButton();
+    };
+
+    const toggleAutoplay = () => {
+      isAutoplayPaused = !isAutoplayPaused;
+      startAutoplay();
     };
 
     const normalizeIndex = (index) => (index + triggers.length) % triggers.length;
@@ -99,6 +116,7 @@ const galleryItems = await Promise.all(
 
     const openLightbox = (index) => {
       lastFocused = document.activeElement;
+      isAutoplayPaused = false;
       showPhoto(index);
       lightbox.setAttribute('aria-hidden', 'false');
       document.documentElement.classList.add('gallery-lightbox-open');
@@ -126,6 +144,7 @@ const galleryItems = await Promise.all(
     closeButtons.forEach((button) => button.addEventListener('click', closeLightbox));
     prevButton?.addEventListener('click', () => navigate(-1));
     nextButton?.addEventListener('click', () => navigate(1));
+    autoplayButton?.addEventListener('click', toggleAutoplay);
 
     document.addEventListener('keydown', (event) => {
       if (lightbox.getAttribute('aria-hidden') === 'true') return;
@@ -292,16 +311,37 @@ const galleryItems = await Promise.all(
     right: clamp(0.5rem, 2vw, 1.25rem);
   }
 
-  .gallery-lightbox__counter {
+  .gallery-lightbox__status {
     position: absolute;
-    bottom: -2.35rem;
+    bottom: -2.65rem;
     left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateX(-50%);
+  }
+
+  .gallery-lightbox__counter,
+  .gallery-lightbox__autoplay {
     margin: 0;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
     color: #fff;
     background: rgba(0, 0, 0, 0.6);
-    transform: translateX(-50%);
+  }
+
+  .gallery-lightbox__autoplay {
+    border: 0;
+    font: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background var(--transition-base), transform var(--transition-base);
+  }
+
+  .gallery-lightbox__autoplay:hover,
+  .gallery-lightbox__autoplay:focus-visible {
+    background: rgba(0, 0, 0, 0.82);
+    transform: scale(1.04);
   }
 
   :global(.gallery-lightbox-open) {
