@@ -1,0 +1,138 @@
+Skydive Luxembourg website photo optimization/import report
+Date: 2026-06-03
+New upload source: /mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload
+Format: WebP, max edge 2200px for gallery uploads / 2400px for existing site photos, quality 82, metadata stripped by Pillow re-encode.
+Existing site photos converted: 45
+New uploaded photos imported: 78
+Total source bytes processed: 255,995,749
+Total WebP bytes now: 25,048,524
+Approx reduction: 230,947,225 bytes (90.2% smaller)
+
+Historical ordering: newest/colour-looking photos first; monochrome/black-and-white images last. The order is approximate because most historical scans have no EXIF dates.
+
+Converted existing assets:
+src/assets/img/AFF-1.jpg -> src/assets/img/AFF-1.webp | (2704, 1520)->(2400, 1349) | 1002577 -> 282404 bytes
+src/assets/img/AFF-2.jpg -> src/assets/img/AFF-2.webp | (1920, 1080)->(1920, 1080) | 530022 -> 172732 bytes
+src/assets/img/Contact-1.jpg -> src/assets/img/Contact-1.webp | (4000, 3000)->(2400, 1800) | 555606 -> 169276 bytes
+src/assets/img/Fun-1.jpg -> src/assets/img/Fun-1.webp | (1920, 1080)->(1920, 1080) | 333385 -> 87726 bytes
+src/assets/img/Fun-2.jpg -> src/assets/img/Fun-2.webp | (1920, 1080)->(1920, 1080) | 559946 -> 183360 bytes
+src/assets/img/Fun-3.jpg -> src/assets/img/Fun-3.webp | (4032, 3024)->(2400, 1800) | 4102542 -> 784832 bytes
+src/assets/img/Gallery-1.jpg -> src/assets/img/Gallery-1.webp | (5712, 4284)->(2400, 1800) | 5673572 -> 593976 bytes
+src/assets/img/Gallery-13.jpg -> src/assets/img/Gallery-13.webp | (2028, 2704)->(1800, 2400) | 330889 -> 62694 bytes
+src/assets/img/Gallery-2.jpg -> src/assets/img/Gallery-2.webp | (3024, 4032)->(1800, 2400) | 5209331 -> 1111830 bytes
+src/assets/img/Gallery-3.jpg -> src/assets/img/Gallery-3.webp | (3024, 4032)->(1800, 2400) | 2484790 -> 328494 bytes
+src/assets/img/Gallery-4.jpg -> src/assets/img/Gallery-4.webp | (4032, 3024)->(2400, 1800) | 2418466 -> 354014 bytes
+src/assets/img/Gallery-5.jpg -> src/assets/img/Gallery-5.webp | (1920, 1080)->(1920, 1080) | 544646 -> 194298 bytes
+src/assets/img/Gallery-6.jpg -> src/assets/img/Gallery-6.webp | (4284, 5712)->(1800, 2400) | 5577887 -> 345434 bytes
+src/assets/img/Gallery-7.jpg -> src/assets/img/Gallery-7.webp | (1920, 1440)->(1920, 1440) | 518347 -> 136892 bytes
+src/assets/img/Gallery-8.jpg -> src/assets/img/Gallery-8.webp | (1920, 1440)->(1920, 1440) | 657114 -> 189154 bytes
+src/assets/img/Hero-1.jpg -> src/assets/img/Hero-1.webp | (2704, 2028)->(2400, 1800) | 314489 -> 53900 bytes
+src/assets/img/Hero-2.jpg -> src/assets/img/Hero-2.webp | (2704, 2028)->(2400, 1800) | 897310 -> 250698 bytes
+src/assets/img/Hero-3.jpg -> src/assets/img/Hero-3.webp | (1920, 1440)->(1920, 1440) | 517469 -> 125252 bytes
+src/assets/img/Hero-4.jpg -> src/assets/img/Hero-4.webp | (1920, 1080)->(1920, 1080) | 291518 -> 57592 bytes
+src/assets/img/Tandem-1.jpg -> src/assets/img/Tandem-1.webp | (2704, 2028)->(2400, 1800) | 612508 -> 151158 bytes
+src/assets/img/Tandem-2.jpg -> src/assets/img/Tandem-2.webp | (1920, 1080)->(1920, 1080) | 286060 -> 70592 bytes
+src/assets/img/Tandem-3.jpg -> src/assets/img/Tandem-3.webp | (1920, 1080)->(1920, 1080) | 461357 -> 156108 bytes
+src/assets/img/Tandem-4.jpg -> src/assets/img/Tandem-4.webp | (1920, 1440)->(1920, 1440) | 787337 -> 293854 bytes
+src/assets/img/website-selection/action/action-001.png -> src/assets/img/website-selection/action/action-001.webp | (3840, 2160)->(2400, 1350) | 7972367 -> 202454 bytes
+src/assets/img/website-selection/action/action-002.png -> src/assets/img/website-selection/action/action-002.webp | (3840, 2160)->(2400, 1350) | 7089301 -> 168496 bytes
+src/assets/img/website-selection/action/action-005.png -> src/assets/img/website-selection/action/action-005.webp | (3840, 2160)->(2400, 1350) | 8302201 -> 270546 bytes
+src/assets/img/website-selection/action/action-006.png -> src/assets/img/website-selection/action/action-006.webp | (3840, 2160)->(2400, 1350) | 7205700 -> 221140 bytes
+src/assets/img/website-selection/action/action-008.png -> src/assets/img/website-selection/action/action-008.webp | (2704, 1520)->(2400, 1349) | 5740876 -> 451290 bytes
+src/assets/img/website-selection/action/action-009.png -> src/assets/img/website-selection/action/action-009.webp | (3840, 2160)->(2400, 1350) | 5568713 -> 91650 bytes
+src/assets/img/website-selection/action/action-010.png -> src/assets/img/website-selection/action/action-010.webp | (3840, 2160)->(2400, 1350) | 5567558 -> 129474 bytes
+src/assets/img/website-selection/action/action-015.png -> src/assets/img/website-selection/action/action-015.webp | (3840, 2160)->(2400, 1350) | 4824845 -> 66752 bytes
+src/assets/img/website-selection/action/action-018.png -> src/assets/img/website-selection/action/action-018.webp | (3840, 2160)->(2400, 1350) | 3915064 -> 64530 bytes
+src/assets/img/website-selection/action/action-019.png -> src/assets/img/website-selection/action/action-019.webp | (3840, 2160)->(2400, 1350) | 3602438 -> 51174 bytes
+src/assets/img/website-selection/aff/aff-002.jpg -> src/assets/img/website-selection/aff/aff-002.webp | (3456, 2304)->(2400, 1600) | 3095758 -> 200674 bytes
+src/assets/img/website-selection/aff/aff-005.jpg -> src/assets/img/website-selection/aff/aff-005.webp | (3456, 2304)->(2400, 1600) | 3243018 -> 206366 bytes
+src/assets/img/website-selection/tandem/tandem-001.png -> src/assets/img/website-selection/tandem/tandem-001.webp | (1440, 900)->(1440, 900) | 1866599 -> 71418 bytes
+src/assets/img/website-selection/tandem/tandem-002.png -> src/assets/img/website-selection/tandem/tandem-002.webp | (1920, 1440)->(1920, 1440) | 3374461 -> 208748 bytes
+src/assets/img/website-selection/tandem/tandem-003.png -> src/assets/img/website-selection/tandem/tandem-003.webp | (1920, 1440)->(1920, 1440) | 3241527 -> 145928 bytes
+src/assets/img/website-selection/tandem/tandem-005.png -> src/assets/img/website-selection/tandem/tandem-005.webp | (1920, 1440)->(1920, 1440) | 3060509 -> 133700 bytes
+src/assets/img/website-selection/tandem/tandem-006.png -> src/assets/img/website-selection/tandem/tandem-006.webp | (2704, 2028)->(2400, 1800) | 2988052 -> 160356 bytes
+src/assets/img/website-selection/tandem/tandem-007.png -> src/assets/img/website-selection/tandem/tandem-007.webp | (1920, 1440)->(1920, 1440) | 2984106 -> 150880 bytes
+src/assets/img/website-selection/tandem/tandem-008.png -> src/assets/img/website-selection/tandem/tandem-008.webp | (1920, 1440)->(1920, 1440) | 2970947 -> 149996 bytes
+src/assets/img/website-selection/tandem/tandem-009.png -> src/assets/img/website-selection/tandem/tandem-009.webp | (1920, 1440)->(1920, 1440) | 2967981 -> 141934 bytes
+src/assets/img/website-selection/tandem/tandem-010.png -> src/assets/img/website-selection/tandem/tandem-010.webp | (1920, 1440)->(1920, 1440) | 2834927 -> 128140 bytes
+src/assets/img/website-selection/tandem/tandem-011.jpg -> src/assets/img/website-selection/tandem/tandem-011.webp | (2704, 2028)->(2400, 1800) | 3241304 -> 280200 bytes
+
+Imported upload files:
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 3341.jpg -> src/assets/img/website-selection/action/action-020.webp | (4032, 3024)->(2200, 1650) | 3507632 -> 556998 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 3016.jpg -> src/assets/img/website-selection/action/action-021.webp | (5568, 4176)->(2200, 1650) | 2617742 -> 80098 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 2961.jpg -> src/assets/img/website-selection/action/action-022.webp | (5568, 4176)->(2200, 1650) | 2606586 -> 192910 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 2146.jpg -> src/assets/img/website-selection/action/action-023.webp | (1913, 1071)->(1913, 1071) | 282694 -> 93830 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 2144.jpg -> src/assets/img/website-selection/action/action-024.webp | (1918, 1080)->(1918, 1080) | 227448 -> 72144 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1073.jpg -> src/assets/img/website-selection/action/action-025.webp | (2402, 2402)->(2200, 2200) | 1226761 -> 105682 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1172.jpg -> src/assets/img/website-selection/action/action-026.webp | (3888, 2592)->(2200, 1467) | 2661808 -> 145088 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1171.jpg -> src/assets/img/website-selection/action/action-027.webp | (3888, 2592)->(2200, 1467) | 3628470 -> 245026 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1169.jpg -> src/assets/img/website-selection/action/action-028.webp | (3888, 2592)->(2200, 1467) | 2336609 -> 94398 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 001.png -> src/assets/img/website-selection/action/action-029.webp | (1920, 1080)->(1920, 1080) | 3286856 -> 363054 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1085.png -> src/assets/img/website-selection/action/action-030.webp | (1440, 900)->(1440, 900) | 1636815 -> 15220 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1086.png -> src/assets/img/website-selection/action/action-031.webp | (1440, 900)->(1440, 900) | 1816180 -> 50914 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 1091.png -> src/assets/img/website-selection/action/action-032.webp | (1080, 720)->(1080, 720) | 1278719 -> 21826 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 3794.png -> src/assets/img/website-selection/action/action-033.webp | (1920, 1080)->(1920, 1080) | 1617824 -> 67022 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Skydiving action/Other 3934.jpg -> src/assets/img/website-selection/action/action-034.webp | (3840, 2160)->(2200, 1238) | 432353 -> 211530 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Tandem/Other 3812.png -> src/assets/img/website-selection/tandem/tandem-012.webp | (3840, 2160)->(2200, 1238) | 4375702 -> 72746 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Tandem/Other 3931.jpg -> src/assets/img/website-selection/tandem/tandem-013.webp | (2704, 2028)->(2200, 1650) | 1037652 -> 52896 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/AFF/Other 736.jpg -> src/assets/img/website-selection/aff/aff-006.webp | (3456, 2304)->(2200, 1467) | 3066241 -> 138304 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/AFF/Other 3822.png -> src/assets/img/website-selection/aff/aff-007.webp | (1920, 1080)->(1920, 1080) | 2435761 -> 170232 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/AFF/Other 3826.png -> src/assets/img/website-selection/aff/aff-008.webp | (2704, 1520)->(2200, 1237) | 4721775 -> 217702 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3485.jpeg -> src/assets/img/website-selection/dropzone/dropzone-001.webp | (4032, 3024)->(2200, 1650) | 1953062 -> 180536 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3433.jpg -> src/assets/img/website-selection/dropzone/dropzone-002.webp | (4032, 3024)->(2200, 1650) | 2896267 -> 374460 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3298.jpg -> src/assets/img/website-selection/dropzone/dropzone-003.webp | (4032, 3024)->(2200, 1650) | 3168572 -> 526258 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3265.jpg -> src/assets/img/website-selection/dropzone/dropzone-004.webp | (4032, 3024)->(2200, 1650) | 3779703 -> 591362 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3251.jpg -> src/assets/img/website-selection/dropzone/dropzone-005.webp | (3024, 4032)->(1650, 2200) | 2806709 -> 277536 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3197.jpg -> src/assets/img/website-selection/dropzone/dropzone-006.webp | (4032, 3024)->(2200, 1650) | 2791757 -> 476392 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3171.jpg -> src/assets/img/website-selection/dropzone/dropzone-007.webp | (4032, 3024)->(2200, 1650) | 4005004 -> 679360 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3150.jpg -> src/assets/img/website-selection/dropzone/dropzone-008.webp | (3024, 4032)->(1650, 2200) | 2284133 -> 286190 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3131.jpeg -> src/assets/img/website-selection/dropzone/dropzone-009.webp | (3024, 4032)->(1650, 2200) | 5920011 -> 961754 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3123.jpg -> src/assets/img/website-selection/dropzone/dropzone-010.webp | (5712, 4284)->(2200, 1650) | 5051703 -> 477536 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3099.jpg -> src/assets/img/website-selection/dropzone/dropzone-011.webp | (4032, 3024)->(2200, 1650) | 3181238 -> 559902 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3094.jpg -> src/assets/img/website-selection/dropzone/dropzone-012.webp | (4284, 5712)->(1650, 2200) | 5684212 -> 532592 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3584.jpg -> src/assets/img/website-selection/dropzone/dropzone-013.webp | (4284, 5712)->(1650, 2200) | 7389626 -> 821440 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3550.jpg -> src/assets/img/website-selection/dropzone/dropzone-014.webp | (4032, 3024)->(2200, 1650) | 4037184 -> 716364 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 3654.jpg -> src/assets/img/website-selection/dropzone/dropzone-015.webp | (4032, 3024)->(2200, 1650) | 3085282 -> 426306 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 2217.jpg -> src/assets/img/website-selection/dropzone/dropzone-016.webp | (4032, 3024)->(2200, 1650) | 3224176 -> 481576 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 722.jpg -> src/assets/img/website-selection/dropzone/dropzone-017.webp | (425, 283)->(425, 283) | 119231 -> 11494 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 834.jpg -> src/assets/img/website-selection/dropzone/dropzone-018.webp | (3456, 2304)->(2200, 1467) | 2936934 -> 149728 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 151.jpg -> src/assets/img/website-selection/dropzone/dropzone-019.webp | (960, 624)->(960, 624) | 222512 -> 67094 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 172.jpg -> src/assets/img/website-selection/dropzone/dropzone-020.webp | (958, 622)->(958, 622) | 218802 -> 55976 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 223.jpg -> src/assets/img/website-selection/dropzone/dropzone-021.webp | (943, 617)->(943, 617) | 247719 -> 70414 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Dropzone Live/Other 2258.jpg -> src/assets/img/website-selection/dropzone/dropzone-022.webp | (2048, 1536)->(2048, 1536) | 243406 -> 239654 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/LX-MDT/Other 2165.jpg -> src/assets/img/website-selection/aircraft/aircraft-001.webp | (4032, 3024)->(2200, 1650) | 3576726 -> 442408 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/LX-MDT/Other 2509.jpg -> src/assets/img/website-selection/aircraft/aircraft-002.webp | (2048, 1365)->(2048, 1365) | 1732546 -> 285924 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/LX-MDT/Other 2514.jpg -> src/assets/img/website-selection/aircraft/aircraft-003.webp | (2048, 1365)->(2048, 1365) | 1483999 -> 208454 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/LX-MDT/Other 2653.jpg -> src/assets/img/website-selection/aircraft/aircraft-004.webp | (2048, 1365)->(2048, 1365) | 1190103 -> 107588 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 447.jpg -> src/assets/img/website-selection/historical/historical-001.webp | (735, 951)->(735, 951) | 168123 -> 34532 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 331.jpg -> src/assets/img/website-selection/historical/historical-002.webp | (1000, 688)->(1000, 688) | 273316 -> 56074 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 318.jpg -> src/assets/img/website-selection/historical/historical-003.webp | (1012, 674)->(1012, 674) | 211400 -> 31728 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 438.jpg -> src/assets/img/website-selection/historical/historical-004.webp | (856, 816)->(856, 816) | 126114 -> 33022 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 336.jpg -> src/assets/img/website-selection/historical/historical-005.webp | (1007, 694)->(1007, 694) | 380309 -> 99546 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 269.jpg -> src/assets/img/website-selection/historical/historical-006.webp | (665, 1026)->(665, 1026) | 209160 -> 40652 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 299.jpg -> src/assets/img/website-selection/historical/historical-007.webp | (627, 961)->(627, 961) | 185219 -> 32134 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 138.jpg -> src/assets/img/website-selection/historical/historical-008.webp | (938, 613)->(938, 613) | 136991 -> 17356 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 140.jpg -> src/assets/img/website-selection/historical/historical-009.webp | (858, 584)->(858, 584) | 169768 -> 40380 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 141.jpg -> src/assets/img/website-selection/historical/historical-010.webp | (952, 612)->(952, 612) | 191317 -> 35238 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 085.jpg -> src/assets/img/website-selection/historical/historical-011.webp | (669, 1045)->(669, 1045) | 376393 -> 91530 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 083.jpg -> src/assets/img/website-selection/historical/historical-012.webp | (1045, 669)->(1045, 669) | 366969 -> 83882 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 072.jpg -> src/assets/img/website-selection/historical/historical-013.webp | (656, 437)->(656, 437) | 160216 -> 25882 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 230.jpg -> src/assets/img/website-selection/historical/historical-014.webp | (958, 626)->(958, 626) | 122313 -> 16328 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 222.jpg -> src/assets/img/website-selection/historical/historical-015.webp | (945, 615)->(945, 615) | 223254 -> 58228 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 258.jpg -> src/assets/img/website-selection/historical/historical-016.webp | (1031, 678)->(1031, 678) | 263426 -> 82506 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 192.jpg -> src/assets/img/website-selection/historical/historical-017.webp | (956, 619)->(956, 619) | 195941 -> 47976 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 161.jpg -> src/assets/img/website-selection/historical/historical-018.webp | (957, 620)->(957, 620) | 197648 -> 44304 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 067.jpg -> src/assets/img/website-selection/historical/historical-019.webp | (855, 487)->(855, 487) | 308327 -> 107368 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 066.jpg -> src/assets/img/website-selection/historical/historical-020.webp | (1010, 699)->(1010, 699) | 405668 -> 126486 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 065.jpg -> src/assets/img/website-selection/historical/historical-021.webp | (651, 466)->(651, 466) | 181141 -> 47702 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 056.jpg -> src/assets/img/website-selection/historical/historical-022.webp | (748, 515)->(748, 515) | 227250 -> 59588 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 054.jpg -> src/assets/img/website-selection/historical/historical-023.webp | (756, 404)->(756, 404) | 205785 -> 61442 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 053.jpg -> src/assets/img/website-selection/historical/historical-024.webp | (1518, 1139)->(1518, 1139) | 66951 -> 74056 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 070.jpg -> src/assets/img/website-selection/historical/historical-025.webp | (1007, 718)->(1007, 718) | 385670 -> 168012 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 063.jpg -> src/assets/img/website-selection/historical/historical-026.webp | (769, 530)->(769, 530) | 298288 -> 107276 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 062.jpg -> src/assets/img/website-selection/historical/historical-027.webp | (764, 531)->(764, 531) | 258924 -> 80484 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 061.jpg -> src/assets/img/website-selection/historical/historical-028.webp | (769, 528)->(769, 528) | 267595 -> 84644 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 069.jpg -> src/assets/img/website-selection/historical/historical-029.webp | (1021, 740)->(1021, 740) | 293408 -> 88522 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 043.jpg -> src/assets/img/website-selection/historical/historical-030.webp | (584, 852)->(584, 852) | 177443 -> 66504 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 036.jpg -> src/assets/img/website-selection/historical/historical-031.webp | (515, 782)->(515, 782) | 268866 -> 139532 bytes
+/mnt/haba-homes/Bot_Access/Sam's folder/Website photo selection/Photos for websit upload/Historical/Other 029.jpg -> src/assets/img/website-selection/historical/historical-032.webp | (983, 697)->(983, 697) | 334891 -> 137576 bytes

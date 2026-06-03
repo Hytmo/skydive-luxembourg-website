@@ -5,7 +5,7 @@
 import PageBanner from '../sections/PageBanner.astro';
 import Gallery from '../sections/Gallery.astro';
 
-import bannerImg from '../../assets/img/Gallery-7.jpg';
+import bannerImg from '../../assets/img/Gallery-7.webp';
 
 const { lang = 'en' } = Astro.props;
 
@@ -19,6 +19,9 @@ const t = {
       action: { title: 'Skydiving action', lead: 'Freefall, exits and canopy moments from the Luxembourg sky.' },
       tandem: { title: 'Tandem skydives', lead: 'First-jump moments with our tandem instructors.' },
       aff: { title: 'AFF training', lead: 'Student training moments from the path to solo skydiving.' },
+      dropzone: { title: 'Dropzone life', lead: 'People, aircraft, packing, events and everyday club moments at Noertrange.' },
+      aircraft: { title: 'Aircraft', lead: 'Our jump aircraft and airfield scenes.' },
+      historical: { title: 'Club history', lead: 'Archive moments from Cercle Para to Skydive Luxembourg, ordered from newer colour photos to the oldest black-and-white images.' },
     },
   },
   fr: {
@@ -30,6 +33,9 @@ const t = {
       action: { title: 'Action parachutisme', lead: 'Chute libre, sorties d\'avion et voiles dans le ciel luxembourgeois.' },
       tandem: { title: 'Sauts tandem', lead: 'Premiers sauts accompagnés par nos moniteurs tandem.' },
       aff: { title: 'Formation AFF', lead: 'Moments de formation sur le chemin vers le saut solo.' },
+      dropzone: { title: 'Vie de la dropzone', lead: 'Personnes, avions, pliage, événements et moments de club à Noertrange.' },
+      aircraft: { title: 'Avions', lead: 'Nos avions de largage et scènes d\'aérodrome.' },
+      historical: { title: 'Histoire du club', lead: 'Archives du Cercle Para à Skydive Luxembourg, des photos couleur les plus récentes aux plus anciennes en noir et blanc.' },
     },
   },
   de: {
@@ -41,6 +47,9 @@ const t = {
       action: { title: 'Fallschirm-Action', lead: 'Freifall, Ausstiege und Schirmflug über Luxemburg.' },
       tandem: { title: 'Tandemsprünge', lead: 'Erste Sprungmomente mit unseren Tandemlehrern.' },
       aff: { title: 'AFF-Ausbildung', lead: 'Ausbildungsmomente auf dem Weg zum Solo-Fallschirmspringen.' },
+      dropzone: { title: 'Leben auf der Dropzone', lead: 'Menschen, Flugzeuge, Packen, Events und Clubmomente in Noertrange.' },
+      aircraft: { title: 'Flugzeuge', lead: 'Unsere Absetzflugzeuge und Szenen vom Flugplatz.' },
+      historical: { title: 'Clubgeschichte', lead: 'Archivmomente vom Cercle Para bis Skydive Luxembourg, von neueren Farbfotos bis zu den ältesten Schwarz-Weiß-Bildern.' },
     },
   },
 }[lang];
@@ -54,11 +63,23 @@ const tandemImages = Object.entries(import.meta.glob('../../assets/img/website-s
 const affImages = Object.entries(import.meta.glob('../../assets/img/website-selection/aff/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' }))
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, image]) => ({ image, alt: t.categories.aff.title }));
+const dropzoneImages = Object.entries(import.meta.glob('../../assets/img/website-selection/dropzone/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' }))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, image]) => ({ image, alt: t.categories.dropzone.title }));
+const aircraftImages = Object.entries(import.meta.glob('../../assets/img/website-selection/aircraft/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' }))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, image]) => ({ image, alt: t.categories.aircraft.title }));
+const historicalImages = Object.entries(import.meta.glob('../../assets/img/website-selection/historical/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' }))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, image]) => ({ image, alt: t.categories.historical.title }));
 
 const galleries = [
   { key: 'action', copy: t.categories.action, items: actionImages },
   { key: 'tandem', copy: t.categories.tandem, items: tandemImages },
   { key: 'aff', copy: t.categories.aff, items: affImages },
+  { key: 'dropzone', copy: t.categories.dropzone, items: dropzoneImages },
+  { key: 'aircraft', copy: t.categories.aircraft, items: aircraftImages },
+  { key: 'historical', copy: t.categories.historical, items: historicalImages },
 ].filter((category) => category.items.length > 0);
 ---
 
