@@ -114,8 +114,21 @@ const isActive = (slug) => {
 
 <script>
   // Mobile menu toggle - vanilla JS, runs on every page load
+  const nav = document.querySelector('.site-nav');
   const toggle = document.querySelector('[data-nav-toggle]');
   const list = document.querySelector('[data-nav-list]');
+
+  const syncNavHeight = () => {
+    if (!nav) return;
+    document.documentElement.style.setProperty('--site-nav-height', `${nav.getBoundingClientRect().height}px`);
+  };
+
+  syncNavHeight();
+  if ('ResizeObserver' in window && nav) {
+    new ResizeObserver(syncNavHeight).observe(nav);
+  } else {
+    window.addEventListener('resize', syncNavHeight);
+  }
 
   const closeMenu = () => {
     list?.classList.remove('is-open');
