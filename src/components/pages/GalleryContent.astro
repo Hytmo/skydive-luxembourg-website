@@ -15,6 +15,7 @@ const t = {
     bannerTitle: 'A few thousand feet from here.',
     bannerSubtitle: 'Moments from the dropzone, the aircraft, and the sky above Luxembourg.',
     introText: 'Photos and stills captured by our jumpers, instructors and camera flyers across the seasons. Want to see your shot here? Send it over - we love sharing the club\'s view of the world.',
+    categoryNavLabel: 'Gallery sections',
     categories: {
       action: { title: 'Skydiving action', lead: 'Freefall, exits and canopy moments from the Luxembourg sky.' },
       tandem: { title: 'Tandem skydives', lead: 'First-jump moments with our tandem instructors.' },
@@ -29,6 +30,7 @@ const t = {
     bannerTitle: 'À quelques milliers de pieds d\'ici.',
     bannerSubtitle: 'Instants captés sur la DZ, dans l\'avion et dans le ciel du Luxembourg.',
     introText: 'Photos et captures prises par nos parachutistes, moniteurs et caméramen au fil des saisons. Vous voulez voir votre cliché ici ? Envoyez-le - nous aimons partager le regard du club sur le monde.',
+    categoryNavLabel: 'Sections de la galerie',
     categories: {
       action: { title: 'Action parachutisme', lead: 'Chute libre, sorties d\'avion et voiles dans le ciel luxembourgeois.' },
       tandem: { title: 'Sauts tandem', lead: 'Premiers sauts accompagnés par nos moniteurs tandem.' },
@@ -43,6 +45,7 @@ const t = {
     bannerTitle: 'Ein paar tausend Fuß von hier entfernt.',
     bannerSubtitle: 'Momente vom Flugplatz, aus dem Flugzeug und vom Himmel über Luxemburg.',
     introText: 'Fotos und Standbilder unserer Springer, Lehrer und Kameraflieger aus allen Jahreszeiten. Willst du dein Bild hier sehen? Schick es uns - wir teilen den Blick des Vereins gerne.',
+    categoryNavLabel: 'Galerie-Bereiche',
     categories: {
       action: { title: 'Fallschirm-Action', lead: 'Freifall, Ausstiege und Schirmflug über Luxemburg.' },
       tandem: { title: 'Tandemsprünge', lead: 'Erste Sprungmomente mit unseren Tandemlehrern.' },
@@ -97,6 +100,12 @@ const galleries = [
       <p class="section__lead">{t.introText}</p>
     </header>
 
+    <nav class="gallery-jump-nav" aria-label={t.categoryNavLabel}>
+      {galleries.map((category) => (
+        <a href={`#gallery-${category.key}`} class="gallery-jump-nav__link">{category.copy.title}</a>
+      ))}
+    </nav>
+
     <div class="gallery-categories">
       {galleries.map((category) => (
         <section class="gallery-category" aria-labelledby={`gallery-${category.key}`}>
@@ -112,9 +121,53 @@ const galleries = [
 </section>
 
 <style>
+  .gallery-jump-nav {
+    position: sticky;
+    top: var(--site-nav-height, 76px);
+    z-index: 5;
+    display: flex;
+    gap: var(--space-2);
+    margin: calc(var(--space-6) * -1) calc(var(--space-4) * -1) var(--space-8);
+    padding: var(--space-3) max(var(--space-4), env(safe-area-inset-right)) var(--space-3) max(var(--space-4), env(safe-area-inset-left));
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    background: var(--color-bg);
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-jump-nav__link {
+    flex: 0 0 auto;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-fg);
+    background: var(--color-bg-alt);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .gallery-jump-nav__link:hover,
+  .gallery-jump-nav__link:focus-visible {
+    color: var(--color-bg);
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+  }
+
   .gallery-categories {
     display: grid;
-    gap: var(--space-6);
+    gap: var(--space-8);
   }
 
   .gallery-category {

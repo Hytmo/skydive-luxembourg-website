@@ -34,7 +34,7 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -103,7 +103,21 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
       *, *::before, *::after { box-sizing: border-box; }
       * { margin: 0; }
 
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
 
       body {
         font-family: var(--font-sans);
@@ -113,6 +127,20 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
         background: var(--color-bg);
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+        overscroll-behavior-x: none;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: rgba(0, 161, 222, 0.22);
+        touch-action: manipulation;
       }
 
       img, picture, video, svg {
@@ -162,6 +190,28 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
         border-radius: var(--radius-sm);
       }
       .skip-link:focus { top: var(--space-2); }
+
+      @media (max-width: 700px) {
+        .container {
+          padding-inline: max(var(--space-4), env(safe-area-inset-left)) max(var(--space-4), env(safe-area-inset-right));
+        }
+
+        .section,
+        .section--tight {
+          padding-block: var(--space-10);
+          padding-inline: max(var(--space-4), env(safe-area-inset-left)) max(var(--space-4), env(safe-area-inset-right));
+        }
+
+        .section__header {
+          margin-bottom: var(--space-8);
+        }
+
+        .btn,
+        .form button[type="submit"] {
+          min-height: 44px;
+          width: 100%;
+        }
+      }
     </style>
   </body>
 </html>

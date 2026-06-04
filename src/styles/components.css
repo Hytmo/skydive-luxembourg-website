@@ -150,7 +150,7 @@
 
 @media (max-width: 700px) {
   .page-banner {
-    min-height: 430px;
+    min-height: min(620px, 72svh);
     text-align: center;
   }
 
