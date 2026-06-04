@@ -20,14 +20,62 @@ import Footer from '../components/Footer.astro';
 const {
   title = 'Skydive Luxembourg',
   description = 'Official website of Skydive Luxembourg a.s.b.l. - tandem jumps, AFF courses, and the home of skydiving in Luxembourg.',
+  robots,
+  structuredData = [],
 } = Astro.props;
 
 const lang = Astro.currentLocale ?? 'en';
 const locales = ['en', 'fr', 'de'];
 const path = Astro.url.pathname;
+const canonicalUrl = new URL(path, Astro.site).toString();
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
 
 // Strip the current locale prefix to compute hreflang URLs for the other languages
 const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'SportsActivityLocation'],
+  '@id': `${siteUrl}/#organization`,
+  name: 'Skydive Luxembourg a.s.b.l.',
+  alternateName: 'Skydive Luxembourg',
+  url: siteUrl,
+  logo: `${siteUrl}/img/og-image.jpg`,
+  email: 'mail@skydive.lu',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '32 Op der Louh',
+    postalCode: 'L-9676',
+    addressLocality: 'Noertrange',
+    addressCountry: 'LU',
+  },
+  areaServed: ['Luxembourg', 'Greater Region', 'Belgium', 'France', 'Germany'],
+  sport: 'Skydiving',
+  sameAs: [
+    'https://www.facebook.com/cerclepara',
+    'https://www.instagram.com/skydiveluxembourg/',
+    'https://www.youtube.com/@CercleParaLuxembourg',
+  ],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${canonicalUrl}#webpage`,
+  url: canonicalUrl,
+  name: title,
+  description,
+  inLanguage: lang,
+  isPartOf: {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: 'Skydive Luxembourg',
+    url: siteUrl,
+  },
+  about: { '@id': `${siteUrl}/#organization` },
+};
+
+const allStructuredData = [organizationSchema, webPageSchema, ...structuredData];
 ---
 
 <!DOCTYPE html>
@@ -39,8 +87,9 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
 
-    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="canonical" href={canonicalUrl} />
 
     {locales.map((loc) => (
       <link
@@ -58,8 +107,12 @@ const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={new URL(path, Astro.site)} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={new URL('/img/og-image.jpg', Astro.site)} />
+
+    {allStructuredData.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
