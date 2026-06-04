@@ -17,8 +17,11 @@ const t = labels[lang] || labels.en;
   netlify-honeypot="bot-field"
   action={`/${lang}/thank-you`}
   class="form form--aff"
+  data-form-source="Website AFF Form"
 >
   <input type="hidden" name="form-name" value="aff-inquiry" />
+  <input type="hidden" name="source" value="Website AFF Form" />
+  <input type="hidden" name="language" value={lang} />
   <p hidden>
     <label>{t.honeypot}: <input name="bot-field" /></label>
   </p>
@@ -35,3 +38,21 @@ const t = labels[lang] || labels.en;
   <p class="form__note">{t.required_note}</p>
   <p><button type="submit">{t.send}</button></p>
 </form>
+
+<script>
+  document.querySelectorAll('form[data-form-source]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const source = form.getAttribute('data-form-source');
+      const textarea = form.querySelector('textarea[name="message"], textarea[name="question"]');
+      const lang = window.location.pathname.split('/').filter(Boolean)[0] || 'en';
+      if (['en', 'fr', 'de'].includes(lang)) {
+        form.setAttribute('action', `/${lang}/thank-you/`);
+      }
+      if (!source || !(textarea instanceof HTMLTextAreaElement)) return;
+
+      const current = textarea.value.trimStart();
+      if (current.startsWith(source)) return;
+      textarea.value = `${source}\n\n${current}`.trimEnd();
+    });
+  });
+</script>
