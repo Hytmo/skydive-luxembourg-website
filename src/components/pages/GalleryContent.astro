@@ -123,17 +123,16 @@ const galleries = [
 <style>
   .gallery-jump-nav {
     position: sticky;
-    top: calc(var(--site-nav-height, 76px) + var(--space-1));
+    top: var(--site-nav-height, 76px);
     z-index: 5;
     display: flex;
     gap: var(--space-2);
     margin: calc(var(--space-6) * -1) calc(var(--space-4) * -1) var(--space-8);
-    padding: var(--space-3) max(var(--space-4), env(safe-area-inset-right)) var(--space-3) max(var(--space-4), env(safe-area-inset-left));
+    padding: 0 max(var(--space-4), env(safe-area-inset-right)) var(--space-3) max(var(--space-4), env(safe-area-inset-left));
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
     background: var(--color-bg);
-    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
     backdrop-filter: blur(10px);
     -webkit-overflow-scrolling: touch;
   }
