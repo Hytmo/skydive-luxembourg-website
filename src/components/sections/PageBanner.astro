@@ -5,10 +5,10 @@
  */
 import { Image } from 'astro:assets';
 
-const { image, alt = '', eyebrow, title, subtitle, imagePosition } = Astro.props;
+const { image, alt = '', eyebrow, title, subtitle, imagePosition, class: className } = Astro.props;
 ---
 
-<section class="page-banner">
+<section class:list={["page-banner", className]}>
   {image && (
     <Image
       src={image}

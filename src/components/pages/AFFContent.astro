@@ -152,12 +152,21 @@ const contactHref = `/${lang}/contact`;
 ---
 
 <PageBanner
+  class="page-banner--aff"
   image={bannerImg}
   alt="AFF student in freefall"
   eyebrow={t.bannerEyebrow}
   title={t.bannerTitle}
   subtitle={t.bannerSubtitle}
 />
+
+<style is:global>
+  @media (max-width: 640px) {
+    .page-banner--aff .page-banner__img {
+      object-position: 68% 58%;
+    }
+  }
+</style>
 
 <section class="section">
   <div class="section__inner section__inner--narrow">
