@@ -56,6 +56,7 @@ const t = {
     ctaSubtitle: 'See you in the manifest queue.',
     ctaPrimary: 'Manifest now',
     ctaSecondary: 'Contact the DZ',
+    relatedPricing: 'See member, guest and rental prices',
   },
 
   fr: {
@@ -98,6 +99,7 @@ const t = {
     ctaSubtitle: 'À tout à l\'heure dans la file du manifest.',
     ctaPrimary: 'Manifestez maintenant',
     ctaSecondary: 'Contacter la DZ',
+    relatedPricing: 'Voir les prix membres, visiteurs et location',
   },
 
   de: {
@@ -140,10 +142,12 @@ const t = {
     ctaSubtitle: 'Wir sehen uns in der Manifest-Schlange.',
     ctaPrimary: 'Jetzt anmelden',
     ctaSecondary: 'DZ kontaktieren',
+    relatedPricing: 'Mitglieder-, Gast- und Mietpreise ansehen',
   },
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+const pricingHref = `/${lang}/pricing`;
 ---
 
 <PageBanner
@@ -186,6 +190,7 @@ const contactHref = `/${lang}/contact`;
       <ul>
         {t.opsItems.map((i) => <li>{i}</li>)}
       </ul>
+      <p class="related-links"><a href={pricingHref}>{t.relatedPricing}</a></p>
     </div>
   </div>
 </section>
@@ -215,6 +220,14 @@ const contactHref = `/${lang}/contact`;
     border-radius: var(--radius-md);
     padding: var(--space-8);
   }
+  .related-links {
+    margin: var(--space-6) 0 0;
+  }
+
+  .related-links a {
+    font-weight: var(--fw-bold);
+  }
+
   .ops-box ul {
     list-style: none;
     padding: 0;

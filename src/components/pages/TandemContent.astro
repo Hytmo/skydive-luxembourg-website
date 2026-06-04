@@ -38,6 +38,17 @@ const t = {
     reqEyebrow: 'Requirements',
     reqTitle: 'Can I jump?',
     reqLead: 'Most adults in reasonable health can. Please read through the points below - if anything is unclear, get in touch before booking.',
+    trustEyebrow: 'Why jump with us?',
+    trustTitle: 'A club-first dropzone with clear safety decisions.',
+    trustLead: 'You are hosted by Skydive Luxembourg a.s.b.l., a non-profit skydiving club at Noertrange. The experience is built around qualified instructors, maintained equipment and conservative weather calls.',
+    trustItems: [
+      'Instructor-led briefing, harness fitting and gear checks before boarding.',
+      'Tandem parachute systems include reserve parachutes and automatic activation devices.',
+      'Weather calls are made for safety first; unsafe days are rescheduled.',
+    ],
+    relatedPricing: 'See tandem prices and video inclusions',
+    relatedFaq: 'Read the tandem FAQ',
+
     reqs: [
       'Minimum age 14. Under-18s need parental consent.',
       'Maximum body weight 90 kg and minimum height 150 cm.',
@@ -89,6 +100,17 @@ const t = {
     reqEyebrow: 'Conditions',
     reqTitle: 'Puis-je sauter ?',
     reqLead: 'La plupart des adultes en bonne santé le peuvent. Lisez les points ci-dessous - au moindre doute, contactez-nous avant de réserver.',
+    trustEyebrow: 'Pourquoi sauter avec nous ?',
+    trustTitle: 'Une DZ de club, avec des décisions de sécurité claires.',
+    trustLead: 'Vous êtes accueillis par Skydive Luxembourg a.s.b.l., un club de parachutisme sans but lucratif à Noertrange. L’expérience repose sur des moniteurs qualifiés, du matériel entretenu et des décisions météo prudentes.',
+    trustItems: [
+      'Briefing, ajustement du harnais et contrôles matériel par le moniteur avant l’embarquement.',
+      'Les systèmes tandem comprennent un parachute de secours et un déclencheur automatique de sécurité.',
+      'Les décisions météo privilégient toujours la sécurité; les journées non sûres sont reportées.',
+    ],
+    relatedPricing: 'Voir les prix tandem et la vidéo incluse',
+    relatedFaq: 'Lire la FAQ tandem',
+
     reqs: [
       'Âge minimum : 14 ans. Les mineurs doivent fournir une autorisation parentale.',
       'Poids maximum : 90 kg et taille minimum : 150 cm.',
@@ -140,6 +162,17 @@ const t = {
     reqEyebrow: 'Voraussetzungen',
     reqTitle: 'Darf ich springen?',
     reqLead: 'Die meisten gesunden Erwachsenen können das. Bitte lies die Punkte unten - wenn etwas unklar ist, melde dich vor der Buchung bei uns.',
+    trustEyebrow: 'Warum mit uns springen?',
+    trustTitle: 'Eine Club-Dropzone mit klaren Sicherheitsentscheidungen.',
+    trustLead: 'Du wirst von Skydive Luxembourg a.s.b.l. betreut, einem gemeinnützigen Fallschirmsportverein in Noertrange. Das Erlebnis basiert auf qualifizierten Lehrern, gewartetem Material und konservativen Wetterentscheidungen.',
+    trustItems: [
+      'Briefing, Gurtanpassung und Materialchecks durch den Lehrer vor dem Einstieg.',
+      'Tandemsysteme enthalten Reserveschirme und automatische Öffnungsautomaten.',
+      'Wetterentscheidungen werden immer sicherheitsorientiert getroffen; unsichere Tage werden verschoben.',
+    ],
+    relatedPricing: 'Tandempreise und Video-Inklusivleistung ansehen',
+    relatedFaq: 'Tandem-FAQ lesen',
+
     reqs: [
       'Mindestalter 14 Jahre. Unter 18 Jahren ist die Einverständniserklärung eines Erziehungsberechtigten nötig.',
       'Höchstgewicht 90 kg und Mindestgröße 150 cm.',
@@ -171,6 +204,8 @@ const t = {
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+const pricingHref = `/${lang}/pricing`;
+const faqHref = `/${lang}/faq`;
 ---
 
 <PageBanner
@@ -221,6 +256,25 @@ const contactHref = `/${lang}/contact`;
 <section class="section section--alt">
   <div class="section__inner section__inner--narrow">
     <header class="section__header">
+      <p class="section__eyebrow">{t.trustEyebrow}</p>
+      <h2 class="section__title">{t.trustTitle}</h2>
+      <p class="section__lead">{t.trustLead}</p>
+    </header>
+    <div class="trust-box">
+      <ul>
+        {t.trustItems.map((item) => <li>{item}</li>)}
+      </ul>
+      <p class="related-links">
+        <a href={pricingHref}>{t.relatedPricing}</a>
+        <a href={faqHref}>{t.relatedFaq}</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner section__inner--narrow">
+    <header class="section__header">
       <p class="section__eyebrow">{t.bookEyebrow}</p>
       <h2 class="section__title">{t.bookTitle}</h2>
       <p class="section__lead">{t.bookText}</p>
@@ -254,14 +308,16 @@ const contactHref = `/${lang}/contact`;
 
 <style>
   .req-box,
-  .bring-list {
+  .bring-list,
+  .trust-box {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-8);
   }
   .req-box ul,
-  .bring-list ul {
+  .bring-list ul,
+  .trust-box ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -270,17 +326,30 @@ const contactHref = `/${lang}/contact`;
     gap: var(--space-3);
   }
   .req-box li,
-  .bring-list li {
+  .bring-list li,
+  .trust-box li {
     padding-left: var(--space-6);
     position: relative;
     color: var(--color-fg-muted);
   }
   .req-box li::before,
-  .bring-list li::before {
+  .bring-list li::before,
+  .trust-box li::before {
     content: '✓';
     position: absolute;
     left: 0;
     color: var(--color-blue);
+    font-weight: var(--fw-bold);
+  }
+
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-6) 0 0;
+  }
+
+  .related-links a {
     font-weight: var(--fw-bold);
   }
 </style>

@@ -57,6 +57,8 @@ const t = {
     ctaSubtitle: 'Our next AFF course is filling up. Register your interest now.',
     ctaPrimary: 'Apply now',
     ctaSecondary: 'Contact us',
+    relatedPricing: 'See AFF price and club formulas',
+    relatedFaq: 'Read AFF questions',
   },
 
   fr: {
@@ -101,6 +103,8 @@ const t = {
     ctaSubtitle: 'Notre prochain stage AFF se remplit - manifestez-vous dès maintenant.',
     ctaPrimary: 'S\'inscrire',
     ctaSecondary: 'Nous contacter',
+    relatedPricing: 'Voir le prix AFF et les formules club',
+    relatedFaq: 'Lire les questions AFF',
   },
 
   de: {
@@ -145,10 +149,14 @@ const t = {
     ctaSubtitle: 'Unser nächster AFF-Kurs füllt sich - melde jetzt dein Interesse an.',
     ctaPrimary: 'Jetzt anmelden',
     ctaSecondary: 'Kontakt',
+    relatedPricing: 'AFF-Preis und Club-Formeln ansehen',
+    relatedFaq: 'AFF-Fragen lesen',
   },
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+const pricingHref = `/${lang}/pricing`;
+const faqHref = `/${lang}/faq`;
 ---
 
 <PageBanner
@@ -200,6 +208,10 @@ const contactHref = `/${lang}/contact`;
       <ul>
         {t.reqs.map((r) => <li>{r}</li>)}
       </ul>
+      <p class="related-links">
+        <a href={pricingHref}>{t.relatedPricing}</a>
+        <a href={faqHref}>{t.relatedFaq}</a>
+      </p>
     </div>
   </div>
 </section>
@@ -252,6 +264,17 @@ const contactHref = `/${lang}/contact`;
     position: relative;
     color: var(--color-fg-muted);
   }
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-6) 0 0;
+  }
+
+  .related-links a {
+    font-weight: var(--fw-bold);
+  }
+
   .req-box li::before {
     content: '✓';
     position: absolute;

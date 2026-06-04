@@ -189,10 +189,18 @@ const t = {
 }[lang];
 
 const contactHref = `/${lang}/contact`;
+const tandemHref = `/${lang}/tandem`;
+const affHref = `/${lang}/aff`;
+const pricingHref = `/${lang}/pricing`;
 const contactCta = {
   en: 'Contact us',
   fr: 'Nous contacter',
   de: 'Kontakt aufnehmen',
+}[lang];
+const related = {
+  en: { tandem: 'Tandem jump details', aff: 'AFF course details', pricing: 'Prices' },
+  fr: { tandem: 'Détails du saut tandem', aff: 'Détails du cours AFF', pricing: 'Tarifs' },
+  de: { tandem: 'Tandemsprung-Details', aff: 'AFF-Kursdetails', pricing: 'Preise' },
 }[lang];
 ---
 
@@ -212,8 +220,24 @@ const contactCta = {
       <p class="section__lead">{t.sectionLead}</p>
     </header>
     <FAQList items={t.items} />
+    <p class="faq-related">
+      <a href={tandemHref}>{related.tandem}</a>
+      <a href={affHref}>{related.aff}</a>
+      <a href={pricingHref}>{related.pricing}</a>
+    </p>
     <p style="text-align: center; margin-top: var(--space-8)">
       <a href={contactHref} class="btn btn--outline">{contactCta}</a>
     </p>
   </div>
 </section>
+
+<style>
+  .faq-related {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: var(--space-8) 0 0;
+  }
+  .faq-related a { font-weight: var(--fw-bold); }
+</style>

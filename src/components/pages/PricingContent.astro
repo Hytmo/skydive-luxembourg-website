@@ -79,6 +79,9 @@ const t = {
     ctaTitle: 'Questions about a formula?',
     ctaSubtitle: 'Write to us before booking, especially for training, licences, guest jumps or equipment rental.',
     ctaSecondary: 'Contact us',
+    relatedTandem: 'Understand the tandem jump flow',
+    relatedAff: 'See how AFF training works',
+    relatedFun: 'Check visiting jumper requirements',
     sections: {
       membership: { eyebrow: 'Membership', title: 'Become a member', description: 'Annual club membership options.' },
       solo: { eyebrow: 'Solo skydivers', title: 'Jump tickets', description: 'Member, guest, coached and check-jump prices.' },
@@ -100,6 +103,9 @@ const t = {
     ctaTitle: 'Une question sur une formule ?',
     ctaSubtitle: 'Écrivez-nous avant de réserver, surtout pour la formation, les licences, les sauts visiteurs ou la location de matériel.',
     ctaSecondary: 'Nous contacter',
+    relatedTandem: 'Comprendre le déroulé du tandem',
+    relatedAff: 'Voir le fonctionnement de l’AFF',
+    relatedFun: 'Vérifier les conditions visiteurs',
     sections: {
       membership: { eyebrow: 'Membres', title: 'Devenir membre', description: 'Options de cotisation annuelle du club.' },
       solo: { eyebrow: 'Parachutistes solo', title: 'Tickets de saut', description: 'Prix membres, visiteurs, sauts coachés et sauts de contrôle.' },
@@ -121,6 +127,9 @@ const t = {
     ctaTitle: 'Frage zu einer Formel?',
     ctaSubtitle: 'Schreib uns vor der Buchung - besonders bei Ausbildung, Lizenzen, Gastsprüngen oder Materialmiete.',
     ctaSecondary: 'Kontakt',
+    relatedTandem: 'Tandem-Ablauf verstehen',
+    relatedAff: 'AFF-Ausbildung ansehen',
+    relatedFun: 'Gastspringer-Anforderungen prüfen',
     sections: {
       membership: { eyebrow: 'Mitgliedschaft', title: 'Mitglied werden', description: 'Jährliche Club-Mitgliedschaften.' },
       solo: { eyebrow: 'Solo-Springer', title: 'Sprungtickets', description: 'Preise für Mitglieder, Gäste, Coach-Sprünge und Checksprünge.' },
@@ -131,6 +140,7 @@ const t = {
 
 const contactHref = `/${lang}/contact`;
 const affHref = `/${lang}/aff`;
+const tandemHref = `/${lang}/tandem`;
 const funJumpersHref = `/${lang}/fun-jumpers`;
 
 const featured = [
@@ -206,6 +216,11 @@ const detailCards = [
       <h2 class="section__title">{t.introTitle}</h2>
       <p class="section__lead">{t.introText}</p>
       {t.sourceText && <p class="tariff-source">{t.sourceText}</p>}
+      <p class="related-links">
+        <a href={tandemHref}>{t.relatedTandem}</a>
+        <a href={affHref}>{t.relatedAff}</a>
+        <a href={funJumpersHref}>{t.relatedFun}</a>
+      </p>
     </header>
   </div>
 </section>
@@ -270,6 +285,18 @@ const detailCards = [
     margin-top: var(--space-4);
     color: var(--color-fg-muted);
     font-size: var(--fs-sm);
+  }
+
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .related-links a {
+    font-weight: var(--fw-bold);
   }
 
   .pricing-section {
