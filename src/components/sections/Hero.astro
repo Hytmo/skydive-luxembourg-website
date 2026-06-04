@@ -19,7 +19,7 @@ const {
 
 <section class="hero">
   {image && (
-    <Image src={image} alt={alt} class="hero__img" widths={[800, 1200, 1800, 2400]} sizes="100vw" loading="eager" />
+    <Image src={image} alt={alt} class="hero__img" widths={[800, 1200, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" />
   )}
   <div class="hero__overlay"></div>
 

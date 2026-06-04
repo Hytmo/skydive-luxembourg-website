@@ -12,9 +12,9 @@ const galleryItems = await Promise.all(
   items.map(async (item) => {
     const lightboxImage = await getImage({
       src: item.image,
-      width: 1800,
+      width: 1600,
       format: 'webp',
-      quality: 84,
+      quality: 80,
     });
 
     return {
@@ -40,8 +40,9 @@ const galleryItems = await Promise.all(
         <Image
           src={item.image}
           alt={item.alt ?? ''}
-          widths={[240, 400, 700, 1000]}
-          sizes="(max-width: 500px) 50vw, (max-width: 900px) 50vw, 33vw"
+          widths={[220, 360, 440, 520, 700]}
+          sizes="(max-width: 340px) 100vw, (max-width: 900px) 50vw, 33vw"
+          quality={72}
           loading="lazy"
           decoding="async"
         />
@@ -50,7 +51,7 @@ const galleryItems = await Promise.all(
   ))}
 </div>
 
-<div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true">
+<div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true" inert>
   <div class="gallery-lightbox__backdrop" data-gallery-close></div>
   <div class="gallery-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Photo carousel">
     <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Close photo carousel">×</button>
@@ -129,6 +130,7 @@ const galleryItems = await Promise.all(
       isAutoplayPaused = prefersReducedMotion;
       showPhoto(index);
       lightbox.setAttribute('aria-hidden', 'false');
+      lightbox.removeAttribute('inert');
       document.documentElement.classList.add('gallery-lightbox-open');
       nextButton?.focus();
       startAutoplay();
@@ -137,6 +139,7 @@ const galleryItems = await Promise.all(
     const closeLightbox = () => {
       stopAutoplay();
       lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.setAttribute('inert', '');
       document.documentElement.classList.remove('gallery-lightbox-open');
       image.removeAttribute('src');
       if (lastFocused instanceof HTMLElement) lastFocused.focus();

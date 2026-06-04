@@ -31,7 +31,10 @@ const canonicalUrl = new URL(path, Astro.site).toString();
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
 
 // Strip the current locale prefix to compute hreflang URLs for the other languages
-const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const rawPathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const pathWithoutLocale = rawPathWithoutLocale === '/404.html' || rawPathWithoutLocale === '/404/'
+  ? '/'
+  : rawPathWithoutLocale;
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -83,7 +86,6 @@ const allStructuredData = [organizationSchema, webPageSchema, ...structuredData]
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
     <meta name="description" content={description} />

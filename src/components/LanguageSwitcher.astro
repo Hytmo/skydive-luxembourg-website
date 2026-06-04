@@ -10,7 +10,10 @@ const path = Astro.url.pathname;
 
 // Strip the current locale prefix to get the "common" path,
 // so we can rebuild it for any other locale.
-const pathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const rawPathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const pathWithoutLocale = rawPathWithoutLocale === '/404.html' || rawPathWithoutLocale === '/404/'
+  ? '/'
+  : rawPathWithoutLocale;
 
 const locales = [
   ['en', 'EN'],
@@ -70,6 +73,6 @@ const buildLink = (loc) => `/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/');
 
   .lang-switcher__link.is-active {
     background: var(--color-fg);
-    color: var(--color-bg);
+    color: #FFFFFF;
   }
 </style>

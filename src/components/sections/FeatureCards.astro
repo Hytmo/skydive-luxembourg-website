@@ -16,7 +16,13 @@ const gridClass = `grid grid--${cols}`;
     <article class="feature-card">
       {item.image && (
         <div class="feature-card__media">
-          <Image src={item.image} alt={item.alt ?? ''} widths={[400, 600, 800]} sizes="(max-width: 900px) 100vw, 33vw" />
+          <Image
+            src={item.image}
+            alt={item.alt ?? ''}
+            widths={[360, 440, 520, 700]}
+            sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 33vw"
+            quality={76}
+          />
         </div>
       )}
       <div class="feature-card__body">

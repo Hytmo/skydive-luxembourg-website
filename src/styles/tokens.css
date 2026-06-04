@@ -23,10 +23,10 @@
   --color-on-inverse-muted: #B5B5B5;
 
   /* Luxembourg flag accents */
-  --color-blue:      #00A1DE;   /* LU flag light blue - primary accent */
-  --color-blue-dark: #0083B5;   /* hover state */
-  --color-red:       #EF3340;   /* LU flag red - secondary accent */
-  --color-red-dark:  #C5232E;   /* hover state */
+  --color-blue:      #0077A3;   /* accessible LU-blue derived accent */
+  --color-blue-dark: #006F99;   /* accessible hover state */
+  --color-red:       #C5232E;   /* accessible LU-red derived accent */
+  --color-red-dark:  #A91D27;   /* accessible hover state */
 
   /* Semantic colors (use these in components, not the raw values above) */
   --color-link:        var(--color-blue);
@@ -119,6 +119,7 @@
   --color-border:    #30363D;
 
   --color-blue-dark: #33B6E5;   /* hover state lightens for dark bg */
+  --color-link:      #58C7EE;   /* accessible link accent on dark bg */
 
   --shadow-sm: 0 1px 2px  rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);

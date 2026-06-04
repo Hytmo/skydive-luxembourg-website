@@ -30,24 +30,24 @@
 
 .btn--primary {
   background: var(--color-cta);
-  color: var(--color-bg);
+  color: #FFFFFF;
   border-color: var(--color-cta);
 }
 .btn--primary:hover {
   background: var(--color-cta-hover);
   border-color: var(--color-cta-hover);
-  color: var(--color-bg);
+  color: #FFFFFF;
 }
 
 .btn--secondary {
   background: var(--color-blue);
-  color: var(--color-bg);
+  color: #FFFFFF;
   border-color: var(--color-blue);
 }
 .btn--secondary:hover {
   background: var(--color-blue-dark);
   border-color: var(--color-blue-dark);
-  color: var(--color-bg);
+  color: #FFFFFF;
 }
 
 .btn--ghost {
@@ -297,7 +297,7 @@
 .form select:focus {
   outline: none;
   border-color: var(--color-blue);
-  box-shadow: 0 0 0 3px rgba(0, 161, 222, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 119, 163, 0.18);
 }
 .form textarea { resize: vertical; min-height: 140px; }
 .form button[type="submit"] {
@@ -306,7 +306,7 @@
   justify-content: center;
   padding: var(--space-3) var(--space-6);
   background: var(--color-cta);
-  color: var(--color-bg);
+  color: #FFFFFF;
   border: 0;
   border-radius: var(--radius-sm);
   font: inherit;
@@ -315,7 +315,11 @@
   transition: background var(--transition-fast);
 }
 .form button[type="submit"]:hover { background: var(--color-cta-hover); }
-.form__note {
+.form__note,
+.form__privacy {
   font-size: var(--fs-sm);
   color: var(--color-fg-muted);
+}
+.form__privacy a {
+  font-weight: var(--fw-medium);
 }

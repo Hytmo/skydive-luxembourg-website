@@ -8,8 +8,15 @@ const labels = {
   de: {'name': 'Name', 'email': 'E-Mail', 'phone': 'Telefon (optional)', 'send': 'Anfrage senden', 'send_contact': 'Nachricht senden', 'required_note': 'Mit * gekennzeichnete Felder sind Pflichtfelder.', 'honeypot': 'Nicht ausfüllen, wenn du ein Mensch bist', 'age': 'Alter', 'weight': 'Gewicht (kg)', 'languages': 'Sprachen, die du sprichst', 'start_date': 'Gewünschtes Startdatum', 'question': 'Deine Frage oder alles Weitere, was wir wissen sollten', 'licence': 'Lizenz (z. B. A USPA, B FAI)', 'ratings': 'Berechtigungen (z. B. AFF-I, Coach, Kamera)', 'last_jump': 'Datum des letzten Sprungs', 'purpose': 'Was möchtest du tun?', 'purpose_visit': 'Die DZ besuchen', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / Boogie', 'purpose_other': 'Sonstiges', 'subject': 'Betreff', 'message': 'Nachricht'},
 };
 const t = labels[lang] || labels.en;
+const privacy = {
+  en: { notice: 'We use your submission to answer your enquiry and organise sport-jumper visits. Data is processed by Netlify Forms as described in our', link: 'Privacy Policy' },
+  fr: { notice: 'Nous utilisons votre demande pour vous répondre et organiser les visites de parachutistes brevetés. Les données sont traitées par Netlify Forms comme décrit dans notre', link: 'politique de confidentialité' },
+  de: { notice: 'Wir verwenden deine Anfrage, um zu antworten und Besuche von Lizenzspringern zu organisieren. Die Daten werden über Netlify Forms verarbeitet, wie beschrieben in unserer', link: 'Datenschutzerklärung' },
+};
+const privacyText = privacy[lang] || privacy.en;
 ---
 <form
+  id="funjumper-form"
   name="fun-jumper-inquiry"
   method="POST"
   data-netlify="true"
@@ -43,6 +50,7 @@ const t = labels[lang] || labels.en;
   <p><label>{t.question}<br /><textarea name="question" rows="5"></textarea></label></p>
 
   <p class="form__note">{t.required_note}</p>
+  <p class="form__privacy">{privacyText.notice} <a href={`/${lang}/privacy/`}>{privacyText.link}</a>.</p>
   <p><button type="submit">{t.send}</button></p>
 </form>
 

@@ -17,6 +17,7 @@ const { image, alt = '', eyebrow, title, subtitle, imagePosition, class: classNa
       widths={[800, 1200, 1800]}
       sizes="100vw"
       loading="eager"
+      fetchpriority="high"
       style={imagePosition ? `object-position: ${imagePosition}` : undefined}
     />
   )}
