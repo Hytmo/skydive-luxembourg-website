@@ -186,6 +186,65 @@ const t = {
       },
     ],
   },
+
+  lu: {
+    eyebrow: 'Hilfebereich',
+    title: 'Heefeg gestallte Froen',
+    subtitle: 'Alles, was du vor dem Schritt aus dem Fliger wissen solltest.',
+    sectionEyebrow: 'Antworten',
+    sectionTitle: 'Vor dem Sprong - an danach.',
+    sectionLead: 'Antwort nicht dabei? Schreif uns kurz - mir melden uns zurück.',
+    items: [
+      {
+        q: 'Gibt es Gewiichts- an Altersgrenzen fir einen Tandemsprong?',
+        a: 'Ja. Tandem-Passagiere müssen mindestens 16 Joer alt sein (mit schriftlicher Einverständniserklärung der Eltern unter 18 Joern) an dürfen voll bekleidet höchstens 90 kg (200 lb) wiegen. Eine formale Obergrenze beim Alter gibt es nicht, aber du musst in angemessener gesundheitlicher Verfassung sein. Bitte teile uns medizinische Besonderheiten vorab mit.',
+      },
+      {
+        q: 'Was passiert bei schlechtem Wieder?',
+        a: 'Sécherheet geht immer vor. Starker Wind, tiefe Wolken oder Regen halten uns am Boden. Können mir am Tag denger Buchung nicht fliegen, verlegen mir dich kostenfrei auf den nächsten verfügbaren Termin. Die Entscheidung treffen mir am Morgen deines Sprongs nach Rücksprache mat den Flugwetterdiensten. Prüfe vor der Abfahrt bitte dein Telefon an deng E-Mails.',
+      },
+      {
+        q: 'Was soll ich anziehen?',
+        a: 'Bequeme, jahreszeitgerechte Kleidung an geschlossene Schnürschuhe (Turnschuhe oder leichte Wanderschuhe). Vermeide schwere Stiefel, Sandalen, Kleider oder Röcke. Mir stellen Overall, Brille an Helm. Im Winter mehrere Schichten anziehen - in der Höhe ist es rund 15 °C kälter als am Boden.',
+      },
+      {
+        q: 'Darf ich meine eigene Kamera oder mein Handy mitnehmen?',
+        a: 'Aus Sécherheetsgründen dürfen nur lizenzierte Fallschirmspringer mat Kameraberechtigung mat eigener Ausrüstung springen. Handys, GoPros an andere Geräte sind im fräie Fall fir Tandem-Passagiere nicht erlaubt. Ein Video deines Sprongs ist in denger Buchung enthalten.',
+      },
+      {
+        q: 'Ist Fallschiermsprangen sicher?',
+        a: 'Der moderne Sportfallschirmsport hat eine sehr gute Sécherheetsbilanz. Eis Ausrüstung mird nach Herstellervorgaben gewartet, eis Instrukteren sind durch anerkannte nationale an internationale Verbände zertifiziert, an jedes System verfügt iwwer einen automatischen Öffnungsautomaten als Backup. Trotzdem bleibt es ein Extremsport - ein Restrisiko besteht.',
+      },
+      {
+        q: 'Aus welcher Höhe springen mir?',
+        a: 'Tandemspréng erfolgen aus etwa 4 000 m (13 000 ft) iwwer Grund. Das ergibt rund 60 Sekunden fräie Fall mat etwa 200 km/h, bevor sich der Schirm bei ca. 1 500 m öffnet. Der anschließende Schirmflug dauert fünf bis sieben Minuten.',
+      },
+      {
+        q: 'Wofür steht AFF?',
+        a: 'AFF steht fir Accelerated Freefall. Es ist die moderne Methode zur Ausbildung zum Solospringer: Vom ersten Sprong an steuerst du dengen eigenen Schirm, begleitet im fräie Fall vu ein oder zwei Instrukterenn, die dich loslassen, sobald du Stabilität an Kontrolle zeigst.',
+      },
+      {
+        q: 'Wie lange dauert die AFF-Ausbildung?',
+        a: 'Die Bodenausbildung dauert einen ganzen Tag, gefolgt vu sieben bis neun Ausbildungssprüngen an mehreren Festigungssprüngen vor dem A-Lizenz-Check. Bei gutem Wieder schließen motivierte Schüler das vollständige Programm in zwei bis drei Wochenenden ab. Verteilt kann es eine ganze Saison dauern.',
+      },
+      {
+        q: 'Kann ich mat einer Vorerkrankung springen?',
+        a: 'Viele Vorerkrankungen sind kein Hindernis, einige - Herz, Lunge, Rücken oder neurologische Probleme - erfordern jedoch eine ärztliche Freigabe. Bitte gib alle Erkrankungen an Medikamente auf dem medizinischen Formular an, das du vor Ort unterschreifst. Im Zweifel melde dich vor der Buchung bei uns.',
+      },
+      {
+        q: 'Verkauft ihr Bongen?',
+        a: 'Ja. Tandem-Bongen sind ab Kaufdatum 3 Joer gültig an übertragbar. Mir können einen PDF-Gutschein per E-Mail senden. Sie sind beliebt als Geburtstags-, Ruhestands- oder Hochzeitsgeschenk. Mir bitten lediglich darum, früh in der Saison zu buchen.',
+      },
+      {
+        q: 'Wie sind eure Stornierungs- an Erstattungsbedingungen?',
+        a: 'Wenn mir wegen Wieder oder technischen Gründen absagen, kannst du umbuchen. Wenn du mehr als 7 Tage im Voraus stornierst, kannst du auf einen anderen Tag umbuchen. Buchungen sind nicht erstattungsfähig, können aber auf eine andere Person übertragen werden. Bei Nichterscheinen verfällt die Buchung.',
+      },
+      {
+        q: 'Bekomme ich Fotos oder ein Video meines Sprongs?',
+        a: 'Ja, jede Tandembuchung enthält ein Video deines Sprongs.',
+      },
+    ],
+  },
 }[lang];
 
 const contactHref = `/${lang}/contact`;
@@ -196,11 +255,15 @@ const contactCta = {
   en: 'Contact us',
   fr: 'Nous contacter',
   de: 'Kontakt aufnehmen',
+
+  lu: 'Kontakt aufnehmen',
 }[lang];
 const related = {
   en: { tandem: 'Tandem jump details', aff: 'AFF course details', pricing: 'Prices' },
   fr: { tandem: 'Détails du saut tandem', aff: 'Détails du cours AFF', pricing: 'Tarifs' },
   de: { tandem: 'Tandemsprung-Details', aff: 'AFF-Kursdetails', pricing: 'Preise' },
+
+  lu: { tandem: 'Tandemsprong-Details', aff: 'AFF-Kursdetails', pricing: 'Präisser' },
 }[lang];
 ---
 

@@ -1,0 +1,219 @@
+export const faqItems = {
+  "en": [
+    {
+      "q": "Are there weight and age limits for a tandem jump?",
+      "a": "Yes. Tandem passengers must be at least 16 years old (with written parental consent if under 18) and weigh no more than 90 kg (200 lb) fully clothed. There is no formal upper age limit, but you must be in reasonable health. Please tell us in advance about any medical conditions."
+    },
+    {
+      "q": "What happens if the weather is bad?",
+      "a": "Safety always comes first. Strong winds, low cloud or rain will ground us. If we cannot fly on the day of your booking, we will reschedule you free of charge to the next available slot. We make the call on the morning of your jump after consulting aviation weather services. Before leaving home, check your phone and emails."
+    },
+    {
+      "q": "What should I wear?",
+      "a": "Comfortable clothing suitable for the season and closed lace-up trainers or light hiking shoes. Avoid heavy boots, sandals, dresses or skirts. We provide a jumpsuit, goggles and helmet. In winter, dress in warm layers. It is roughly 15 °C colder at altitude than on the ground."
+    },
+    {
+      "q": "Can I bring my own camera or phone?",
+      "a": "For safety reasons, only licensed skydivers with a camera rating may jump with their own equipment. Phones, GoPros and other devices are not permitted in freefall for tandem passengers. Footage of your jump is included in your booking."
+    },
+    {
+      "q": "Is skydiving safe?",
+      "a": "Modern sport skydiving has an excellent safety record. Our equipment is maintained to manufacturer specifications, our instructors are certified by recognised national and international federations, and every parachute system includes an automatic activation device as a backup. That said, skydiving is an extreme sport, and you should be aware that residual risk exists."
+    },
+    {
+      "q": "How high do we jump from?",
+      "a": "Tandem jumps exit at approximately 4 000 m (13 000 ft) above ground, giving you around 60 seconds of freefall at roughly 200 km/h before the parachute opens at about 1 500 m. The canopy ride down then lasts five to seven minutes."
+    },
+    {
+      "q": "What does AFF stand for?",
+      "a": "AFF means Accelerated Freefall. It is the modern method of learning to skydive solo. From your very first jump you fly your own parachute, accompanied in freefall by one or two instructors who release you once you demonstrate stability and control."
+    },
+    {
+      "q": "How long does the AFF course take?",
+      "a": "The ground school is one full day, followed by a progression of seven to nine training jumps and a number of consolidation jumps before your A licence check. With good weather, motivated students complete the full programme in two to three weekends. Spread out, it can take a whole season."
+    },
+    {
+      "q": "Can I jump with a medical condition?",
+      "a": "Many conditions are no obstacle, but some, such as heart, lung, back, or neurological issues, require a doctor's clearance. Please mention any condition or medication in the medical form you sign on the day. If in doubt, contact us before booking and we'll advise."
+    },
+    {
+      "q": "Do you sell gift vouchers?",
+      "a": "Yes. Tandem gift vouchers are valid for 3 years from purchase and are transferable. We can email a PDF voucher. Vouchers are a popular birthday, retirement and wedding gift. We just ask that recipients book early in the season."
+    },
+    {
+      "q": "What is your refund and cancellation policy?",
+      "a": "If we cancel because of weather or technical reasons, you can rebook. If you cancel more than 7 days in advance, you can rebook for another day. Bookings are non-refundable but can be transferred to another person. No-shows forfeit the booking."
+    },
+    {
+      "q": "Will I get photos or video of my jump?",
+      "a": "Yes, every tandem booking includes a video of your jump."
+    }
+  ],
+  "fr": [
+    {
+      "q": "Y a-t-il des limites de poids et d'âge pour un tandem ?",
+      "a": "Oui. Les passagers tandem doivent avoir au moins 16 ans (avec autorisation parentale écrite pour les mineurs) et peser au maximum 90 kg (200 lb), tout habillés. Il n'y a pas de limite d'âge supérieure formelle, mais vous devez être en bonne santé raisonnable. Merci de nous signaler à l'avance toute condition médicale."
+    },
+    {
+      "q": "Que se passe-t-il si la météo est mauvaise ?",
+      "a": "La sécurité prime toujours. Vent fort, plafond bas ou pluie nous clouent au sol. Si nous ne pouvons pas voler le jour de votre réservation, nous vous reprogrammons sans frais sur le prochain créneau disponible. La décision est prise le matin même après consultation des services météo aéronautiques. Avant de partir de chez vous, vérifiez votre téléphone et vos e-mails."
+    },
+    {
+      "q": "Comment dois-je m'habiller ?",
+      "a": "Tenue confortable adaptée à la saison et chaussures fermées à lacets, type baskets ou chaussures de marche légères. Évitez les bottes lourdes, sandales, robes ou jupes. Nous fournissons combinaison, lunettes et casque. En hiver, prévoyez plusieurs couches : il fait environ 15 °C de moins en altitude qu'au sol."
+    },
+    {
+      "q": "Puis-je emporter mon appareil photo ou mon téléphone ?",
+      "a": "Pour des raisons de sécurité, seuls les parachutistes brevetés titulaires d'une qualification caméra peuvent sauter avec leur propre matériel. Les téléphones, GoPro et autres appareils sont interdits en chute libre aux passagers tandem. La vidéo de votre saut est incluse dans votre réservation."
+    },
+    {
+      "q": "Le parachutisme est-il sûr ?",
+      "a": "Le parachutisme sportif moderne affiche un excellent bilan de sécurité. Notre matériel est entretenu selon les spécifications constructeur, nos moniteurs sont certifiés par des fédérations nationales et internationales reconnues, et chaque système est équipé d'un déclencheur de sécurité automatique. Reste qu'il s'agit d'un sport extrême : un risque résiduel existe."
+    },
+    {
+      "q": "À quelle hauteur saute-t-on ?",
+      "a": "Les sauts tandem se font à environ 4 000 m (13 000 ft) sol, ce qui offre environ 60 secondes de chute libre à près de 200 km/h avant l'ouverture du parachute vers 1 500 m. La descente sous voile dure ensuite cinq à sept minutes."
+    },
+    {
+      "q": "Que signifie AFF ?",
+      "a": "AFF signifie Accelerated Freefall (chute libre accélérée). C'est la méthode moderne d'apprentissage du saut en solo : dès le premier saut, vous pilotez votre propre parachute, accompagné en chute par un ou deux moniteurs qui vous lâchent une fois la stabilité et le contrôle acquis."
+    },
+    {
+      "q": "Combien de temps dure la formation AFF ?",
+      "a": "La formation au sol dure une journée complète, suivie d'une progression de sept à neuf sauts d'entraînement et de plusieurs sauts de consolidation avant le contrôle de licence A. Par beau temps, un élève motivé termine le programme complet en deux à trois week-ends. Étalé, cela peut prendre une saison entière."
+    },
+    {
+      "q": "Puis-je sauter avec une condition médicale ?",
+      "a": "De nombreuses conditions ne posent aucun problème, mais certaines - cardiaques, pulmonaires, dorsales ou neurologiques - nécessitent un certificat médical. Mentionnez toute pathologie ou traitement sur le formulaire médical signé le jour J. En cas de doute, contactez-nous avant de réserver."
+    },
+    {
+      "q": "Vendez-vous des bons cadeaux ?",
+      "a": "Oui. Les bons cadeaux tandem sont valables 3 ans à compter de l'achat et sont transférables. Nous pouvons envoyer un bon PDF par e-mail. C'est un cadeau apprécié pour les anniversaires, retraites et mariages. Nous demandons simplement aux bénéficiaires de réserver tôt dans la saison."
+    },
+    {
+      "q": "Quelle est votre politique d'annulation et de remboursement ?",
+      "a": "Si nous annulons pour cause de météo ou de raisons techniques, vous pouvez reprogrammer. Si vous annulez plus de 7 jours à l'avance, vous pouvez reprogrammer à une autre date. Les réservations ne sont pas remboursables mais peuvent être transférées à une autre personne. Les absences entraînent la perte de la réservation."
+    },
+    {
+      "q": "Aurai-je des photos ou une vidéo de mon saut ?",
+      "a": "Oui, chaque réservation tandem inclut une vidéo de votre saut."
+    }
+  ],
+  "de": [
+    {
+      "q": "Gibt es Gewichts- und Altersgrenzen für einen Tandemsprung?",
+      "a": "Ja. Tandem-Passagiere müssen mindestens 16 Jahre alt sein (mit schriftlicher Einverständniserklärung der Eltern unter 18 Jahren) und dürfen voll bekleidet höchstens 90 kg (200 lb) wiegen. Eine formale Obergrenze beim Alter gibt es nicht, aber du musst in angemessener gesundheitlicher Verfassung sein. Bitte teile uns medizinische Besonderheiten vorab mit."
+    },
+    {
+      "q": "Was passiert bei schlechtem Wetter?",
+      "a": "Sicherheit geht immer vor. Starker Wind, tiefe Wolken oder Regen halten uns am Boden. Können wir am Tag deiner Buchung nicht fliegen, verlegen wir dich kostenfrei auf den nächsten verfügbaren Termin. Die Entscheidung treffen wir am Morgen deines Sprungs nach Rücksprache mit den Flugwetterdiensten. Prüfe vor der Abfahrt bitte dein Telefon und deine E-Mails."
+    },
+    {
+      "q": "Was soll ich anziehen?",
+      "a": "Bequeme, jahreszeitgerechte Kleidung und geschlossene Schnürschuhe (Turnschuhe oder leichte Wanderschuhe). Vermeide schwere Stiefel, Sandalen, Kleider oder Röcke. Wir stellen Overall, Brille und Helm. Im Winter mehrere Schichten anziehen - in der Höhe ist es rund 15 °C kälter als am Boden."
+    },
+    {
+      "q": "Darf ich meine eigene Kamera oder mein Handy mitnehmen?",
+      "a": "Aus Sicherheitsgründen dürfen nur lizenzierte Fallschirmspringer mit Kameraberechtigung mit eigener Ausrüstung springen. Handys, GoPros und andere Geräte sind im freien Fall für Tandem-Passagiere nicht erlaubt. Ein Video deines Sprungs ist in deiner Buchung enthalten."
+    },
+    {
+      "q": "Ist Fallschirmspringen sicher?",
+      "a": "Der moderne Sportfallschirmsport hat eine sehr gute Sicherheitsbilanz. Unsere Ausrüstung wird nach Herstellervorgaben gewartet, unsere Lehrer sind durch anerkannte nationale und internationale Verbände zertifiziert, und jedes System verfügt über einen automatischen Öffnungsautomaten als Backup. Trotzdem bleibt es ein Extremsport - ein Restrisiko besteht."
+    },
+    {
+      "q": "Aus welcher Höhe springen wir?",
+      "a": "Tandemsprünge erfolgen aus etwa 4 000 m (13 000 ft) über Grund. Das ergibt rund 60 Sekunden freien Fall mit etwa 200 km/h, bevor sich der Schirm bei ca. 1 500 m öffnet. Der anschließende Schirmflug dauert fünf bis sieben Minuten."
+    },
+    {
+      "q": "Wofür steht AFF?",
+      "a": "AFF steht für Accelerated Freefall. Es ist die moderne Methode zur Ausbildung zum Solospringer: Vom ersten Sprung an steuerst du deinen eigenen Schirm, begleitet im freien Fall von ein oder zwei Lehrern, die dich loslassen, sobald du Stabilität und Kontrolle zeigst."
+    },
+    {
+      "q": "Wie lange dauert die AFF-Ausbildung?",
+      "a": "Die Bodenausbildung dauert einen ganzen Tag, gefolgt von sieben bis neun Ausbildungssprüngen und mehreren Festigungssprüngen vor dem A-Lizenz-Check. Bei gutem Wetter schließen motivierte Schüler das vollständige Programm in zwei bis drei Wochenenden ab. Verteilt kann es eine ganze Saison dauern."
+    },
+    {
+      "q": "Kann ich mit einer Vorerkrankung springen?",
+      "a": "Viele Vorerkrankungen sind kein Hindernis, einige - Herz, Lunge, Rücken oder neurologische Probleme - erfordern jedoch eine ärztliche Freigabe. Bitte gib alle Erkrankungen und Medikamente auf dem medizinischen Formular an, das du vor Ort unterschreibst. Im Zweifel melde dich vor der Buchung bei uns."
+    },
+    {
+      "q": "Verkauft ihr Gutscheine?",
+      "a": "Ja. Tandem-Gutscheine sind ab Kaufdatum 3 Jahre gültig und übertragbar. Wir können einen PDF-Gutschein per E-Mail senden. Sie sind beliebt als Geburtstags-, Ruhestands- oder Hochzeitsgeschenk. Wir bitten lediglich darum, früh in der Saison zu buchen."
+    },
+    {
+      "q": "Wie sind eure Stornierungs- und Erstattungsbedingungen?",
+      "a": "Wenn wir wegen Wetter oder technischen Gründen absagen, kannst du umbuchen. Wenn du mehr als 7 Tage im Voraus stornierst, kannst du auf einen anderen Tag umbuchen. Buchungen sind nicht erstattungsfähig, können aber auf eine andere Person übertragen werden. Bei Nichterscheinen verfällt die Buchung."
+    },
+    {
+      "q": "Bekomme ich Fotos oder ein Video meines Sprungs?",
+      "a": "Ja, jede Tandembuchung enthält ein Video deines Sprungs."
+    }
+  ],
+  "lu": [
+    {
+      "q": "Gibt es Gewiichts- an Altersgrenzen fir einen Tandemsprong?",
+      "a": "Ja. Tandem-Passagiere müssen mindestens 16 Joer alt sein (mit schriftlicher Einverständniserklärung der Eltern unter 18 Joern) an dürfen voll bekleidet höchstens 90 kg (200 lb) wiegen. Eine formale Obergrenze beim Alter gibt es nicht, aber du musst in angemessener gesundheitlicher Verfassung sein. Bitte teile uns medizinische Besonderheiten vorab mit."
+    },
+    {
+      "q": "Was passiert bei schlechtem Wieder?",
+      "a": "Sécherheet geht immer vor. Starker Wind, tiefe Wolken oder Regen halten uns am Boden. Können mir am Tag denger Buchung nicht fliegen, verlegen mir dich kostenfrei auf den nächsten verfügbaren Termin. Die Entscheidung treffen mir am Morgen deines Sprongs nach Rücksprache mat den Flugwetterdiensten. Prüfe vor der Abfahrt bitte dein Telefon an deng E-Mails."
+    },
+    {
+      "q": "Was soll ich anziehen?",
+      "a": "Bequeme, jahreszeitgerechte Kleidung an geschlossene Schnürschuhe (Turnschuhe oder leichte Wanderschuhe). Vermeide schwere Stiefel, Sandalen, Kleider oder Röcke. Mir stellen Overall, Brille an Helm. Im Winter mehrere Schichten anziehen - in der Höhe ist es rund 15 °C kälter als am Boden."
+    },
+    {
+      "q": "Darf ich meine eigene Kamera oder mein Handy mitnehmen?",
+      "a": "Aus Sécherheetsgründen dürfen nur lizenzierte Fallschirmspringer mat Kameraberechtigung mat eigener Ausrüstung springen. Handys, GoPros an andere Geräte sind im fräie Fall fir Tandem-Passagiere nicht erlaubt. Ein Video deines Sprongs ist in denger Buchung enthalten."
+    },
+    {
+      "q": "Ist Fallschiermsprangen sicher?",
+      "a": "Der moderne Sportfallschirmsport hat eine sehr gute Sécherheetsbilanz. Eis Ausrüstung mird nach Herstellervorgaben gewartet, eis Instrukteren sind durch anerkannte nationale an internationale Verbände zertifiziert, an jedes System verfügt iwwer einen automatischen Öffnungsautomaten als Backup. Trotzdem bleibt es ein Extremsport - ein Restrisiko besteht."
+    },
+    {
+      "q": "Aus welcher Höhe springen mir?",
+      "a": "Tandemspréng erfolgen aus etwa 4 000 m (13 000 ft) iwwer Grund. Das ergibt rund 60 Sekunden fräie Fall mat etwa 200 km/h, bevor sich der Schirm bei ca. 1 500 m öffnet. Der anschließende Schirmflug dauert fünf bis sieben Minuten."
+    },
+    {
+      "q": "Wofür steht AFF?",
+      "a": "AFF steht fir Accelerated Freefall. Es ist die moderne Methode zur Ausbildung zum Solospringer: Vom ersten Sprong an steuerst du dengen eigenen Schirm, begleitet im fräie Fall vu ein oder zwei Instrukterenn, die dich loslassen, sobald du Stabilität an Kontrolle zeigst."
+    },
+    {
+      "q": "Wie lange dauert die AFF-Ausbildung?",
+      "a": "Die Bodenausbildung dauert einen ganzen Tag, gefolgt vu sieben bis neun Ausbildungssprüngen an mehreren Festigungssprüngen vor dem A-Lizenz-Check. Bei gutem Wieder schließen motivierte Schüler das vollständige Programm in zwei bis drei Wochenenden ab. Verteilt kann es eine ganze Saison dauern."
+    },
+    {
+      "q": "Kann ich mat einer Vorerkrankung springen?",
+      "a": "Viele Vorerkrankungen sind kein Hindernis, einige - Herz, Lunge, Rücken oder neurologische Probleme - erfordern jedoch eine ärztliche Freigabe. Bitte gib alle Erkrankungen an Medikamente auf dem medizinischen Formular an, das du vor Ort unterschreifst. Im Zweifel melde dich vor der Buchung bei uns."
+    },
+    {
+      "q": "Verkauft ihr Bongen?",
+      "a": "Ja. Tandem-Bongen sind ab Kaufdatum 3 Joer gültig an übertragbar. Mir können einen PDF-Gutschein per E-Mail senden. Sie sind beliebt als Geburtstags-, Ruhestands- oder Hochzeitsgeschenk. Mir bitten lediglich darum, früh in der Saison zu buchen."
+    },
+    {
+      "q": "Wie sind eure Stornierungs- an Erstattungsbedingungen?",
+      "a": "Wenn mir wegen Wieder oder technischen Gründen absagen, kannst du umbuchen. Wenn du mehr als 7 Tage im Voraus stornierst, kannst du auf einen anderen Tag umbuchen. Buchungen sind nicht erstattungsfähig, können aber auf eine andere Person übertragen werden. Bei Nichterscheinen verfällt die Buchung."
+    },
+    {
+      "q": "Bekomme ich Fotos oder ein Video meines Sprongs?",
+      "a": "Ja, jede Tandembuchung enthält ein Video deines Sprongs."
+    }
+  ]
+};
+
+export function buildFAQSchema(lang = 'en') {
+  const mainEntity = (faqItems[lang] ?? faqItems.en).map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  }));
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity,
+  };
+}

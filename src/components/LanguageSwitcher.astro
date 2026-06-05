@@ -1,6 +1,6 @@
 ---
 /**
- * LanguageSwitcher.astro - small EN/FR/DE pill.
+ * LanguageSwitcher.astro - small EN/FR/DE/LU pill.
  * Detects the current locale and swaps it for each link target,
  * keeping the user on the same logical page across languages.
  */
@@ -10,7 +10,7 @@ const path = Astro.url.pathname;
 
 // Strip the current locale prefix to get the "common" path,
 // so we can rebuild it for any other locale.
-const rawPathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const rawPathWithoutLocale = path.replace(/^\/(en|fr|de|lu)(?=\/|$)/, '') || '/';
 const pathWithoutLocale = rawPathWithoutLocale === '/404.html' || rawPathWithoutLocale === '/404/'
   ? '/'
   : rawPathWithoutLocale;
@@ -19,12 +19,14 @@ const locales = [
   ['en', 'EN'],
   ['fr', 'FR'],
   ['de', 'DE'],
+  ['lu', 'LU'],
 ];
 
 const labels = {
   en: 'Language',
   fr: 'Langue',
   de: 'Sprache',
+  lu: 'Sprooch',
 };
 
 const buildLink = (loc) => `/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/');

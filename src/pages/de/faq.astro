@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import FAQContent from '../../components/pages/FAQContent.astro';
+import { buildFAQSchema } from '../../data/faqSchema.js';
+const faqSchema = buildFAQSchema('de');
 ---
-<Layout title="Skydive Luxembourg FAQ | Tandem, AFF & Dropzone" description="Antworten auf häufige Fragen zu Tandemsprüngen, AFF-Ausbildung, Wetter, Gutscheinen, Voraussetzungen und Skydive Luxembourg.">
+<Layout title="Häufige Fragen | Tandem, AFF & Dropzone Luxemburg" description="Antworten auf häufige Fragen zu Tandemsprüngen, AFF-Ausbildung, Wetter, Gutscheinen, Voraussetzungen und Skydive Luxembourg." structuredData={[faqSchema]}>
   <FAQContent lang="de" />
 </Layout>

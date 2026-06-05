@@ -116,12 +116,44 @@ const t = {
     ctaPrimary: 'Tandem buchen',
     ctaSecondary: 'Kontakt',
   },
+
+  lu: {
+    heroEyebrow: 'Skydive Luxembourg a.s.b.l.',
+    heroTitle: 'Spring in den Himmel iwwer Lëtzebuerg.',
+    heroSubtitle: 'Méi wéi 60 Joer Fallschiermsport in Lëtzebuerg - Tandemspréng, AFF-Ausbildung, Coaching an Sportsprünge säit 1965.',
+    heroPrimary: 'Tandem buchen',
+    heroSecondary: 'Sprange léieren',
+
+    pickEyebrow: 'Drei Arten zu springen',
+    pickTitle: 'Egal welches Niveau - die Tür ist offen.',
+    pickLead: 'Alle Fallschirmspringer sind wëllkomm: Mir bieten AFF-Ausbildung, Trainingssprünge an Coaching. Kontakt: mail@skydive.lu.',
+
+    cards: [
+      { title: 'Tandemspréng', text: 'Keng Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m fräie Fall mat einem eisr geprüften Tandemmaster.', cta: 'Tandem buchen', href: `/${''}de/tandem` },
+      { title: 'AFF - Sprongausbildung', text: 'Gëff lizenzierter Solo-Sprénger. Eise Accelerated-Freefall-Kurs bringt dich in dengem eigenen Tempo vu null zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
+      { title: 'Sportsprénger', text: 'Schon lizenziert? Melde dich an, spring aus eisr Gippsland Airvan GA8 an genieße eine der freundlichsten DZs Europas.', cta: 'DZ besuchen', href: `/${''}de/fun-jumpers` },
+    ],
+
+    galleryEyebrow: 'In der Luft',
+    galleryTitle: 'Ein paar Momente vu oben.',
+    galleryCta: 'Zur Galerie',
+
+    aboutEyebrow: 'Iwwer eis',
+    aboutTitle: 'Ein gemeinnütziger Veräin - vu Spréngern, fir Sprénger.',
+    aboutText: 'Der Cercle Parachutiste Luxembourgeois a.s.b.l., haut Skydive Luxembourg, wurde 1965 gegründet an betreibt säither Fallschiermsport in Lëtzebuerg. Er ist der einzige Fallschiermveräin in Lëtzebuerg.',
+    aboutCta: 'Eis Geschicht',
+
+    ctaTitle: 'Bereit, wenn du es bist.',
+    ctaSubtitle: 'Tandem-Slots sind im Sommer schnell ausgebucht. Reserviere im Voraus.',
+    ctaPrimary: 'Tandem buchen',
+    ctaSecondary: 'Kontakt',
+  },
 }[lang];
 
 // Rewrite card hrefs to active locale
 t.cards = t.cards.map((c) => ({
   ...c,
-  href: c.href.replace(/^\/(en|fr|de)\//, `/${lang}/`),
+  href: c.href.replace(/^\/(en|fr|de|lu)\//, `/${lang}/`),
 }));
 
 const tandemHref = `/${lang}/tandem`;
@@ -154,6 +186,15 @@ const galleryAlt = {
     'Fallschirmspringer bei der Vorbereitung vor dem Sprung',
     'Schirmflug über der luxemburgischen Landschaft',
     'Flugzeug und Springer von Skydive Luxembourg',
+  ],
+
+  lu: [
+    'Fallschirmspringer im fräie Fall iwwer Lëtzebuerg',
+    'Tandemsprong beim Ausstieg aus dem Fliger',
+    'Geöffneter Fallschirm iwwer der Dropzone',
+    'Fallschirmspringer bei der Vorbereitung vor dem Sprong',
+    'Schirmflug iwwer der luxemburgischen Landschaft',
+    'Fliger an Sprénger vu Skydive Luxembourg',
   ],
 }[lang];
 

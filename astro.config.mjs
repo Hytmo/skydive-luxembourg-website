@@ -12,9 +12,9 @@ export default defineConfig({
 
   // Multilingual routing configuration.
   i18n: {
-    // The three locales the site supports.
+    // The four locales the site supports.
     // Order doesn't matter functionally, but EN first is a useful convention.
-    locales: ['en', 'fr', 'de'],
+    locales: ['en', 'fr', 'de', 'lu'],
 
     // The default locale.
     defaultLocale: 'en',
@@ -33,7 +33,7 @@ export default defineConfig({
     // the real per-locale files. Alphabetical priority means EN beats FR
     // and silently prevents /fr/* pages from being generated at build time
     // — so every FR page 404s on a static deploy even though the .astro
-    // files exist. Since we have all pages in all 3 languages, we don't
+    // files exist. Since we have all pages in all 4 languages, we don't
     // need fallback at all.
   },
 });

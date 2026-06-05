@@ -10,7 +10,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const path = Astro.url.pathname;
-const locale = path.match(/^\/(en|fr|de)(?=\/|$)/)?.[1] ?? 'en';
+const locale = path.match(/^\/(en|fr|de|lu)(?=\/|$)/)?.[1] ?? 'en';
 
 const messages = {
   en: {
@@ -33,6 +33,14 @@ const messages = {
     heading: 'Das Flugzeug verloren?',
     body: 'Die gesuchte Seite konnte nicht gefunden werden. Sie wurde möglicherweise verschoben oder hat nie existiert.',
     home: 'Zur Startseite',
+  },
+
+  lu: {
+    title: 'Seite nicht gefunden',
+    description: '404 - diese Seite existiert (noch) nicht.',
+    heading: 'Das Fliger verloren?',
+    body: 'Die gesuchte Seite konnte nicht gefunden werden. Sie wurde möglicherweise verschoben oder hat nie existiert.',
+    home: 'Zur Startsäite',
   },
 };
 

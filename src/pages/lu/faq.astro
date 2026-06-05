@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FAQContent from '../../components/pages/FAQContent.astro';
+import { buildFAQSchema } from '../../data/faqSchema.js';
+const faqSchema = buildFAQSchema('lu');
+---
+<Layout title="Heefeg Froen | Tandem, AFF & Dropzone Lëtzebuerg" description="Äntwerten op heefeg Froen iwwer Tandemspréng, AFF-Ausbildung, Wieder, Bongen, Viraussetzungen a Skydive Luxembourg." structuredData={[faqSchema]}>
+  <FAQContent lang="lu" />
+</Layout>

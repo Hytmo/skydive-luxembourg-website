@@ -6,12 +6,16 @@ const labels = {
   en: {'name': 'Name', 'email': 'Email', 'phone': 'Phone (optional)', 'send': 'Send inquiry', 'send_contact': 'Send message', 'required_note': 'Fields marked * are required.', 'honeypot': "Do not fill this out if you're human", 'age': 'Age', 'weight': 'Weight (kg)', 'languages': 'Languages you speak', 'start_date': 'Preferred start date', 'question': 'Your question or anything else we should know', 'licence': 'Licence (e.g. A USPA, B FAI)', 'ratings': 'Ratings (e.g. AFF-I, Coach, Camera)', 'last_jump': 'Date of last jump', 'purpose': 'What would you like to do?', 'purpose_visit': 'Visit the DZ', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / boogie', 'purpose_other': 'Other', 'subject': 'Subject', 'message': 'Message'},
   fr: {'name': 'Nom', 'email': 'E-mail', 'phone': 'Téléphone (facultatif)', 'send': 'Envoyer la demande', 'send_contact': 'Envoyer le message', 'required_note': 'Les champs marqués * sont obligatoires.', 'honeypot': 'Ne remplissez pas ce champ si vous êtes humain·e', 'age': 'Âge', 'weight': 'Poids (kg)', 'languages': 'Langues que vous parlez', 'start_date': 'Date de début souhaitée', 'question': 'Votre question ou toute autre information que nous devrions connaître', 'licence': 'Licence (p. ex. A USPA, B FAI)', 'ratings': 'Qualifications (p. ex. AFF-I, Coach, Caméra)', 'last_jump': 'Date du dernier saut', 'purpose': 'Que souhaitez-vous faire ?', 'purpose_visit': 'Visiter la DZ', 'purpose_coaching': 'Coaching', 'purpose_event': 'Événement / boogie', 'purpose_other': 'Autre', 'subject': 'Objet', 'message': 'Message'},
   de: {'name': 'Name', 'email': 'E-Mail', 'phone': 'Telefon (optional)', 'send': 'Anfrage senden', 'send_contact': 'Nachricht senden', 'required_note': 'Mit * gekennzeichnete Felder sind Pflichtfelder.', 'honeypot': 'Nicht ausfüllen, wenn du ein Mensch bist', 'age': 'Alter', 'weight': 'Gewicht (kg)', 'languages': 'Sprachen, die du sprichst', 'start_date': 'Gewünschtes Startdatum', 'question': 'Deine Frage oder alles Weitere, was wir wissen sollten', 'licence': 'Lizenz (z. B. A USPA, B FAI)', 'ratings': 'Berechtigungen (z. B. AFF-I, Coach, Kamera)', 'last_jump': 'Datum des letzten Sprungs', 'purpose': 'Was möchtest du tun?', 'purpose_visit': 'Die DZ besuchen', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / Boogie', 'purpose_other': 'Sonstiges', 'subject': 'Betreff', 'message': 'Nachricht'},
+
+  lu: {'name': 'Numm', 'email': 'E-Mail', 'phone': 'Telefon (optional)', 'send': 'Anfrage senden', 'send_contact': 'Message senden', 'required_note': 'Mit * gekennzeichnete Felder sind Pflichtfelder.', 'honeypot': 'Nicht ausfüllen, wenn du ein Mensch bist', 'age': 'Alter', 'weight': 'Gewiicht (kg)', 'languages': 'Sprachen, die du sprichst', 'start_date': 'Gewünschtes Startdatum', 'question': 'Deine Frage oder alles Weitere, was mir wissen sollten', 'licence': 'Lizenz (z. B. A USPA, B FAI)', 'ratings': 'Berechtigungen (z. B. AFF-I, Coach, Kamera)', 'last_jump': 'Datum vum leschte Sprong', 'purpose': 'Wat wëlls du maachen?', 'purpose_visit': 'D\'DZ besichen', 'purpose_coaching': 'Coaching', 'purpose_event': 'Event / Boogie', 'purpose_other': 'Aneres', 'subject': 'Sujet', 'message': 'Message'},
 };
 const t = labels[lang] || labels.en;
 const privacy = {
   en: { notice: 'We use your submission to answer your enquiry and organise sport-jumper visits. Data is processed by Netlify Forms as described in our', link: 'Privacy Policy' },
   fr: { notice: 'Nous utilisons votre demande pour vous répondre et organiser les visites de parachutistes brevetés. Les données sont traitées par Netlify Forms comme décrit dans notre', link: 'politique de confidentialité' },
   de: { notice: 'Wir verwenden deine Anfrage, um zu antworten und Besuche von Lizenzspringern zu organisieren. Die Daten werden über Netlify Forms verarbeitet, wie beschrieben in unserer', link: 'Datenschutzerklärung' },
+
+  lu: { notice: 'Mir verwenden deng Anfrage, um zu antworten an Besich vu Lizenzspringern zu organisieren. Die Daten werden iwwer Netlify Forms verarbeitet, wie beschrieben in eisr', link: 'Dateschutzerklärung' },
 };
 const privacyText = privacy[lang] || privacy.en;
 ---
@@ -60,7 +64,7 @@ const privacyText = privacy[lang] || privacy.en;
       const source = form.getAttribute('data-form-source');
       const textarea = form.querySelector('textarea[name="message"], textarea[name="question"]');
       const lang = window.location.pathname.split('/').filter(Boolean)[0] || 'en';
-      if (['en', 'fr', 'de'].includes(lang)) {
+      if (['en', 'fr', 'de', 'lu'].includes(lang)) {
         form.setAttribute('action', `/${lang}/thank-you/`);
       }
       if (!source || !(textarea instanceof HTMLTextAreaElement)) return;

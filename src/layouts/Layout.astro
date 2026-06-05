@@ -25,13 +25,13 @@ const {
 } = Astro.props;
 
 const lang = Astro.currentLocale ?? 'en';
-const locales = ['en', 'fr', 'de'];
+const locales = ['en', 'fr', 'de', 'lu'];
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site).toString();
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
 
 // Strip the current locale prefix to compute hreflang URLs for the other languages
-const rawPathWithoutLocale = path.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+const rawPathWithoutLocale = path.replace(/^\/(en|fr|de|lu)(?=\/|$)/, '') || '/';
 const pathWithoutLocale = rawPathWithoutLocale === '/404.html' || rawPathWithoutLocale === '/404/'
   ? '/'
   : rawPathWithoutLocale;
