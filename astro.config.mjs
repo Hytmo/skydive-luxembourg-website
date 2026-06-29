@@ -14,7 +14,7 @@ export default defineConfig({
   i18n: {
     // The four locales the site supports.
     // Order doesn't matter functionally, but EN first is a useful convention.
-    locales: ['en', 'fr', 'de', 'lu'],
+    locales: ['en', 'fr', 'de'],
 
     // The default locale.
     defaultLocale: 'en',

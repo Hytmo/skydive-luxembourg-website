@@ -25,7 +25,7 @@ const {
 } = Astro.props;
 
 const lang = Astro.currentLocale ?? 'en';
-const locales = ['en', 'fr', 'de', 'lu'];
+const locales = ['en', 'fr', 'de'];
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site).toString();
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
