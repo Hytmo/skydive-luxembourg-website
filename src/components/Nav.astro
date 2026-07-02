@@ -19,24 +19,31 @@ import logoWhite from '../assets/logo/skydive-logo-white.png';
 const lang = Astro.currentLocale ?? 'en';
 const path = Astro.url.pathname;
 
+// "Book a tandem" lands on the tandem page's booking section, which offers
+// the three dz-cloud options (buy with a date, gift card, redeem a gift card).
+const bookHref = `/${lang}/tandem#book`;
+
 const labels = {
   en: {
     about: 'About', tandem: 'Tandem', aff: 'AFF',
     funJumpers: 'Fun jumpers', pricing: 'Pricing',
     gallery: 'Gallery', faq: 'FAQ', contact: 'Contact',
     menu: 'Menu',
+    book: 'Book a tandem', bookShort: 'Book',
   },
   fr: {
     about: 'À propos', tandem: 'Tandem', aff: 'AFF',
     funJumpers: 'Parachutistes confirmés', pricing: 'Tarifs',
     gallery: 'Galerie', faq: 'FAQ', contact: 'Contact',
     menu: 'Menu',
+    book: 'Réserver un tandem', bookShort: 'Réserver',
   },
   de: {
     about: 'Über uns', tandem: 'Tandem', aff: 'AFF',
     funJumpers: 'Sportspringer', pricing: 'Preise',
     gallery: 'Galerie', faq: 'FAQ', contact: 'Kontakt',
     menu: 'Menü',
+    book: 'Tandem buchen', bookShort: 'Buchen',
   },
 
   lu: {
@@ -44,6 +51,7 @@ const labels = {
     funJumpers: 'Sportsprénger', pricing: 'Präisser',
     gallery: 'Galerie', faq: 'FAQ', contact: 'Kontakt',
     menu: 'Menü',
+    book: 'Tandem buchen', bookShort: 'Buchen',
   },
 };
 
@@ -88,17 +96,6 @@ const isActive = (slug) => {
       />
     </a>
 
-    <button
-      class="site-nav__toggle"
-      type="button"
-      aria-label={t.menu}
-      aria-expanded="false"
-      aria-controls="site-nav-menu"
-      data-nav-toggle
-    >
-      <span></span><span></span><span></span>
-    </button>
-
     <div class="site-nav__menu" id="site-nav-menu" data-nav-list>
       <ul class="site-nav__list">
         {items.map(([slug, label]) => (
@@ -115,6 +112,27 @@ const isActive = (slug) => {
       <LanguageSwitcher />
       <ThemeToggle />
     </div>
+
+    <div class="site-nav__actions">
+      <a
+        href={bookHref}
+        class="btn btn--primary site-nav__book"
+      >
+        <span class="site-nav__book-full">{t.book}</span>
+        <span class="site-nav__book-short">{t.bookShort}</span>
+      </a>
+    </div>
+
+    <button
+      class="site-nav__toggle"
+      type="button"
+      aria-label={t.menu}
+      aria-expanded="false"
+      aria-controls="site-nav-menu"
+      data-nav-toggle
+    >
+      <span></span><span></span><span></span>
+    </button>
 
   </div>
 </nav>
@@ -171,7 +189,6 @@ const isActive = (slug) => {
     padding: var(--space-3) max(var(--space-4), env(safe-area-inset-right)) var(--space-3) max(var(--space-4), env(safe-area-inset-left));
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-4);
     position: relative;
   }
@@ -217,6 +234,7 @@ const isActive = (slug) => {
     display: flex;
     align-items: center;
     gap: var(--space-4);
+    margin-left: auto; /* push nav links + actions to the right on desktop */
   }
 
   .site-nav__list {
@@ -230,7 +248,7 @@ const isActive = (slug) => {
 
   .site-nav__link {
     display: block;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-2);
     color: var(--color-fg);
     text-decoration: none;
     border-radius: var(--radius-sm);
@@ -243,15 +261,41 @@ const isActive = (slug) => {
     color: #FFFFFF;
   }
 
-  /* Tablet & mobile */
-  @media (max-width: 900px) {
+  /* ---------- persistent action: Book a tandem ------------------------- */
+
+  .site-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .site-nav__book {
+    padding: var(--space-2) var(--space-4);
+    min-height: 44px; /* comfortable touch target, matches the nav toggle */
+    font-size: var(--fs-base);
+    white-space: nowrap;
+  }
+
+  /* Desktop default (nav links visible): keep the Book label compact ("Book")
+     so the links + language/theme + button all fit within the 1200px content
+     max. The full "Book a tandem" label appears once the links collapse into
+     the hamburger (below), where the bar has room to spare. */
+  .site-nav__book-full { display: none; }
+  .site-nav__book-short { display: inline; }
+
+  /* Tablet & mobile — collapse the nav links into the hamburger. The bar then
+     holds only logo + Book + toggle, so we surface the full booking label. */
+  @media (max-width: 1180px) {
     .site-nav__toggle { display: flex; }
+    .site-nav__actions { margin-left: auto; }
     .site-nav__menu {
       display: none;
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
+      margin-left: 0;
       flex-direction: column;
       align-items: stretch;
       background: var(--color-bg);
@@ -267,5 +311,20 @@ const isActive = (slug) => {
       width: 100%;
     }
     .site-nav__link { padding: var(--space-3); }
+
+    .site-nav__book-full { display: inline; }
+    .site-nav__book-short { display: none; }
+  }
+
+  /* Small phones — go back to the short "Book" label and tighten spacing so
+     logo + Book + hamburger never crowd the bar. */
+  @media (max-width: 560px) {
+    .site-nav__inner { gap: var(--space-2); }
+    .site-nav__actions { gap: var(--space-1); }
+    .site-nav__book { padding: var(--space-2) var(--space-3); }
+    .site-nav__logo-img { width: clamp(112px, 34vw, 150px); }
+
+    .site-nav__book-full { display: none; }
+    .site-nav__book-short { display: inline; }
   }
 </style>

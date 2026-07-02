@@ -28,7 +28,7 @@ const t = {
     whatLead: 'We welcome complete beginners, students working towards their licence, and experienced jumpers from across Europe.',
 
     cards: [
-      { title: 'Tandem skydives', text: 'First-jump experiences for anyone aged 16 and over. A short briefing, then a freefall from 4,000 metres harnessed to a qualified tandem master.', image: tandemImg, alt: 'Tandem skydive in freefall' },
+      { title: 'Tandem skydives', text: 'First-jump experiences for anyone aged 14 and over. A short briefing, then a freefall from 4,000 metres harnessed to a qualified tandem master.', image: tandemImg, alt: 'Tandem skydive in freefall' },
       { title: 'AFF student training', text: 'Our Accelerated Freefall course is the modern, fast-track route to a solo skydiving licence. Seven levels of one-on-one instruction with two jumpmasters on your first dives.', image: affImg, alt: 'AFF student in freefall with instructors' },
       { title: 'Sport jumpers', text: 'Licensed parachutists are welcome to manifest on our Airvan GA8. Wing-loading checks, formation coaching and friendly hosts every weekend in season.', image: funImg, alt: 'Sport jumpers exiting the aircraft' },
     ],
@@ -61,7 +61,7 @@ const t = {
     whatLead: 'Nous accueillons les débutants complets, les élèves en formation et les parachutistes confirmés venus de toute l\'Europe.',
 
     cards: [
-      { title: 'Sauts en tandem', text: 'Le saut découverte pour toute personne dès 16 ans. Un bref briefing, puis une chute libre depuis 4 000 mètres harnaché à un moniteur tandem qualifié.', image: tandemImg, alt: 'Saut en tandem en chute libre' },
+      { title: 'Sauts en tandem', text: 'Le saut découverte pour toute personne dès 14 ans. Un bref briefing, puis une chute libre depuis 4 000 mètres harnaché à un moniteur tandem qualifié.', image: tandemImg, alt: 'Saut en tandem en chute libre' },
       { title: 'Formation AFF', text: 'Notre stage AFF est la voie moderne et rapide vers le brevet de parachutiste autonome. Sept niveaux d\'instruction individualisée, avec deux moniteurs sur vos premiers sauts.', image: affImg, alt: 'Élève AFF en chute libre avec moniteurs' },
       { title: 'Parachutistes brevetés', text: 'Les parachutistes brevetés sont les bienvenus à bord de notre Airvan GA8. Contrôle de charge alaire, coaching de formation et accueil chaleureux chaque week-end en saison.', image: funImg, alt: 'Parachutistes confirmés à la sortie de l\'avion' },
     ],
@@ -94,7 +94,7 @@ const t = {
     whatLead: 'Wir begrüßen komplette Anfänger, Schüler auf dem Weg zur Lizenz und erfahrene Springer aus ganz Europa.',
 
     cards: [
-      { title: 'Tandemsprünge', text: 'Erstsprung-Erlebnisse ab 16 Jahren. Ein kurzes Briefing, dann freier Fall aus 4 000 Metern, angeschnallt an einen geprüften Tandemmaster.', image: tandemImg, alt: 'Tandemsprung im freien Fall' },
+      { title: 'Tandemsprünge', text: 'Erstsprung-Erlebnisse ab 14 Jahren. Ein kurzes Briefing, dann freier Fall aus 4 000 Metern, angeschnallt an einen geprüften Tandemmaster.', image: tandemImg, alt: 'Tandemsprung im freien Fall' },
       { title: 'AFF-Ausbildung', text: 'Unser Accelerated-Freefall-Kurs ist der moderne, schnelle Weg zur Solo-Sprunglizenz. Sieben Stufen Einzelunterricht, mit zwei Lehrern auf den ersten Sprüngen.', image: affImg, alt: 'AFF-Schüler im freien Fall mit Lehrern' },
       { title: 'Sportspringer', text: 'Lizenzierte Fallschirmspringer sind in unserer Airvan GA8 herzlich willkommen. Flächenbelastungs-Checks, Formations-Coaching und freundliche Gastgeber an jedem Wochenende der Saison.', image: funImg, alt: 'Sportspringer beim Ausstieg' },
     ],
@@ -127,7 +127,7 @@ const t = {
     whatLead: 'Mir begrüßen komplette Anfänger, Schüler auf dem Weg zur Lizenz an erfahrene Sprénger aus ganz Europa.',
 
     cards: [
-      { title: 'Tandemspréng', text: 'Erstsprung-Erlebnisse ab 16 Joern. Ein kurzes Briefing, dann fräie Fall aus 4 000 Metern, angeschnallt an einen geprüften Tandemmaster.', image: tandemImg, alt: 'Tandemsprong im fräie Fall' },
+      { title: 'Tandemspréng', text: 'Erstsprung-Erlebnisse ab 14 Joer. Ein kurzes Briefing, dann fräie Fall aus 4 000 Metern, angeschnallt an einen geprüften Tandemmaster.', image: tandemImg, alt: 'Tandemsprong im fräie Fall' },
       { title: 'AFF-Ausbildung', text: 'Eise Accelerated-Freefall-Kurs ist der moderne, schnelle Weg zur Solo-Spronglizenz. Sieben Stufen Einzelunterricht, mat zwei Instrukterenn auf den ersten Spréngn.', image: affImg, alt: 'AFF-Schüler im fräie Fall mat Instrukterenn' },
       { title: 'Sportsprénger', text: 'Lizenzierte Fallschirmspringer sind in eisr Airvan GA8 herzlich wëllkomm. Flächenbelastungs-Checks, Formations-Coaching an freundliche Gastgeber an jedem Wochenende der Saison.', image: funImg, alt: 'Sportsprénger beim Ausstieg' },
     ],
@@ -147,7 +147,7 @@ const t = {
   },
 }[lang];
 
-const tandemHref = `/${lang}/tandem`;
+const bookHref = `/${lang}/tandem#book`;
 const contactHref = `/${lang}/contact`;
 ---
 
@@ -203,6 +203,6 @@ const contactHref = `/${lang}/contact`;
 <CTABanner
   title={t.ctaTitle}
   subtitle={t.ctaSubtitle}
-  primaryCta={{ label: t.ctaPrimary, href: tandemHref }}
+  primaryCta={{ label: t.ctaPrimary, href: bookHref }}
   secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
 />

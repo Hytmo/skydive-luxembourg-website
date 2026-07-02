@@ -8,8 +8,6 @@ import CTABanner from '../sections/CTABanner.astro';
 
 import bannerImg from '../../assets/img/website-selection/action/action-008.webp';
 
-const BOOKING_URL = 'https://cpl.dz-cloud.com/en/Booking/s1_Options';
-
 const { lang = 'en' } = Astro.props;
 
 const labels = {
@@ -25,8 +23,8 @@ const labels = {
     checkjump: 'Check jump',
     guest4000: 'Guest jump - 4 000 m',
     guest2000: 'Guest jump - 2 000 m',
-    rentalMember: 'Parachute rental - members',
-    rentalGuest: 'Parachute rental - guests',
+    rentalMember: 'Parachute rental - members (per jump)',
+    rentalGuest: 'Parachute rental - guests (per jump)',
     packjob: 'Pack job',
   },
   fr: {
@@ -41,8 +39,8 @@ const labels = {
     checkjump: 'Saut de contrôle',
     guest4000: 'Saut visiteur - 4 000 m',
     guest2000: 'Saut visiteur - 2 000 m',
-    rentalMember: 'Location parachute - membres',
-    rentalGuest: 'Location parachute - visiteurs',
+    rentalMember: 'Location parachute - membres (par saut)',
+    rentalGuest: 'Location parachute - visiteurs (par saut)',
     packjob: 'Pliage',
   },
   de: {
@@ -57,8 +55,8 @@ const labels = {
     checkjump: 'Checksprung',
     guest4000: 'Gastsprung - 4 000 m',
     guest2000: 'Gastsprung - 2 000 m',
-    rentalMember: 'Fallschirmmiete - Mitglieder',
-    rentalGuest: 'Fallschirmmiete - Gäste',
+    rentalMember: 'Fallschirmmiete - Mitglieder (pro Sprung)',
+    rentalGuest: 'Fallschirmmiete - Gäste (pro Sprung)',
     packjob: 'Packen',
   },
 
@@ -74,8 +72,8 @@ const labels = {
     checkjump: 'Checksprung',
     guest4000: 'Gastsprung - 4 000 m',
     guest2000: 'Gastsprung - 2 000 m',
-    rentalMember: 'Fallschirmmiete - Mitglieder',
-    rentalGuest: 'Fallschirmmiete - Gäste',
+    rentalMember: 'Fallschirmmiete - Mitglieder (pro Sprung)',
+    rentalGuest: 'Fallschirmmiete - Gäste (pro Sprung)',
     packjob: 'Paken',
   },
 }[lang];
@@ -89,7 +87,7 @@ const t = {
     introTitle: 'Main formulas at a glance.',
     introText: 'AFF and tandem are shown first, followed by the current club prices for members, guests, rental and packing.',
     sourceText: '',
-    affNote: 'Training formula',
+    affNote: 'Training formula - course jumps, rental gear and instruction included',
     tandemNote: 'Most common first-jump formula',
     primaryAction: 'Ask about AFF',
     tandemAction: 'Book a tandem',
@@ -113,7 +111,7 @@ const t = {
     introTitle: 'Les formules principales en un coup d’œil.',
     introText: 'AFF et tandem sont affichés d’abord, suivis des tarifs actuels du club pour membres, visiteurs, location et pliage.',
     sourceText: '',
-    affNote: 'Formule formation',
+    affNote: 'Formule formation - sauts du stage, matériel et encadrement inclus',
     tandemNote: 'Formule premier saut la plus demandée',
     primaryAction: 'Demander l’AFF',
     tandemAction: 'Réserver un tandem',
@@ -137,7 +135,7 @@ const t = {
     introTitle: 'Die wichtigsten Formeln auf einen Blick.',
     introText: 'AFF und Tandem stehen zuerst, danach folgen die aktuellen Clubpreise für Mitglieder, Gäste, Materialmiete und Packen.',
     sourceText: '',
-    affNote: 'Ausbildungsformel',
+    affNote: 'Ausbildungsformel - Kurssprünge, Leihmaterial und Ausbildung inklusive',
     tandemNote: 'Häufigste Erst-Sprung-Formel',
     primaryAction: 'AFF anfragen',
     tandemAction: 'Tandem buchen',
@@ -162,7 +160,7 @@ const t = {
     introTitle: 'Die wichtigsten Formeln auf einen Blick.',
     introText: 'AFF an Tandem stehen zuerst, danach folgen die aktuellen Clubpreise fir Mitglieder, Gäste, Materialmiete an Paken.',
     sourceText: '',
-    affNote: 'Ausbildungsformel',
+    affNote: 'Ausbildungsformel - Kurssprünge, Leihmaterial und Ausbildung inklusive',
     tandemNote: 'Häufigste Erst-Sprong-Formel',
     primaryAction: 'AFF anfragen',
     tandemAction: 'Tandem buchen',
@@ -192,7 +190,7 @@ const featured = [
     title: labels.affFormula,
     price: '2 500 €',
     note: t.affNote,
-    href: affHref,
+    href: `${affHref}#aff-form`,
     cta: t.primaryAction,
     variant: 'dark',
   },
@@ -202,7 +200,7 @@ const featured = [
     title: labels.tandemVideo,
     price: '350 €',
     note: t.tandemNote,
-    href: BOOKING_URL,
+    href: `${tandemHref}#book`,
     cta: t.tandemAction,
     variant: 'light',
   },
@@ -318,7 +316,7 @@ const detailCards = [
 <CTABanner
   title={t.ctaTitle}
   subtitle={t.ctaSubtitle}
-  primaryCta={{ label: t.tandemAction, href: BOOKING_URL }}
+  primaryCta={{ label: t.tandemAction, href: `${tandemHref}#book` }}
   secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
 />
 

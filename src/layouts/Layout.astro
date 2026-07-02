@@ -26,6 +26,11 @@ const {
 
 const lang = Astro.currentLocale ?? 'en';
 const locales = ['en', 'fr', 'de'];
+
+// Open Graph locale codes for the supported UI languages.
+const ogLocales = { en: 'en_GB', fr: 'fr_FR', de: 'de_DE' };
+const ogLocale = ogLocales[lang] ?? 'en_GB';
+const ogAlternates = locales.filter((l) => l !== lang).map((l) => ogLocales[l]);
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site).toString();
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
@@ -43,14 +48,23 @@ const organizationSchema = {
   name: 'Skydive Luxembourg a.s.b.l.',
   alternateName: 'Skydive Luxembourg',
   url: siteUrl,
-  logo: `${siteUrl}/img/og-image.jpg`,
+  logo: `${siteUrl}/img/logo.png`,
+  image: `${siteUrl}/img/og-image.jpg`,
   email: 'mail@skydive.lu',
+  telephone: '+352 621 701 194',
+  foundingDate: '1965',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '32 Op der Louh',
     postalCode: 'L-9676',
     addressLocality: 'Noertrange',
     addressCountry: 'LU',
+  },
+  // Wiltz-Noertrange airfield (ELNT)
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 49.9811,
+    longitude: 5.9178,
   },
   areaServed: ['Luxembourg', 'Greater Region', 'Belgium', 'France', 'Germany'],
   sport: 'Skydiving',
@@ -86,6 +100,8 @@ const allStructuredData = [organizationSchema, webPageSchema, ...structuredData]
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1117" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -111,6 +127,10 @@ const allStructuredData = [organizationSchema, webPageSchema, ...structuredData]
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Skydive Luxembourg" />
+    <meta property="og:locale" content={ogLocale} />
+    {ogAlternates.map((l) => (
+      <meta property="og:locale:alternate" content={l} />
+    ))}
     <meta property="og:image" content={new URL('/img/og-image.jpg', Astro.site)} />
     <meta property="og:image:secure_url" content={new URL('/img/og-image.jpg', Astro.site)} />
     <meta property="og:image:type" content="image/jpeg" />

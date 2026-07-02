@@ -73,7 +73,9 @@ const buildLink = (loc) => `/${loc}${pathWithoutLocale}`.replace(/\/+/g, '/');
   }
 
   .lang-switcher__link.is-active {
+    /* fg/bg swap keeps the active pill readable in both themes
+       (light: white on black, dark: dark on near-white). */
     background: var(--color-fg);
-    color: #FFFFFF;
+    color: var(--color-bg);
   }
 </style>

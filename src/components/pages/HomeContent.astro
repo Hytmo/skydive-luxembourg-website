@@ -5,7 +5,10 @@
 import Hero from '../sections/Hero.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
 import Gallery from '../sections/Gallery.astro';
+import GoogleRating from '../sections/GoogleRating.astro';
 import CTABanner from '../sections/CTABanner.astro';
+
+import { getGoogleReviews } from '../../data/googleReviews.js';
 
 import heroImg from '../../assets/img/Hero-1.webp';
 import tandemImg from '../../assets/img/website-selection/tandem/tandem-008.webp';
@@ -30,10 +33,10 @@ const t = {
 
     pickEyebrow: 'Three ways to jump',
     pickTitle: 'Whatever your level, the door is open.',
-    pickLead: 'All skydivers welcome: we offer AFF training, training jumps and coaching. Contact us at mail@skydive.lu.',
+    pickLead: 'All skydivers welcome: we offer AFF training, training jumps and coaching. Contact us at',
 
     cards: [
-      { title: 'Tandem jumps', text: 'No experience needed. A 15-minute briefing, then 4,000 m of pure freefall with one of our qualified tandem masters.', cta: 'Book a tandem', href: `/${''}en/tandem` },
+      { title: 'Tandem jumps', text: 'No experience needed. A 15-minute briefing, then 4,000 m of pure freefall with one of our qualified tandem masters.', cta: 'Discover tandem', href: `/${''}en/tandem` },
       { title: 'AFF - learn to skydive', text: 'Become a licensed solo skydiver. Our Accelerated Freefall course takes you from zero to A-licence at your own pace.', cta: 'Discover AFF', href: `/${''}en/aff` },
       { title: 'Fun jumpers', text: 'Already licensed? Manifest with us, jump our Gippsland Airvan GA8, and join one of the friendliest dropzones in Europe.', cta: 'Visit the DZ', href: `/${''}en/fun-jumpers` },
     ],
@@ -62,10 +65,10 @@ const t = {
 
     pickEyebrow: 'Trois façons de sauter',
     pickTitle: 'Quel que soit votre niveau, la porte est ouverte.',
-    pickLead: 'Tous les parachutistes sont les bienvenus : nous proposons la formation AFF, des sauts d’entraînement et du coaching. Contactez-nous à mail@skydive.lu.',
+    pickLead: 'Tous les parachutistes sont les bienvenus : nous proposons la formation AFF, des sauts d’entraînement et du coaching. Contactez-nous à',
 
     cards: [
-      { title: 'Sauts en tandem', text: 'Aucune expérience requise. 15 minutes de briefing, puis 4 000 m de chute libre avec l\'un de nos moniteurs brevetés.', cta: 'Réserver un tandem', href: `/${''}fr/tandem` },
+      { title: 'Sauts en tandem', text: 'Aucune expérience requise. 15 minutes de briefing, puis 4 000 m de chute libre avec l\'un de nos moniteurs brevetés.', cta: 'Découvrir le tandem', href: `/${''}fr/tandem` },
       { title: 'AFF - apprendre à sauter', text: 'Devenez parachutiste autonome. Notre stage Accelerated Freefall vous mène du débutant à la licence A à votre rythme.', cta: 'Découvrir l\'AFF', href: `/${''}fr/aff` },
       { title: 'Parachutistes confirmés', text: 'Déjà breveté ? Manifestez-vous, sautez de notre Gippsland Airvan GA8 et rejoignez l\'une des DZ les plus accueillantes d\'Europe.', cta: 'Visiter la DZ', href: `/${''}fr/fun-jumpers` },
     ],
@@ -94,10 +97,10 @@ const t = {
 
     pickEyebrow: 'Drei Arten zu springen',
     pickTitle: 'Egal welches Niveau - die Tür ist offen.',
-    pickLead: 'Alle Fallschirmspringer sind willkommen: Wir bieten AFF-Ausbildung, Trainingssprünge und Coaching. Kontakt: mail@skydive.lu.',
+    pickLead: 'Alle Fallschirmspringer sind willkommen: Wir bieten AFF-Ausbildung, Trainingssprünge und Coaching. Kontakt:',
 
     cards: [
-      { title: 'Tandemsprünge', text: 'Keine Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m freier Fall mit einem unserer geprüften Tandemmaster.', cta: 'Tandem buchen', href: `/${''}de/tandem` },
+      { title: 'Tandemsprünge', text: 'Keine Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m freier Fall mit einem unserer geprüften Tandemmaster.', cta: 'Mehr zum Tandem', href: `/${''}de/tandem` },
       { title: 'AFF - Sprungausbildung', text: 'Werde lizenzierter Solo-Springer. Unser Accelerated-Freefall-Kurs bringt dich in deinem eigenen Tempo von null zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
       { title: 'Sportspringer', text: 'Schon lizenziert? Melde dich an, spring aus unserer Gippsland Airvan GA8 und genieße eine der freundlichsten DZs Europas.', cta: 'DZ besuchen', href: `/${''}de/fun-jumpers` },
     ],
@@ -126,10 +129,10 @@ const t = {
 
     pickEyebrow: 'Drei Arten zu springen',
     pickTitle: 'Egal welches Niveau - die Tür ist offen.',
-    pickLead: 'Alle Fallschirmspringer sind wëllkomm: Mir bieten AFF-Ausbildung, Trainingssprünge an Coaching. Kontakt: mail@skydive.lu.',
+    pickLead: 'Alle Fallschirmspringer sind wëllkomm: Mir bieten AFF-Ausbildung, Trainingssprünge an Coaching. Kontakt:',
 
     cards: [
-      { title: 'Tandemspréng', text: 'Keng Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m fräie Fall mat einem eisr geprüften Tandemmaster.', cta: 'Tandem buchen', href: `/${''}de/tandem` },
+      { title: 'Tandemspréng', text: 'Keng Vorkenntnisse nötig. 15 Minuten Briefing, dann 4 000 m fräie Fall mat einem eisr geprüften Tandemmaster.', cta: 'Mehr zum Tandem', href: `/${''}de/tandem` },
       { title: 'AFF - Sprongausbildung', text: 'Gëff lizenzierter Solo-Sprénger. Eise Accelerated-Freefall-Kurs bringt dich in dengem eigenen Tempo vu null zur A-Lizenz.', cta: 'Mehr zu AFF', href: `/${''}de/aff` },
       { title: 'Sportsprénger', text: 'Schon lizenziert? Melde dich an, spring aus eisr Gippsland Airvan GA8 an genieße eine der freundlichsten DZs Europas.', cta: 'DZ besuchen', href: `/${''}de/fun-jumpers` },
     ],
@@ -157,6 +160,7 @@ t.cards = t.cards.map((c) => ({
 }));
 
 const tandemHref = `/${lang}/tandem`;
+const bookHref = `/${lang}/tandem#book`;
 const aboutHref = `/${lang}/about`;
 const contactHref = `/${lang}/contact`;
 const galleryHref = `/${lang}/gallery`;
@@ -211,6 +215,8 @@ t.cards[1].image = affImg;
 t.cards[1].alt = t.cards[1].title;
 t.cards[2].image = funImg;
 t.cards[2].alt = t.cards[2].title;
+
+const reviews = getGoogleReviews(lang);
 ---
 
 <Hero
@@ -219,7 +225,7 @@ t.cards[2].alt = t.cards[2].title;
   eyebrow={t.heroEyebrow}
   title={t.heroTitle}
   subtitle={t.heroSubtitle}
-  primaryCta={{ label: t.heroPrimary, href: tandemHref }}
+  primaryCta={{ label: t.heroPrimary, href: bookHref }}
   secondaryCta={{ label: t.heroSecondary, href: affHref }}
 />
 
@@ -228,7 +234,7 @@ t.cards[2].alt = t.cards[2].title;
     <header class="section__header">
       <p class="section__eyebrow">{t.pickEyebrow}</p>
       <h2 class="section__title">{t.pickTitle}</h2>
-      <p class="section__lead">{t.pickLead}</p>
+      <p class="section__lead">{t.pickLead} <a href="mailto:mail@skydive.lu">mail@skydive.lu</a></p>
     </header>
     <FeatureCards items={t.cards} />
   </div>
@@ -260,9 +266,27 @@ t.cards[2].alt = t.cards[2].title;
   </div>
 </section>
 
+<section class="section section--alt">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{reviews.eyebrow}</p>
+      <h2 class="section__title">{reviews.title}</h2>
+      <p class="section__lead">{reviews.lead}</p>
+    </header>
+    <GoogleRating
+      rating={reviews.rating}
+      count={reviews.count}
+      countLabel={reviews.countLabel}
+      starsLabel={reviews.starsLabel}
+      cta={reviews.cta}
+      url={reviews.url}
+    />
+  </div>
+</section>
+
 <CTABanner
   title={t.ctaTitle}
   subtitle={t.ctaSubtitle}
-  primaryCta={{ label: t.ctaPrimary, href: tandemHref }}
+  primaryCta={{ label: t.ctaPrimary, href: bookHref }}
   secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
 />

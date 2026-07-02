@@ -35,6 +35,7 @@
   --color-cta-hover:   var(--color-red-dark);
   --color-success:     #16A34A;
   --color-error:       #DC2626;
+  --color-rating:      #F5A623;   /* review star (amber) - intentionally fixed across themes */
 
 
   /* ---------- TYPOGRAPHY ------------------------------------------------ */

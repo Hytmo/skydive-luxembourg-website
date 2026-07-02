@@ -1,0 +1,75 @@
+---
+/**
+ * GoogleRating.astro - real aggregate Google rating badge (social proof).
+ * Renders the badge only; wrap it in a <section> with a header in the parent,
+ * exactly like FeatureCards / Gallery.
+ *
+ * Props:
+ *   rating (number, e.g. 4.5), count (number)
+ *   countLabel: string  - e.g. "Google reviews" (rendered as "{count} {countLabel}")
+ *   starsLabel: string  - screen-reader template, "{n}" -> the rating
+ *   cta: string, url: string
+ */
+const {
+  rating = 0,
+  count = 0,
+  countLabel = 'Google reviews',
+  starsLabel = 'Rated {n} out of 5',
+  cta = 'Read our reviews on Google',
+  url = '#',
+} = Astro.props;
+
+const ratingText = rating.toFixed(1);
+const fillPct = Math.max(0, Math.min(100, (rating / 5) * 100));
+---
+
+<div class="google-rating">
+  <div class="google-rating__stars" role="img" aria-label={starsLabel.replace('{n}', ratingText)}>
+    <span class="google-rating__stars-track" aria-hidden="true">★★★★★</span>
+    <span class="google-rating__stars-fill" style={`width:${fillPct}%`} aria-hidden="true">★★★★★</span>
+  </div>
+  <p class="google-rating__score"><strong>{ratingText}</strong> / 5</p>
+  <p class="google-rating__count">{count} {countLabel}</p>
+  <a class="btn btn--outline" href={url} target="_blank" rel="noopener noreferrer">{cta}</a>
+</div>
+
+<style>
+  .google-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  /* Fractional star bar: a grey track of 5 stars with an amber overlay clipped
+     to (rating / 5) width, so 4.5 shows four-and-a-half filled stars. */
+  .google-rating__stars {
+    position: relative;
+    display: inline-block;
+    font-size: 2.25rem;
+    line-height: 1;
+    letter-spacing: 4px;
+  }
+  .google-rating__stars-track { color: var(--color-border); }
+  .google-rating__stars-fill {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--color-rating);
+  }
+
+  .google-rating__score {
+    font-size: var(--fs-xl);
+    color: var(--color-fg);
+  }
+  .google-rating__score strong {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-bold);
+  }
+
+  .google-rating__count {
+    color: var(--color-fg-muted);
+  }
+</style>

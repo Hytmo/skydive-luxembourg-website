@@ -4,16 +4,24 @@
  */
 import PageBanner from '../sections/PageBanner.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
+import GoogleRating from '../sections/GoogleRating.astro';
 import CTABanner from '../sections/CTABanner.astro';
+
+import { getGoogleReviews } from '../../data/googleReviews.js';
 
 import bannerImg from '../../assets/img/Tandem-1.webp';
 import step1Img from '../../assets/img/website-selection/tandem/tandem-009.webp';
 import step2Img from '../../assets/img/website-selection/tandem/tandem-011.webp';
 import step3Img from '../../assets/img/website-selection/tandem/tandem-002.webp';
 
-const BOOKING_URL = 'https://cpl.dz-cloud.com/en/Booking/s1_Options';
-
 const { lang = 'en' } = Astro.props;
+
+// dz-cloud booking system - localized interface (lu falls back to de).
+const bookingLang = lang === 'lu' ? 'de' : lang;
+const BOOKING_BASE = `https://cpl.dz-cloud.com/${bookingLang}/Booking`;
+const BOOK_URL = `${BOOKING_BASE}/s2_ProductsDates?DoingWhat=1`; // buy + pick a date now
+const GIFT_URL = `${BOOKING_BASE}/s2_ProductsDates?DoingWhat=2`; // gift card, date chosen later
+const REDEEM_URL = `${BOOKING_BASE}/s1_Options?Redeem=1`; // book a date with an existing gift card
 
 const t = {
   en: {
@@ -32,7 +40,7 @@ const t = {
     steps: [
       { title: '1. Briefing & gear-up', text: 'On arrival we sign you in, weigh you, then walk you through a 15-minute briefing covering the exit, the freefall position and the landing. Your instructor fits your harness and double-checks every buckle before you board.', image: step1Img, alt: 'Tandem briefing on the ground' },
       { title: '2. Scenic flight to altitude', text: 'Enjoy a roughly 20-minute flight before the door opens at 4,000 metres. Take in the view over Luxembourg and the surrounding region, then get ready for the big moment.', image: step2Img, alt: 'View from the aircraft on the climb' },
-      { title: '3. Freefall & canopy', text: 'Freefall at around 200 km/h, then your instructor opens the canopy at about 1,500 metres for a calm 5-7 minute glide back to the dropzone and a smooth landing.', image: step3Img, alt: 'Open canopy on the descent' },
+      { title: '3. Freefall & canopy', text: 'Around 60 seconds of freefall at about 200 km/h, then your instructor opens the canopy at about 1,500 metres for a calm 5-7 minute glide back to the dropzone and a smooth landing.', image: step3Img, alt: 'Open canopy on the descent' },
     ],
 
     reqEyebrow: 'Requirements',
@@ -59,8 +67,16 @@ const t = {
 
     bookEyebrow: 'Booking',
     bookTitle: 'Pick a date and we\'ll see you on the dropzone.',
-    bookText: 'Tandem jumps are weather dependent. If conditions are unsafe, we reschedule. Cancellations are accepted only with a medical certificate; no-shows lose the jump. Jumps are valid for 3 years, non-refundable but transferable. Gift vouchers are possible - please make sure the recipient contact details are correct.',
-    bookCta: 'Book your tandem',
+    bookText: 'A tandem jump costs 350 € - briefing, all equipment and a handcam video filmed by your instructor included. An upgrade to an outside cameraflyer is possible on request, subject to availability.',
+    bookPoints: [
+      'We jump on weekends from April to October. Booking dates open little by little based on availability - if you don\'t see a date yet, check back soon.',
+      'Weather dependent: if conditions are unsafe on the day, we reschedule your jump free of charge.',
+      'Cancelling more than 7 days before the jump: free rebooking. Less than 7 days before: only with a medical certificate. No-shows lose the jump.',
+      'Jumps are valid for 3 years, non-refundable but transferable.',
+    ],
+    bookCta: 'Buy a tandem - with appointment',
+    giftCta: 'Buy a gift card - choose the date later',
+    redeemCta: 'Make an appointment - with a gift card',
 
     bringEyebrow: 'On the day',
     bringTitle: 'What to bring.',
@@ -70,6 +86,7 @@ const t = {
       'Trainers or light boots with ankle support. No sandals or open shoes.',
       'Glasses are fine - we provide goggles that fit over them.',
       'A good night\'s sleep and a light meal beforehand.',
+      'Family and friends are welcome to come and watch - drinks are available on site.',
     ],
 
     ctaTitle: 'Ready to feel the sky?',
@@ -94,7 +111,7 @@ const t = {
     steps: [
       { title: '1. Briefing et équipement', text: 'À votre arrivée, nous procédons à l\'enregistrement, à la pesée, puis à un briefing de 15 minutes : la sortie, la position en chute, l\'atterrissage. Votre moniteur ajuste le harnais et vérifie chaque boucle avant l\'embarquement.', image: step1Img, alt: 'Briefing tandem au sol' },
       { title: '2. Vol panoramique vers l’altitude', text: 'Profitez d’un vol d’environ 20 minutes avant l’ouverture de la porte à 4 000 mètres. Admirez le Luxembourg et la région - puis préparez-vous pour le grand moment.', image: step2Img, alt: 'Vue depuis l\'avion pendant la montée' },
-      { title: '3. Chute libre et voile', text: 'Chute libre à environ 200 km/h, puis ouverture de la voile vers 1 500 mètres pour une descente douce de 5–7 minutes jusqu’à l’atterrissage.', image: step3Img, alt: 'Voile ouverte pendant la descente' },
+      { title: '3. Chute libre et voile', text: 'Environ 60 secondes de chute libre à près de 200 km/h, puis ouverture de la voile vers 1 500 mètres pour une descente douce de 5–7 minutes jusqu’à l’atterrissage.', image: step3Img, alt: 'Voile ouverte pendant la descente' },
     ],
 
     reqEyebrow: 'Conditions',
@@ -121,8 +138,16 @@ const t = {
 
     bookEyebrow: 'Réservation',
     bookTitle: 'Choisissez une date - on vous attend sur la DZ.',
-    bookText: 'Les sauts en tandem dépendent de la météo. Si les conditions ne sont pas sûres, le saut est reporté. Les annulations sont acceptées uniquement avec certificat médical; en cas d’absence, le saut est perdu. Les sauts sont valables 3 ans, non remboursables mais transférables. Les bons cadeaux sont possibles - assurez-vous des bonnes coordonnées du bénéficiaire.',
-    bookCta: 'Réserver mon tandem',
+    bookText: 'Le saut en tandem coûte 350 € - briefing, équipement complet et vidéo handcam filmée par votre moniteur inclus. Un passage à une vidéo par caméraman extérieur est possible sur demande, selon disponibilité.',
+    bookPoints: [
+      'Nous sautons les week-ends d\'avril à octobre. Les dates de réservation ouvrent petit à petit selon les disponibilités - si vous ne voyez pas encore de date, revenez bientôt.',
+      'Dépendant de la météo : si les conditions ne sont pas sûres le jour J, le saut est reporté sans frais.',
+      'Annulation à plus de 7 jours du saut : report gratuit. À moins de 7 jours : uniquement avec certificat médical. En cas d\'absence, le saut est perdu.',
+      'Les sauts sont valables 3 ans, non remboursables mais transférables.',
+    ],
+    bookCta: 'Acheter un tandem - avec rendez-vous',
+    giftCta: 'Acheter un bon cadeau - date à choisir plus tard',
+    redeemCta: 'Prendre rendez-vous - avec un bon cadeau',
 
     bringEyebrow: 'Le jour J',
     bringTitle: 'Quoi prendre avec vous.',
@@ -132,6 +157,7 @@ const t = {
       'Des baskets ou chaussures montantes avec maintien de cheville. Pas de sandales ni de chaussures ouvertes.',
       'Les lunettes de vue ne posent aucun problème - nos masques se mettent par-dessus.',
       'Une bonne nuit de sommeil et un repas léger avant de venir.',
+      'Famille et amis sont les bienvenus pour vous regarder sauter - boissons disponibles sur place.',
     ],
 
     ctaTitle: 'Prêt à sentir le ciel ?',
@@ -156,7 +182,7 @@ const t = {
     steps: [
       { title: '1. Briefing und Anlegen', text: 'Bei der Ankunft melden wir dich an, wiegen dich und geben dir ein 15-minütiges Briefing zu Ausstieg, Fallhaltung und Landung. Dein Lehrer passt den Gurt an und kontrolliert vor dem Einsteigen jede einzelne Schnalle.', image: step1Img, alt: 'Tandem-Briefing am Boden' },
       { title: '2. Rundflug auf Höhe', text: 'Genieße einen etwa 20-minütigen Flug, bevor sich die Tür auf 4 000 Metern öffnet. Blick über Luxemburg und die Region - dann kommt der große Moment.', image: step2Img, alt: 'Blick aus dem Flugzeug beim Steigflug' },
-      { title: '3. Freier Fall und Schirm', text: 'Freier Fall mit rund 200 km/h, dann öffnet dein Lehrer den Schirm auf etwa 1 500 Metern für eine 5–7-minütige Gleitphase bis zur sicheren Landung.', image: step3Img, alt: 'Offener Schirm beim Abstieg' },
+      { title: '3. Freier Fall und Schirm', text: 'Rund 60 Sekunden freier Fall mit etwa 200 km/h, dann öffnet dein Lehrer den Schirm auf etwa 1 500 Metern für eine 5–7-minütige Gleitphase bis zur sicheren Landung.', image: step3Img, alt: 'Offener Schirm beim Abstieg' },
     ],
 
     reqEyebrow: 'Voraussetzungen',
@@ -183,8 +209,16 @@ const t = {
 
     bookEyebrow: 'Buchung',
     bookTitle: 'Wähle ein Datum - wir sehen uns am Flugplatz.',
-    bookText: 'Tandemsprünge sind wetterabhängig. Wenn die Bedingungen nicht sicher sind, wird der Sprung verschoben. Stornierungen sind nur mit Attest möglich; Nichterscheinen bedeutet Verlust des Sprungs. Sprünge sind 3 Jahre gültig, nicht erstattungsfähig, aber übertragbar. Gutscheine sind möglich - bitte korrekte Kontaktdaten des Empfängers angeben.',
-    bookCta: 'Tandem buchen',
+    bookText: 'Ein Tandemsprung kostet 350 € - Briefing, komplette Ausrüstung und ein Handcam-Video deines Lehrers inklusive. Ein Upgrade auf einen Außenkameramann ist auf Anfrage möglich, je nach Verfügbarkeit.',
+    bookPoints: [
+      'Wir springen an Wochenenden von April bis Oktober. Buchungstermine werden nach Verfügbarkeit nach und nach freigeschaltet - wenn du noch kein Datum siehst, schau bald wieder vorbei.',
+      'Wetterabhängig: Sind die Bedingungen am Sprungtag nicht sicher, verschieben wir deinen Sprung kostenlos.',
+      'Stornierung mehr als 7 Tage vor dem Sprung: kostenlose Umbuchung. Weniger als 7 Tage vorher: nur mit ärztlichem Attest. Bei Nichterscheinen verfällt der Sprung.',
+      'Sprünge sind 3 Jahre gültig, nicht erstattungsfähig, aber übertragbar.',
+    ],
+    bookCta: 'Tandem kaufen - mit Termin',
+    giftCta: 'Gutschein kaufen - Termin später wählen',
+    redeemCta: 'Termin vereinbaren - mit Gutschein',
 
     bringEyebrow: 'Am Sprungtag',
     bringTitle: 'Was du mitbringst.',
@@ -194,6 +228,7 @@ const t = {
       'Turnschuhe oder leichte Stiefel mit Knöchelhalt. Keine Sandalen oder offenen Schuhe.',
       'Brillen sind kein Problem - unsere Schutzbrillen passen darüber.',
       'Eine gute Nacht Schlaf und eine leichte Mahlzeit vorher.',
+      'Familie und Freunde sind als Zuschauer herzlich willkommen - Getränke gibt es vor Ort.',
     ],
 
     ctaTitle: 'Bereit, den Himmel zu spüren?',
@@ -218,7 +253,7 @@ const t = {
     steps: [
       { title: '1. Briefing an Anlegen', text: 'Bei der Ankunft melden mir dich an, wiegen dich an geben dir ein 15-minütiges Briefing zu Ausstieg, Fallhaltung an Landung. Dein Instrukteren passt den Gurt an an kontrolliert vor dem Einsteigen jede einzelne Schnalle.', image: step1Img, alt: 'Tandem-Briefing am Boden' },
       { title: '2. Rundflug auf Höhe', text: 'Genieße einen etwa 20-minütigen Flug, bevor sich die Tür auf 4 000 Metern öffnet. Blick iwwer Lëtzebuerg an die Region - dann kommt der große Moment.', image: step2Img, alt: 'Blick aus dem Fliger beim Steigflug' },
-      { title: '3. Freier Fall an Schirm', text: 'Freier Fall mat rund 200 km/h, dann öffnet dein Instrukteren den Schirm auf etwa 1 500 Metern fir eine 5–7-minütige Gleitphase bis zur sicheren Landung.', image: step3Img, alt: 'Offener Schirm beim Abstieg' },
+      { title: '3. Freier Fall an Schirm', text: 'Rund 60 Sekunden fräie Fall mat etwa 200 km/h, dann öffnet dein Instrukteren den Schirm auf etwa 1 500 Metern fir eine 5–7-minütige Gleitphase bis zur sicheren Landung.', image: step3Img, alt: 'Offener Schirm beim Abstieg' },
     ],
 
     reqEyebrow: 'Voraussetzungen',
@@ -245,8 +280,16 @@ const t = {
 
     bookEyebrow: 'Buchung',
     bookTitle: 'Wähle ein Datum - mir sehen uns am Flugplatz.',
-    bookText: 'Tandemspréng sind wetterabhängig. Wenn die Bedingungen nicht sicher sind, mird der Sprong verschoben. Stornierungen sind nur mat Attest möglich; Nichterscheinen bedeutet Verlust des Sprongs. Spréng sind 3 Joer gültig, nicht erstattungsfähig, aber übertragbar. Bongen sind möglich - bitte korrekte Kontaktdaten des Empfängers angeben.',
-    bookCta: 'Tandem buchen',
+    bookText: 'Ein Tandemsprong kostet 350 € - Briefing, komplette Ausrüstung an ein Handcam-Video vum Instrukteren inklusive. Ein Upgrade auf einen Außenkameramann ist auf Anfrage möglich, je nach Verfügbarkeit.',
+    bookPoints: [
+      'Mir springen an Wochenenden vu April bis Oktober. Buchungstermine werden nach Verfügbarkeit nach an nach freigeschaltet - wenn du noch kein Datum siehst, schau bald wieder vorbei.',
+      'Wetterabhängig: Sind die Bedingungen am Sprongtag nicht sicher, verschieben mir dengen Sprong kostenlos.',
+      'Stornierung méi wéi 7 Tage vor dem Sprong: kostenlose Umbuchung. Weniger als 7 Tage vorher: nur mat ärztlichem Attest. Bei Nichterscheinen verfällt der Sprong.',
+      'Spréng sind 3 Joer gültig, nicht erstattungsfähig, aber übertragbar.',
+    ],
+    bookCta: 'Tandem kaufen - mat Termin',
+    giftCta: 'Gutschein kaufen - Termin später wählen',
+    redeemCta: 'Termin vereinbaren - mat Gutschein',
 
     bringEyebrow: 'Am Sprongtag',
     bringTitle: 'Was du mitbringst.',
@@ -256,6 +299,7 @@ const t = {
       'Turnschuhe oder leichte Stiefel mat Knöchelhalt. Keng Sandalen oder offenen Schuhe.',
       'Brillen sind kein Problem - eis Schutzbrillen passen darüber.',
       'Eine gute Nacht Schlaf an eine leichte Mahlzeit vorher.',
+      'Familie an Frënn sind als Zuschauer häerzlech wëllkomm - Gedrénks gëtt et vor Ort.',
     ],
 
     ctaTitle: 'Bereit, den Himmel zu spüren?',
@@ -268,6 +312,8 @@ const t = {
 const contactHref = `/${lang}/contact`;
 const pricingHref = `/${lang}/pricing`;
 const faqHref = `/${lang}/faq`;
+
+const reviews = getGoogleReviews(lang);
 ---
 
 <PageBanner
@@ -334,16 +380,23 @@ const faqHref = `/${lang}/faq`;
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="book">
   <div class="section__inner section__inner--narrow">
     <header class="section__header">
       <p class="section__eyebrow">{t.bookEyebrow}</p>
       <h2 class="section__title">{t.bookTitle}</h2>
       <p class="section__lead">{t.bookText}</p>
-      <p style="margin-top: var(--space-6)">
-        <a href={BOOKING_URL} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">{t.bookCta}</a>
-      </p>
     </header>
+    <div class="book-box">
+      <ul>
+        {t.bookPoints.map((p) => <li>{p}</li>)}
+      </ul>
+      <div class="book-actions">
+        <a href={BOOK_URL} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">{t.bookCta}</a>
+        <a href={GIFT_URL} class="btn btn--secondary btn--lg" target="_blank" rel="noopener noreferrer">{t.giftCta}</a>
+        <a href={REDEEM_URL} class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer">{t.redeemCta}</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -361,17 +414,36 @@ const faqHref = `/${lang}/faq`;
   </div>
 </section>
 
+<section class="section section--alt">
+  <div class="section__inner">
+    <header class="section__header">
+      <p class="section__eyebrow">{reviews.eyebrow}</p>
+      <h2 class="section__title">{reviews.title}</h2>
+      <p class="section__lead">{reviews.lead}</p>
+    </header>
+    <GoogleRating
+      rating={reviews.rating}
+      count={reviews.count}
+      countLabel={reviews.countLabel}
+      starsLabel={reviews.starsLabel}
+      cta={reviews.cta}
+      url={reviews.url}
+    />
+  </div>
+</section>
+
 <CTABanner
   title={t.ctaTitle}
   subtitle={t.ctaSubtitle}
-  primaryCta={{ label: t.ctaPrimary, href: BOOKING_URL }}
+  primaryCta={{ label: t.ctaPrimary, href: '#book' }}
   secondaryCta={{ label: t.ctaSecondary, href: contactHref }}
 />
 
 <style>
   .req-box,
   .bring-list,
-  .trust-box {
+  .trust-box,
+  .book-box {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -379,7 +451,8 @@ const faqHref = `/${lang}/faq`;
   }
   .req-box ul,
   .bring-list ul,
-  .trust-box ul {
+  .trust-box ul,
+  .book-box ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -389,19 +462,29 @@ const faqHref = `/${lang}/faq`;
   }
   .req-box li,
   .bring-list li,
-  .trust-box li {
+  .trust-box li,
+  .book-box li {
     padding-left: var(--space-6);
     position: relative;
     color: var(--color-fg-muted);
   }
   .req-box li::before,
   .bring-list li::before,
-  .trust-box li::before {
+  .trust-box li::before,
+  .book-box li::before {
     content: '✓';
     position: absolute;
     left: 0;
     color: var(--color-blue);
     font-weight: var(--fw-bold);
+  }
+
+  .book-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
   }
 
   .related-links {

@@ -8,7 +8,17 @@ export default defineConfig({
   // Open Graph / Twitter meta tags.
   site: 'https://www.skydive.lu',
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The root page is a noindex redirect to /en/ - keep it out of the sitemap.
+      filter: (page) => page !== 'https://www.skydive.lu/',
+      // Emit hreflang alternate links for every URL in the sitemap.
+      i18n: {
+        defaultLocale: 'en',
+        locales: { en: 'en', fr: 'fr', de: 'de' },
+      },
+    }),
+  ],
 
   // Multilingual routing configuration.
   i18n: {

@@ -16,7 +16,7 @@ const t = {
     subtitle: 'Questions, bookings, group enquiries: we read every message.',
     infoEyebrow: 'Find us',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
-    infoIntro: 'Our dropzone operates from a private grass airfield in the north of the country. You can reach us by car in 25 minutes from Luxembourg City.',
+    infoIntro: 'Our dropzone operates from a private grass airfield in the north of the country.',
     addressLabel: 'Address',
     addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxembourg'],
     emailLabel: 'Email',
@@ -41,7 +41,7 @@ const t = {
     subtitle: 'Questions, réservations, groupes - nous lisons chaque message.',
     infoEyebrow: 'Nous trouver',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
-    infoIntro: 'Notre dropzone opère depuis un aérodrome privé en herbe dans le nord du pays. Comptez 25 minutes en voiture depuis Luxembourg-Ville.',
+    infoIntro: 'Notre dropzone opère depuis un aérodrome privé en herbe dans le nord du pays.',
     addressLabel: 'Adresse',
     addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxembourg'],
     emailLabel: 'Courriel',
@@ -66,7 +66,7 @@ const t = {
     subtitle: 'Fragen, Buchungen, Gruppenanfragen - wir lesen jede Nachricht.',
     infoEyebrow: 'So findest du uns',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
-    infoIntro: 'Unsere Dropzone befindet sich auf einem privaten Grasflugplatz im Norden des Landes. Von Luxemburg-Stadt sind es etwa 25 Autominuten.',
+    infoIntro: 'Unsere Dropzone befindet sich auf einem privaten Grasflugplatz im Norden des Landes.',
     addressLabel: 'Adresse',
     addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Luxemburg'],
     emailLabel: 'E-Mail',
@@ -91,7 +91,7 @@ const t = {
     subtitle: 'Fragen, Buchungen, Gruppenanfragen - mir lesen jede Message.',
     infoEyebrow: 'So findest du uns',
     infoTitle: 'Skydive Luxembourg a.s.b.l.',
-    infoIntro: 'Eis Dropzone befindet sich auf einem privaten Grasflugplatz im Norden des Landes. Von Lëtzebuerg-Stadt sind es etwa 25 Autominuten.',
+    infoIntro: 'Eis Dropzone befindet sich auf einem privaten Grasflugplatz im Norden des Landes.',
     addressLabel: 'Adresse',
     addressLines: ['32 Op der Louh', 'L-9676 Noertrange', 'Lëtzebuerg'],
     emailLabel: 'E-Mail',
@@ -112,8 +112,26 @@ const t = {
 }[lang];
 
 const email = 'mail@skydive.lu';
-const phone = '+352 621 701 194 (SMS or WhatsApp only; phone calls by appointment)';
-const phoneHref = 'tel:+352621701194';
+const phone = '+352 621 701 194';
+const phoneNote = {
+  en: 'SMS or WhatsApp only; phone calls by appointment.',
+  fr: 'SMS ou WhatsApp uniquement ; appels téléphoniques sur rendez-vous.',
+  de: 'Nur SMS oder WhatsApp; Telefonanrufe nach Vereinbarung.',
+  lu: 'Nur SMS oder WhatsApp; Telefonanrufe nach Vereinbarung.',
+}[lang];
+const whatsappLabel = {
+  en: 'Message us on WhatsApp',
+  fr: 'Écrire sur WhatsApp',
+  de: 'Per WhatsApp schreiben',
+  lu: 'Iwwer WhatsApp schreiwen',
+}[lang];
+const whatsappText = {
+  en: 'Hello Skydive Luxembourg!',
+  fr: 'Bonjour Skydive Luxembourg !',
+  de: 'Hallo Skydive Luxembourg!',
+  lu: 'Moien Skydive Luxembourg!',
+}[lang];
+const whatsappHref = `https://wa.me/352621701194?text=${encodeURIComponent(whatsappText)}`;
 ---
 
 <PageBanner
@@ -145,7 +163,19 @@ const phoneHref = 'tel:+352621701194';
           <dd><a href={`mailto:${email}`}>{email}</a></dd>
 
           <dt>{t.phoneLabel}</dt>
-          <dd><a href={phoneHref}>{phone}</a></dd>
+          <dd>
+            {phone}<br />
+            <small>{phoneNote}</small><br />
+            <a
+              class="btn btn--secondary"
+              style="margin-top: var(--space-2)"
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {whatsappLabel}
+            </a>
+          </dd>
 
           <dt>{t.hoursLabel}</dt>
           <dd>
