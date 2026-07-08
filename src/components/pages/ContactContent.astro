@@ -265,11 +265,14 @@ const whatsappHref = `https://wa.me/352621701194?text=${encodeURIComponent(whats
     margin: 0;
     color: var(--color-fg-muted);
   }
-  .contact-info__list a {
+  /* Plain links in the list (e.g. the email) get the blue link colour.
+     Exclude .btn so a button placed here (WhatsApp) keeps its own white
+     text — otherwise this more-specific rule paints blue-on-blue. */
+  .contact-info__list a:not(.btn) {
     color: var(--color-blue);
     text-decoration: none;
   }
-  .contact-info__list a:hover {
+  .contact-info__list a:not(.btn):hover {
     text-decoration: underline;
   }
 
