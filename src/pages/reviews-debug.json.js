@@ -16,6 +16,7 @@ export async function GET() {
 
   const out = {
     builtAt: 'build-time',
+    probe: 'v2-post-key-fix',
     hasKey: !!key,
     keyLength: key ? String(key).length : 0,
     hasPlaceId: !!placeId,
