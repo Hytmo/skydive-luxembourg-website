@@ -1,0 +1,36 @@
+# Periodically rebuild the site so the build-time Google-reviews fetch
+# (src/data/googleReviews.js) refreshes the rating, count and review cards.
+#
+# Google's Maps Platform terms only allow caching review content for up to
+# 30 days, so a weekly rebuild keeps us comfortably compliant AND current.
+#
+# SETUP (one-time):
+#   1. In Netlify: Project configuration > Build & deploy > Build hooks >
+#      Add build hook (branch: main). Copy the URL it gives you.
+#   2. In GitHub: repo Settings > Secrets and variables > Actions > New
+#      repository secret, name it NETLIFY_BUILD_HOOK, paste the URL.
+# The workflow no-ops (does not fail) until that secret is set.
+
+name: Refresh Google reviews
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC. (GitHub cron can run a few minutes late.)
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {} # allow manual "Run workflow" from the Actions tab
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify rebuild
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret is not set — skipping (no rebuild triggered)."
+            exit 0
+          fi
+          echo "Triggering Netlify build hook…"
+          curl -fsSL -X POST -d '{}' "$HOOK"
+          echo "Done."

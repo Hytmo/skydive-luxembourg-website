@@ -6,6 +6,7 @@ import Hero from '../sections/Hero.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
 import Gallery from '../sections/Gallery.astro';
 import GoogleRating from '../sections/GoogleRating.astro';
+import GoogleReviewCards from '../sections/GoogleReviewCards.astro';
 import CTABanner from '../sections/CTABanner.astro';
 
 import { getGoogleReviews } from '../../data/googleReviews.js';
@@ -216,7 +217,7 @@ t.cards[1].alt = t.cards[1].title;
 t.cards[2].image = funImg;
 t.cards[2].alt = t.cards[2].title;
 
-const reviews = getGoogleReviews(lang);
+const reviews = await getGoogleReviews(lang);
 ---
 
 <Hero
@@ -280,6 +281,13 @@ const reviews = getGoogleReviews(lang);
       starsLabel={reviews.starsLabel}
       cta={reviews.cta}
       url={reviews.url}
+    />
+    <GoogleReviewCards
+      reviews={reviews.reviews}
+      label={reviews.reviewsLabel}
+      attribution={reviews.attribution}
+      url={reviews.url}
+      reviewCta={reviews.reviewCta}
     />
   </div>
 </section>
