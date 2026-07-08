@@ -33,7 +33,7 @@ const ogLocale = ogLocales[lang] ?? 'en_GB';
 const ogAlternates = locales.filter((l) => l !== lang).map((l) => ogLocales[l]);
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site).toString();
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.skydive.lu';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://skydive.lu';
 
 // Strip the current locale prefix to compute hreflang URLs for the other languages
 const rawPathWithoutLocale = path.replace(/^\/(en|fr|de|lu)(?=\/|$)/, '') || '/';

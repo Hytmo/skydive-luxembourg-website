@@ -6,12 +6,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Production URL. Used for the sitemap, canonical links, and
   // Open Graph / Twitter meta tags.
-  site: 'https://www.skydive.lu',
+  site: 'https://skydive.lu',
 
   integrations: [
     sitemap({
       // The root page is a noindex redirect to /en/ - keep it out of the sitemap.
-      filter: (page) => page !== 'https://www.skydive.lu/',
+      filter: (page) => page !== 'https://skydive.lu/',
       // Emit hreflang alternate links for every URL in the sitemap.
       i18n: {
         defaultLocale: 'en',

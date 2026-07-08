@@ -5,13 +5,6 @@
 [build.environment]
   NODE_VERSION = "22.12.0"
 
-# Keep the public brand canonical on www.skydive.lu.
-[[redirects]]
-  from = "https://skydive.lu/*"
-  to = "https://www.skydive.lu/:splat"
-  status = 301
-  force = true
-
 # Static-build root fallback: send bare domain visitors to the default language.
 [[redirects]]
   from = "/"
