@@ -1,0 +1,195 @@
+---
+/**
+ * GoogleReviewCards.astro - a small grid of real Google reviews (social proof).
+ * Renders nothing when there are no reviews (e.g. the build had no live Google
+ * data), so it's safe to always mount below the GoogleRating badge.
+ *
+ * Data comes from the build-time fetch in src/data/googleReviews.js. Google's
+ * terms require attribution, so each card links back to the review on Google
+ * and the block is labelled "Reviews from Google". Review text is shown
+ * verbatim (never altered); long text is clamped with CSS, not truncated.
+ *
+ * Props:
+ *   reviews: Array<{ author, authorUrl, photo, rating, relativeTime, text, reviewUrl }>
+ *   label: string        - small heading above the grid, e.g. "Recent reviews"
+ *   attribution: string  - e.g. "Reviews from Google"
+ *   url: string          - link to the full Google listing
+ *   reviewCta: string    - per-card link label, e.g. "View on Google"
+ */
+const {
+  reviews = [],
+  label = 'Recent reviews',
+  attribution = 'Reviews from Google',
+  url = '#',
+  reviewCta = 'View on Google',
+} = Astro.props;
+
+const items = Array.isArray(reviews) ? reviews : [];
+const fillPct = (rating) => Math.max(0, Math.min(100, (Number(rating) / 5) * 100));
+---
+
+{items.length > 0 && (
+  <div class="reviews">
+    <p class="reviews__label">{label}</p>
+
+    <ul class="reviews__grid" role="list">
+      {items.map((r) => (
+        <li class="review">
+          <div
+            class="review__stars"
+            role="img"
+            aria-label={`Rated ${r.rating} out of 5`}
+          >
+            <span class="review__stars-track" aria-hidden="true">★★★★★</span>
+            <span
+              class="review__stars-fill"
+              style={`width:${fillPct(r.rating)}%`}
+              aria-hidden="true"
+            >★★★★★</span>
+          </div>
+
+          <blockquote class="review__text">{r.text}</blockquote>
+
+          <div class="review__footer">
+            {r.photo && (
+              <img
+                class="review__avatar"
+                src={r.photo}
+                alt={r.author}
+                width="40"
+                height="40"
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+              />
+            )}
+            <div class="review__meta">
+              <span class="review__author">{r.author}</span>
+              {r.relativeTime && <span class="review__time">{r.relativeTime}</span>}
+            </div>
+          </div>
+
+          {r.reviewUrl && (
+            <a
+              class="review__link"
+              href={r.reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              {reviewCta}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <p class="reviews__attribution">
+      <a href={url} target="_blank" rel="noopener noreferrer nofollow">{attribution}</a>
+    </p>
+  </div>
+)}
+
+<style>
+  .reviews {
+    margin-top: var(--space-10);
+  }
+
+  .reviews__label {
+    text-align: center;
+    color: var(--color-fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-6);
+  }
+
+  .reviews__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 12px);
+  }
+
+  /* Fractional star bar — same technique as GoogleRating. */
+  .review__stars {
+    position: relative;
+    display: inline-block;
+    font-size: 1.1rem;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+  .review__stars-track { color: var(--color-border); }
+  .review__stars-fill {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--color-rating);
+  }
+
+  .review__text {
+    margin: 0;
+    color: var(--color-fg);
+    font-size: var(--fs-base);
+    line-height: var(--lh-base);
+    /* Clamp long reviews visually without altering the stored text. */
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .review__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: auto;
+  }
+
+  .review__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .review__meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .review__author {
+    font-weight: var(--fw-bold);
+    color: var(--color-fg);
+  }
+  .review__time {
+    font-size: var(--fs-sm);
+    color: var(--color-fg-muted);
+  }
+
+  .review__link {
+    font-size: var(--fs-sm);
+    align-self: flex-start;
+  }
+
+  .reviews__attribution {
+    text-align: center;
+    margin-top: var(--space-6);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-muted);
+  }
+</style>

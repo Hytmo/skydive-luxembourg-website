@@ -5,6 +5,7 @@
 import PageBanner from '../sections/PageBanner.astro';
 import FeatureCards from '../sections/FeatureCards.astro';
 import GoogleRating from '../sections/GoogleRating.astro';
+import GoogleReviewCards from '../sections/GoogleReviewCards.astro';
 import CTABanner from '../sections/CTABanner.astro';
 
 import { getGoogleReviews } from '../../data/googleReviews.js';
@@ -313,7 +314,7 @@ const contactHref = `/${lang}/contact`;
 const pricingHref = `/${lang}/pricing`;
 const faqHref = `/${lang}/faq`;
 
-const reviews = getGoogleReviews(lang);
+const reviews = await getGoogleReviews(lang);
 ---
 
 <PageBanner
@@ -428,6 +429,13 @@ const reviews = getGoogleReviews(lang);
       starsLabel={reviews.starsLabel}
       cta={reviews.cta}
       url={reviews.url}
+    />
+    <GoogleReviewCards
+      reviews={reviews.reviews}
+      label={reviews.reviewsLabel}
+      attribution={reviews.attribution}
+      url={reviews.url}
+      reviewCta={reviews.reviewCta}
     />
   </div>
 </section>
