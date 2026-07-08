@@ -201,49 +201,29 @@ const whatsappHref = `https://wa.me/352621701194?text=${encodeURIComponent(whats
   <div class="section__inner">
     <h2 class="section__title">{t.directionsTitle}</h2>
     <p class="section__lead">{t.directionsText}</p>
-    <div
-      class="contact-map contact-map--placeholder"
-      data-map-placeholder
-      data-map-title={t.mapTitle}
-      data-map-src="https://www.google.com/maps?q=A%C3%A9rodrome+de+Noertrange,+Luxembourg&output=embed"
-    >
-      <p>{t.mapPrivacyNotice}</p>
-      <div class="contact-map__actions">
-        <a
-          class="btn btn--secondary"
-          href="https://www.google.com/maps?q=A%C3%A9rodrome+de+Noertrange,+Luxembourg"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t.openMap}
-        </a>
-        <button class="btn btn--primary" type="button" data-load-map>{t.loadMap}</button>
-      </div>
+    <div class="contact-map">
+      <iframe
+        class="contact-map__frame"
+        title={t.mapTitle}
+        src="https://www.google.com/maps?q=A%C3%A9rodrome+de+Noertrange,+Luxembourg&output=embed"
+        width="100%"
+        height="420"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        allowfullscreen
+      ></iframe>
     </div>
+    <p class="contact-map__note">
+      {t.mapPrivacyNotice}
+      <a
+        class="contact-map__link"
+        href="https://www.google.com/maps?q=A%C3%A9rodrome+de+Noertrange,+Luxembourg"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >{t.openMap}</a>
+    </p>
   </div>
 </section>
-
-<script>
-  document.querySelectorAll('[data-map-placeholder]').forEach((placeholder) => {
-    const button = placeholder.querySelector('[data-load-map]');
-    if (!(button instanceof HTMLButtonElement)) return;
-
-    button.addEventListener('click', () => {
-      const iframe = document.createElement('iframe');
-      iframe.title = placeholder.getAttribute('data-map-title') || 'Map';
-      iframe.src = placeholder.getAttribute('data-map-src') || '';
-      iframe.width = '100%';
-      iframe.height = '420';
-      iframe.loading = 'lazy';
-      iframe.referrerPolicy = 'no-referrer';
-      iframe.allowFullscreen = true;
-      iframe.style.border = '0';
-
-      placeholder.classList.remove('contact-map--placeholder');
-      placeholder.replaceChildren(iframe);
-    });
-  });
-</script>
 
 <style>
   .contact-grid {
@@ -282,17 +262,19 @@ const whatsappHref = `https://wa.me/352621701194?text=${encodeURIComponent(whats
     overflow: hidden;
     border: 1px solid var(--color-border);
   }
-  .contact-map--placeholder {
-    padding: var(--space-6);
-    background: var(--color-bg);
+  .contact-map__frame {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: 0;
   }
-  .contact-map__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-top: var(--space-4);
+  @media (max-width: 700px) {
+    .contact-map__frame { height: 320px; }
   }
-  .contact-map__actions .btn {
-    width: auto;
+  .contact-map__note {
+    margin-top: var(--space-3);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-muted);
   }
+  .contact-map__link { margin-left: var(--space-1); }
 </style>
